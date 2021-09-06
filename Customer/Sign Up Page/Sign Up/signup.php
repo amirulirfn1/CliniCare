@@ -38,18 +38,18 @@
                                 <input type="email" name="email" id="email" placeholder="Your Email" />
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password" />
+                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="password" placeholder="Password" />
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password" />
+                                <label for="phoneNumber"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
                             </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <!--<div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
                                     statements in <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
+                            </div>-->
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
                             </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.html" class="signup-image-link">
+                        <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="signup-image-link">
                             I am already member</a>
                     </div>
                 </div>

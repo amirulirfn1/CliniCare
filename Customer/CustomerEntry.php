@@ -1,105 +1,82 @@
 <?php
-session_start();
-
-if(isSet($_POST['register'])){
-    register($_POST);
-}else if(isSet($_POST['signin'])){
-    signin($_POST);
-}else if(isSet($_POST['signoutout'])){
-    signout($_POST);
+if (isset($_POST['signup'])) {
+    signup($_POST['signup']);
+}else if(isset($_POST['signin'])) {
+    signin($_POST['signin']);
 }
+
 ?>
 
 <?php
 
-    function signin(){
-        $con = mysqli_connect("localhost", "web2021", "web2021", "clinicare");
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+function signup(){
+    $servername = "localhost";
+    $username = "clinicarecustomer";
+    $password = "customer";
+    $dbname = "clinicare";
+    
+    $con = new mysqli($servername, $username, $password, $dbname);
+    
         if(!$con){
-            echo "Not connected";
-        }else{
-            $sql = "select * from customer WHERE email = '$email' AND password = '$password'";
-            $qry = mysqli_query($con,$sql);
-            $count = mysqli_num_rows($qry);
-            
-            echo "<script type='text/javascript'>
-            alert('Log Masuk Berjaya');
-            window.location.href = '/MasterCliniCare/Customer/CustomerHomePage/index.html'
-            </script>";
-        }   
-    }
+            echo "error";
+        }else{            
+            //2. Construct SQL statement
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $phoneNumber = $_POST['phoneNumber'];
 
-    function signout(){
-        $con = mysqli_connect("localhost", "web2021", "web2021", "clinicare");
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        if(!$con){
-            echo "Not connected";
-        }else{
-            $sql = "select * from customer WHERE email = '$email' AND password = '$password'";
-            $qry = mysqli_query($con,$sql);
-            $count = mysqli_num_rows($qry);
-            echo "Hello"; 
+            $password = md5($password);
+            //Generate Vkey
+            $vkey =md5(time().$name);
+    
+            $sql = "INSERT INTO customer (name, email, password, phoneNumber, vkey) 
+                    VALUES('$name', '$email', '$password', '$phoneNumber', '$vkey')";
         }
     
-    }
-
-    function register(){
-        $con = mysqli_connect("localhost", "web2021", "web2021", "clinicare");
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        if(!$con){
-            echo "Not connected";
-        }else{
-            $sql = "select * from customer WHERE email = '$email' AND password = '$password'";
-            $qry = mysqli_query($con,$sql);
-            $count = mysqli_num_rows($qry);
-            echo "Hello"; 
-        }
-    
-    }
-
-    /*function verify(){
-        //session_start();
-
-      //$id = $_SESSION['id'];
-      //$custname = $_SESSION['custname'];
-      $con = mysqli_connect('localhost', 'web2021', 'web2021', 'clinicare');
-
-      $sql = "SELECT * FROM customer WHERE custname = '$custname'";
-      $custqry = mysqli_query($con,$sql);
-
-      $custData = mysqli_fetch_array($custqry);
-      //$custid = $custData['custid'];
-      $custEmail = $custData['email'];
-
-      //$sql2 = "UPDATE reservation SET status = '0' WHERE reservation.id = $id";
-      //mysqli_query($con,$sql2);
-
-      //$appid = substr($custid, -4).$id;
-
-      $to_email = 'jitiv85897@mtlcz.com';
-      //"$custEmail";
-      $subject = "Please verify your email address ";
-      $body = " Please click the link below :";
-      $headers = "From: info@clinicare.com.my";
-      
-      //$sql3 = "delete from appointment where custid = '$custid'";
-      //mysqli_query($con,$sql3);
-      
-      //$sql4 = "insert into appointment(id, custid, reservationid)
-           // values('$appid', '$custid', '$id')";
-      //mysqli_query($con,$sql4);
-
-      //$_SESSION['appid'] = $appid;
-
-      if (mail($to_email, $subject, $body, $headers)) {
-            echo "Verified";
-            //'<script>
-                  //alert("Verified");
-                  //window.location.href = \'/MasterCliniCare/Customer/Sign In Page/Sign In/signin.html\';            
-            //</script>';
+    if ($con->query($sql) === TRUE) {
+        $to = $email;
+        $subject = "Verify Your Email Address";
+        $message = "<a href='http://localhost/MasterCliniCare/Customer/Verify.php?vkey=$vkey'></a>";
+        $headers = "From: info.clinicareweb@gmail.com";
+        mail($to, $subject, $message, $headers);
+        echo "An email verification link has been sent to  " . $email;
+        header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/signin.php");  
+      } else {
+        echo "Error: " . $sql . "<br>" . $con->error;
       }
-    }*/
+}
+
+function signin(){
+    $servername = "localhost";
+    $username = "clinicarecustomer";
+    $password = "customer";
+    $dbname = "clinicare";
+    
+    $mysqli = new mysqli($servername, $username, $password, $dbname);;
+             $email = $mysqli->real_escape_string($_POST['email']);
+             $password = $mysqli->real_escape_string($_POST['password']);
+             $password = md5($password);
+
+             $resultSet = $mysqli->query("SELECT * FROM customer WHERE email = '$email' AND password = '$password' LIMIT 1");
+
+             if($resultSet->num_rows !=0){
+                 //Process login
+                 $row = $resultSet->fetch_assoc();
+                 $verified = $row['verified'];
+                 $email = $row['email'];
+
+                 if($verified == 1){
+                     //Continue
+                     echo "Welcome to CliniCare";
+                     header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.html");
+
+                 }else{
+                     echo  "Please verify your account and try again.";
+                 }
+             }else{
+                 //Invalid login
+                 echo "Invalid login Credentials";
+             } 
+        }
 ?>
