@@ -45,6 +45,16 @@
                                 <label for="phoneNumber"><i class="zmdi zmdi-phone"></i></label>
                                 <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
                             </div>
+                            <div class="form-group">
+                                <label for="icNumber"><i class="zmdi zmdi-dial"></i></label>
+                                <input type="text" name="icNumber" id="icNumber" placeholder="IC Number" />
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate"><i class="zmdi zmdi-calendar"></i></label>
+                                <input type="date" name="birthDate" id="birthDate" placeholder="BirthDate" />
+                            </div>
+                            
+
                             <!--<div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all

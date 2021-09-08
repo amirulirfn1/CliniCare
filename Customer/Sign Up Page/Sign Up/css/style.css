@@ -186,7 +186,8 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #f8f8f8;
+  background: #fff;
+  background-image:url("../images/gambar/doctor.jpg");
   padding: 150px 0; }
 
 .clear {
@@ -196,7 +197,7 @@ body {
   font-size: 13px;
   line-height: 1.8;
   color: #222;
-  background: #f8f8f8;
+  background: #fff;
   font-weight: 400;
   font-family: Poppins; }
 
@@ -213,7 +214,8 @@ body {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   -o-border-radius: 20px;
-  -ms-border-radius: 20px; }
+  -ms-border-radius: 20px; 
+}
 
 .display-flex {
   justify-content: space-between;
@@ -250,7 +252,7 @@ body {
   -ms-transform: translate(-50%, -50%); }
 
 .signup {
-  margin-bottom: 150px; }
+  margin-bottom: 50px; }
 
 .signup-content {
   padding: 75px 0; }
