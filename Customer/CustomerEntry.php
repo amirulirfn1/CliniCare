@@ -1,8 +1,11 @@
 <?php
+session_start();
 if (isset($_POST['signup'])) {
     signup($_POST['signup']);
 } else if (isset($_POST['signin'])) {
     signin($_POST['signin']);
+} else if (isset($_POST['signout'])) {
+    signout($_POST['signout']);
 }
 
 ?>
@@ -69,7 +72,7 @@ function signin()
     $password = "customer";
     $dbname = "clinicare";
 
-    $mysqli = new mysqli($servername, $username, $password, $dbname);;
+    $mysqli = new mysqli($servername, $username, $password, $dbname);
 
     $email = $mysqli->real_escape_string($_POST['email']);
     $password = $mysqli->real_escape_string($_POST['password']);
@@ -78,11 +81,13 @@ function signin()
     $resultSet = $mysqli->query("SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ");
 
 
+
     if ($resultSet->num_rows != 0) {
         //Process login
         $row = $resultSet->fetch_assoc();
         $verified = $row['verified'];
         $email = $row['email'];
+        $_SESSION['email'] = $email;
 
         if ($verified == 1) {
 
@@ -111,6 +116,11 @@ function signin()
         echo "Invalid login Credentials";
     }
     
+}
+
+function signout(){
+    session_destroy();
+    header("Location: /MasterCliniCare/index.html");
 }
 ?>
 
