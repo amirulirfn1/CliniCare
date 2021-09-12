@@ -11,6 +11,8 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Profile | CliniCare</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -110,6 +112,7 @@ session_start();
 			<li class="nav-item">
               <a class="nav-link" href="../../pages/icons/mdi.html">
                 <span class="menu-title">My Profile</span>
+				 
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
@@ -174,13 +177,15 @@ session_start();
             <?php
             while ($rows = mysqli_fetch_assoc($resultSet2))
             {
-              echo '     <div class="main-panel">
+              echo '<div class="main-panel">
               <div class="content-wrapper">
               <div class="page-header">
               <h3 class="page-title"> My Profile </h3>
+			  <a href="change-password.php"><i style="font-size:24px" class="fa">&#xf023;</i> Change Password</a>
+					  
+					  
               </div>
-        <form action="updateProcess.php" method="POST">
-         
+              <form action="updateProcess.php" method="POST">
               <div class="row">
           
            <!-- Edit Info details Section -->
@@ -188,6 +193,7 @@ session_start();
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title">Personal Info</h4>
+					 
                       <!-- <form class="form-sample"> -->
 
                         <p class="card-description"></p>
@@ -251,7 +257,7 @@ session_start();
                             </div>
                           </div>
               
-               <div class="col-md-6">
+                          <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label"></label>
                               <div class="col-sm-9">
@@ -260,49 +266,17 @@ session_start();
                             </div>
                           </div>
                         </div>
-                      </form>
-            </form>
+                     </form>
                     </div>
                   </div>
                 </div>
-          
-          
-          <!-- Change Password Section -->
-          <div class="col-12 grid-margin stretch-card">
-                  <div class="card">
-                    <div class="card-body">
-                      <h4 class="card-title">Password Changes</h4>
-            <p class="card-description"></p>
-                      <form class="form-sample">
-              <div class="form-group">
-                <label>Current Password</label>
-                <input type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Username">
-              </div>
-              
-              <div class="form-group">
-                <label>New Password</label>
-                <input type="password" class="form-control form-control-lg" placeholder="New Password" aria-label="Username">
-              </div>
-            
-              <div class="form-group">
-                <label>Confirm New Password</label>
-                <input type="password" class="form-control form-control-lg" placeholder="Confirm New Password" aria-label="Username">
-              </div>
-              
-                        <button type="submit" class="btn btn-gradient-primary mb-2">Save</button>
-                      </form>
-                    </div>
-                  </div>
-          </div>
-              </div>
-            
         
         
         
             <!-- partial:../../partials/_footer.html -->
             <footer class="footer">
               <div class="container-fluid clearfix">
-          &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+              &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
               </div>
             </footer>
   
@@ -312,5 +286,5 @@ session_start();
 
             }
             ?>
-			  
+            
 </html>
