@@ -110,7 +110,7 @@ session_start();
 			
 			<!-- PART PROFILE CUSTOMER -->
 			<li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.html">
+              <a class="nav-link" href="../../pages/icons/mdi.php">
                 <span class="menu-title">My Profile</span>
 				 
                 <i class="mdi mdi-contacts menu-icon"></i>
@@ -141,8 +141,8 @@ session_start();
 							<div class="collapse" id="ui-basic">
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/catalogueMedicine.html">Medicine Catalogue</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Buy Medicine</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Purchased Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buyMedicine.html">Buy Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Purchased Medicine</a></li>
 								</ul>
 							</div>
 						</li>
