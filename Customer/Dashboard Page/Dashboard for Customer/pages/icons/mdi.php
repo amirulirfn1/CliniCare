@@ -33,6 +33,25 @@ $row=mysqli_fetch_array($query);
     <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../assets/images/gambar/icon.jpeg" />
+	<style>
+	.error {
+   background: #F2DEDE;
+   color: #A94442;
+   padding: 10px;
+   width: 100%;
+   border-radius: 5px;
+   margin: 20px auto;
+}
+
+.success {
+   background: #D4EDDA;
+   color: #40754C;
+   padding: 10px;
+   width: 100%;
+   border-radius: 5px;
+   margin: 20px auto;
+}
+</style>
   </head>
   
   <body>
@@ -116,7 +135,6 @@ $row=mysqli_fetch_array($query);
 			<li class="nav-item">
               <a class="nav-link" href="../../pages/icons/mdi.php">
                 <span class="menu-title">My Profile</span>
-				 
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
@@ -169,9 +187,6 @@ $row=mysqli_fetch_array($query);
               <div class="content-wrapper">
               <div class="page-header">
               <h3 class="page-title"> My Profile </h3>
-			  <a href="change-password.php"><i style="font-size:24px" class="fa">&#xf023;</i> Change Password</a>
-					  
-					  
               </div>
 
               <div class="row">
@@ -262,6 +277,49 @@ $row=mysqli_fetch_array($query);
                     </div>
                   </div>
                 </div>
+				
+				  <!-- Change Password Section -->
+				  
+     	
+
+			  <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+				  <form action="change-p.php" method="post">
+                    <h4 class="card-title">Password Changes</h4>
+					<p class="card-description"></p>
+					<link rel="stylesheet" type="text/css">
+					     	<?php if (isset($_GET['error'])) { ?>
+     		                <p class="error"><?php echo $_GET['error']; ?></p>
+     	                    <?php } ?>
+
+     	                    <?php if (isset($_GET['success'])) { ?>
+                            <p class="success"><?php echo $_GET['success']; ?></p>
+                            <?php } ?>
+							
+                    <form class="form-sample">
+						<div class="form-group">
+							<label>Current Password</label>
+							<input type="password" class="form-control form-control-lg" placeholder="Password" name="op" aria-label="Username">
+						</div>
+						
+						<div class="form-group">
+							<label>New Password</label>
+							<input type="password" class="form-control form-control-lg"  name="np" placeholder="New Password" aria-label="Username">
+						</div>
+					
+						<div class="form-group">
+							<label>Confirm New Password</label>
+							<input type="password" class="form-control form-control-lg"  name="c_np" placeholder="Confirm New Password" aria-label="Username">
+						</div>
+						
+                      <button type="submit" class="btn btn-gradient-primary mb-2">Change</button>
+                    </form>
+                  </div>
+                </div>
+				</div>
+            </div>
+          </div>
                                  
             <!-- partial:../../partials/_footer.html -->
             <footer class="footer">
@@ -272,7 +330,7 @@ $row=mysqli_fetch_array($query);
   
           </div>
         </div>
-      </div>;
+      </div>
             
 </html>
 
