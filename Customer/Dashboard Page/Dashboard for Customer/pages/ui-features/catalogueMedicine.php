@@ -1,5 +1,11 @@
 <!-- PAGE UNTUK CATALOGUE MEDICINE -->
-
+<?php
+include_once "db_conn.php";
+session_start();
+$email=$_SESSION['email'];
+$query=mysqli_query($conn,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,13 +51,15 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Customer Name</p>
+                  <p class="mb-1 text-black"><?php echo $row['name']; ?></p>
                 </div>
               </a>
 			  
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="/TestCliniCare/Customer/Sign In Page/Sign In/signin.html">
-                  <i class="mdi mdi-logout mr-2 text-primary"></i> Sign Out </a>
+                <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                  <button type="submit" class="dropdown-item" name="signout" id="signout" >
+                    <i class="mdi mdi-logout mr-2 text-primary" ></i> Sign Out </button>
+                </form>
               </div>
             </li>
 			
@@ -178,105 +186,91 @@
                         <tr>
 						  <td> 1 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
+                            <img src = "../../assets/images/gambar/paracetamol.jpg" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> Herman Beck </td>
+                          <td> Paracetamol 500mg </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <div> Used for fever, headache and also as painkillers.</div>
                           </td>
-                          <td> $ 77.99 </td>
+                          <td> RM 8.00 </td>
                           <td><i class="mdi mdi-cart icon-lg"></i></td> <!-- icon = <i class="mdi mdi-cart-large menu-icon"></i> -->
                         </tr>
 						
                         <tr>
 						<td> 2 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
+                             <img src = "../../assets/images/gambar/med2.png" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> Messsy Adam </td>
+                          <td> Metoclopramide HCL 10mg </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                             <div>Treat symptom of nausea ,vommiting and migrain.</div>
                           </td>
-                          <td> $245.30 </td>
+                          <td> RM 7.00 </td>
                           <td> <i class="mdi mdi-cart icon-lg"> </td>
                         </tr>
 						
                         <tr>
 						<td> 3 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
+                           <img src = "../../assets/images/gambar/med3.jpg" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> John Richards </td>
+                          <td> Chlorpheniramine 4mg </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <div>Relieve symptom of allergy, hay fever and common cold.</div>
                           </td>
-                          <td> $138.00 </td>
+                          <td> RM 8.00  </td>
                           <td> <i class="mdi mdi-cart icon-lg"> </td>
                         </tr>
 						
                         <tr>
 						<td> 4 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-4.png" alt="image" />
+                            <img src = "../../assets/images/gambar/med4.jpg" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> Peter Meggik </td>
+                          <td> Diclofenac sodium 50mg  </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <div>Relieve pain, reduce swelling and ease inflammation. </div>
                           </td>
-                          <td> $ 77.99 </td>
+                          <td> RM 2.50  </td>
                           <td> <i class="mdi mdi-cart icon-lg"> </td>
                         </tr>
 						
                         <tr>
 						<td> 5 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
+                           <img src = "../../assets/images/gambar/med5.jpg" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> Edward </td>
+                          <td> Ranitidine 150mg </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                           <div>Used to treat ulcers of the stomach and intestines.</div>
                           </td>
-                          <td> $ 160.25 </td>
+                          <td> RM 10.00 </td>
                           <td> <i class="mdi mdi-cart icon-lg"> </td>
                         </tr>
 						
                         <tr>
 						<td> 6 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
+                             <img src = "../../assets/images/gambar/med6.jpg" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> John Doe </td>
+                          <td> Oral Rehydration Salt (ORS) </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <div>Used to treat dehydration caused by diarrhea.</div>
                           </td>
-                          <td> $ 123.21 </td>
+                          <td> RM 7.00 </td>
                           <td> <i class="mdi mdi-cart icon-lg"> </td>
                         </tr>
 						
                         <tr>
 						<td> 7 </td>
                           <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
+                            <img src = "../../assets/images/gambar/med7.jpg" style ="width:150px;  height:150px; object-fit:cover; border-radius:10%;"/>
                           </td>
-                          <td> Henry Tom </td>
+                          <td> Cough Syrup </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                           <div>Suitable for nonstop coughing.</div>
                           </td>
-                          <td> $ 150.00 </td>
+                          <td> RM 9.20  </td>
                           <td> <i class="mdi mdi-cart icon-lg"> </td>
                         </tr>
                       </tbody>
