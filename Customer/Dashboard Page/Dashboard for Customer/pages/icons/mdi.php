@@ -1,5 +1,9 @@
 <?php
+include_once "db_conn.php";
 session_start();
+$email=$_SESSION['email'];
+$query=mysqli_query($conn,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
 ?>
 
 <!-- PAGE FOR MY PROFILE CUSTOMER -->
@@ -54,7 +58,7 @@ session_start();
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black"><?php echo $_SESSION['email']; ?></p>
+                  <p class="mb-1 text-black"><?php echo $row['name']; ?></p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -160,24 +164,8 @@ session_start();
           </ul>
         </nav>
 		  </body>
-			  
-            <?php
-            session_start();
-                 include "updateProcess.php";
-                 $servername = "localhost";
-                 $username = "clinicarecustomer";
-                 $password = "customer";
-                 $dbname = "clinicare";
-             
-                 $mysqli = new mysqli($servername, $username, $password, $dbname);
-                 $email = $_SESSION['email'];
-                 
-                 $resultSet2 = $mysqli->query("SELECT * FROM customer WHERE email='$email' ");
-            ?>
-            <?php
-            while ($rows = mysqli_fetch_assoc($resultSet2))
-            {
-              echo '<div class="main-panel">
+                       
+              <div class="main-panel">
               <div class="content-wrapper">
               <div class="page-header">
               <h3 class="page-title"> My Profile </h3>
@@ -185,7 +173,7 @@ session_start();
 					  
 					  
               </div>
-              <form action="updateProcess.php" method="POST">
+
               <div class="row">
           
            <!-- Edit Info details Section -->
@@ -196,24 +184,26 @@ session_start();
 					 
                       <!-- <form class="form-sample"> -->
 
-                        <p class="card-description"></p>
+                
+                      <form action="#" method="POST">
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Name</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" name="name" id="name" value="'.$rows['name'].'" >
+                                <input type="text" class="form-control" name="name" id="name" value= "<?php echo $row['name']; ?>" disabled>
                               </div>
                             </div>
                           </div>
                         </div>
+                      
               
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">IC Number</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="xxxxxx-xx-xxxx" name="ICnumber" value="'.$rows['ICnumber'].'" >
+                                <input class="form-control" placeholder="xxxxxx-xx-xxxx" name="ICnumber" id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -222,7 +212,7 @@ session_start();
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Date of Birth</label>
                               <div class="col-sm-9">
-                                <input type = "date" class="form-control" placeholder="dd/mm/yyyy" name="birthDate" value="'.$rows['birthDate'].'">
+                                <input type = "date" class="form-control" placeholder="dd/mm/yyyy" name="birthDate" id="birthDate" value="<?php echo $row['birthDate']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -233,7 +223,7 @@ session_start();
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Phone Number</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="xxx-xxxxxxx" name="phoneNumber" value="'.$rows['phoneNumber'].'" >
+                                <input class="form-control" placeholder="xxx-xxxxxxx" name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -242,17 +232,18 @@ session_start();
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Email</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="info.clinicareweb@gmail.com" name="email" value="'.$rows['email'].'" disabled >
+                                <input class="form-control" placeholder="info.clinicareweb@gmail.com" name="email" value="<?php echo $row['email']; ?>" disabled >
                               </div>
                             </div>
                           </div>
                         </div>
+
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Address</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" name="address" value="'.$rows['address'].'" >
+                                <input type="text" class="form-control" name="address" value="<?php echo $row['address']; ?>" disabled >
                               </div>
                             </div>
                           </div>
@@ -261,18 +252,17 @@ session_start();
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label"></label>
                               <div class="col-sm-9">
-                                 <input type="submit" name = "updateProfile" value = "Update" class="btn btn-gradient-primary mr-2">
+                                 <input type="submit" name = "updateProfile" id="updateProfile" value = "Update" class="btn btn-gradient-primary mr-2">
                               </div>
                             </div>
                           </div>
                         </div>
                      </form>
+
                     </div>
                   </div>
                 </div>
-        
-        
-        
+                                 
             <!-- partial:../../partials/_footer.html -->
             <footer class="footer">
               <div class="container-fluid clearfix">
@@ -282,9 +272,33 @@ session_start();
   
           </div>
         </div>
-      </div>';
-
-            }
-            ?>
+      </div>;
             
 </html>
+
+<?php
+
+if (isset($_POST['updateProfile'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $icNumber = $_POST['ICnumber'];
+        $birthDate = $_POST['birthDate'];
+		    $address = $_POST['address'];
+
+        $query= "UPDATE customer SET name = '$name' WHERE email = '$email'";
+        mysqli_query($conn, $query);
+}
+
+if($mysqli->query($query) == TRUE)
+		{
+		echo "Your profile info is updated!";
+    header( "refresh:1; url=mdi.php");
+		}
+	else
+	{
+		echo "Error";
+	}	
+
+?>

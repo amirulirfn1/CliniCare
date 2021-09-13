@@ -15,30 +15,38 @@ function updateCustomerInformation()
     $password = "customer";
     $dbname = "clinicare";
 
-    $mysqli = new mysqli($servername, $username, $password, $dbname);;
+    $mysqli = new mysqli($servername, $username, $password, $dbname);
 
-	$name = $mysqli->real_escape_string($_POST['name']);
-	$phoneNumber = $mysqli->real_escape_string($_POST['phoneNumber']);
-	$icNumber = $mysqli->real_escape_string($_POST['ICNumber']);
-	$birthDate = $mysqli->real_escape_string($_POST['birthDate']);
-	$address = $mysqli->real_escape_string($_POST['address']);
-	$email = $mysqli->real_escape_string($_POST['email']);
-	
-	if(!$mysqli)
-		{
+	if(!$mysqli){
 		echo "Error";
+	}else{
+		$name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $icNumber = $_POST['icNumber'];
+        $birthDate = $_POST['birthDate'];
+		$address = $_POST['address'];
+
+		$sql= "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber', icNumber= '$icNumber',
+		birthDate= '$birthDate',
+		address='$address'
+		where email = '$email'";
+
+		$result = mysqli_query($mysqli, $sql);
+	}
+
+	    
+
+		
+	
+	if($mysqli->query($sql) == TRUE)
+		{
+		echo "Your profile info is updated!";
 		}
 	else
 	{
-		
-		$sql= "UPDATE customer SET 
-		name = $name, 
-		phoneNumber= $phoneNumber,
-		ICnumber= $icNumber,
-		birthDate= $birthDate,
-		address= $address
-		where email = $email";
-		
+		echo "Error";
 	}	
 
 }
