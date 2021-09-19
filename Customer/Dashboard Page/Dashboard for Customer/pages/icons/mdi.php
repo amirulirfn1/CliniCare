@@ -195,6 +195,7 @@ $row=mysqli_fetch_array($query);
                 <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
+					<form action="updateForm.php" method="post">
                       <h4 class="card-title">Personal Info</h4>
 					 
                       <!-- <form class="form-sample"> -->
@@ -206,7 +207,8 @@ $row=mysqli_fetch_array($query);
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Name</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" name="name" id="name" value= "<?php echo $row['name']; ?>" disabled>
+                                <input type="text" class="form-control" name="name" id="name" 
+								value= "<?php echo $row['name']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -218,7 +220,8 @@ $row=mysqli_fetch_array($query);
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">IC Number</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="xxxxxx-xx-xxxx" name="ICnumber" id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
+                                <input class="form-control" placeholder="xxxxxx-xx-xxxx" name="ICnumber" 
+								id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -227,7 +230,8 @@ $row=mysqli_fetch_array($query);
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Date of Birth</label>
                               <div class="col-sm-9">
-                                <input type = "date" class="form-control" placeholder="dd/mm/yyyy" name="birthDate" id="birthDate" value="<?php echo $row['birthDate']; ?>" disabled>
+                                <input type = "date" class="form-control" placeholder="dd/mm/yyyy" 
+								name="birthDate" id="birthDate" value="<?php echo $row['birthDate']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -238,7 +242,8 @@ $row=mysqli_fetch_array($query);
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Phone Number</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="xxx-xxxxxxx" name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
+                                <input class="form-control" placeholder="xxx-xxxxxxx" 
+								name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
                               </div>
                             </div>
                           </div>
@@ -247,7 +252,8 @@ $row=mysqli_fetch_array($query);
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Email</label>
                               <div class="col-sm-9">
-                                <input class="form-control" placeholder="info.clinicareweb@gmail.com" name="email" value="<?php echo $row['email']; ?>" disabled >
+                                <input class="form-control" placeholder="info.clinicareweb@gmail.com" 
+								name="email" value="<?php echo $row['email']; ?>" disabled >
                               </div>
                             </div>
                           </div>
@@ -258,19 +264,22 @@ $row=mysqli_fetch_array($query);
                             <div class="form-group row">
                               <label class="col-sm-3 col-form-label">Address</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" name="address" value="<?php echo $row['address']; ?>" disabled >
+                                <input type="text" class="form-control" name="address" 
+								value="<?php echo $row['address']; ?>" disabled >
                               </div>
                             </div>
                           </div>
-              
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label"></label>
-                              <div class="col-sm-9">
-                                 <input type="submit" name = "updateProfile" id="updateProfile" value = "Update" class="btn btn-gradient-primary mr-2">
-                              </div>
+						  
+						  <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                               <button type="submit" name = "update" 
+							   class="btn btn-gradient-primary mr-2">Update</button>
                             </div>
                           </div>
+                        </div>
+						
                         </div>
                      </form>
 
@@ -300,17 +309,20 @@ $row=mysqli_fetch_array($query);
                     <form class="form-sample">
 						<div class="form-group">
 							<label>Current Password</label>
-							<input type="password" class="form-control form-control-lg" placeholder="Password" name="op" aria-label="Username">
+							<input type="password" class="form-control form-control-lg" 
+							placeholder="Password" name="op" aria-label="Username">
 						</div>
 						
 						<div class="form-group">
 							<label>New Password</label>
-							<input type="password" class="form-control form-control-lg"  name="np" placeholder="New Password" aria-label="Username">
+							<input type="password" class="form-control form-control-lg"  
+							name="np" placeholder="New Password" aria-label="Username">
 						</div>
 					
 						<div class="form-group">
 							<label>Confirm New Password</label>
-							<input type="password" class="form-control form-control-lg"  name="c_np" placeholder="Confirm New Password" aria-label="Username">
+							<input type="password" class="form-control form-control-lg"  
+							name="c_np" placeholder="Confirm New Password" aria-label="Username">
 						</div>
 						
                       <button type="submit" class="btn btn-gradient-primary mb-2">Change</button>
@@ -343,7 +355,7 @@ if (isset($_POST['updateProfile'])) {
         $phoneNumber = $_POST['phoneNumber'];
         $icNumber = $_POST['ICnumber'];
         $birthDate = $_POST['birthDate'];
-		    $address = $_POST['address'];
+		$address = $_POST['address'];
 
         $query= "UPDATE customer SET name = '$name' WHERE email = '$email'";
         mysqli_query($conn, $query);

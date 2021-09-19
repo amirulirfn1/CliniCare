@@ -1,53 +1,43 @@
 <?php
 session_start();
 
-if (isset($_POST['updateProfile'])) {
-    updateCustomerInformation($POST['updateProfile']);
-	header( "refresh:1; url=mdi.php");
-}
-?>
+$servername = "localhost";
+$username = "clinicarecustomer";
+$password = "customer";
+$dbname = "clinicare";
 
-<?php
-function updateCustomerInformation()
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if(isset($_POST['update_customer_data']))
 {
-	$servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $mysqli = new mysqli($servername, $username, $password, $dbname);
-
-	if(!$mysqli){
-		echo "Error";
-	}else{
-		$name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $icNumber = $_POST['icNumber'];
-        $birthDate = $_POST['birthDate'];
-		$address = $_POST['address'];
-
-		$sql= "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber', icNumber= '$icNumber',
-		birthDate= '$birthDate',
-		address='$address'
-		where email = '$email'";
-
-		$result = mysqli_query($mysqli, $sql);
-	}
-
-	    
-
-		
+    $email = $_POST['email'];
 	
-	if($mysqli->query($sql) == TRUE)
-		{
-		echo "Your profile info is updated!";
-		}
-	else
-	{
-		echo "Error";
-	}	
+	$name = $_POST['name'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $ICnumber = $_POST['ICnumber'];
+	$birthDate = $_POST['birthDate'];
+    $address = $_POST['address'];
 
+    $query = "UPDATE customer SET 
+	name='$name', 
+	phoneNumber='$phoneNumber', 
+	ICnumber='$ICnumber', 
+	birthDate='$birthDate', 
+	address='$address' 
+	WHERE email='$email' ";
+	
+    $query_run = mysqli_query($conn, $query);
+
+    if($query_run)
+    {
+        $_SESSION['status'] = "Data Updated Successfully";
+        header("Location: updateForm.php");
+    }
+    else
+    {
+        $_SESSION['status'] = "Not Updated";
+        header("Location: updateForm.php");
+    }
 }
+
 ?>
