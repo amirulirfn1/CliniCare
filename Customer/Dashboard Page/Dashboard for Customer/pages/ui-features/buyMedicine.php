@@ -1,5 +1,13 @@
 <!-- PAGE UNTUK BUY MEDICINE -->
 
+<?php
+include_once "db_conn.php";
+session_start();
+$email=$_SESSION['email'];
+$query=mysqli_query($conn,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +37,8 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/gambar/logobanner.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/gambar/icon.jpeg" alt="logo" /></a>
         </div>
 		
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -47,7 +55,7 @@
                 </div>
 				
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Customer Name</p>
+                  <p class="mb-1 text-black"><?php echo $row['name']; ?></p>
                 </div>
               </a>
 			  
@@ -85,24 +93,16 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Customer Name</span>
+                  <span class="font-weight-bold mb-2"><?php echo $row['name']; ?></span>
                   <span class="text-secondary text-small">Customer</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
-            <!-- VIEW DASHBOARD CUSTOMER -->
-            <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-			
 			
 			<!-- PART PROFILE CUSTOMER -->
 			<li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.php">
+              <a class="nav-link" href="../../icons/mdi.php">
                 <span class="menu-title">My Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
@@ -111,7 +111,7 @@
 			
 			<!-- PART UNTUK CUSTOMER VIEW APPOINTMENT HISTORY -->
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/tables/basic-table.html">
+              <a class="nav-link" href="../../pages/tables/basic-table.php">
                 <span class="menu-title">My History</span>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
@@ -131,9 +131,9 @@
 							</a>
 							<div class="collapse" id="ui-basic">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/catalogueMedicine.html">Medicine Catalogue</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buyMedicine.html">Buy Medicine</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Purchased Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/catalogueMedicine.php">Medicine Catalogue</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buyMedicine.php">Buy Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.php">Purchased Medicine</a></li>
 								</ul>
 							</div>
 						</li>
@@ -141,7 +141,7 @@
 			
 					<!-- PART BOOKING --> 
 						<li class="nav-item">
-							<a class="nav-link" href="../../pages/booking/bookingCustomer.html">
+							<a class="nav-link" href="../../pages/booking/bookingCustomer.php">
 								<span class="menu-title">Booking Appointment</span>
 								<i class="mdi mdi-table-large menu-icon"></i>
 							</a>

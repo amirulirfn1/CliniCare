@@ -1,4 +1,12 @@
-<!-- PAGE FOR MY HISTORY CUSTOMER -->
+<!-- PAGE UNTUK BOOKING APPOINTMENT -->
+
+<?php
+include_once "db_conn.php";
+session_start();
+$email=$_SESSION['email'];
+$query=mysqli_query($conn,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
+?>
 
 
 <!DOCTYPE html>
@@ -7,7 +15,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>My History | CliniCare</title>
+    <title>Booking Appointment | CliniCare</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
@@ -28,8 +36,8 @@
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/gambar/logobanner.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/gambar/icon.jpeg" alt="logo" /></a>
         </div>
 		
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -46,13 +54,13 @@
                 </div>
 				
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">Customer Name</p>
+                  <p class="mb-1 text-black"><?php echo $row['name']; ?></p>
                 </div>
               </a>
 			  
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+                  <i class="mdi mdi-logout mr-2 text-primary"></i> Sign Out </a>
               </div>
             </li>
 			
@@ -84,26 +92,17 @@
                 </div>
 				
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Customer Name</span>
+                  <span class="font-weight-bold mb-2"><?php echo $row['name']; ?></span>
                   <span class="text-secondary text-small">Customer</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
-			
-			
-			<!-- VIEW DASHBOARD CUSTOMER -->
-            <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-			
+		
 			
 			<!-- PART PROFILE CUSTOMER -->
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.php">
+              <a class="nav-link" href="../../icons/mdi.php">
                 <span class="menu-title">My Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
@@ -112,7 +111,7 @@
 			
 			<!-- PART UNTUK CUSTOMER VIEW APPOINTMENT HISTORY -->
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/tables/basic-table.html">
+              <a class="nav-link" href="../../pages/tables/basic-table.php">
                 <span class="menu-title">My History</span>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
@@ -131,9 +130,9 @@
 							</a>
 							<div class="collapse" id="ui-basic">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/catalogueMedicine.html">Medicine Catalogue</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buyMedicine.html">Buy Medicine</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Purchased Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/catalogueMedicine.php">Medicine Catalogue</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buyMedicine.php">Buy Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.php">Purchased Medicine</a></li>
 								</ul>
 							</div>
 						</li>
@@ -141,7 +140,7 @@
 			
 					<!-- PART BOOKING --> 
 						<li class="nav-item">
-							<a class="nav-link" href="../../pages/booking/bookingCustomer.html">
+							<a class="nav-link" href="../../pages/booking/bookingCustomer.php">
 								<span class="menu-title">Booking Appointment</span>
 								<i class="mdi mdi-table-large menu-icon"></i>
 							</a>
@@ -157,7 +156,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Appointment History </h3>
+              <h3 class="page-title"> Booking Appointment </h3>
             </div>
 			
 			
@@ -180,35 +179,35 @@
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td>Primary Care</td>
+                          <td>Photoshop</td>
                           <td class="text-danger"> 31/8/2021 </td>
                           <td><label class="badge badge-danger">Pending</label></td>
                         </tr>
 						
                         <tr>
                           <td>2</td>
-                          <td>Primary Care</td>
+                          <td>Flash</td>
                           <td class="text-danger"> 24/7/2021 </td>
                           <td><label class="badge badge-warning">In progress</label></td>
                         </tr>
 						
                         <tr>
                           <td>3</td>
-                          <td>Mom & Baby Care</td>
+                          <td>Premier</td>
                           <td class="text-danger"> 13/6/2021 </td>
                           <td><label class="badge badge-info">Fixed</label></td>
                         </tr>
 						
                         <tr>
                           <td>4</td>
-                          <td>Medical Check-Up</td>
+                          <td>After effects</td>
                           <td class="text-success"> 2/5/2021 </td>
                           <td><label class="badge badge-success">Completed</label></td>
                         </tr>
 						
                         <tr>
                           <td>5</td>
-                          <td>Medical Check-Up</td>
+                          <td>53275535</td>
                           <td class="text-success"> 1/12/2020 </td>
                           <td><label class="badge badge-warning">In progress</label></td>
                         </tr>

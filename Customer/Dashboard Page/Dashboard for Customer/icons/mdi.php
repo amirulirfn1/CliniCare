@@ -15,24 +15,27 @@ $row=mysqli_fetch_array($query);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Profile | CliniCare</title>
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
-	<script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../assets/js/off-canvas.js"></script>
-    <script src="../../assets/js/hoverable-collapse.js"></script>
-    <script src="../../assets/js/misc.js"></script> 
+    <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
+	<script src="../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../assets/js/off-canvas.js"></script>
+    <script src="../assets/js/hoverable-collapse.js"></script>
+    <script src="../assets/js/misc.js"></script> 
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../assets/images/gambar/icon.jpeg" />
+    <link rel="shortcut icon" href="../assets/images/gambar/icon.jpeg" />
+	
 	<style>
 	.error {
    background: #F2DEDE;
@@ -51,17 +54,45 @@ $row=mysqli_fetch_array($query);
    border-radius: 5px;
    margin: 20px auto;
 }
+
+.profileCard {
+	background-color : white;
+  transition: 0.3s;
+  width : 30%;
+  border-radius: 5px;
+  margin : auto;
+   
+}
+
+.profileCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.image {
+  border-radius: 5px 5px 0 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+ 
+}
+
+.container {
+  padding: 2px 16px;
+  text-align : center;
+}
 </style>
   </head>
   
   <body>
  
     <div class=" container-scroller">
+	
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src="../assets/images/gambar/logobanner.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../assets/images/gambar/icon.jpeg" alt="logo" /></a>
         </div>
 		
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -73,7 +104,7 @@ $row=mysqli_fetch_array($query);
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="../../assets/images/faces/face1.jpg" alt="image">
+                  <img src="../assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -109,31 +140,23 @@ $row=mysqli_fetch_array($query);
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                  <img src="../../assets/images/faces/face1.jpg" alt="profile">
+                  <img src="../assets/images/faces/face1.jpg" alt="profile">
                   <span class="login-status online"></span>
                   <!--change to offline or busy as needed-->
                 </div>
 				
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Customer Name</span>
+                  <span class="font-weight-bold mb-2"><?php echo $row['name']; ?></span>
                   <span class="text-secondary text-small">Customer</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
             </li>
 			
-			<!-- VIEW DASHBOARD CUSTOMER -->
-            <li class="nav-item">
-              <a class="nav-link" href="../../index.html">
-                <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
-              </a>
-            </li>
-			
 			
 			<!-- PART PROFILE CUSTOMER -->
 			<li class="nav-item">
-              <a class="nav-link" href="../../pages/icons/mdi.php">
+              <a class="nav-link" href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
                 <span class="menu-title">My Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
@@ -142,7 +165,7 @@ $row=mysqli_fetch_array($query);
 			
 			<!-- PART UNTUK CUSTOMER VIEW APPOINTMENT HISTORY -->
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/tables/basic-table.html">
+              <a class="nav-link" href="../pages/tables/basic-table.php">
                 <span class="menu-title">My History</span>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
               </a>
@@ -162,9 +185,9 @@ $row=mysqli_fetch_array($query);
 							</a>
 							<div class="collapse" id="ui-basic">
 								<ul class="nav flex-column sub-menu">
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/catalogueMedicine.html">Medicine Catalogue</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buyMedicine.html">Buy Medicine</a></li>
-									<li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Purchased Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/ui-features/catalogueMedicine.php">Medicine Catalogue</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/ui-features/buyMedicine.php">Buy Medicine</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/ui-features/buttons.php">Purchased Medicine</a></li>
 								</ul>
 							</div>
 						</li>
@@ -172,7 +195,7 @@ $row=mysqli_fetch_array($query);
 			
 					<!-- PART BOOKING --> 
 						<li class="nav-item">
-							<a class="nav-link" href="../../pages/booking/bookingCustomer.html">
+							<a class="nav-link" href="../pages/booking/bookingCustomer.php">
 								<span class="menu-title">Booking Appointment</span>
 								<i class="mdi mdi-table-large menu-icon"></i>
 							</a>
@@ -181,117 +204,94 @@ $row=mysqli_fetch_array($query);
             </div>
           </ul>
         </nav>
-		  </body>
-                       
+
+                <!-- SIDEBAR -->       
               <div class="main-panel">
               <div class="content-wrapper">
               <div class="page-header">
-              <h3 class="page-title"> My Profile </h3>
+				<h3 class="page-title"> My Profile </h3>
               </div>
 
-              <div class="row">
-          
-           <!-- Edit Info details Section -->
-                <div class="col-12 grid-margin stretch-card">
+            <div class="row">
+			
+			<!-- Edit Profile Picture Section -->
+			<div class="col-12 grid-margin stretch-card">
+                <div class="profileCard">
+                    <div class="card-body">
+                    <form class="forms-sample">
+						<img src="../assets/images/faces/face2.jpg" alt="image" class = "image">
+						<br>
+						<i type = "submit" class="mdi mdi-border-color menu-icon" style = "padding-left:160px"></i>
+						<div class="container">
+							<h4><b><?php echo $row['name']; ?></b></h4>
+							<p>Customer</p>
+						</div>                
+                    </form>
+                </div>
+				</div>
+              </div>
+			  
+			  
+			<!-- Edit Info details Section -->
+				<div class="col-md-6 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-					<form action="updateForm.php" method="post">
+					
                       <h4 class="card-title">Personal Info</h4>
-					 
-                      <!-- <form class="form-sample"> -->
-
-                
-                      <form action="#" method="POST">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Name</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" name="name" id="name" 
+					  <br>
+						<form class="forms-sample" action="updateForm.php" method="post">
+                            
+							<div class="form-group">
+                              <label>Name</label>
+                              <input type="text" class="form-control form-control-sm" name="name" id="name" 
 								value= "<?php echo $row['name']; ?>" disabled>
-                              </div>
                             </div>
-                          </div>
-                        </div>
-                      
-              
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">IC Number</label>
-                              <div class="col-sm-9">
-                                <input class="form-control" placeholder="xxxxxx-xx-xxxx" name="ICnumber" 
+
+                            <div class="form-group">
+                              <label>IC Number</label>
+                              <input class="form-control form-control-sm" placeholder="xxxxxx-xx-xxxx" name="ICnumber" 
 								id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
-                              </div>
+                        
                             </div>
-                          </div>
               
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Date of Birth</label>
-                              <div class="col-sm-9">
-                                <input type = "date" class="form-control" placeholder="dd/mm/yyyy" 
+                            <div class="form-group">
+                              <label>Date of Birth</label>
+                              <input type = "date" class="form-control form-control-sm" placeholder="dd/mm/yyyy" 
 								name="birthDate" id="birthDate" value="<?php echo $row['birthDate']; ?>" disabled>
-                              </div>
                             </div>
-                          </div>
-                        </div>
               
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Phone Number</label>
-                              <div class="col-sm-9">
-                                <input class="form-control" placeholder="xxx-xxxxxxx" 
+                            <div class="form-group">
+                              <label>Phone Number</label>
+                              <input class="form-control form-control-sm" placeholder="xxx-xxxxxxx" 
 								name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
-                              </div>
+                      
                             </div>
-                          </div>
               
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Email</label>
-                              <div class="col-sm-9">
-                                <input class="form-control" placeholder="info.clinicareweb@gmail.com" 
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input class="form-control form-control-sm" placeholder="info.clinicareweb@gmail.com" 
 								name="email" value="<?php echo $row['email']; ?>" disabled >
-                              </div>
+                     
                             </div>
-                          </div>
-                        </div>
 
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group row">
-                              <label class="col-sm-3 col-form-label">Address</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" name="address" 
+                            <div class="form-group">
+                              <label >Address</label>
+                              <input type="text" class="form-control form-control-sm" name="address" 
 								value="<?php echo $row['address']; ?>" disabled >
-                              </div>
                             </div>
-                          </div>
-						  
-						  <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"></label>
-                            <div class="col-sm-9">
-                               <button type="submit" name = "update" 
-							   class="btn btn-gradient-primary mr-2">Update</button>
-                            </div>
-                          </div>
-                        </div>
-						
-                        </div>
-                     </form>
 
+                          <div class="form-group">
+                            <label class="col-sm-3 col-form-label"></label>
+                            <button type="submit" name = "update" 
+							   class="btn btn-gradient-primary mr-2">Update</button>
+                          </div>
+                     </form>
                     </div>
                   </div>
                 </div>
-				
-				  <!-- Change Password Section -->
-				  
-     	
-
-			  <div class="col-12 grid-margin stretch-card">
+           
+				  <!-- Change Password Section --> 
+			  <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
 				  <form action="change-p.php" method="post">
@@ -325,14 +325,17 @@ $row=mysqli_fetch_array($query);
 							name="c_np" placeholder="Confirm New Password" aria-label="Username">
 						</div>
 						
-                      <button type="submit" class="btn btn-gradient-primary mb-2">Change</button>
+						<div class="form-group">
+                            <label class="col-sm-4 col-form-label"></label>
+                            <button type="submit" class="btn btn-gradient-primary mb-2">Change</button>
+                          </div>
+                      
                     </form>
                   </div>
                 </div>
 				</div>
             </div>
-          </div>
-                                 
+          </div>                   
             <!-- partial:../../partials/_footer.html -->
             <footer class="footer">
               <div class="container-fluid clearfix">
@@ -343,7 +346,7 @@ $row=mysqli_fetch_array($query);
           </div>
         </div>
       </div>
-            
+          		  </body>  
 </html>
 
 <?php
