@@ -186,8 +186,8 @@ h2 {
   font-size: 36px; }
 
 .main {
-  background: #fff;
-  background-image:url("../images/gambar/doctor.jpg");
+	background: #fff;
+  background-color: #e0ffff;
   padding: 150px 0; }
 
 .clear {

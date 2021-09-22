@@ -11,7 +11,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 <html>
 <head>
 	<title>TRYYYYYYYYYYYYY</title>
-	<link rel="stylesheet" href="../../assets/css/styleUpdateProfile.css">
+	<link rel="stylesheet" href="../assets/css/styleUpdateProfile.css">
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>

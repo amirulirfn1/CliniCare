@@ -42,7 +42,8 @@ function signup()
 
     }
 
-    if ($con->query($sql) === TRUE) {
+    if ($con->query($sql) === TRUE) 
+	{
         $to = $email;
         $subject = "Verify Your Email Address";
         $headers = "From: info.clinicareweb@gmail.com\r\n";
@@ -55,15 +56,28 @@ function signup()
 
         $sql2 = "INSERT INTO user (email, password, usertype)
                             VALUES('$email', '$password', 'customer')";
-                            if($con->query($sql2) === TRUE){
-                                header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/signin.php");
-                            }else{
-                                echo "Error";
+                            if($con->query($sql2) === TRUE)
+							{
+								//kalau dah successful buat sign up, keluar page ni
+                                header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/success.php");
                             }
-    } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
+							
+							else
+							{
+                                echo "Error";
+								//header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/errorSignup.php");
+                            }
+    } 
+	
+	else 
+	{
+		//ni part bila email tu dah ade. duplicate
+       //echo "Error: " . $sql . "<br>" . $con->error;
+		header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/unsuccess.php");
     }
 }
+
+
 
 function signin()
 {
