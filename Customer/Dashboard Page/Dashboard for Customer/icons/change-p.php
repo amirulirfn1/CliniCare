@@ -55,9 +55,9 @@ if (isset($_POST['op']) && isset($_POST['np'])
 			mysqli_query($conn, $sql_3);
 			header("Location: mdi.php?success=Your password has been changed successfully");
 	        exit();
-  	
+  	 
         }else {
-        	header("Location: change-password.php?error=Incorrect password");
+        	header("Location: mdi.php?error=Incorrect password");
 	        exit();
         }
 
@@ -73,3 +73,5 @@ if (isset($_POST['op']) && isset($_POST['np'])
      header("Location: mdi.php");
      exit();
 }
+
+?>

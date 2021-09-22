@@ -17,8 +17,12 @@ $row=mysqli_fetch_array($query);
     <title>My Profile | CliniCare</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< Updated upstream:Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+=======
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+>>>>>>> Stashed changes:Customer/Dashboard Page/Dashboard for Customer/pages/icons/mdi.php
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
@@ -209,7 +213,12 @@ $row=mysqli_fetch_array($query);
               <div class="main-panel">
               <div class="content-wrapper">
               <div class="page-header">
+<<<<<<< Updated upstream:Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php
 				<h3 class="page-title"> My Profile </h3>
+=======
+              <h3 class="page-title"> My Profile </h3>
+			 
+>>>>>>> Stashed changes:Customer/Dashboard Page/Dashboard for Customer/pages/icons/mdi.php
               </div>
 
             <div class="row">
