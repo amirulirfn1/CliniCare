@@ -213,12 +213,9 @@ $row=mysqli_fetch_array($query);
               <div class="main-panel">
               <div class="content-wrapper">
               <div class="page-header">
-<<<<<<< Updated upstream:Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php
 				<h3 class="page-title"> My Profile </h3>
-=======
-              <h3 class="page-title"> My Profile </h3>
+
 			 
->>>>>>> Stashed changes:Customer/Dashboard Page/Dashboard for Customer/pages/icons/mdi.php
               </div>
 
             <div class="row">
