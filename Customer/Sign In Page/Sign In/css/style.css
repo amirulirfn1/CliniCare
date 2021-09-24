@@ -276,7 +276,7 @@ figure {
 
 .form-submit 
 {
-	display: inline-block;
+	/* display: inline-block;
 	background: #6dabe4;
 	color: white;
 	border-bottom: none;
@@ -289,16 +289,33 @@ figure {
 	-ms-border-radius: 5px;
 	margin-top: 25px;
 	cursor: pointer;
-	transition: all 0.4s ease 0s;  
+	transition: all 0.4s ease 0s;   */
+	
+	display: inline-block;
+	background: #ffffff;
+	color: #5b92e5 !important;
+	text-transform: uppercase;
+	width: 150px;
+	padding: 12px 20px;
+	border: 3px solid #5b92e5 !important;
+	border-radius: 6px;
+	transition: all 0.3s ease 0s;
+	cursor : pointer;
   }
   
   
 .form-submit:hover 
 {
-    color: white !important;
+    /* color: white !important;
 	background: #4292dc;;
 	border-color: #4292dc; !important;
-	transition: all 0.4s ease 0s;
+	transition: all 0.4s ease 0s; */
+	
+	color: #002387 !important;
+	border-radius: 50px;
+	border-color: #002387 !important;
+	transition: all 0.3s ease 0s;
+	
 }
 
 

@@ -50,7 +50,8 @@ function signup()
         $headers .= "MIME-Version : 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        $message = "<a href='http://localhost/MasterCliniCare/Customer/Verify.php?vkey=$vkey'>Click Here To Verify Your Email Address</a>";
+        $message = "<a href='http://localhost/MasterCliniCare/Customer/Verify.php?vkey=$vkey'>
+		Click Here To Verify Your Email Address</a>";
 
         mail($to, $subject, $message, $headers);
 

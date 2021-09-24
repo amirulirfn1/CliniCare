@@ -62,8 +62,10 @@ $row=mysqli_fetch_array($query);
               </a>
 			  
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="mdi mdi-logout mr-2 text-primary"></i> Sign Out </a>
+                <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                  <button type="submit" class="dropdown-item" name="signout" id="signout" >
+                    <i class="mdi mdi-logout mr-2 text-primary" ></i> Sign Out </button>
+                </form>
               </div>
             </li>
 			

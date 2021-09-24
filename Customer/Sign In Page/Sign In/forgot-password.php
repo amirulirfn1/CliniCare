@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Forget Password</h2>
+                        <h2 class="form-title">Forgot Password</h2>
                         <form method="POST" class="signin" id="login-form"
                             action="">
                             <div class="form-group">

@@ -15,14 +15,8 @@ $row=mysqli_fetch_array($query);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Profile | CliniCare</title>
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< Updated upstream:Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-=======
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
->>>>>>> Stashed changes:Customer/Dashboard Page/Dashboard for Customer/pages/icons/mdi.php
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/vendors/css/vendor.bundle.base.css">
@@ -90,7 +84,7 @@ $row=mysqli_fetch_array($query);
   
   <body>
  
-    <div class=" container-scroller">
+    <div class="container-scroller">
 	
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -116,7 +110,7 @@ $row=mysqli_fetch_array($query);
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-              <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
                   <button type="submit" class="dropdown-item" name="signout" id="signout" >
                     <i class="mdi mdi-logout mr-2 text-primary" ></i> Sign Out </button>
                 </form>
@@ -227,11 +221,18 @@ $row=mysqli_fetch_array($query);
                     <form class="forms-sample">
 						<img src="../assets/images/faces/face2.jpg" alt="image" class = "image">
 						<br>
-						<i type = "submit" class="mdi mdi-border-color menu-icon" style = "padding-left:160px"></i>
 						<div class="container">
 							<h4><b><?php echo $row['name']; ?></b></h4>
 							<p>Customer</p>
-						</div>                
+						</div>  
+						<div class="form-group">
+                            <label class="col-sm-3 col-form-label"></label>
+                            <button type="submit" name = "update" 
+							   class="btn btn-gradient-primary mr-2">
+							   <i type = "submit" class="mdi mdi-camera-enhance mdi-lg"
+							   data-width="30"></i>
+							   </button>
+                          </div>	
                     </form>
                 </div>
 				</div>

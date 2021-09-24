@@ -32,38 +32,3 @@ if (isset($_GET['vkey'])){
 
 
 ?>
-
-<?php
-if (isset($_GET['token'])){
-    //Process the vkey
-    $vkey = $_GET['token'];
-
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    
-    $con = new mysqli($servername, $username, $password, $dbname);
-
-    $resultSet = $con->query("SELECT verified, token FROM customer WHERE verified = 0 AND token = '$token' LIMIT 1");
-
-    if ($resultSet->num_rows == 1) {
-        //validate the email address
-        $update = $con->query("UPDATE customer SET verified = 1 WHERE token = '$token' LIMIT 1");
-
-        if($update){
-            echo "Your email address is verified. Please login to your account.";
-        }else{
-            echo $mysqli->error;
-        }
-
-    }else{
-        echo "Error, This email address has been used or invalid. Please try other email address.";
-    }
-    
-}else{
-    die();
-}
-
-
-?>
