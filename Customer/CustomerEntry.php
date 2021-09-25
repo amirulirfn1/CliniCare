@@ -123,7 +123,7 @@ function signin()
                 if($usertype == "customer"){
                 header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.php");
                 }else{
-                    header("Location: /MasterCliniCare/Admin/black-dashboard-master/examples/dashboard.html");
+                    header("Location: /MasterClinicare/stisla-2.2.0/dist/index.html");
                 }
                 
             }
