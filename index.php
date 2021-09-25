@@ -78,7 +78,6 @@
           <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
       <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span

@@ -31,31 +31,31 @@
                             action="/MasterCliniCare/Customer/CustomerEntry.php">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="name" id="name" placeholder="Your Name" />
+                                <input type="text" name="name" id="name" placeholder="Your Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Your Email" />
+                                <input type="email" name="email" id="email" placeholder="Your Email" required>
                             </div>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="password" id="password" placeholder="Password" />
+                                <input type="password" pattern=".{8,}" name="password" id="password" placeholder="Password"  required title="8 characters minimum">
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" />
+                                <input type="text" pattern=".{10,}" name="phoneNumber" id="phoneNumber" placeholder="Phone Number" required title="10 numbers minimum">
                             </div>
                             <div class="form-group">
                                 <label for="icNumber"><i class="zmdi zmdi-card"></i></label>
-                                <input type="text" name="icNumber" id="icNumber" placeholder="IC Number" />
+                                <input type="text" pattern=".{12,}" name="icNumber" id="icNumber" placeholder="IC Number" required title="12 numbers minimum">
                             </div>
                             <div class="form-group">
                                 <label for="birthDate"><i class="zmdi zmdi-calendar"></i></label>
-                                <input type="date" name="birthDate" id="birthDate" placeholder="BirthDate" />
+                                <input type="date" name="birthDate" id="birthDate" placeholder="BirthDate" required>
                             </div>
 
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" required>
                             </div>
                         </form>
                     </div>

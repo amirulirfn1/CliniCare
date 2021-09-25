@@ -1,5 +1,9 @@
 <?php  
+$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 session_start();
+$email=$_SESSION['email'];
+$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
@@ -79,16 +83,19 @@ session_start();
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
           <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php">Make an Appointment</a></li>
+          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">View Profile</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php">Make an Appointment</a></li>
+                  <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><button type="submit" href="#" name="signout">Sign Out</button></a></li></form>
+                </ul>
+              </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-		
-		<a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php" 
-		class="appointment-btn scrollto"><span
-          class="d-none d-md-inline">View</span> Profile</a>
 
     </div>
+
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
