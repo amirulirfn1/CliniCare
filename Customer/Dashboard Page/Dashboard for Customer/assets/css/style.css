@@ -10535,7 +10535,7 @@ code {
 
 /* Footer */
 .footer {
-  background: #EBF4FA;
+  background: #d6e9fa;
   border-top: 1px solid #e7dee9;
   padding: 30px 1rem;
   transition: all 0.25s ease;
@@ -13580,7 +13580,8 @@ dl {
       width: 100%; } }
 
 .content-wrapper {
-  background: #fff;
+
+  background:#d6e9fa;
   padding: 2.75rem 2.25rem;
   width: 100%;
   -webkit-box-flex: 1;

@@ -35,14 +35,10 @@
                   <h2>YEAY!</h2>
                   <h3 class="font-weight-light">Your account has been successfully registered</h3>
 				  <p>Please verify your email first</p>
-				  
-				<div class="row mt-5">
-					<div class="col-12 text-center mt-xl-2">
+				  <br>
 						<a class="text-black font-weight-medium" 
 							href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php">
 							<u>Please Sign In here</u></a>
-					</div>
-				</div>
                 </div>
               </div>
               
