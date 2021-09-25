@@ -124,6 +124,26 @@ $row=mysqli_fetch_array($query);
 			<div class="mt-4">
 				<div class="border-bottom">
 					
+					<!-- PART SERVICES -->
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+								<span class="menu-title">Medicine</span>
+								<i class="menu-arrow"></i>
+								<i class="mdi mdi-format-list-bulleted menu-icon"></i>
+							</a>
+							<div class="collapse" id="ui-basic">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="../../pages/services/primaryCare.php">Primary Care</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/services/medicalCheck.php">Medical Check-Up</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/services/smoking.php">Smoking Cessation Campaign</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/services/momBaby.php">Mom & Baby Care</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/services/pharmacy.php">Pharmacy</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../../pages/services/covid.php">Covid-19 Centre</a></li>
+								</ul>
+							</div>
+						</li>
+						
+						
 					<!-- PART MEDICINE -->
 						<li class="nav-item">
 							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -162,8 +182,8 @@ $row=mysqli_fetch_array($query);
               <h3 class="page-title"> Typography </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Typography</li>
+                  <li class="breadcrumb-item"><a href="#">Medicine</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Buy Medicine</li>
                 </ol>
               </nav>
             </div>

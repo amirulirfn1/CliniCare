@@ -34,6 +34,7 @@
                 <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
                   <h2>YEAY!</h2>
                   <h3 class="font-weight-light">Your account has been successfully registered</h3>
+				  <p>Please verify your email first</p>
 				  
 				<div class="row mt-5">
 					<div class="col-12 text-center mt-xl-2">
@@ -47,7 +48,7 @@
               
               <div class="row mt-5">
                 <div class="col-12 mt-xl-2">
-                  <p class="text-black font-weight-medium text-center">Copyright &copy; C L I I N I C A R E</p>
+                  <p class="text-black font-weight-medium text-center">Copyright &copy; C L I N I C A R E</p>
                 </div>
               </div>
             </div>

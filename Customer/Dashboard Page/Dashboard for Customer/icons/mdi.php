@@ -89,12 +89,13 @@ $row=mysqli_fetch_array($query);
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html"><img src="../assets/images/gambar/logobanner.png" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../assets/images/gambar/icon.jpeg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="mdi.php"><img src="../assets/images/gambar/logobanner.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="mdi.php"><img src="../assets/images/gambar/icon.jpeg" alt="logo" /></a>
         </div>
 		
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <button class="navbar-toggler navbar-toggler align-self-center" 
+		  type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
          
@@ -152,9 +153,10 @@ $row=mysqli_fetch_array($query);
             </li>
 			
 			
+			
 			<!-- PART PROFILE CUSTOMER -->
 			<li class="nav-item">
-              <a class="nav-link" href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
+              <a class="nav-link" href="mdi.php">
                 <span class="menu-title">My Profile</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
@@ -174,6 +176,27 @@ $row=mysqli_fetch_array($query);
 			<div class="mt-4">
 				<div class="border-bottom">
 					
+					
+					<!-- PART SERVICES -->
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+								<span class="menu-title">Services</span>
+								<i class="menu-arrow"></i>
+								<i class="mdi mdi-format-list-bulleted menu-icon"></i>
+							</a>
+							<div class="collapse" id="ui-basic">
+								<ul class="nav flex-column sub-menu">
+									<li class="nav-item"> <a class="nav-link" href="../pages/services/primaryCare.php">Primary Care</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/services/medicalCheck.php">Medical Check-Up</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/services/smoking.php">Smoking Cessation Campaign</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/services/momBaby.php">Mom & Baby Care</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/services/pharmacy.php">Pharmacy</a></li>
+									<li class="nav-item"> <a class="nav-link" href="../pages/services/covid.php">Covid-19 Centre</a></li>
+								</ul>
+							</div>
+						</li>
+						
+						
 					<!-- PART MEDICINE -->
 						<li class="nav-item">
 							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -203,7 +226,7 @@ $row=mysqli_fetch_array($query);
           </ul>
         </nav>
 
-                <!-- SIDEBAR -->       
+                <!-- MAIN CONTENT -->       
               <div class="main-panel">
               <div class="content-wrapper">
               <div class="page-header">
