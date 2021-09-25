@@ -148,8 +148,7 @@ $row=mysqli_fetch_array($query);
 								</ul>
 							</div>
 						</li>
-						
-						
+					
 					<!-- PART MEDICINE -->
 						<li class="nav-item">
 							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

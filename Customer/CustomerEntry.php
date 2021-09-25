@@ -9,7 +9,7 @@ if (isset($_POST['signup'])) {
 } else if (isset($_POST['submit-reset'])){
     $vkey = getVkey($_POST);
     mailReset($vkey);
-    header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/signin.php");
+    header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/successFP.php");
     exit();
 }else if (isset($_POST['reset-password'])){
     resetPassword($_POST['reset-password']);
@@ -298,7 +298,7 @@ function getVkey(){
                 $_SESSION['resetPassword'] = $email;
                 return $userRecord['vkey'];
             }else{
-                header("Location: ../forgotPassword.php?forgot=invalid");
+                header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/unsuccessFP.php");
                 exit();
             }
         }
@@ -358,14 +358,14 @@ function resetPassword(){
 
                 unset($_SESSION['resetVkey']);
                 unset($_SESSION['resetPassword']);
-                header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/signin.php");
+                header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/successRS.php");
                 exit();
              }
          }
      }
 
     }else{
-       header("Location: resetpass.php?reset=different&vkey=$vkey");
+       header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/unsuccessRS.php");
        exit();
      }
     }

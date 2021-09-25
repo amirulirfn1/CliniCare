@@ -182,8 +182,7 @@ $row=mysqli_fetch_array($query);
 			<div class="mt-4">
 				<div class="border-bottom">
 					
-					
-					<!-- PART SERVICES -->
+						<!-- PART SERVICES -->
 						<li class="nav-item">
 							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
 								<span class="menu-title">Services</span>
@@ -201,8 +200,7 @@ $row=mysqli_fetch_array($query);
 								</ul>
 							</div>
 						</li>
-						
-						
+					
 					<!-- PART MEDICINE -->
 						<li class="nav-item">
 							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

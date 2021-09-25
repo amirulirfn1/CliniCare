@@ -719,9 +719,6 @@ $row=mysqli_fetch_array($query);
                         </form>
                     </div>
 
-
-      </div>
-
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->

@@ -134,7 +134,6 @@ $row=mysqli_fetch_array($query);
 								<i class="menu-arrow"></i>
 								<i class="mdi mdi-gamepad menu-icon"></i>
 							</a>
-							
 							<div class="collapse" id="ui-basic">
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/primaryCare.php">Primary Care</a></li>
@@ -146,7 +145,6 @@ $row=mysqli_fetch_array($query);
 								</ul>
 							</div>
 						</li>
-						
 					
 					<!-- PART MEDICINE -->
 						<li class="nav-item">
