@@ -37,7 +37,7 @@ if(isset($_SESSION['email'])){
                         <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
                         <a href="/MasterCliniCare/Customer/Sign Up Page/Sign Up/signup.php"
                             class="signup-image-link">Create an account</a>
-						<a href="/MasterCliniCare/Customer/Sign In Page/Sign In/forgot.php"
+						<a href="/MasterCliniCare/Customer/Sign In Page/Sign In/forgotPassword.php"
                             class="signup-image-link">Forgot Password?</a>
                     </div>
 

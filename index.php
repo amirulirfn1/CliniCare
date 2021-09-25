@@ -73,25 +73,16 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Pharmacy</a></li>
-              <li><a href="#">Primary Care</a></li>
-              <li><a href="#">Mom & Baby Care</a></li>
-              <li><a href="#">Medical Check-Up</a></li>
-              <li><a href="#">Swab Test Covid-19</a></li>
-              <li><a href="#">Smoking Cessation Campaign</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
       <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span
-          class="d-none d-md-inline">Make an</span>
-        Appointment</a>
+          class="d-none d-md-inline">Sign In / Sign Up</span></a>
 
     </div>
   </header><!-- End Header -->
