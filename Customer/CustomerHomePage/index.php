@@ -691,26 +691,37 @@ $row=mysqli_fetch_array($query);
 
           </div>
 
-          <div class="col-lg-8 mt-5 mt-lg-0">
+		            <div class="col-lg-8 mt-5 mt-lg-0">
+		                <?php 
+                            $Msg = "";
+                            if(isset($_GET['error']))
+                            {
+                                $Msg = " Please Fill in the Blanks ";
+                                echo '<div class="alert alert-danger">'.$Msg.'</div>';
+								
+                            }
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="10" placeholder="Write you feedback here" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Feedback</button></div>
-            </form>
+                            if(isset($_GET['success']))
+                            {
+                                $Msg = " Your Message Has Been Sent ";
+                                echo '<div class="alert alert-success">'.$Msg.'</div>';
+                            }
+                        
+                        ?>
 
-          </div>
+                    <div class="card-body">
+                        <form action="giveFeedback.php" method="post" >
+                            <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
+                            <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
+                            <input type="text" name="Subject" placeholder="Subject" class="form-control mb-2" required>
+                            <textarea name="msg" class="form-control mb-2" rows="6" placeholder="Write The Message" required></textarea>
+                            <button class="btn btn-success" name="btn-send" style="background-color:#1977cc"> Send Feedback </button>
+                        </form>
+                    </div>
 
-        </div>
 
       </div>
+
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->

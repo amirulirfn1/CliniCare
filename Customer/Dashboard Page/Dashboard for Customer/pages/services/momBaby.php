@@ -70,7 +70,7 @@ $row=mysqli_fetch_array($query);
             </li>
 
             <li class="nav-item nav-logout d-none d-lg-block">
-              <a class="nav-link" href="/MasterCliniCare/Customer/CustomerHomePage/index.html">
+              <a class="nav-link" href="/MasterCliniCare/Customer/CustomerHomePage/index.php">
                 <i class="mdi mdi-home"></i>
               </a>
             </li>
