@@ -86,7 +86,8 @@ $row=mysqli_fetch_array($query);
                 <ul>
                   <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">View Profile</a></li>
                   <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Make an Appointment</a></li>
-                  <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><a type="submit" href="#" class="play.btn" name="signout">Sign Out</a></a></li></form>
+                  <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><button type="submit" href="#" 
+                        style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li></form>
                 </ul>
               </li>
         </ul>

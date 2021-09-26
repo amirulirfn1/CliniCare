@@ -21,7 +21,7 @@ if (isset($_POST['op']) && isset($_POST['np'])
 	$c_np = validate($_POST['c_np']);
     
     if(empty($op)){
-      header("Location: mdi.php?error=Old Password is required");
+      header("Location: mdi.php?error=Current Password is required");
 	  exit();
     }else if(empty($np)){
       header("Location: mdi.php?error=New Password is required");
@@ -48,7 +48,7 @@ if (isset($_POST['op']) && isset($_POST['np'])
 
 					  
 		mysqli_query($conn, $sql_2);}
-			if($conn->query($sql_2)== TRUE){
+			if($conn->query($sql_2) === TRUE){
 				$sql_3 = "UPDATE user
         	          SET password='$np'
         	          WHERE email='$email'";
@@ -56,9 +56,9 @@ if (isset($_POST['op']) && isset($_POST['np'])
 			header("Location: mdi.php?success=Your password has been changed successfully");
 	        exit();
   	 
-        }else {
-        	header("Location: mdi.php?error=Incorrect password");
-	        exit();
+        }else if($conn->query($sql_2) === FALSE){
+        	header("Location: mdi.php?error= Current Password is incorrect");
+			exit();
         }
 
     }

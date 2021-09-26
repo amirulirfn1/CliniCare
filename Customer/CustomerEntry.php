@@ -263,12 +263,12 @@ function signin()
             //Continue
                        
         } else {
-            echo  "Please verify your account and try again.";
+            header ("Location: /MasterClinicare/Alerts/unsuccessNVER.php");
         }
         
     } else {
         //Invalid login
-        echo "Invalid login Credentials";
+        header ("Location: /MasterClinicare/Alerts/unsuccessWRONG.php");
     }
 
 }
