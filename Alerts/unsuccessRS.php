@@ -36,7 +36,7 @@
                   <h3 class="font-weight-light">Your confirmation password do not match.</h3>
 				  <br>
 						<a class="text-black font-weight-medium" 
-							href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php">
+							href="/MasterCliniCare/Customer/Sign In Page/Sign In/resetPassword.php">
 							<u>Reset here</u></a>
                 </div>
               </div>

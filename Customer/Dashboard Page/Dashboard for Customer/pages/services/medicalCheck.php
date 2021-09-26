@@ -302,14 +302,14 @@ $row=mysqli_fetch_array($query);
 					<p>
                      <img 
 					 src="../../assets/images/gambar/vital.jpg"
-					 style = "width:420px; height:300px">
+					 style = "width : 280px">
                     </p>
 					 <br>
 					 
 					<p>
 					 <img 
 					 src="../../assets/images/gambar/ctScan.jpg"
-					 style = "width:420px; height:300px">
+					 style = "width : 280px">
 					</p>
 					 <br>
 					

@@ -274,13 +274,13 @@ $row=mysqli_fetch_array($query);
 					<p>
                      <img 
 					 src="../../assets/images/gambar/covid1.jpg"
-					 style = "width : 200px">
+					 style = "width : 280px">
                     </p>
 					 <br>
 					 
 					 <img 
 					 src="../../assets/images/gambar/covid2.jpg"
-					 style = "width : 200px">
+					 style = "width : 280px">
 					 <br>
                     </div>
 					

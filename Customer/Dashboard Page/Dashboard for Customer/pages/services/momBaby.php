@@ -287,20 +287,20 @@ $row=mysqli_fetch_array($query);
 					<p>
                      <img 
 					 src="../../assets/images/gambar/mom1.jpg"
-					 style = "width : 200px">
+					 style = "width : 280px">
                     </p>
 					 <br>
 					 
 					<p>
 					 <img 
 					 src="../../assets/images/gambar/mom3.jpg"
-					 style = "width : 200px">
+					 style = "width : 280px">
 					</p>
 					 <br>
 					 
 					 <img 
 					 src="../../assets/images/gambar/mom2.jpg"
-					 style = "width : 200px">
+					 style = "width : 280px">
 					 <br>
                     </div>
 					

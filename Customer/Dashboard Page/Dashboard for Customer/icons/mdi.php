@@ -313,8 +313,7 @@ $row=mysqli_fetch_array($query);
                             </div>
 
                           <div class="form-group">
-                            <label class="col-sm-3 col-form-label"></label>
-                            <button type="submit" name = "update" 
+                            <button type="submit" name = "update-profile" 
 							   class="btn btn-gradient-info mb-2">Update</button>
                           </div>
                      </form>
@@ -358,7 +357,6 @@ $row=mysqli_fetch_array($query);
 						</div>
 						
 						<div class="form-group">
-                            <label class="col-sm-4 col-form-label"></label>
                             <button type="submit" class="btn btn-gradient-info mb-2">Change</button>
                           </div>
                     </form>
