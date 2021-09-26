@@ -37,18 +37,20 @@ $row=mysqli_fetch_array($query);
       <!-- partial:../../partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="../../index.php"><img src="../../assets/images/gambar/logobanner.png" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.php"><img src="../../assets/images/gambar/icon.jpeg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="../../icons/mdi.php"><img src="../../assets/images/gambar/logobanner.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../../icons/mdi.php"><img src="../../assets/images/gambar/icon.jpeg" alt="logo" /></a>
         </div>
 		
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <button class="navbar-toggler navbar-toggler align-self-center"
+		  type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
 		  
           <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown">
-              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" 
+			  href="#" data-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
                   <img src="../../assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
@@ -133,12 +135,12 @@ $row=mysqli_fetch_array($query);
 
                      <!-- PART SERVICES -->
 						<li class="nav-item">
-							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+							<a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="ui-basic">
 								<span class="menu-title">Services</span>
 								<i class="menu-arrow"></i>
 								<i class="mdi mdi-gamepad menu-icon"></i>
 							</a>
-							<div class="collapse" id="ui-basic">
+							<div class="collapse" id="general-pages">
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/primaryCare.php">Primary Care</a></li>
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/medicalCheck.php">Medical Check-Up</a></li>

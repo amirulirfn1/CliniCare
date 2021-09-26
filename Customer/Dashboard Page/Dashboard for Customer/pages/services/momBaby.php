@@ -84,7 +84,8 @@ $row=mysqli_fetch_array($query);
           </ul>
 		  
 		  
-          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" 
+		  type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>
           </button>
         </div>
@@ -139,12 +140,12 @@ $row=mysqli_fetch_array($query);
 				
 				 <!-- PART SERVICES -->
 						<li class="nav-item">
-							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+							<a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="ui-basic">
 								<span class="menu-title">Services</span>
 								<i class="menu-arrow"></i>
 								<i class="mdi mdi-gamepad menu-icon"></i>
 							</a>
-							<div class="collapse" id="ui-basic">
+							<div class="collapse" id="general-pages">
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/primaryCare.php">Primary Care</a></li>
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/medicalCheck.php">Medical Check-Up</a></li>
@@ -307,10 +308,11 @@ $row=mysqli_fetch_array($query);
                 </div>
               </div>
 			  
-			  <button type="button" class="btn btn-gradient-primary btn-lg btn-block">
+			  <button type="submit" class="btn btn-gradient-info"
+			  style = "width : 265px; display: block; margin: 0 auto;" >
                     <i class="mdi mdi-account"></i> Make An Appointment
 			  </button>
-						
+		
             </div>
           </div>
           <!-- content-wrapper ends -->

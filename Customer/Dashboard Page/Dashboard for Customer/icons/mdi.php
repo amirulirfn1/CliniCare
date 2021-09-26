@@ -94,7 +94,7 @@ $row=mysqli_fetch_array($query);
         </div>
 		
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" 
+          <button class="navbar-toggler navbar-toggler align-self-center"
 		  type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
@@ -113,7 +113,7 @@ $row=mysqli_fetch_array($query);
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
                   <button type="submit" class="dropdown-item" name="signout" id="signout" >
-                    <i class="mdi mdi-logout mr-2 text-primary" ></i> Sign Out </button>
+                    <i class="mdi mdi-logout mr-2 text-info" ></i> Sign Out </button>
                 </form>
               </div>
             </li>
@@ -184,12 +184,12 @@ $row=mysqli_fetch_array($query);
 					
 						<!-- PART SERVICES -->
 						<li class="nav-item">
-							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+							<a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
 								<span class="menu-title">Services</span>
 								<i class="menu-arrow"></i>
 								<i class="mdi mdi-gamepad menu-icon"></i>
 							</a>
-							<div class="collapse" id="ui-basic">
+							<div class="collapse" id="general-pages">
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"> <a class="nav-link" href="../pages/services/primaryCare.php">Primary Care</a></li>
 									<li class="nav-item"> <a class="nav-link" href="../pages/services/medicalCheck.php">Medical Check-Up</a></li>
@@ -246,12 +246,20 @@ $row=mysqli_fetch_array($query);
                 <div class="profileCard">
                     <div class="card-body">
                     <form class="forms-sample">
-						<img src="../assets/images/faces/face2.jpg" alt="image" class = "image">
+						<img src="../assets/images/faces/face1.jpg" alt="image" class = "image">
 						<br>
 						<div class="container">
 							<h4><b><?php echo $row['name']; ?></b></h4>
 							<p>Customer</p>
-						</div>  	
+						</div>  
+						<div class="form-group">
+                            <label class="col-sm-3 col-form-label"></label>
+                            <button type="submit" name = "update" 
+							   class="btn btn-gradient-info btn-fw">
+							   <i type = "submit" class="mdi mdi-camera-enhance mdi-lg"
+							   data-width="30"></i>
+							   </button>
+                          </div>	
                     </form>
                 </div>
 				</div>
@@ -305,9 +313,9 @@ $row=mysqli_fetch_array($query);
                             </div>
 
                           <div class="form-group">
-                            
-                            <button type="submit" name = "update-profile" 
-							   class="btn btn-gradient-primary mr-2">Update Profile</button>
+                            <label class="col-sm-3 col-form-label"></label>
+                            <button type="submit" name = "update" 
+							   class="btn btn-gradient-info mb-2">Update</button>
                           </div>
                      </form>
 
@@ -350,8 +358,8 @@ $row=mysqli_fetch_array($query);
 						</div>
 						
 						<div class="form-group">
-
-                            <button type="submit" class="btn btn-gradient-primary mb-2">Change Password</button>
+                            <label class="col-sm-4 col-form-label"></label>
+                            <button type="submit" class="btn btn-gradient-info mb-2">Change</button>
                           </div>
                     </form>
                   </div>

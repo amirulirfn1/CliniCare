@@ -129,12 +129,12 @@ $row=mysqli_fetch_array($query);
 				
 				<!-- PART SERVICES -->
 						<li class="nav-item">
-							<a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+							<a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="ui-basic">
 								<span class="menu-title">Services</span>
 								<i class="menu-arrow"></i>
 								<i class="mdi mdi-gamepad menu-icon"></i>
 							</a>
-							<div class="collapse" id="ui-basic">
+							<div class="collapse" id="general-pages">
 								<ul class="nav flex-column sub-menu">
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/primaryCare.php">Primary Care</a></li>
 									<li class="nav-item"> <a class="nav-link" href="../../pages/services/medicalCheck.php">Medical Check-Up</a></li>
