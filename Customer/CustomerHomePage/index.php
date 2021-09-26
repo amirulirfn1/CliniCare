@@ -71,9 +71,8 @@ $row=mysqli_fetch_array($query);
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><img src="assets/img/gambar/logobanner.png " width="100%" height="100%"></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <a href="#hero" class="logo me-auto"><img src="assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -86,7 +85,7 @@ $row=mysqli_fetch_array($query);
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">View Profile</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php">Make an Appointment</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Make an Appointment</a></li>
                   <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><button type="submit" href="#" name="signout">Sign Out</button></a></li></form>
                 </ul>
               </li>

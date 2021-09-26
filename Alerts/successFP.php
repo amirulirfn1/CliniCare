@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Successful | CliniCare</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="../../Dashboard Page/Dashboard for Customer/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="../../Dashboard Page/Dashboard for Customer/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End Plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../Dashboard Page/Dashboard for Customer/assets/css/style.css">
+    <link rel="stylesheet" href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../Dashboard Page/Dashboard for Customer/assets/images/gambar/icon.jpeg" />
+    <link rel="shortcut icon" href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/assets/images/gambar/icon.jpeg" />
   </head>
  
   <body>
@@ -28,7 +28,7 @@
               <div class="row align-items-center d-flex flex-row">
                 <div class="col-lg-6 text-lg-right pr-lg-4">
                   <h1 class="display-1 mb-0">
-				  <img src="../../Dashboard Page/Dashboard for Customer/assets/images/gambar/success.png"
+				  <img src="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/assets/images/gambar/success.png"
 				  alt="sing up image"></h1>
                 </div>
 				

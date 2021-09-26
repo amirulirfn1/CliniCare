@@ -17,13 +17,13 @@ if (isset($_GET['vkey'])){
         $update = $con->query("UPDATE customer SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
 
         if($update){
-            echo "Your email address is verified. Please login to your account.";
+            header("Location: /MasterCliniCare/Alerts/successVER.php");
         }else{
             echo $mysqli->error;
         }
 
     }else{
-        echo "Error, This email address has been used or invalid. Please try other email address.";
+        header("Location: /MasterCliniCare/Alerts/unsuccessVER.php");
     }
     
 }else{

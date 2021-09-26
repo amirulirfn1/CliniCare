@@ -9,10 +9,12 @@ if (isset($_POST['signup'])) {
 } else if (isset($_POST['submit-reset'])){
     $vkey = getVkey($_POST);
     mailReset($vkey);
-    header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/successFP.php");
+    header("Location: /MasterCliniCare/Alerts/successFP.php");
     exit();
 }else if (isset($_POST['reset-password'])){
     resetPassword($_POST['reset-password']);
+}else if(isset($_POST['update-profile'])){
+    updateProfile($_POST['update-profile']);
 }
 
 ?>
@@ -198,7 +200,7 @@ margin: 0 !important;
                             if($con->query($sql2) === TRUE)
 							{
 								//kalau dah successful buat sign up, keluar page ni
-                                header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/success.php");
+                                header("Location: /MasterCliniCare/Alerts/success.php");
                             }
 							
 							else
@@ -212,7 +214,7 @@ margin: 0 !important;
 	{
 		//ni part bila email tu dah ade. duplicate
        //echo "Error: " . $sql . "<br>" . $con->error;
-		header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/unsuccess.php");
+		header("Location: /MasterCliniCare/Alerts/unsuccess.php");
     }
 }
 
@@ -298,7 +300,7 @@ function getVkey(){
                 $_SESSION['resetPassword'] = $email;
                 return $userRecord['vkey'];
             }else{
-                header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/unsuccessFP.php");
+                header("Location: /MasterCliniCare/Alerts/unsuccessFP.php");
                 exit();
             }
         }
@@ -358,17 +360,54 @@ function resetPassword(){
 
                 unset($_SESSION['resetVkey']);
                 unset($_SESSION['resetPassword']);
-                header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/successRS.php");
+                header("Location: /MasterCliniCare/Alerts/successRS.php");
                 exit();
              }
          }
      }
 
     }else{
-       header("Location: /MasterCliniCare/Customer/Sign In Page/Sign In/unsuccessRS.php");
+       header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
        exit();
      }
     }
+
+    function updateProfile(){
+
+        $servername = "localhost";
+        $username = "clinicarecustomer";
+        $password = "customer";
+        $dbname = "clinicare";
+
+        $con = new mysqli($servername, $username, $password, $dbname);
+
+        if(!$con){
+            echo "Error";
+        }else{
+
+            $email = $_SESSION['email'];
+
+            $name = $_POST['name'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $icNumber = $_POST['icNumber'];
+            $birthDate = $_POST['birthDate'];
+            $address = $_POST['address'];
+
+            $password = md5($password);
+
+            $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
+             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
+
+                    if ($con->query($sql) === TRUE) {
+                        header("Location: /MasterCliniCare/Customer/Dashboard Page/Dashboard For Customer/icons/mdi.php");
+                    } else{
+                        echo "error";
+                    }
+    
+    }
+        }
+
+        
 
 ?>
 

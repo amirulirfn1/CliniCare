@@ -251,15 +251,7 @@ $row=mysqli_fetch_array($query);
 						<div class="container">
 							<h4><b><?php echo $row['name']; ?></b></h4>
 							<p>Customer</p>
-						</div>  
-						<div class="form-group">
-                            <label class="col-sm-3 col-form-label"></label>
-                            <button type="submit" name = "update" 
-							   class="btn btn-gradient-primary mr-2">
-							   <i type = "submit" class="mdi mdi-camera-enhance mdi-lg"
-							   data-width="30"></i>
-							   </button>
-                          </div>	
+						</div>  	
                     </form>
                 </div>
 				</div>
@@ -273,53 +265,52 @@ $row=mysqli_fetch_array($query);
 					
                       <h4 class="card-title">Personal Info</h4>
 					  <br>
-						<form class="forms-sample" action="updateForm.php" method="post">
-                            
+
+						<form class="forms-sample" action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">         
 							<div class="form-group">
                               <label>Name</label>
                               <input type="text" class="form-control form-control-sm" name="name" id="name" 
-								value= "<?php echo $row['name']; ?>" disabled>
+								value= "<?php echo $row['name']; ?>" >
                             </div>
 
                             <div class="form-group">
                               <label>IC Number</label>
-                              <input class="form-control form-control-sm" placeholder="xxxxxx-xx-xxxx" name="ICnumber" 
-								id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
+                              <input class="form-control form-control-sm" placeholder="xxxxxx-xx-xxxx" name="icNumber" 
+								id="ICnumber" value="<?php echo $row['ICnumber']; ?>" >
                         
                             </div>
               
                             <div class="form-group">
                               <label>Date of Birth</label>
                               <input type = "date" class="form-control form-control-sm" placeholder="dd/mm/yyyy" 
-								name="birthDate" id="birthDate" value="<?php echo $row['birthDate']; ?>" disabled>
+								name="birthDate" id="birthDate" value="<?php echo $row['birthDate']; ?>" >
                             </div>
               
                             <div class="form-group">
                               <label>Phone Number</label>
                               <input class="form-control form-control-sm" placeholder="xxx-xxxxxxx" 
-								name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
-                      
-                            </div>
-              
-                            <div class="form-group">
-                              <label>Email</label>
-                              <input class="form-control form-control-sm" placeholder="info.clinicareweb@gmail.com" 
-								name="email" value="<?php echo $row['email']; ?>" disabled >
-                     
+								name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" >
                             </div>
 
                             <div class="form-group">
                               <label >Address</label>
                               <input type="text" class="form-control form-control-sm" name="address" 
-								value="<?php echo $row['address']; ?>" disabled >
+								value="<?php echo $row['address']; ?>">
+                            </div>
+
+                            <div class="form-group">
+                              <label>Email</label>
+                              <input class="form-control form-control-sm" 
+								name="email" value="<?php echo $row['email']; ?>" disabled > 
                             </div>
 
                           <div class="form-group">
-                            <label class="col-sm-3 col-form-label"></label>
-                            <button type="submit" name = "update" 
-							   class="btn btn-gradient-primary mr-2">Update</button>
+                            
+                            <button type="submit" name = "update-profile" 
+							   class="btn btn-gradient-primary mr-2">Update Profile</button>
                           </div>
                      </form>
+
                     </div>
                   </div>
                 </div>
@@ -349,18 +340,18 @@ $row=mysqli_fetch_array($query);
 						
 						<div class="form-group">
 							<label>New Password</label>
-							<input type="password" class="form-control form-control-lg"  
-							name="np" placeholder="New Password" aria-label="Username">
+							<input type="password" pattern=".{8,}" class="form-control form-control-lg"  
+							name="np" placeholder="New Password" aria-label="Username" title="8 characters minimum">
 						</div>
 					
 						<div class="form-group">
 							<label>Confirm New Password</label>
-							<input type="password" class="form-control form-control-lg"  
-							name="c_np" placeholder="Confirm New Password" aria-label="Username">
+							<input type="password" pattern=".{8,}" class="form-control form-control-lg"  
+							name="c_np" placeholder="Confirm New Password" aria-label="Username" title="8 characters minimum">
 						</div>
 						
 						<div class="form-group">
-                            <label class="col-sm-4 col-form-label"></label>
+
                             <button type="submit" class="btn btn-gradient-primary mb-2">Change</button>
                           </div>
                       
