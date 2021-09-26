@@ -319,7 +319,6 @@ $row=mysqli_fetch_array($query);
 			  <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-				  <form action="change-p.php" method="post">
                     <h4 class="card-title">Password Changes</h4>
 					<p class="card-description"></p>
 					<link rel="stylesheet" type="text/css">
@@ -331,8 +330,8 @@ $row=mysqli_fetch_array($query);
                             <p class="success"><?php echo $_GET['success']; ?></p>
                             <?php } ?>
 							
-                    <form class="form-sample">
-						<div class="form-group">
+                    <form class="form-sample" action="change-p.php" method="post">
+						<div class="form-group" >
 							<label>Current Password</label>
 							<input type="password" class="form-control form-control-lg" 
 							placeholder="Password" name="op" aria-label="Username">
@@ -352,9 +351,8 @@ $row=mysqli_fetch_array($query);
 						
 						<div class="form-group">
 
-                            <button type="submit" class="btn btn-gradient-primary mb-2">Change</button>
+                            <button type="submit" class="btn btn-gradient-primary mb-2">Change Password</button>
                           </div>
-                      
                     </form>
                   </div>
                 </div>

@@ -296,21 +296,16 @@ $row=mysqli_fetch_array($query);
 					<p>
                      <img 
 					 src="../../assets/images/gambar/headache.jpg"
-					 style = "width : 200px">
+					 style = "width:420px; height:300px">
                     </p>
 					 <br>
 					 
 					<p>
 					 <img 
 					 src="../../assets/images/gambar/broke.jpg"
-					 style = "width : 200px">
+					 style = "width:420px; height:300px">
 					</p>
-					 <br>
-					
-					 <img 
-					 src="../../assets/images/gambar/bloodTake.jpg"
-					 style = "width : 200px">
-					 <br>
+					 <br>			
                     </div>
 					
                   </div>

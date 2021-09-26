@@ -290,7 +290,7 @@ $row=mysqli_fetch_array($query);
 					<p>
                      <img 
 					 src="../../assets/images/gambar/smoke1.jpg"
-					 style = "width : 200px">
+					 style = "width:420px; height:300px">
                     </p>
 					 <br>
 					 
@@ -298,13 +298,8 @@ $row=mysqli_fetch_array($query);
 					<p>
 					 <img 
 					 src="../../assets/images/gambar/smoke2.jpg"
-					 style = "width : 200px">
+					 style = "width:420px; height:300px">
 					</p>
-					 <br>
-					 
-					 <img 
-					 src="../../assets/images/gambar/smoke3.jpg"
-					 style = "width : 200px">
 					 <br>
 				</div>
 					

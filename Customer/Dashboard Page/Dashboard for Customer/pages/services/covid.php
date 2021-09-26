@@ -8,9 +8,6 @@ $query=mysqli_query($conn,"SELECT * FROM customer WHERE email='$email' ");
 $row=mysqli_fetch_array($query);
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>

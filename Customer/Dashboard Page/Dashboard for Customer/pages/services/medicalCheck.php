@@ -8,8 +8,6 @@ $query=mysqli_query($conn,"SELECT * FROM customer WHERE email='$email' ");
 $row=mysqli_fetch_array($query);
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -304,28 +302,18 @@ $row=mysqli_fetch_array($query);
 					<p>
                      <img 
 					 src="../../assets/images/gambar/vital.jpg"
-					 style = "width : 200px">
+					 style = "width:420px; height:300px">
                     </p>
 					 <br>
 					 
 					<p>
 					 <img 
 					 src="../../assets/images/gambar/ctScan.jpg"
-					 style = "width : 200px">
+					 style = "width:420px; height:300px">
 					</p>
 					 <br>
 					
 					<p>
-					 <img 
-					 src="../../assets/images/gambar/medical.jpg"
-					 style = "width : 200px">
-					 </p>
-					 <br>
-					 
-					 <img 
-					 src="../../assets/images/gambar/bloodTest.jpg"
-					 style = "width : 200px">
-					 <br>
                     </div>
 						
                   </div>
