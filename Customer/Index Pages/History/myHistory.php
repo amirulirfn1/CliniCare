@@ -86,7 +86,7 @@ $row=mysqli_fetch_array($query);
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
@@ -97,9 +97,16 @@ $row=mysqli_fetch_array($query);
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Covid-19 Centre</a></li>
           </ul>
 		  </li>
-          <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
+		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+		  <ul>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+          </ul>
+		  </li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
 			<?php echo "Hello " . $row['name']; ?></span> 
 			<i class="bi bi-chevron-right"></i></a>
