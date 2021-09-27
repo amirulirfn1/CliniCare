@@ -94,8 +94,8 @@ $row=mysqli_fetch_array($query);
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Medical Check-Up</a></li>
 				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Smoking Cessation</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Covid-19 Centre</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
           </ul>
 		  </li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
@@ -137,7 +137,7 @@ $row=mysqli_fetch_array($query);
 	
 	
      <!-- ======= Main My Profile Section ======= -->
-    <section id="faq" class="faq section-bg">
+    <section id="services" class="services section-bg">
       <div class="container">
 		
 		<div class="section-title">
@@ -157,7 +157,7 @@ $row=mysqli_fetch_array($query);
         <div class="col-md-8 grid-margin stretch-card">
 			<div class="card">
                 <div class="card-body">
-                    <h6>Provide a wide range of antenatal and postnatal services </h6>
+                    <h6><strong>Provide a wide range of antenatal and postnatal services</strong> </h6>
                     <p class="card-description"></p>
 					
 					<ul class="list-star">
@@ -183,8 +183,8 @@ $row=mysqli_fetch_array($query);
                   <div class="card-body">
                     <div class="row">
                       <div class="col-md-12">
-                        <h4 class="card-title">How we care for you?</h4>
-                        <p class="card-description">We offer a quit-smoking-plan for our patients.</p>
+                        <h4 class="card-title"><strong>How we care for you?</strong></h4>
+                        <p class="card-description">Our experts will take care of mom and child.</p>
                         
 						<div class="template-demo d-flex justify-content-between flex-nowrap">
                         <ul class="list-arrow">
@@ -221,28 +221,20 @@ $row=mysqli_fetch_array($query);
 			<br>
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Gallery</h4>
+                    <h4 class="card-title"><strong>Gallery</strong></h4>
                     <p class="card-description"></p>
                     
 					<div class="template-demo">
+					<br>
 						<p>
 							<img 
 							src="../assets/img/gambar/mom1.jpg"
-							style = "width : 200px">
+							style = "width : 280px">
 						</p>
 						<br>
-					 
-						<p>
 							<img 
 							src="../assets/img/gambar/mom3.jpg"
-							style = "width : 200px">
-						</p>
-						<br>
-					 
-							<img 
-							src="../assets/img/gambar/mom2.jpg"
-							style = "width : 200px">
-						<br>
+							style = "width : 280px">
                     </div>
                   </div>
 				</div>

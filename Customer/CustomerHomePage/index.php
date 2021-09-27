@@ -103,9 +103,13 @@ $row=mysqli_fetch_array($query);
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
-				   <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><button type="submit" href="#" 
-                        style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li></form>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Make an Appointment</a></li>
+                  <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li>
+				  <a><button type="submit" href="#" 
+                     style="background: transparent; border: none; padding: 0; 
+					 margin:0; position:relative; color:red" name="signout">
+					 Sign Out</button></a></li></form>
                 </ul>
               </li>
         </ul>

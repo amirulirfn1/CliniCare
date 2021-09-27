@@ -21,13 +21,13 @@ if (isset($_POST['op']) && isset($_POST['np'])
 	$c_np = validate($_POST['c_np']);
     
     if(empty($op)){
-      header("Location: mdi.php?error=Current Password is required");
+      header("Location: myProfile.php?error=Current Password is required");
 	  exit();
     }else if(empty($np)){
-      header("Location: mdi.php?error=New Password is required");
+      header("Location: myProfile.php?error=New Password is required");
 	  exit();
     }else if($np !== $c_np){
-      header("Location: mdi.php?error=The confirmation password  does not match");
+      header("Location: myProfile.php?error=The confirmation password  does not match");
 	  exit();
     }else {
     	// hashing the password
@@ -53,11 +53,11 @@ if (isset($_POST['op']) && isset($_POST['np'])
         	          SET password='$np'
         	          WHERE email='$email'";
 			mysqli_query($conn, $sql_3);
-			header("Location: mdi.php?success=Your password has been changed successfully");
+			header("Location: myProfile.php?success=Your password has been changed successfully");
 	        exit();
   	 
         }else if($conn->query($sql_2) === FALSE){
-        	header("Location: mdi.php?error= Current Password is incorrect");
+        	header("Location: myProfile.php?error= Current Password is incorrect");
 			exit();
         }
 
@@ -65,12 +65,12 @@ if (isset($_POST['op']) && isset($_POST['np'])
 
     
 }else{
-	header("Location: mdi.php");
+	header("Location: myProfile.php");
 	exit();
 }
 
 }else{
-     header("Location: mdi.php");
+     header("Location: myProfile.php");
      exit();
 }
 

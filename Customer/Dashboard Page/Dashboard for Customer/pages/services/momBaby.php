@@ -207,8 +207,8 @@ $row=mysqli_fetch_array($query);
                      <img 
 					 src="../../assets/images/gambar/mom.png"
 					 style = "width : 250px">
-                    </p>
-              </div>
+                </p>
+            </div>
 			  
 			  
               <div class="col-md-8 grid-margin stretch-card">

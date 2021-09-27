@@ -323,6 +323,8 @@ function mailReset(){
         mail($to, $subject, $message, $headers);
 
 }
+
+
 //ni yg nak reset tuu
 function resetPassword(){
 
@@ -372,7 +374,9 @@ function resetPassword(){
      }
     }
 
-    function updateProfile(){
+
+//function edit profile info
+function updateProfile(){
 
         $servername = "localhost";
         $username = "clinicarecustomer";
@@ -399,7 +403,7 @@ function resetPassword(){
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
                     if ($con->query($sql) === TRUE) {
-                        header("Location: /MasterCliniCare/Customer/Dashboard Page/Dashboard For Customer/icons/mdi.php");
+                        header("Location: /MasterCliniCare/Customer/Index Pages/Profile/myProfile.php");
                     } else{
                         echo "error";
                     }

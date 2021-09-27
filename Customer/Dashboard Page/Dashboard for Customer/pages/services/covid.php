@@ -211,7 +211,7 @@ $row=mysqli_fetch_array($query);
               <div class="col-md-8 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h6>Get you free from Covid-19 virus</h6>
+                    <h6>Get your free from Covid-19 virus</h6>
                     <p class="card-description"></p>
 					
 					<ul class="list-star">
