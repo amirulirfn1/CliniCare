@@ -111,11 +111,11 @@ $row=mysqli_fetch_array($query);
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Medical Check-Up</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Smoking Cessation</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Covid-19 Centre</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
           </ul>
 		  </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>

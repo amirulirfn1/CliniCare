@@ -17,7 +17,7 @@ $row=mysqli_fetch_array($query);
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Mom & Baby Care - Services | CliniCare</title>
+  <title>Primary Care - Services | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -90,10 +90,10 @@ $row=mysqli_fetch_array($query);
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogue.php">Smoking Cessation</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogue.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Covid-19 Centre</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
           </ul>
 		  </li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Doctors</a></li>
@@ -139,7 +139,7 @@ $row=mysqli_fetch_array($query);
 		<div class="col-md-4 grid-margin stretch-card">
             <p>
 				<img 
-				src="../assets/img/gambar/mom.png"
+				src="../assets/img/gambar/primaryCare.png"
 				style = "width : 300px">
             </p>
         </div>

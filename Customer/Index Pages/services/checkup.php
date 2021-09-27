@@ -90,10 +90,10 @@ $row=mysqli_fetch_array($query);
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogue.php">Smoking Cessation</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogue.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Covid-19 Centre</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
           </ul>
 		  </li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Doctors</a></li>
@@ -131,7 +131,7 @@ $row=mysqli_fetch_array($query);
       <div class="container">
 		
 		<div class="section-title">
-          <h2>Primary Care - Services</h2>
+          <h2>Medical Check-Up - Services</h2>
         </div>
 	
         
@@ -139,7 +139,7 @@ $row=mysqli_fetch_array($query);
 		<div class="col-md-4 grid-margin stretch-card">
             <p>
 				<img 
-				src="../assets/img/gambar/mom.png"
+				src="../assets/img/gambar/medical.png"
 				style = "width : 300px">
             </p>
         </div>
@@ -171,6 +171,7 @@ $row=mysqli_fetch_array($query);
 			  
 			  
               <div class="col-md-8 grid-margin stretch-card">
+			  <br>
                 <div class="card">
                   <div class="card-body">
                     <div class="row">
@@ -228,6 +229,7 @@ $row=mysqli_fetch_array($query);
               
 			  
               <div class="col-md-4 grid-margin stretch-card">
+			  <br>
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Gallery</h4>
