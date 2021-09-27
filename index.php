@@ -76,6 +76,7 @@
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
           <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
+		  <li><a href="/MasterCliniCare/Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
         </ul>
       </nav><!-- .navbar -->
 
