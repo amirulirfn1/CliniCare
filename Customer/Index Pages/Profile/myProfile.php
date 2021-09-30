@@ -51,7 +51,7 @@ $row=mysqli_fetch_array($query);
   ======================================================== -->
   
 <style>
- <!--  Password Changes -->
+  
 .error {
    background: #F2DEDE;
    color: #A94442;
@@ -108,7 +108,7 @@ $row=mysqli_fetch_array($query);
         <ul>
           <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
@@ -120,6 +120,7 @@ $row=mysqli_fetch_array($query);
 		  </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
 		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
@@ -127,7 +128,7 @@ $row=mysqli_fetch_array($query);
 				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
           </ul>
 		  </li>
-          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
+          
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
 			<?php echo "Hello " . $row['name']; ?></span> 
 			<i class="bi bi-chevron-right"></i></a>

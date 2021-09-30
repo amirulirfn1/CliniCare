@@ -78,7 +78,7 @@ $row=mysqli_fetch_array($query);
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a href="#services" class="nav-link scrollto">Services </a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
@@ -90,6 +90,7 @@ $row=mysqli_fetch_array($query);
 		  </li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
           <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
 		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
@@ -97,8 +98,6 @@ $row=mysqli_fetch_array($query);
 				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
           </ul>
 		  </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
-
 		  
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
@@ -247,7 +246,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="">Primary Care</a></h4>
+              <h4><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></h4>
               <p>Screening and treatment, as well as therapy for mild symptoms, common diseases, and injuries.</p>
             </div>
           </div>
@@ -255,7 +254,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-stethoscope"></i></div>
-              <h4><a href="">Medical Check-Up</a></h4>
+              <h4><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></h4>
               <p>Monthly check up for Klinik Damai's patient. Physical examinations, blood and urine tests, and X-ray
                 examinations are all possible</p>
             </div>
@@ -264,7 +263,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-smoking"></i></div>
-              <h4><a href="">Smoking Cessation Campaign</a></h4>
+              <h4><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation Campaign</a></h4>
               <p>Smoking cessation programmes are meant to assist people who want to quit smoking cigarettes and other
                 tobacco-based products.</p>
             </div>
@@ -273,7 +272,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-baby"></i></div>
-              <h4><a href="">Mom & Baby Care</a></h4>
+              <h4><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.ph">Mom & Baby Care</a></h4>
               <p>Offers medical care to all pregnant women and their children.</p>
             </div>
           </div>
@@ -281,7 +280,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="">Pharmacy</a></h4>
+              <h4><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></h4>
               <p>Our Pharmacists are here to help and guide about any basis medicine that you need</p>
             </div>
           </div>
@@ -289,7 +288,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-viruses"></i></div>
-              <h4><a href="">Covid-19 Centre</a></h4>
+              <h4><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></h4>
               <p>Swab Test and Vaccination for COVID-19. Get covid 19 swab test and get result in 24 hours</p>
             </div>
           </div>

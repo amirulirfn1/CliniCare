@@ -145,7 +145,7 @@
 		 <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>Fever, Pain & Inflammation</h3>
+              <h3>Fever, Pain & More</h3>
               <i><img src="gambar/fever.png"  class="center"  alt=""></i>
             </div>
           </div>

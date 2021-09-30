@@ -85,7 +85,7 @@ $row=mysqli_fetch_array($query);
         <ul>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Home</a></li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
@@ -97,6 +97,7 @@ $row=mysqli_fetch_array($query);
 		  </li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Doctors</a></li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">FAQ</a></li>
+          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Contact Us</a></li>
 		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
@@ -104,7 +105,7 @@ $row=mysqli_fetch_array($query);
 				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
           </ul>
 		  </li>
-          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Contact Us</a></li>
+          
 		 <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
@@ -167,7 +168,7 @@ $row=mysqli_fetch_array($query);
                   </div>
                 </div>
               </div>
-            </div><!-- End .content-->
+            </div><!-- End content-->
           </div>
         </div>
 		
@@ -176,7 +177,7 @@ $row=mysqli_fetch_array($query);
 		 <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h3>Fever, Pain & Inflammation</h3>
+              <h3>Fever, Pain & More</h3>
               <i><img src="gambar/fever.png"  class="center"  alt=""></i>
             </div>
           </div>
