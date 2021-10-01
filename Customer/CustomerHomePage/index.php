@@ -94,8 +94,8 @@ $row=mysqli_fetch_array($query);
 		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/purchasedMedicine.php">Buy Medicine</a></li>
+				  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Purchased Medicine</a></li>
           </ul>
 		  </li>
 		  

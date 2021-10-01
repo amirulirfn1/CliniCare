@@ -15,8 +15,9 @@ $row=mysqli_fetch_array($query);
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>My Profile | CliniCare</title>
+  <title>Purchased Medicine | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -41,6 +42,9 @@ $row=mysqli_fetch_array($query);
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
+  
+  <!-- Services CSS File -->
+  <link href="services.css" rel="stylesheet">
 
 	
   <!-- =======================================================
@@ -49,31 +53,7 @@ $row=mysqli_fetch_array($query);
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-<style>
-  
-.error {
-   background: #F2DEDE;
-   color: #A94442;
-   padding: 10px;
-   width: 100%;
-   border-radius: 5px;
-   margin: 20px auto;
-   font-size: 16px;
-   
-}
 
-.success {
-   background: #D4EDDA;
-   color: #40754C;
-   padding: 10px;
-   width: 100%;
-   border-radius: 5px;
-   margin: 20px auto;
-   font-size: 16px;
-}
-
-</style>
 </head>
 
 <body>
@@ -108,7 +88,7 @@ $row=mysqli_fetch_array($query);
         <ul>
           <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
+          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
@@ -120,7 +100,6 @@ $row=mysqli_fetch_array($query);
 		  </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
-          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
 		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
@@ -128,7 +107,7 @@ $row=mysqli_fetch_array($query);
 				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
           </ul>
 		  </li>
-          
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
 			<?php echo "Hello " . $row['name']; ?></span> 
 			<i class="bi bi-chevron-right"></i></a>
@@ -165,150 +144,111 @@ $row=mysqli_fetch_array($query);
 	
 	
      <!-- ======= Main My Profile Section ======= -->
-    <section id="faq" class="faq section-bg">
+    <section id="services" class="services section-bg">
       <div class="container">
 		
 		<div class="section-title">
-          <h2>My Profile</h2>
-          <p><strong>Disclaimer :
-		  </strong> Each individual’s treatment and/or results may vary. 
-		  Please consult doctor for more details.</p>
+          <h2>Mom & Baby Care - Services</h2>
         </div>
-		
-        <div class="container rounded bg-white mt-5 mb-5">
-		
+	
+        
 		<div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-			<img class="rounded-circle mt-5" width="150px" 
-			src="../assets/img/testimonials/testimonials-2.jpg">
-			<br>
-			<span class="font-weight-bold"><?php echo $row['name']; ?></span>
-			<span class="text-black-50"><?php echo $row['email']; ?></span>
-			<span> </span></div>
+		<div class="col-md-4 grid-margin stretch-card">
+            <p>
+				<img 
+				src="../assets/img/gambar/mom.png"
+				style = "width : 300px">
+            </p>
         </div>
-		
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Personal Info</h4>
-                </div>
-				
-				<form class="forms-sample" 
-				action="/MasterCliniCare/Customer/CustomerEntry.php" 
-				method="POST">         
-                
-				<div class="row mt-3">
-                    <div class="col-md-12">
-						<label class="labels" style = "font-size: 12px">Email</label>
-						<input type="text" class="form-control" 
-						name="email" value="<?php echo $row['email']; ?>" disabled >
-					</div>
-                    
+			  	  
+        <div class="col-md-8 grid-margin stretch-card">
+			<div class="card">
+                <div class="card-body">
+                    <h6><strong>Provide a wide range of antenatal and postnatal services</strong> </h6>
+                    <p class="card-description"></p>
 					
-					<div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Name</label>
-						<input type="text" class="form-control" 
-						name="name" id="name" value= "<?php echo $row['name']; ?>" >
-					</div>
-                
-                    <div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">IC Number</label>
-						<input type="text" class="form-control" 
-						placeholder="xxxxxx-xx-xxxx" name="icNumber" 
-						id="ICnumber" value="<?php echo $row['ICnumber']; ?>" >
-					</div>
+					<ul class="list-star">
 					
-                    <div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Contact Number</label>
-						<input type="text" class="form-control" 
-						 placeholder="xxx-xxxxxxx" name="phoneNumber" 
-						 value="<?php echo $row['phoneNumber']; ?>" >
-					</div>
-					
-                    <div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Date of Birth</label>
-						<input type="date" class="form-control" 
-						placeholder="dd/mm/yyyy" name="birthDate" 
-						id="birthDate" value="<?php echo $row['birthDate']; ?>" >
-					</div>
-					
-					<div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Address</label>
-						<input type="text" class="form-control" 
-						name="address" value="<?php echo $row['address']; ?>">
-					</div>
-                    
-                </div>
-		
-                <div class="mt-5 text-center">
-					<button type="submit" name = "update-profile" 
-					class="btn btn-primary profile-button">Update Profile</button>
-				</div>
-				</form>
-            </div>
-        </div>
-		
-        <div class="col-md-4 border-left">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Password Changes</h4>
-                </div>
-				
-				
-					<link rel="stylesheet" type="text/css">
-					     	<?php if (isset($_GET['error'])) { ?>
-     		                <p class="error"><?php echo $_GET['error']; ?></p>
-     	                    <?php } ?>
-
-     	                    <?php if (isset($_GET['success'])) { ?>
-                            <p class="success"><?php echo $_GET['success']; ?></p>
-                            <?php } ?>
-				<p class="card-description"></p>
-				
-				<form class="form-sample" action="change-p.php" method="post">
-                <div class="col-md-12">
-					<label class="label" style = "font-size: 12px">Current Password</label>
-					<input type="password" class="form-control" 
-					placeholder="Password" name="op" aria-label="Username">
-				</div> 
-				
-				<br>
-				
-                <div class="col-md-12">
-					<label class="labels" style = "font-size: 12px">New Password</label>
-					<input type="password" pattern=".{8,}" class="form-control"  
-					name="np" placeholder="New Password" aria-label="Username" 
-					title="8 characters minimum">
-				</div>
-				
-				<div class="col-md-12">
+					<li>This services provide both antenatal education services 
+					as well as postnatal support to parents and a range of services 
+					to babies and children of up to the age of five years. </li>
+					  
 					<br>
-					<label class="labels" style = "font-size: 12px">Confirm New Password</label>
-					<input type="password" pattern=".{8,}" class="form-control"  
-					name="c_np" placeholder="Confirm New Password" aria-label="Username" 
-					title="8 characters minimum">
-				</div>
-						
-				<div class="form-group">
-					<br>	
-                    <label class="col-sm-4 col-form-label"></label>
-                    <button type="submit" class="btn btn-primary profile-button">Change</button>
+					
+                    <li>Antenatal and postnatal care for mother and baby are 
+					  essential to identify and promptly address possible health problems</li>
+
+                    </ul>
+                  </div>
                 </div>
-				</form>
-            </div>
-        </div>
+              </div>
+			  
+			  
+              <div class="col-md-8 grid-margin stretch-card">
+			  <br>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h4 class="card-title"><strong>How we care for you?</strong></h4>
+                        <p class="card-description">Our experts will take care of mom and child.</p>
+                        
+						<div class="template-demo d-flex justify-content-between flex-nowrap">
+                        <ul class="list-arrow">
+							<li><strong>Breastfeeding Education and Support</strong>
+								<p>To encourages all moms to breastfeed their newborns.
+							</li>
+					  
+							<li><strong>Women's Health</strong>
+								<p>To detect breast cancer as early as possible.
+							</li>
+					  
+							<li><strong>Prenatal Education</strong>
+								<p>Offers pre-natal training to minimize a mother’s 
+								effort through education and stress-reducing techniques.  
+							</li>
+					  
+							<li><strong>Postpartum Services</strong>
+								<p>To offer you support for many aspects of growing into motherhood
+								and meeting your and your baby’s needs.
+							</li>
+					  
+							<li><strong>Child Health Clinics</strong>
+								<p>Offer regular baby health and development reviews and vaccinations.
+							</li>
+						</ul>  
+                        </div>  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			  
+            <div class="col-md-4 grid-margin stretch-card">
+			<br>
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title"><strong>Gallery</strong></h4>
+                    <p class="card-description"></p>
+                    
+					<div class="template-demo">
+					<br>
+						<p>
+							<img 
+							src="../assets/img/gambar/mom1.jpg"
+							style = "width : 280px">
+						</p>
+						<br>
+							<img 
+							src="../assets/img/gambar/mom3.jpg"
+							style = "width : 280px">
+                    </div>
+                  </div>
+				</div>
+			</div>
 		</div>
-
-        </div>
-	   </div>
+	</div>
     </section><!-- End Testimonials Section -->
-
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

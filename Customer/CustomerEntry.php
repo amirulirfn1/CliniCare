@@ -1,20 +1,41 @@
 <?php
 session_start();
-if (isset($_POST['signup'])) {
+if (isset($_POST['signup'])) 
+{
     signup($_POST['signup']);
-} else if (isset($_POST['signin'])) {
+} 
+
+else if (isset($_POST['signin'])) 
+{
     signin($_POST['signin']);
-} else if (isset($_POST['signout'])) {
+} 
+
+else if (isset($_POST['signout'])) 
+{
     signout($_POST['signout']);
-} else if (isset($_POST['submit-reset'])){
+} 
+
+else if (isset($_POST['submit-reset']))
+{
     $vkey = getVkey($_POST);
     mailReset($vkey);
     header("Location: /MasterCliniCare/Alerts/successFP.php");
     exit();
-}else if (isset($_POST['reset-password'])){
+}
+
+else if (isset($_POST['reset-password']))
+{
     resetPassword($_POST['reset-password']);
-}else if(isset($_POST['update-profile'])){
+}
+
+else if(isset($_POST['update-profile']))
+{
     updateProfile($_POST['update-profile']);
+}
+
+else if(isset($_POST['updateProfileAdmin']))
+{
+    updateProfileAdmin($_POST['updateProfileAdmin']);
 }
 
 ?>
@@ -413,5 +434,48 @@ function updateProfile(){
 
         
 
+function updateProfileAdmin()
+{
+
+        $servername = "localhost";
+        $username = "clinicarecustomer";
+        $password = "customer";
+        $dbname = "clinicare";
+
+        $con = new mysqli($servername, $username, $password, $dbname);
+
+        if(!$con)
+		{
+            echo "Error";
+        }
+		
+		else
+		{
+
+            $email = $_SESSION['email'];
+
+            $name = $_POST['name'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $icNumber = $_POST['icNumber'];
+            $birthDate = $_POST['birthDate'];
+            $address = $_POST['address'];
+
+            $password = md5($password);
+
+            $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
+             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
+
+                    if ($con->query($sql) === TRUE) 
+					{
+                        header("Location: /MasterCliniCare/stisla-2.2.0/dist/features-profile.php");
+                    } 
+					
+					else
+					{
+                        echo "error";
+                    }
+    
+		}
+}   
 ?>
 

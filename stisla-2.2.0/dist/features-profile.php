@@ -1,6 +1,12 @@
 <?php
 
+//session_start();
+
+$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 session_start();
+$email=$_SESSION['email'];
+$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
 
 ?>
 <!DOCTYPE html>
@@ -8,7 +14,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Profile &mdash; Stisla</title>
+  <title>Profile &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -43,69 +49,8 @@ session_start();
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-            <div class="search-result">
-              <div class="search-header">
-                Histories
-              </div>
-              <div class="search-item">
-                <a href="#">How to hack NASA using CSS</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">Kodinger.com</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">#Stisla</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-header">
-                Result
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-3-50.png" alt="product">
-                  oPhone S9 Limited Edition
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-2-50.png" alt="product">
-                  Drone X2 New Gen-7
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-1-50.png" alt="product">
-                  Headphone Blitz
-                </a>
-              </div>
-              <div class="search-header">
-                Projects
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-danger text-white mr-3">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  Stisla Admin Template
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-primary text-white mr-3">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  Create a new Homepage Design
-                </a>
-              </div>
-            </div>
-          </div>
         </form>
+		
         <ul class="navbar-nav navbar-right">
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
@@ -232,12 +177,12 @@ session_start();
               </div>
             </div>
           </li>
+		  
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat!</div></a>
+            <div class="d-sm-none d-lg-inline-block">Hi, <?php echo $row['name']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="features-activities.html" class="dropdown-item has-icon">
@@ -257,6 +202,7 @@ session_start();
           </li>
         </ul>
       </nav>
+	  
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
@@ -299,7 +245,7 @@ session_start();
             </div>
           </div>
           <div class="section-body">
-            <h2 class="section-title">Hi,Prof Dr Megat!</h2>
+            <h2 class="section-title">Hi, <?php echo $row['name']; ?></h2>
             <p class="section-lead">
               Change information about yourself on this page.
             </p>
@@ -309,92 +255,81 @@ session_start();
                 <div class="card profile-widget">
                   <div class="profile-widget-header">                     
                     <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle profile-widget-picture">
-                    <div class="profile-widget-items">
-                      <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Posts</div>
-                        <div class="profile-widget-item-value">187</div>
-                      </div>
-                      <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Followers</div>
-                        <div class="profile-widget-item-value">6,8K</div>
-                      </div>
-                      <div class="profile-widget-item">
-                        <div class="profile-widget-item-label">Following</div>
-                        <div class="profile-widget-item-value">2,1K</div>
-                      </div>
-                    </div>
+                    
                   </div>
                   <div class="profile-widget-description">
-                    <div class="profile-widget-name">Hi,Prof Dr Megat! <div class="text-muted d-inline font-weight-normal"><div class="slash"></div> Main Doctor</div></div>
-                    Hi,Prof Dr Megat! is a superhero from <b>Malaysia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.
+                    <div class="profile-widget-name">Hi, <?php echo $row['name']; ?>! 
+					<div class="text-muted d-inline font-weight-normal">
+					<div class="slash"></div> Main Doctor</div></div>
+                    Hi, <?php echo $row['name']; ?> is a superhero from <b>Malaysia</b>, 
+					especially in my family. 
+					He is not a fictional character but an original hero in my family,
+					a hero for his children and for his wife.
+					So, I use the name as a user in this template.
+					Not a tribute, I'm just bored with <b>'John Doe'</b>.
                   </div>
-                  <div class="card-footer text-center">
-                    <div class="font-weight-bold mb-2">Follow Prof Dr Megat On</div>
-                    <a href="#" class="btn btn-social-icon btn-facebook mr-1">
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="btn btn-social-icon btn-twitter mr-1">
-                      <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="btn btn-social-icon btn-github mr-1">
-                      <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="btn btn-social-icon btn-instagram">
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                  </div>
+                  
                 </div>
               </div>
+			  
               <div class="col-12 col-md-12 col-lg-7">
                 <div class="card">
-                  <form method="post" class="needs-validation" novalidate="">
-                    <div class="card-header">
+                  <form method="post" class="needs-validation" 
+				  action="/MasterCliniCare/Customer/CustomerEntry.php" novalidate="">
+                    
+					<div class="card-header">
                       <h4>Edit Profile</h4>
                     </div>
+					
                     <div class="card-body">
                         <div class="row">                               
                           <div class="form-group col-md-6 col-12">
-                            <label>First Name</label>
-                            <input type="text" class="form-control" value="Megat" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the first name
-                            </div>
-                          </div>
-                          <div class="form-group col-md-6 col-12">
-                            <label>Last Name</label>
-                            <input type="text" class="form-control" value="Akmal" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the last name
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-md-7 col-12">
                             <label>Email</label>
-                            <input type="email" class="form-control" value="profMegat@Myvi.com" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the email
-                            </div>
-                          </div>
-                          <div class="form-group col-md-5 col-12">
-                            <label>Phone</label>
-                            <input type="tel" class="form-control" value="">
-                          </div>
+                            <input type="text" class="form-control" 
+							name="email" value="<?php echo $row['email']; ?>" disabled>
+                          </div> 
                         </div>
+						
                         <div class="row">
-                          <div class="form-group col-12">
-                            <label>Bio</label>
-                            <textarea class="form-control summernote-simple">Hi,Prof Dr Megat! is a superhero from<b>Malaysia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
+						  <div class="form-group col-md-6 col-12">
+                            <label>Name</label>
+                            <input type="text" class="form-control" 
+							name="name" value="<?php echo $row['name']; ?>">
+                          </div>
+						  
+                          <div class="form-group col-md-6 col-12">
+                            <label>IC Number</label>
+                            <input type="text" class="form-control" 
+							name="icNumber" value="<?php echo $row['ICnumber']; ?>">
+                          </div>
+						  
+                          <div class="form-group col-md-6 col-12">
+                            <label>Contact Number</label>
+                            <input type="text" class="form-control" 
+							name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>">
+                          </div>
+						  
+						  <div class="form-group col-md-6 col-12">
+                            <label>Date of Birth</label>
+                            <input type="date" class="form-control" 
+							name="birthDate"  value="<?php echo $row['birthDate']; ?>">
+                          </div>
+						  
+						  <div class="form-group col-md-12 col-12">
+                            <label>Address</label>
+                            <input type="text" class="form-control" 
+							name="address" value="<?php echo $row['address']; ?>">
                           </div>
                         </div>
-                        
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary">Save Changes</button>
+                      <button type="submit" name = "updateProfileAdmin"
+					  class="btn btn-primary">Save Changes</button>
                     </div>
                   </form>
                 </div>
               </div>
+			  
             </div>
           </div>
         </section>
