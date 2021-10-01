@@ -37,6 +37,29 @@ $row=mysqli_fetch_array($query);
 
   gtag('config', 'UA-94034622-3');
 </script>
+<style>
+  
+.error {
+   background: #F2DEDE;
+   color: #A94442;
+   padding: 5px;
+   width: 55%;
+   border-radius: 5px;
+   margin: 16px auto;
+   font-size: 14px;  
+}
+
+.success {
+   background: #D4EDDA;
+   color: #40754C;
+   padding: 5px;
+   width: 85%;
+   border-radius: 5px;
+   margin: 16px auto;
+   font-size: 14px;
+}
+
+</style>
 <!-- /END GA --></head>
 
 <body>
@@ -260,15 +283,55 @@ $row=mysqli_fetch_array($query);
                   <div class="profile-widget-description">
                     <div class="profile-widget-name">Hi, <?php echo $row['name']; ?>! 
 					<div class="text-muted d-inline font-weight-normal">
-					<div class="slash"></div> Main Doctor</div></div>
-                    Hi, <?php echo $row['name']; ?> is a superhero from <b>Malaysia</b>, 
-					especially in my family. 
-					He is not a fictional character but an original hero in my family,
-					a hero for his children and for his wife.
-					So, I use the name as a user in this template.
-					Not a tribute, I'm just bored with <b>'John Doe'</b>.
+					<div class="slash"></div> Staff Admin</div></div>
                   </div>
-                  
+                </div>
+				
+				<div class="card profile-widget">
+				<form class="form-sample" action="change-p.php" method="post">
+					<div class="card-header">
+                      <h4>Change Password</h4>
+                    </div>
+					
+                    <div class="card-body">
+					
+                        <div class="row">
+						  <div class="form-group col-12">
+                            <label>Current Password</label>
+                            <input type="password" class="form-control" 
+							placeholder="Password" name="op">
+                          </div>
+						  
+                          <div class="form-group col-12">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" 
+							name="np" placeholder="New Password" aria-label="Username" 
+							title="8 characters minimum">
+                          </div>
+						  
+                          <div class="form-group col-12">
+                            <label>Confirm New Password</label>
+                            <input type="password" pattern=".{8,}" class="form-control"  
+							name="c_np" placeholder="Confirm New Password" aria-label="Username" 
+							title="8 characters minimum">
+                          </div>
+						  
+						  <link rel="stylesheet" type="text/css">
+					     	<?php if (isset($_GET['error'])) { ?>
+     		                <p class="error"><?php echo $_GET['error']; ?></p>
+     	                    <?php } ?>
+
+     	                    <?php if (isset($_GET['success'])) { ?>
+                            <p class="success"><?php echo $_GET['success']; ?></p>
+                            <?php } ?>
+							<p class="card-description"></p>
+                        </div>
+					</div>
+					
+                    <div class="card-footer text-right">
+                      <button type="submit" class="btn btn-primary">Password Changes</button>
+                    </div>
+					</form>
                 </div>
               </div>
 			  
@@ -291,13 +354,13 @@ $row=mysqli_fetch_array($query);
                         </div>
 						
                         <div class="row">
-						  <div class="form-group col-md-6 col-12">
+						  <div class="form-group col-12">
                             <label>Name</label>
                             <input type="text" class="form-control" 
 							name="name" value="<?php echo $row['name']; ?>">
                           </div>
 						  
-                          <div class="form-group col-md-6 col-12">
+                          <div class="form-group col-12">
                             <label>IC Number</label>
                             <input type="text" class="form-control" 
 							name="icNumber" value="<?php echo $row['ICnumber']; ?>">
