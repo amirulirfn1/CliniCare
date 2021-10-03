@@ -45,68 +45,6 @@ session_start();
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
-            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-            <div class="search-backdrop"></div>
-            <div class="search-result">
-              <div class="search-header">
-                Histories
-              </div>
-              <div class="search-item">
-                <a href="#">How to hack NASA using CSS</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">Kodinger.com</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-item">
-                <a href="#">#Stisla</a>
-                <a href="#" class="search-close"><i class="fas fa-times"></i></a>
-              </div>
-              <div class="search-header">
-                Result
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-3-50.png" alt="product">
-                  oPhone S9 Limited Edition
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-2-50.png" alt="product">
-                  Drone X2 New Gen-7
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <img class="mr-3 rounded" width="30" src="assets/img/products/product-1-50.png" alt="product">
-                  Headphone Blitz
-                </a>
-              </div>
-              <div class="search-header">
-                Projects
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-danger text-white mr-3">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  Stisla Admin Template
-                </a>
-              </div>
-              <div class="search-item">
-                <a href="#">
-                  <div class="search-icon bg-primary text-white mr-3">
-                    <i class="fas fa-laptop"></i>
-                  </div>
-                  Create a new Homepage Design
-                </a>
-              </div>
-            </div>
-          </div>
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
@@ -259,6 +197,7 @@ session_start();
           </li>
         </ul>
       </nav>
+      <!-- SideBar-->
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
@@ -269,26 +208,9 @@ session_start();
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            
-            
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>List Of Customer</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">All Customer</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Add Customer</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Delete Customer</a></li>
-              </ul>
-            </li>
+            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>View Purchase Medicine</span></a></li>
-            <li class="dropdown">
-              
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i> <span>Appointments List</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="forms-advanced-form.html">All Appointments</a></li>
-                <li><a class="nav-link" href="forms-editor.html">Appointments Detail</a></li>
-                <li><a class="nav-link" href="forms-validation.html">Cancel Appointments</a></li>
-              </ul>
+            <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
                     </aside>
       </div>
 
@@ -632,7 +554,7 @@ session_start();
             </div>
           </div>
 
-            
+            <!--Appointsment List-->
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -732,5 +654,7 @@ session_start();
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
