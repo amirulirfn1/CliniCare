@@ -1,0 +1,47 @@
+
+
+.wrapper {
+	height :300px;
+	width : 300px;
+	position : relative;
+	border : 5px solid #fff;
+	border-radius : 50%;
+	background : url('assets/img/doctors/doctors-1.jpg');
+	background-size : 100% 100%;
+	margin : 100px auto;
+	overflow : hidden;	
+}
+
+.my_file {
+	position : absolute;
+	bottom : 0;
+	outline : none;
+	color : transparent;
+	width : 100%;
+	box-sizing : border-box;
+	padding : 15px 120px ;
+	cursor : pointer;
+	transition : 0.7s;
+	background : rgba(0,0,0,0.5);
+	opacity : 0;
+}
+
+.my_file::-webkit-file-upload-button
+{
+	visibility : hidden;
+}
+
+.my_file::before 
+{
+	font-family: "Font Awesome 5 Free"; 
+	font-weight: 900; 
+	content: "\f030";
+	color : #fff;
+	display : inline-block;
+	-webkit-user-select : none;
+	
+}
+
+.my_file:hover{
+	opacity:1;
+}

@@ -9,6 +9,8 @@ $query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
 $row=mysqli_fetch_array($query);
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,15 +30,21 @@ $row=mysqli_fetch_array($query);
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  
+  <link rel="stylesheet" href="profilePictureStyle.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-  gtag('config', 'UA-94034622-3');
-</script>
+	gtag('config', 'UA-94034622-3');
+  </script>
+  
+  
 <style>
   
 .error {
@@ -58,6 +66,7 @@ $row=mysqli_fetch_array($query);
    margin: 16px auto;
    font-size: 14px;
 }
+
 
 </style>
 <!-- /END GA --></head>
@@ -276,10 +285,11 @@ $row=mysqli_fetch_array($query);
             <div class="row mt-sm-4">
               <div class="col-12 col-md-12 col-lg-5">
                 <div class="card profile-widget">
-                  <div class="profile-widget-header">                     
+				
+				  <div class="profile-widget-header">                     
                     <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle profile-widget-picture">
-                    
                   </div>
+
                   <div class="profile-widget-description">
                     <div class="profile-widget-name">Hi, <?php echo $row['name']; ?>! 
 					<div class="text-muted d-inline font-weight-normal">
@@ -393,6 +403,25 @@ $row=mysqli_fetch_array($query);
                 </div>
               </div>
 			  
+			  <div>
+				<form action = "upload.php"
+					  method = "POST"
+					  enctype = "multipart/form-data">
+					  
+					  <input type = "file"
+					         name = "my_image">
+							 
+					  <input type = "submitPicture"
+					         name = "submitPicture"
+							 value = "Upload">
+				</form>
+			  </div>
+			  <!--<div class="wrapper">   
+                    <input type = "file" class = "my_file" >
+              </div>
+			  <!-- <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
+				Upload File
+				</button>  -->
             </div>
           </div>
         </section>
@@ -427,5 +456,6 @@ $row=mysqli_fetch_array($query);
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+
 </body>
 </html>
