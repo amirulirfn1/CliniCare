@@ -140,7 +140,7 @@ $row=mysqli_fetch_array($query);
  
 <!-- MAIN CONTENT -->  
   <main id="main">
-	<br><br><br><br><br><br><br>
+	<br><br><br><br><br>
 	
 	
      <!-- ======= Main My Profile Section ======= -->

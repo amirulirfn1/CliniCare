@@ -138,6 +138,7 @@ $row=mysqli_fetch_array($query);
             <div class="content" >
                 
               <h3>Ear, Nose & Throat</h3>
+			  <br><br>
 			  <i><img src="gambar/Ear-Nose-Throat-icons.png"  class="center" width="280" alt=""></i>
             </div>
           </div>
@@ -147,24 +148,30 @@ $row=mysqli_fetch_array($query);
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Acetin.jpg" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Acetin Sachet 5g</h4>
+                    <h4>Acetin Sachet 5g Tablet</h4>
+					<h5>RM 1.70</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/med7.jpg" class="img-fluid" alt=""></i>
-					<br><br>
                     <h4>Breacol Cough Syrup</h4>
+					<h5>RM 10.30</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/acetylcysteinesandoz.png" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Acetylcysteine Sandoz 600mg Tablet</h4>
+                    <h4>Acetylcysteine Tablet</h4>
+					<h5>RM 38.00</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
@@ -178,6 +185,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Fever, Pain & More</h3>
+			  <br><br>
               <i><img src="gambar/fever.png"  class="center"  alt=""></i>
             </div>
           </div>
@@ -187,24 +195,30 @@ $row=mysqli_fetch_array($query);
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Acugesic.png" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Acugesic 50mg Tablet.</h4>
+                    <h4>Acugesic 50mg Tablet</h4>
+					<h5>RM 15.80</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                    <i><img src="gambar/apo.jpg" class="img-fluid" alt=""></i>
-					<br><br>
                     <h4>Apo-Sumatriptan 50mg Tablet</h4>
+					<h5>RM 40.70</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Actimax.png" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Actimax 500 Tablet</h4>
+                    <h4>Actimax 500 <br> Tablet</h4>
+					<h5>RM 2.20</h5>
+					<br>
+					<i class="fa fa-shopping-cart"  style="font-size:36px; color:black; cursor:pointer; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
@@ -218,6 +232,7 @@ $row=mysqli_fetch_array($query);
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Pregnancy</h3>
+			  <br>
               <i><img src="gambar/pregnancy.png"  class="center" width="297" alt=""></i>
             </div>
           </div>
@@ -227,24 +242,30 @@ $row=mysqli_fetch_array($query);
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Appeton.jpg" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Appeton Essentials Folic Acid Tablet</h4>
+                    <h4>Appeton Folic Acid Tablet</h4>
+					<h5>RM 43.40</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                    <i><img src="gambar/cell.png" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Cell Labs ProbiDefendum Sachet</h4>
+                    <h4>Cell Labs ProbiDefendum</h4>
+					<h5>RM 115.20</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/blackmores.jpg" class="img-fluid" alt=""></i>
-					<br><br>
                     <h4>Blackmores Proceive Care</h4>
+					<h5>RM 94.50</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
@@ -267,24 +288,30 @@ $row=mysqli_fetch_array($query);
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/aspira.png" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Aspira 10mg Tablet</h4>
+                    <h4>Aspira 10mg <br> Tablet</h4>
+					<h5>RM 35.00</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                    <i><img src="gambar/Alleryl.png" class="img-fluid" alt=""></i>
-					<br><br>
                     <h4>Alleryl 4mg/5ml Syrup</h4>
+					<h5>RM 4.00</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
 				
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/anoro.png" class="img-fluid" alt=""></i>
-					<br><br>
-                    <h4>Anoro Ellipta 62.5/25mcg Accuhaler</h4>
+                    <h4>Anoro Ellipta 25mcg Accuhaler</h4>
+					<h5>RM 171.60</h5>
+					<br>
+					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>

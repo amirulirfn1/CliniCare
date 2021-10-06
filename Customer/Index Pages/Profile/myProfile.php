@@ -161,7 +161,7 @@ $row=mysqli_fetch_array($query);
  
 <!-- MAIN CONTENT -->  
   <main id="main">
-	<br><br><br><br><br><br><br>
+	<br><br><br><br><br>
 	
 	
      <!-- ======= Main My Profile Section ======= -->
@@ -170,9 +170,6 @@ $row=mysqli_fetch_array($query);
 		
 		<div class="section-title">
           <h2>My Profile</h2>
-          <p><strong>Disclaimer :
-		  </strong> Each individual’s treatment and/or results may vary. 
-		  Please consult doctor for more details.</p>
         </div>
 		
         <div class="container rounded bg-white mt-5 mb-5">
