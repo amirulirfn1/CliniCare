@@ -1,7 +1,13 @@
 <?php
 
+$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 session_start();
+$email = $_GET['emailhidden'];
+$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+$row=mysqli_fetch_array($query);
 ?>
+
+<?php echo $email ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -227,14 +233,14 @@ session_start();
                   <div class="card-body">
                     <div class="form-group">
                       <label>Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" value="<?php echo $row['name']; ?>">
                     </div>
                     <div class="form-group">
                       <label>Phone Number</label>
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone"><?php ?></i>
                           </div>
                         </div>
                         <input type="text" class="form-control phone-number">

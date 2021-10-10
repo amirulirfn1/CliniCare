@@ -103,7 +103,7 @@ $row=mysqli_fetch_array($query);
                 <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
 				  <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Make an Appointment</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
                   <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li>
 				  <a><button type="submit" href="#" 
                      style="background: transparent; border: none; padding: 0; 

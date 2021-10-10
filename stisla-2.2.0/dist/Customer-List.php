@@ -1,13 +1,13 @@
 <?php
-
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Bootstrap Components &rsaquo; Table &mdash; Stisla</title>
+  <title>Customer List | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -228,43 +228,43 @@ session_start();
                       <thead>
                         <tr>
                           <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
                           <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>
-                            <a href="Edit-Customer.php" class="btn btn-icon btn-primary"><i class="far fa-edit"><h7> Edit<h7></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>
-                          <a href="Edit-Customer.php" class="btn btn-icon btn-primary"><i class="far fa-edit"><h7> Edit<h7></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>
-                          <a href=Edit-Customer.php class="btn btn-icon btn-primary"><i class="far fa-edit"><h7> Edit<h7></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
+
+                      <?php
+                      $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+                      $sql = "SELECT * FROM customer order by name";
+                      $result = mysqli_query($con,$sql);
+                      $x = 1;
+                                while($row = mysqli_fetch_array($result))
+                                
+                                {
+                                    echo "<tr>
+                                    <td> $x </td>
+                                    <td> " . $row['name'] . "</td>
+                                    <td> " . $row['email'] . "</td>";
+                                    $email = $row['email'];
+
+                                    $customerS = $row['email'];
+                                    echo "<td>";
+                                       echo '<form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">';
+                                       echo "<button type='submit' name='editCustomer' class='btn btn-icon btn-primary'><i class='far fa-edit'><h7> Edit<h7></i></button>
+                                             <button type='submit' name='deleteCustomer' class='btn btn-icon btn-danger'><i class='fas fa-times'><h7> Delete <h7></i></button>";
+                                       echo "<input type='hidden' name='emailhidden' value= ". $customerS . "  </input>";
+                                       echo '</form>';
+                                       echo "</td>";
+                                       
+                                    echo "</tr>";
+                                    
+                                    $x++;
+                                }
+
+                      ?>
+                        
                       </tbody>
                     </table>
                         </tbody>

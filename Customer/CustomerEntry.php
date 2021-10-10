@@ -38,6 +38,16 @@ else if(isset($_POST['updateProfileAdmin']))
     updateProfileAdmin($_POST['updateProfileAdmin']);
 }
 
+else if(isset($_POST['deleteCustomer']))
+{
+    deleteCustomer($_POST['deleteCustomer']);
+}
+
+else if(isset($_POST['editCustomer']))
+{
+    header ("Location: /MasterCliniCare/stisla-2.2.0/dist/Edit-Customer.php");
+
+}
 ?>
 
 <?php
@@ -216,8 +226,8 @@ margin: 0 !important;
 
         mail($to, $subject, $htmlContent, $headers);
 
-        $sql2 = "INSERT INTO user (email, password, usertype)
-                            VALUES('$email', '$password', 'customer')";
+        $sql2 = "INSERT INTO user (email, usertype)
+                            VALUES('$email', 'customer')";
                             if($con->query($sql2) === TRUE)
 							{
 								//kalau dah successful buat sign up, keluar page ni
@@ -267,7 +277,7 @@ function signin()
 
         if ($verified == 1) {
 
-            $sql3 = $mysqli->query("SELECT * FROM user WHERE email = '$email' AND password = '$password'");
+            $sql3 = $mysqli->query("SELECT * FROM user WHERE email = '$email'");
 
             if ($sql3->num_rows != 0) {
 
@@ -477,5 +487,36 @@ function updateProfileAdmin()
     
 		}
 }   
+
+function deleteCustomer(){
+        $servername = "localhost";
+        $username = "clinicarecustomer";
+        $password = "customer";
+        $dbname = "clinicare";
+
+        $con = new mysqli($servername, $username, $password, $dbname);
+
+        if(!$con)
+		{
+            echo "Error";
+        }
+		
+		else
+		{
+            $email = $_POST['emailhidden'];
+            
+            $sql = "DELETE FROM customer WHERE email = '$email'";
+
+                    if ($con->query($sql) === TRUE) 
+					{
+                        header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
+                    } 
+					
+					else
+					{
+                        echo "error";
+                    }
+		}
+}
 ?>
 
