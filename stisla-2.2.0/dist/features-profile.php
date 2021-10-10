@@ -8,7 +8,15 @@ $email=$_SESSION['email'];
 $query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
 $row=mysqli_fetch_array($query);
 
+if(isset($_POST['submit'])){
+        move_uploaded_file($_FILES['file']['tmp_name'],"pictures/".$_FILES['file']['name']);
+        $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+        $q = mysqli_query($con,"UPDATE customer SET image = '".$_FILES['file']['name']."' WHERE email = '$email'");
+		header( "refresh:0; url=features-profile.php");
+	}
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -286,8 +294,17 @@ $row=mysqli_fetch_array($query);
               <div class="col-12 col-md-12 col-lg-5">
                 <div class="card profile-widget">
 				
-				  <div class="profile-widget-header">                     
-                    <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle profile-widget-picture">
+				  <div class="profile-widget-header"> 
+					
+					<?php
+						echo "<img class='rounded-circle profile-widget-picture' width='100' height='100' src='pictures/".$row['image']."' alt='Profile Pic'>";
+					?>	  
+                    
+					
+					<form action="" method="post" enctype="multipart/form-data">
+						<input type="file" name="file">
+						<input type="submit" name="submit">
+					</form>	
                   </div>
 
                   <div class="profile-widget-description">
@@ -403,25 +420,6 @@ $row=mysqli_fetch_array($query);
                 </div>
               </div>
 			  
-			  <div>
-				<form action = "upload.php"
-					  method = "POST"
-					  enctype = "multipart/form-data">
-					  
-					  <input type = "file"
-					         name = "my_image">
-							 
-					  <input type = "submitPicture"
-					         name = "submitPicture"
-							 value = "Upload">
-				</form>
-			  </div>
-			  <!--<div class="wrapper">   
-                    <input type = "file" class = "my_file" >
-              </div>
-			  <!-- <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
-				Upload File
-				</button>  -->
             </div>
           </div>
         </section>
@@ -459,3 +457,4 @@ $row=mysqli_fetch_array($query);
 
 </body>
 </html>
+
