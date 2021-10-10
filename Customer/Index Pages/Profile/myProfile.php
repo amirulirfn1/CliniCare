@@ -4,8 +4,13 @@ session_start();
 $email=$_SESSION['email'];
 $query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
 $row=mysqli_fetch_array($query);
+if(isset($_POST['submit'])){
+move_uploaded_file($_FILES['file']['tmp_name'],"pictures/".$_FILES['file']['name']);
+$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+$q = mysqli_query($con,"UPDATE customer SET image = '".$_FILES['file']['name']."' WHERE email='$email' ");
+header( "refresh:0; url=myProfile.php");
+}
 ?>
-
 
 <!-- PAGE FOR MY PROFILE CUSTOMER -->
 
@@ -73,6 +78,9 @@ $row=mysqli_fetch_array($query);
    font-size: 16px;
 }
 
+.img {
+	
+}
 </style>
 </head>
 
@@ -176,9 +184,18 @@ $row=mysqli_fetch_array($query);
 		
 		<div class="row">
         <div class="col-md-3 border-right">
+
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-			<img class="rounded-circle mt-5" width="150px" 
-			src="../assets/img/testimonials/testimonials-2.jpg">
+			<?php
+                        echo "<img class='rounded-circle profile-widget-picture' width='100' height='100' src='pictures/".$row['image']."' alt='Profile Pic'>";
+                    ?>
+		 
+			
+			<form action="" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" name="submit">
+        </form>
+					
 			<br>
 			<span class="font-weight-bold"><?php echo $row['name']; ?></span>
 			<span class="text-black-50"><?php echo $row['email']; ?></span>
@@ -304,6 +321,7 @@ $row=mysqli_fetch_array($query);
 
         </div>
 	   </div>
+
     </section><!-- End Testimonials Section -->
 
   </main><!-- End #main -->
@@ -347,3 +365,4 @@ $row=mysqli_fetch_array($query);
 </body>
 
 </html>
+
