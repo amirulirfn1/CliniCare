@@ -251,7 +251,7 @@ session_start();
 
                                     $customerS = $row['email'];
                                     echo "<td>";
-                                       echo '<form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">';
+                                       echo '<form action="../AdminEntry.php" method="POST">';
                                        echo "<button type='submit' name='editCustomer' class='btn btn-icon btn-primary'><i class='far fa-edit'><h7> Edit<h7></i></button>
                                              <button type='submit' name='deleteCustomer' class='btn btn-icon btn-danger'><i class='fas fa-times'><h7> Delete <h7></i></button>";
                                        echo "<input type='hidden' name='emailhidden' value= ". $customerS . "  </input>";

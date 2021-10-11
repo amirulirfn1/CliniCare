@@ -365,7 +365,7 @@ if(isset($_POST['submit'])){
               <div class="col-12 col-md-12 col-lg-7">
                 <div class="card">
                   <form method="post" class="needs-validation" 
-				  action="/MasterCliniCare/Customer/CustomerEntry.php" novalidate="">
+				  action="../AdminEntry.php" novalidate="">
                     
 					<div class="card-header">
                       <h4>Edit Profile</h4>
