@@ -4,6 +4,7 @@ session_start();
 $email=$_SESSION['email'];
 $query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
 $row=mysqli_fetch_array($query);
+
 if(isset($_POST['submit'])){
 move_uploaded_file($_FILES['file']['tmp_name'],"pictures/".$_FILES['file']['name']);
 $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");

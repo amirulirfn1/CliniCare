@@ -230,12 +230,16 @@ session_start();
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col">Email</th>
-                          <th scope="col">Action</th>
+						  <th scope="col">Phone Number</th>
+						  <th scope="col">IC Number</th>
+                          <th scope="col">Delete</th>
+						  <th scope="col">Edit</th>
+						  
                         </tr>
                       </thead>
                       <tbody>
 
-                      <?php
+				<?php
                       $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
                       $sql = "SELECT * FROM customer order by name";
                       $result = mysqli_query($con,$sql);
@@ -243,22 +247,35 @@ session_start();
                                 while($row = mysqli_fetch_array($result))
                                 
                                 {
-                                    echo "<tr>
-                                    <td> $x </td>
-                                    <td> " . $row['name'] . "</td>
-                                    <td> " . $row['email'] . "</td>";
-                                    $email = $row['email'];
+                                    echo "<tr>";
+										echo "<td> $x </td>";
+										echo "<td>".$row['name']."</td>";
+										echo "<td>".$row['email']."</td>";
+										echo "<td>".$row['phoneNumber']."</td>";
+										echo "<td>".$row['ICnumber']."</td>";
+
+                                    /* $email = $row['email']; */
 
                                     $customerS = $row['email'];
-                                    echo "<td>";
-                                       echo '<form action="../AdminEntry.php" method="POST">';
-                                       echo "<button type='submit' name='editCustomer' class='btn btn-icon btn-primary'><i class='far fa-edit'><h7> Edit<h7></i></button>
-                                             <button type='submit' name='deleteCustomer' class='btn btn-icon btn-danger'><i class='fas fa-times'><h7> Delete <h7></i></button>";
-                                       echo "<input type='hidden' name='emailhidden' value= ". $customerS . "  </input>";
-                                       echo '</form>';
-                                       echo "</td>";
-                                       
-                                    echo "</tr>";
+
+					
+									echo '<td><form action="../AdminEntry.php" method="POST">';
+										echo '<input type="hidden" name="emailToDelete" 
+												value="'.$customerS.'" >';
+										echo '<button type="submit" value="Delete Customer" 
+												name="deleteCustomer" class="btn btn-icon btn-danger">
+												<i class="fas fa-times"><h7> Delete <h7></i></button>';
+									echo '</form></td>';
+									
+									echo '<td><form action="tryEditCustomer.php" method="POST">';
+										echo '<input type="hidden" name="staffIdToUpdate" 
+												value="'.$customerS.'" >';
+										echo '<button type="submit" value="Kemaskini" 
+												name="updateStaffButton" class="btn btn-icon btn-primary">
+												<i class="fas fa-edit"><h7> Edit <h7></i></button>';
+									echo '</form></td>';
+                                    
+									echo "</tr>";
                                     
                                     $x++;
                                 }

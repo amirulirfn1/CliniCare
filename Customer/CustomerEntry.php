@@ -56,15 +56,15 @@ function signup()
         $phoneNumber = $_POST['phoneNumber'];
         $icNumber = $_POST['icNumber'];
         $birthDate = $_POST['birthDate'];
-
+		
+		
         $password = md5($password);
         //Generate Vkey
         $vkey = md5(time() . $name);
 
-        $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, vkey)  
-                    VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '', '$vkey' )";
+        $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)  
+                    VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '','', '$vkey' )";
                     
-
     }
 
     if ($con->query($sql) === TRUE) 

@@ -12,12 +12,14 @@ else if(isset($_POST['editCustomer']))
 
 }
 
-else if(isset($_POST['updateProfileAdmin']))
+else if(isSet($_POST['updateStaffButton']))
 {
-    updateProfileAdmin($_POST['updateProfileAdmin']);
+	updateProfileAdmin($_POST['updateProfileAdmin']);
 }
 
 ?>
+
+
 <?php
 
 function deleteCustomer(){
@@ -35,7 +37,7 @@ function deleteCustomer(){
 		
 		else
 		{
-            $email = $_POST['emailhidden'];
+            $email = $_POST['emailToDelete'];
             
             $sql = "DELETE FROM customer WHERE email = '$email'";
 
@@ -75,16 +77,16 @@ function updateProfileAdmin()
             $phoneNumber = $_POST['phoneNumber'];
             $icNumber = $_POST['icNumber'];
             $birthDate = $_POST['birthDate'];
-            $address = $_POST['address'];
+            /* $address = $_POST['address']; */
 
-            $password = md5($password);
+            /* $password = md5($password); */
 
-            $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
+            $sql = "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
                     if ($con->query($sql) === TRUE) 
 					{
-                        header("Location: /MasterCliniCare/stisla-2.2.0/dist/features-profile.php");
+                        header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
                     } 
 					
 					else
