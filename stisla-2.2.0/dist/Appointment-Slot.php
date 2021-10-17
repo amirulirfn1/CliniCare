@@ -16,6 +16,7 @@ session_start();
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="assets/modules/prism/prism.css">
+  <link rel="stylesheet" href="assets/modules/fullcalendar/fullcalendar.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -193,8 +194,8 @@ session_start();
           </li>
         </ul>
       </nav>
-      <!--SideBar-->
-      <div class="main-sidebar sidebar-style-2">
+     <!--SideBar-->
+     <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.php">C L I N I C A R E</a>
@@ -213,83 +214,44 @@ session_start();
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Appointments List</h1>
+            <h1>Calendar</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Customer List</a></div>
-              <div class="breadcrumb-item">Table</div>
+              <div class="breadcrumb-item"><a href="#">Modules</a></div>
+              <div class="breadcrumb-item">Calendar</div>
             </div>
           </div>
-           <div class="card">
+
+          <div class="section-body">
+            <h2 class="section-title">Appointments Slot Calendar</h2>
+            <p class="section-lead">
+              <a href="https://fullcalendar.io/"></a>.
+            </p>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Calendar</h4>
+                  </div>
                   <div class="card-body">
-                    <div class="section-title mt-0">All Appointments</div>
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">Customer Id</th>
-                          <th scope="col">Username</th>
-                          <th scope="col">Date/Times</th>
-                          <th scope="col">Service</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>
-                          <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"> Info</i></a>
-                          <a href="#" class="btn btn-icon btn-success"><i class="fas fa-check"> Success</i></a>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                          <td>
-                          <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"> Info</i></a>
-                          <a href="#" class="btn btn-icon btn-success"><i class="fas fa-check"> Success</i></a>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                          <td>
-                          <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"> Info</i></a>
-                          <a href="#" class="btn btn-icon btn-success"><i class="fas fa-check"> Success</i></a>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                        </tbody>
-                      </table>
+                    <div class="fc-overflow">                            
+                      <div id="myEvent"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-          <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-          </div>
-        <div class="footer-right">
-          
+        <!-- Footer-->
+            
+      <footer class="footer">
+        <div class="container-fluid clearfix">
+    &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
         </div>
       </footer>
-    </div>
-  </div>
+            </section>
+      </div>
 
   <!-- General JS Scripts -->
   <script src="assets/modules/jquery.min.js"></script>
@@ -301,11 +263,11 @@ session_start();
   <script src="assets/js/stisla.js"></script>
   
   <!-- JS Libraies -->
-  <script src="assets/modules/prism/prism.js"></script>
+  <script src="assets/modules/fullcalendar/fullcalendar.min.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/bootstrap-modal.js"></script>
-
+	<script src="assets/js/page/modules-calendar.js"></script>
+  
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>

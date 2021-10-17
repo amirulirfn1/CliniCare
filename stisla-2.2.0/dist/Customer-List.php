@@ -205,7 +205,7 @@ session_start();
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>View Purchase Medicine</span></a></li>
+            <li><a class="nav-link" href="Appointment-Slot.php"><i class="far fa-square"></i> <span>Appointments Slot</span></a></li>
             <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
                     </aside>
       </div>
