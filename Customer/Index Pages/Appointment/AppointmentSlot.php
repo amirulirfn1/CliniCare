@@ -60,8 +60,7 @@ $row=mysqli_fetch_array($query);
    border-radius: 5px;
    margin: 20px auto;
    font-size: 16px;
-   
-}
+  }
 
 .success {
    background: #D4EDDA;
@@ -74,6 +73,23 @@ $row=mysqli_fetch_array($query);
 }
 
 </style>
+<script src="index.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script>
+    function enable(){
+      if (document.getElementById("terms").checked){
+        document.getElementById("bookApp").disabled = false;
+      }else{
+        document.getElementById("bookApp").disabled = true;
+        }
+    }
+    function change_date(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", "ajax.php?date="+document.getElementById("Sdate").value, false);
+        xmlhttp.send(null);
+        document.getElementById("time").innerHTML=xmlhttp.responseText;
+    }
+</script>
 </head>
 
 <body>
@@ -106,7 +122,7 @@ $row=mysqli_fetch_array($query);
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
 		  <ul>
@@ -175,17 +191,8 @@ $row=mysqli_fetch_array($query);
         <div class="container rounded bg-white mt-5 mb-5">
 		
 		<div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-			<img class="rounded-circle mt-5" width="150px" 
-			src="../assets/img/testimonials/testimonials-2.jpg">
-			<br>
-			<span class="font-weight-bold"><?php echo $row['name']; ?></span>
-			<span class="text-black-50"><?php echo $row['email']; ?></span>
-			<span> </span></div>
-        </div>
 		
-        <div class="col-md-5 border-right">
+        <div class="col-md-8 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Personal Info</h4>
@@ -207,7 +214,7 @@ $row=mysqli_fetch_array($query);
 						<br>
 						<label class="labels" style = "font-size: 12px">Name</label>
 						<input type="text" class="form-control" 
-						name="name" id="name" value= "<?php echo $row['name']; ?>" >
+						name="name" id="name" value= "<?php echo $row['name']; ?>" disabled >
 					</div>
                 
                     <div class="col-md-12">
@@ -215,7 +222,7 @@ $row=mysqli_fetch_array($query);
 						<label class="labels" style = "font-size: 12px">IC Number</label>
 						<input type="text" class="form-control" 
 						placeholder="xxxxxx-xx-xxxx" name="icNumber" 
-						id="ICnumber" value="<?php echo $row['ICnumber']; ?>" >
+						id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
 					</div>
 					
                     <div class="col-md-12">
@@ -223,30 +230,11 @@ $row=mysqli_fetch_array($query);
 						<label class="labels" style = "font-size: 12px">Contact Number</label>
 						<input type="text" class="form-control" 
 						 placeholder="xxx-xxxxxxx" name="phoneNumber" 
-						 value="<?php echo $row['phoneNumber']; ?>" >
-					</div>
-					
-                    <div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Date of Birth</label>
-						<input type="date" class="form-control" 
-						placeholder="dd/mm/yyyy" name="birthDate" 
-						id="birthDate" value="<?php echo $row['birthDate']; ?>" >
-					</div>
-					
-					<div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Address</label>
-						<input type="text" class="form-control" 
-						name="address" value="<?php echo $row['address']; ?>">
-					</div>
-                    
+						 value="<?php echo $row['phoneNumber']; ?>" disabled >
+					</div>     
+
                 </div>
-		
-                <div class="mt-5 text-center">
-					<button type="submit" name = "update-profile" 
-					class="btn btn-primary profile-button">Update Profile</button>
-				</div>
+
 				</form>
             </div>
         </div>
@@ -254,48 +242,54 @@ $row=mysqli_fetch_array($query);
         <div class="col-md-4 border-left">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Password Changes</h4>
+                    <h4 class="text-right">Set Date & Time</h4>
                 </div>
 				
 				
 					<link rel="stylesheet" type="text/css">
-					     	<?php if (isset($_GET['error'])) { ?>
-     		                <p class="error"><?php echo $_GET['error']; ?></p>
-     	                    <?php } ?>
-
-     	                    <?php if (isset($_GET['success'])) { ?>
-                            <p class="success"><?php echo $_GET['success']; ?></p>
-                            <?php } ?>
+        
+        
 				<p class="card-description"></p>
 				
-				<form class="form-sample" action="change-p.php" method="post">
+				<form class="form-sample" action="AppointmentSlot.php" method="POST">
                 <div class="col-md-12">
-					<label class="label" style = "font-size: 12px">Current Password</label>
-					<input type="password" class="form-control" 
-					placeholder="Password" name="op" aria-label="Username">
+					<label class="labels" style = "font-size: 12px">Choose Date</label>
+					<select id="Sdate" name="date" class="form-control" onchange= "change_date()" required >
+          <option value="">Date</option>
+          <?php
+                    $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 group by date ";
+                    $result = mysqli_query($con,$sql);
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        echo "<option value='{$row['date']}'>".$row['date']."</option>";
+                    }
+                ?>
+          </select>
 				</div> 
 				
 				<br>
 				
-                <div class="col-md-12">
-					<label class="labels" style = "font-size: 12px">New Password</label>
-					<input type="password" pattern=".{8,}" class="form-control"  
-					name="np" placeholder="New Password" aria-label="Username" 
-					title="8 characters minimum">
+        <div class="col-md-12" id="time">
+					<label class="labels" style = "font-size: 12px">Choose Time</label>
+					<select name="time" class="form-control"  required>
+            <option value="" >Time</option>
+          </select>
+				</div><br>
+
+        <div class="col-md-12">
+					<label class="labels" style = "font-size: 12px">Terms & Conditions</label><br>
+          
+          <a href="https://www.freeprivacypolicy.com/live/791fefe3-a182-4375-a661-556ed0eec0d4">Terms & Conditions</a><br><hr>
+					<input type="checkbox" id="terms" onchange= "enable()" required ><span> I've read the terms & conditions</span>
+          </input>
 				</div>
 				
-				<div class="col-md-12">
-					<br>
-					<label class="labels" style = "font-size: 12px">Confirm New Password</label>
-					<input type="password" pattern=".{8,}" class="form-control"  
-					name="c_np" placeholder="Confirm New Password" aria-label="Username" 
-					title="8 characters minimum">
-				</div>
 						
 				<div class="form-group">
 					<br>	
-                    <label class="col-sm-4 col-form-label"></label>
-                    <button type="submit" class="btn btn-primary profile-button">Change</button>
+                    <label class="col-sm-0 col-form-label"></label>
+                    <button type="submit" id="bookApp" class="btn btn-primary profile-button" disabled>Book Now</button>
                 </div>
 				</form>
             </div>

@@ -79,9 +79,6 @@ header( "refresh:0; url=myProfile.php");
    font-size: 16px;
 }
 
-.img {
-	
-}
 </style>
 </head>
 
@@ -153,7 +150,7 @@ header( "refresh:0; url=myProfile.php");
 				  </li>
 				  
                   <li>
-				  <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
+				  <a href="/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php">
 				  Make an Appointment</a>
 				  </li>
 				  

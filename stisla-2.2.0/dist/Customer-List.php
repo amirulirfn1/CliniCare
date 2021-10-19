@@ -241,7 +241,8 @@ session_start();
 
 				<?php
                       $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-                      $sql = "SELECT * FROM customer order by name";
+                      $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber FROM customer 
+                      INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
                       $result = mysqli_query($con,$sql);
                       $x = 1;
                                 while($row = mysqli_fetch_array($result))
