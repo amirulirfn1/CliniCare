@@ -80,6 +80,15 @@ header( "refresh:0; url=myProfile.php");
 }
 
 </style>
+<script>
+  function submitImage(){
+    if (document.getElementById("upload").click){
+        document.getElementById("submit").hidden = false;
+      }else{
+        document.getElementById("submit").hidden = true;
+        }
+  }
+</script>
 </head>
 
 <body>
@@ -112,7 +121,7 @@ header( "refresh:0; url=myProfile.php");
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
 		  <ul>
@@ -185,23 +194,29 @@ header( "refresh:0; url=myProfile.php");
 
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 			<?php
-                        echo "<img class='rounded-circle profile-widget-picture' width='100' height='100' src='pictures/".$row['image']."' alt='Profile Pic'>";
+                        echo "<img width='230' height='280' src='pictures/".$row['image']."' alt='Profile Pic'>";
                     ?>
 		 
 			
-			<form action="" method="post" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" name="submit">
-        </form>
+      <div class="col-md-10">
+						
+						<label class="labels" style = "font-size: 12px">Edit Profile Picture</label>
+
+						  <form action="" method="post" enctype="multipart/form-data">
+            <input id="upload" type="file" name="file"  onchange="submitImage()" ><br>
+            <input id="submit" type="submit" name="submit" hidden="true" >
+              </form>
+
+					</div>
+			
 					
-			<br>
-			<span class="font-weight-bold"><?php echo $row['name']; ?></span>
-			<span class="text-black-50"><?php echo $row['email']; ?></span>
-			<span> </span></div>
+			<hr>
+			
+			</div>
         </div>
 		
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
+        <div class="col-md-5 ">
+            <div class="py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Personal Info</h4>
                 </div>
@@ -258,7 +273,7 @@ header( "refresh:0; url=myProfile.php");
                     
                 </div>
 		
-                <div class="mt-5 text-center">
+                <div class="mt-4 text-left">
 					<button type="submit" name = "update-profile" 
 					class="btn btn-primary profile-button">Update Profile</button>
 				</div>
@@ -309,7 +324,7 @@ header( "refresh:0; url=myProfile.php");
 						
 				<div class="form-group">
 					<br>	
-                    <label class="col-sm-4 col-form-label"></label>
+                    <label class="col-sm-0 col-form-label"></label>
                     <button type="submit" class="btn btn-primary profile-button">Change</button>
                 </div>
 				</form>

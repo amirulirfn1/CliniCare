@@ -17,7 +17,7 @@ $row=mysqli_fetch_array($query);
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Pharmacy - Services | CliniCare</title>
+  <title>Pharmacy | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -86,12 +86,12 @@ $row=mysqli_fetch_array($query);
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Services</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Medical Check-Up</a></li>
+                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
 				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
 				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
@@ -100,14 +100,15 @@ $row=mysqli_fetch_array($query);
 		  </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
-		  <li class="dropdown"><a href="#"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
+		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
 		  <ul>
                   <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
                   <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
 				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
           </ul>
 		  </li>
-          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
+          
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
 			<?php echo "Hello " . $row['name']; ?></span> 
 			<i class="bi bi-chevron-right"></i></a>
@@ -123,7 +124,7 @@ $row=mysqli_fetch_array($query);
 				  </li>
 				  
                   <li>
-				  <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
+				  <a href="/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php">
 				  Make an Appointment</a>
 				  </li>
 				  
@@ -140,7 +141,7 @@ $row=mysqli_fetch_array($query);
  
 <!-- MAIN CONTENT -->  
   <main id="main">
-	<br><br><br><br><br><br><br>
+	<br><br><br><br><br>
 	
 	
      <!-- ======= Main My Profile Section ======= -->
