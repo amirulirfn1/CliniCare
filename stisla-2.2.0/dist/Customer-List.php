@@ -205,8 +205,16 @@ session_start();
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href="Appointment-Slot.php"><i class="far fa-square"></i> <span>Appointments Slot</span></a></li>
-            <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
+            <li><a class="nav-link" href=><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+            <ul class="sidebar-menu">
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
+                <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
+              </ul>
+            </li>
                     </aside>
       </div>
       <!-- Main Content -->
@@ -222,7 +230,6 @@ session_start();
           </div>
            <div class="card">
                   <div class="card-body">
-                  <a class="nav-link" href="Add-Customer.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Add Customer</a>
                     <div class="section-title mt-0">All Customer</div>
                     <table class="table table-bordered">
                       <thead>

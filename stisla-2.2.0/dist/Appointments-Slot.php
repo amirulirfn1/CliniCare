@@ -1,22 +1,15 @@
 <?php
-
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 session_start();
-$email = $_GET['emailhidden'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
-?>
 
-<?php echo $email ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Bootstrap Components &rsaquo; Table &mdash; Stisla</title>
+  <title>Bootstrap Components &rsaquo; Form &mdash; Stisla</title>
 
   <!-- General CSS Files -->
-  <link href="assets/img/icon.jpeg" rel="icon">
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
@@ -68,8 +61,8 @@ $row=mysqli_fetch_array($query);
           </li>
         </ul>
       </nav>
-       <!--SideBar-->
-       <div class="main-sidebar sidebar-style-2">
+      <!--SideBar-->
+      <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.php">C L I N I C A R E</a>
@@ -92,81 +85,52 @@ $row=mysqli_fetch_array($query);
             </li>
                     </aside>
       </div>
-	  
+
       <!-- Main Content -->
-		<div class="main-content">
+      <div class="main-content">
         <section class="section">
           <div class="section-header">
+            <h1>Appointment</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Forms</a></div>
-              <div class="breadcrumb-item">Advanced Forms</div>
+              <div class="breadcrumb-item"><a href="#">Bootstrap Components</a></div>
+              <div class="breadcrumb-item">Form</div>
             </div>
           </div>
-            <div class="col-md-12">
-		
-        <div class="card">
-		<form  action="../AdminEntry.php" method = "POST">
-		
-				  <div class="card-body p-0">
-                    <h2 class="section-title"> <h4>Edit Customer<h4></h2>
-                  </div>
-				  
-				  
-				  
-                  <div class="card-body">
-				  
-				  <div class="form-group">
-                      <label>Email</label>
-                      <input type="text" class="form-control" 
-					  name = "name" value="<?php echo $row['email']; ?>" disabled >
-                    </div>
-					
-					<div class="form-group">
-                      <label>Name</label>
-                      <input type="text" class="form-control" 
-					  name = "name" value= "<?php echo $row['name']; ?>" >
-                    </div>
-					
-                    <div class="form-group">
-                      <label>Contact Number</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                          </div>
-                        </div>
-                        <input type="text" class="form-control phone-number"
-						name = "phoneNumber" value="<?php echo $row['phoneNumber']; ?>" >
-                      </div>
-                    </div>
-					
-                    <div class="form-group">
-                      <label>IC Number</label>
-                      <input type="text" class="form-control invoice-input"
-					  name = "ICnumber" value="<?php echo $row['ICnumber']; ?>" >
-                    </div>
-					
-                    <div class="form-group">
-                      <label>Date of Birth</label>
-                      <input type="date" class="form-control datemask" placeholder="YYYY/MM/DD"
-					  name = "birthDate" value="<?php echo $row['birthDate']; ?>" >
-                    </div>
-                  </div>
 
-				  <div class="col-12 col-sm-12">
-					<div class="card">
-						<div class="card-body text-center">
-							<button class="btn btn-primary" id="swal-2" name="updateStaffButton">Edit</button>
-							<br><br><input type = "submit" value = "Kemaskini" 
-											name="updateStaffButton" class="submit2"> 
-						</div>
-					</div>
-				  </div>
-		</form> 
-        </div>
-         <!-- partial:../../partials/_footer.html -->
-         <footer class="footer">
+          <div class="section-body">
+           
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Add Appointment</h4>
+                  </div>
+                  <a class="nav-link" href="All-Appointment-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> View All Available Appointment Slot</a>
+                  <div class="card-body">
+                    <div class="section-title mt-0">Service</div>
+                    <div class="form-group">
+                      <label>Choose One</label>
+                      <select class="custom-select">
+                        <option selected>Open this select menu</option>
+                        <option value="1">Primary Care</option>
+                        <option value="2">Medical Check-Up</option>
+                        <option value="3">Smoking Cessation</option>
+                        <option value="4">Mom & Baby Care</option>
+                        <option value="5">Pharmacy</option>
+                        <option value="6">Covid-19 Centre</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <div class="section-title mt-0">Date</div>
+                      <input type="datetime-local" class="form-control">
+                    </div>
+                    
+                    <a href="#" class="btn btn.btn-lg btn-success">Submit</a>
+
+                   
+        </section>
+      </div>
+      <!-- partial:../../partials/_footer.html -->
+      <footer class="footer">
           <div class="container-fluid clearfix">
       &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
           </div>
@@ -175,7 +139,6 @@ $row=mysqli_fetch_array($query);
         </div>
       </footer>
     </div>
-	</section>
   </div>
 
   <!-- General JS Scripts -->
@@ -188,10 +151,8 @@ $row=mysqli_fetch_array($query);
   <script src="assets/js/stisla.js"></script>
   
   <!-- JS Libraies -->
-	<script src="assets/modules/sweetalert/sweetalert.min.js"></script>
- 
- <!-- Page Specific JS File -->
-  <script src="assets/js/page/modules-sweetalert.js"></script>
+
+  <!-- Page Specific JS File -->
   
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
