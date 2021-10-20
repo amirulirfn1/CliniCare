@@ -1,15 +1,20 @@
 <?php
-session_start();
-
+	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+	session_start();
+	$email=$_SESSION['email'];
+	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+	$row=mysqli_fetch_array($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Bootstrap Components &rsaquo; Form &mdash; Stisla</title>
+  <title>Add Appointment Slot &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
+  <link href="assets/img/icon.jpeg" rel="icon">
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
@@ -44,7 +49,7 @@ session_start();
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             
 
-            <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div></a>
+            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -73,7 +78,7 @@ session_start();
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href=><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
             <ul class="sidebar-menu">
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
@@ -83,7 +88,7 @@ session_start();
                 <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
               </ul>
             </li>
-                    </aside>
+        </aside>
       </div>
 
       <!-- Main Content -->
@@ -92,9 +97,9 @@ session_start();
           <div class="section-header">
             <h1>Appointment</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Bootstrap Components</a></div>
-              <div class="breadcrumb-item">Form</div>
+              <div class="breadcrumb-item active"><a href="index.php">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="#">Appointment</a></div>
+              <div class="breadcrumb-item">Add Appointment Slot</div>
             </div>
           </div>
 
@@ -151,8 +156,10 @@ session_start();
   <script src="assets/js/stisla.js"></script>
   
   <!-- JS Libraies -->
-
-  <!-- Page Specific JS File -->
+	<script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+ 
+ <!-- Page Specific JS File -->
+  <script src="assets/js/page/modules-sweetalert.js"></script>
   
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>

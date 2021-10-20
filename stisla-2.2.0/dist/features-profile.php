@@ -94,7 +94,7 @@ if(isset($_POST['submit'])){
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             
 
-            <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div></a>
+            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -123,7 +123,7 @@ if(isset($_POST['submit'])){
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i></i><span>Customer List</span></a></li>
             <li><a class="nav-link" href=><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
             <ul class="sidebar-menu">
             <li class="dropdown">
@@ -317,7 +317,8 @@ if(isset($_POST['submit'])){
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 

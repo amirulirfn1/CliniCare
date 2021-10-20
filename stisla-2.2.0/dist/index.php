@@ -1,14 +1,17 @@
 <?php
-
-session_start();
-
+	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+	session_start();
+	$email=$_SESSION['email'];
+	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+	$row=mysqli_fetch_array($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Ecommerce Dashboard &mdash; Stisla</title>
+  <title>Dashboard &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -48,9 +51,7 @@ session_start();
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            
-
-            <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div></a>
+            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -79,7 +80,7 @@ session_start();
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href=><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
             <ul class="sidebar-menu">
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
@@ -89,7 +90,7 @@ session_start();
                 <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
               </ul>
             </li>
-                    </aside>
+        </aside>
       </div>
       <!-- Main Content -->
       <div class="main-content">

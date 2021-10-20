@@ -1,13 +1,17 @@
 <?php
-session_start();
-
+	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+	session_start();
+	$email=$_SESSION['email'];
+	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+	$row=mysqli_fetch_array($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Customer List | CliniCare</title>
+  <title>Customer List &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -42,143 +46,17 @@ session_start();
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
         </form>
+		
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Messages
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-message">
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/doctors/doctors-2.jpg" class="rounded-circle">
-                    <div class="is-online"></div>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Atiqah Syikin Amirah</b>
-                    <p>Hello, Bro!</p>
-                    <div class="time">10 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/doctors/doctors-3.jpg" class="rounded-circle">
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Aiman Yoga</b>
-                    <p>Stock Ketum Dah Masuk Ke?</p>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/doctors/doctors-4.jpg" class="rounded-circle">
-                    <div class="is-online"></div>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Putri Intan Payung Indah Zulaikha Odelia Ladasyia Absyari</b>
-                    <p>Tolong Check Appointments please</p>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-4.png" class="rounded-circle">
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Ardian Rahardiansyah</b>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
-                    <div class="time">16 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-avatar">
-                    <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle">
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Alfa Zulkarnain</b>
-                    <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                    <div class="time">Yesterday</div>
-                  </div>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Notifications
-                <div class="float-right">
-                  <a href="#">Mark All As Read</a>
-                </div>
-              </div>
-              <div class="dropdown-list-content dropdown-list-icons">
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <div class="dropdown-item-icon bg-primary text-white">
-                    <i class="fas fa-code"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    Template update is available now!
-                    <div class="time text-primary">2 Min Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-info text-white">
-                    <i class="far fa-user"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>You</b> and <b>Dedik Sugiharto</b> are now friends
-                    <div class="time">10 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-success text-white">
-                    <i class="fas fa-check"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-danger text-white">
-                    <i class="fas fa-exclamation-triangle"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    Low disk space. Let's clean it!
-                    <div class="time">17 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <div class="dropdown-item-icon bg-info text-white">
-                    <i class="fas fa-bell"></i>
-                  </div>
-                  <div class="dropdown-item-desc">
-                    Welcome to Stisla template!
-                    <div class="time">Yesterday</div>
-                  </div>
-                </a>
-              </div>
-              <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
-              </div>
-            </div>
-          </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat!</div></a>
+            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
+
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              <a href="features-activities.html" class="dropdown-item has-icon">
-                <i class="fas fa-bolt"></i> Activities
-              </a>
+
               <a href="features-settings.html" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Settings
               </a>
@@ -193,6 +71,7 @@ session_start();
           </li>
         </ul>
       </nav>
+	  
       <!--SideBar-->
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
@@ -204,8 +83,8 @@ session_start();
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href=><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i></i><span>Customer List</span></a></li>
+            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
             <ul class="sidebar-menu">
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
@@ -303,13 +182,11 @@ session_start();
         </section>
       </div>
         <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
+      <footer class="footer">
           <div class="container-fluid clearfix">
       &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
           </div>
-        <div class="footer-right">
-          
-        </div>
+        <div class="footer-right"></div>
       </footer>
     </div>
   </div>

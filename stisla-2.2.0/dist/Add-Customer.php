@@ -1,13 +1,17 @@
 <?php
-
-session_start();
+	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+	session_start();
+	$email=$_SESSION['email'];
+	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
+	$row=mysqli_fetch_array($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Bootstrap Components &rsaquo; Table &mdash; Stisla</title>
+  <title>All Appointment Slot &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
