@@ -17,6 +17,16 @@ else if(isSet($_POST['updateStaffButton']))
 	updateProfileAdmin($_POST['updateProfileAdmin']);
 }
 
+else if(isSet($_POST['closeAppointment']))
+{
+	closeAppointment($__POST['closeAppointment']);
+}
+
+else if(isSet($_POST['openAppointment']))
+{
+	openAppointment($__POST['openAppointment']);
+}
+
 ?>
 
 
@@ -39,7 +49,7 @@ function deleteCustomer(){
 		{
             $email = $_POST['emailToDelete'];
             
-            $sql = "DELETE FROM customer WHERE email = '$email'";
+            $sql = "DELETE FROM customer WHERE email = '$email' ";
 
                     if ($con->query($sql) === TRUE) 
 					{
@@ -96,4 +106,68 @@ function updateProfileAdmin()
     
 		}
 }   
+
+function closeAppointment(){
+
+    $servername = "localhost";
+        $username = "clinicarecustomer";
+        $password = "customer";
+        $dbname = "clinicare";
+
+        $con = new mysqli($servername, $username, $password, $dbname);
+
+        if(!$con)
+		{
+            echo "Error";
+        }
+		
+		else
+		{
+            $appSId = $_POST['appToClose'];
+            
+            $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = '$appSId' ";
+
+                    if ($con->query($sql) === TRUE) 
+					{
+                        header("refresh:0; url=dist/All-Appointment-Slot.php");
+                    } 
+					
+					else
+					{
+                        echo "error";
+                    }
+		}
+}
+
+function openAppointment(){
+
+    $servername = "localhost";
+        $username = "clinicarecustomer";
+        $password = "customer";
+        $dbname = "clinicare";
+
+        $con = new mysqli($servername, $username, $password, $dbname);
+
+        if(!$con)
+		{
+            echo "Error";
+        }
+		
+		else
+		{
+            $appSId = $_POST['appToOpen'];
+            
+            $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = '$appSId' ";
+
+                    if ($con->query($sql) === TRUE) 
+					{
+                        header("refresh:0; url=dist/All-Appointment-Slot.php");
+                    } 
+					
+					else
+					{
+                        echo "error";
+                    }
+		}
+}
 ?>

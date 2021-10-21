@@ -258,7 +258,7 @@ $row=mysqli_fetch_array($query);
           <option value="">Date</option>
           <?php
                     $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 group by date ";
+                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 group by date ";
                     $result = mysqli_query($con,$sql);
                     while($row = mysqli_fetch_array($result))
                     {

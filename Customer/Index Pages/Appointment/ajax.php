@@ -1,7 +1,7 @@
 <?php
 $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 $date = $_GET["date"];
-$sql = "select time from appointmentslot WHERE date = '$date' AND status = 0";
+$sql = "select time from appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
 if($date!=""){
     $result = mysqli_query($con, $sql);
     echo "<div class='col-md-12' id='time'>";

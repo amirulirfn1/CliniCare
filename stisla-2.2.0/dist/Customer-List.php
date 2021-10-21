@@ -154,11 +154,11 @@
 												<i class="fas fa-times"><h7> Delete <h7></i></button>';
 									echo '</form></td>';
 									
-									echo '<td><form action="tryEditCustomer.php" method="POST">';
+									echo '<td><form action="../AdminEntry.php" method="POST">';
 										echo '<input type="hidden" name="staffIdToUpdate" 
 												value="'.$customerS.'" >';
-										echo '<button type="submit" value="Kemaskini" 
-												name="updateStaffButton" class="btn btn-icon btn-primary">
+										echo '<button type="submit" value="editCustomer" 
+												name="editCustomer" class="btn btn-icon btn-primary">
 												<i class="fas fa-edit"><h7> Edit <h7></i></button>';
 									echo '</form></td>';
                                     

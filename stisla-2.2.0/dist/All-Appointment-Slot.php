@@ -11,7 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>All Appointment Slot &mdash; CliniCare</title>
+  <title>Available Slot &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -95,7 +95,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Appointments List</h1>
+            <h1>Available Appointments</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="index.php">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Appointment</a></div>
@@ -108,36 +108,62 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr>
-                          <th scope="col">Service</th>
-                          <th scope="col">Date and Time</th>
-                          <th scope="col">Action</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>
-                        
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>
-                            <a href="#" class="btn btn-icon btn-danger"  data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times"><h7> Cancel <h7></i></a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                      <?php
+                      $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+                      $sql = "SELECT * FROM appointmentslot";
+                      $result = mysqli_query($con,$sql);
+                      $x = 1;
+                      
+                                while($row = mysqli_fetch_array($result))
+                                {
+                                  
+                    echo "<tr>";
+                    echo "<td>".$row['appSId']."</td>";
+										echo "<td>".$row['date']."</td>";
+										echo "<td>".$row['time']."</td>";
+
+                    if ($row['count'] > 0){
+                      if($row['status']  == 0){
+                        echo "<td style='color:#00D100'>Available (".$row['count'].")</td>";
+                      }else{
+										  echo "<td style='color:#D10000'>Closed </td>";
+                    }
+                  }else{
+                      echo "<td style='color:#D10000'>Unavailable (".$row['count'].")</td>";
+                    }
+
+
+                    $appSId = $row['appSId'];
+
+					
+									echo '<td><form action="../AdminEntry.php" method="POST">';
+
+										echo '<input type="hidden" name="appToClose" 
+												value="'.$appSId.'" >';
+										echo '<button type="submit" value="Close Appointment" 
+												name="closeAppointment" class="btn btn-icon btn-danger">
+												<h7> Set Closed <h7></button>';
+
+                        echo '<input type="hidden" name="appToOpen" 
+												value="'.$appSId.'" >';
+										echo '<button type="submit" value="Open Appointment" 
+												name="openAppointment" class="btn btn-icon btn-success">
+												<h7> Set Opened <h7></button>';
+									echo '</form></td>';
+                                    
+									echo "</tr>";
+                                    
+                                }
+
+                      ?>
                         </tbody>
                       </table>
                     </div>
