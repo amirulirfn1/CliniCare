@@ -1,10 +1,12 @@
-
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Bootstrap Components &rsaquo; Table &mdash; Stisla</title>
+  <title>Edit Profile | Admin</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -90,68 +92,64 @@
           <div class="section-header">
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Forms</a></div>
-              <div class="breadcrumb-item">Advanced Forms</div>
+              <div class="breadcrumb-item"><a href="#">Customers</a></div>
+              <div class="breadcrumb-item">Edit Profile</div>
             </div>
           </div>
             <div class="col-md-12">
 		<?php
-			include "tryEditFunction.php";
-			$staffQry = getStaffInformation($_POST['staffIdToUpdate']);
-			$staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
+			include "EditFunction.php";
+			$Qry = getCustomerInfo($_POST['customerToUpdate']);
+			$Record = mysqli_fetch_assoc($Qry); //ni die akan amek satu baris record
 		?>
 	
         <div class="card">
-		<form  action="/MasterCliniCare/stisla-2.2.0/AdminEntry.php"
+		<form action="/MasterCliniCare/stisla-2.2.0/AdminEntry.php"
 			   method = "POST">
 		
-				  <div class="card-body p-0">
-                    <h2 class="section-title"> <h4>Edit Customer<h4></h2>
-                  </div>
+         <div class="card-body">
+          <div class="section-title mt-0">Edit Profile</div>
+          </div>
 
-                  <div class="card-body">
+          <div class="card-body">
 				  
 				  <div class="form-group">
                       <label>Email</label>
                       <input type="text" class="form-control" 
-					  name = "email" value="<?php echo $_POST['staffIdToUpdate']; ?>" disabled >
+					  name = "email" value="<?php echo $_POST['customerToUpdate']; ?>"  >
                     </div>
 					
 					<div class="form-group">
                       <label>Name</label>
                       <input type="text" class="form-control" 
-					  name = "name" value= "<?php echo $staffRecord['name']; ?>" >
+					  name = "name" value= "<?php echo $Record['name']; ?>" >
                     </div>
 					
                     <div class="form-group">
-                      <label>Contact Number</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                          </div>
-                        </div>
+                      <label>Phone Number</label>
                         <input type="text" class="form-control phone-number"
-						name = "phoneNumber" value="<?php echo $staffRecord['phoneNumber']; ?>" >
-                      </div>
+						name = "phoneNumber" value="<?php echo $Record['phoneNumber']; ?>" >
                     </div>
 					
                     <div class="form-group">
                       <label>IC Number</label>
                       <input type="text" class="form-control invoice-input"
-					  name = "ICnumber" value="<?php echo $staffRecord['ICnumber']; ?>" >
+					  name = "ICnumber" value="<?php echo $Record['ICnumber']; ?>" >
+                    </div>
+
+                    <div class="form-group">
+                      <label>Birth Date</label>
+                      <input type="date" class="form-control" 
+					  name = "birthDate" value="<?php echo $Record['birthDate']; ?>"  >
                     </div>
 
                   </div>
 
-				  <div class="col-12 col-sm-12">
-					<div class="card">
-						<div class="card-body text-center">
-							<button class="btn btn-primary"
-							name="updateCustomer">Edit</button>
-							
-						</div>
-					</div>
+						<div class="card-body">
+
+							<button type="submit" class="btn btn-primary"
+							name="updateCustomer">Update</button>	
+					
 				  </div>
 		</form> 
         </div>

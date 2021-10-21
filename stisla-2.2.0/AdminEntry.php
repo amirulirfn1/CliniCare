@@ -12,11 +12,6 @@ else if(isset($_POST['editCustomer']))
 
 }
 
-else if(isSet($_POST['updateStaffButton']))
-{
-	updateProfileAdmin($_POST['updateProfileAdmin']);
-}
-
 else if(isSet($_POST['closeAppointment']))
 {
 	closeAppointment($__POST['closeAppointment']);
@@ -36,6 +31,23 @@ else if(isSet($_POST['updateCustomer']))
 
 
 <?php
+
+function getCustomerInfo($email)
+{
+	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+	
+	if(!$con)
+	{
+		echo "error";
+	}
+	
+	else
+	{
+		$sql='select * from customer where email = "'.$email.'"';
+		$qry=mysqli_query($con,$sql);
+		return $qry;
+	}	
+}
 
 function deleteCustomer(){
         $servername = "localhost";
@@ -68,8 +80,7 @@ function deleteCustomer(){
 		}
 }
 
-function updateCustomer()
-{
+function updateCustomer(){
 
         $servername = "localhost";
         $username = "clinicarecustomer";
@@ -91,12 +102,14 @@ function updateCustomer()
             $name = $_POST['name'];
             $phoneNumber = $_POST['phoneNumber'];
             $ICnumber = $_POST['ICnumber'];
+            $birthDate = $_POST['birthDate'];
 
             $sql = "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber',
-             ICnumber = '$ICnumber' WHERE email = '$email'";
+             ICnumber = '$ICnumber', birthDate = '$birthDate 'WHERE email = '$email'";
 
                     if ($con->query($sql) === TRUE) 
 					{
+                        //echo $email;
                         header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
                     } 
 					

@@ -1,12 +1,12 @@
 <?php
 
-function getStaffInformation($email)
+function getCustomerInfo($email)
 {
 	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 	
 	if(!$con)
 	{
-		echo mysqli_error();
+		echo "error";
 	}
 	
 	else
@@ -26,7 +26,7 @@ function updateStaffInformation()
 
 	if(!$con)
 	{
-		echo mysqli_error();
+		echo "Error";
 	}
 
 	else

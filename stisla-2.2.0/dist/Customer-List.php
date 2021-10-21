@@ -116,10 +116,11 @@
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col">Email</th>
-						  <th scope="col">Phone Number</th>
-						  <th scope="col">IC Number</th>
+						              <th scope="col">Phone Number</th>
+						              <th scope="col">IC Number</th>
+                          <th scope="col">Birth Date</th>
                           <th scope="col">Delete</th>
-						  <th scope="col">Edit</th>
+						              <th scope="col">Edit</th>
 						  
                         </tr>
                       </thead>
@@ -127,7 +128,7 @@
 
 				<?php
                       $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-                      $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber FROM customer 
+                      $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
                       INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
                       $result = mysqli_query($con,$sql);
                       $x = 1;
@@ -140,8 +141,9 @@
 										echo "<td>".$row['email']."</td>";
 										echo "<td>".$row['phoneNumber']."</td>";
 										echo "<td>".$row['ICnumber']."</td>";
+                    echo "<td>".$row['birthDate']."</td>";
 
-                                    $customerS = $row['email'];
+                    $customerS = $row['email'];
 
 					
 									echo '<td><form action="../AdminEntry.php" method="POST">';
@@ -153,7 +155,7 @@
 									echo '</form></td>';
 
 									echo '<td><form action="Edit-Customer.php" method="POST">';
-										echo '<input type="hidden" name="staffIdToUpdate" 
+										echo '<input type="hidden" name="customerToUpdate" 
 												value="'.$customerS.'" >';
 										echo '<button type="submit" value="editCustomer" 
 												name="editCustomer" class="btn btn-icon btn-primary">
