@@ -160,12 +160,17 @@ if(isset($_POST['submit'])){
 				  <div class="profile-widget-header"> 
 					
 					<?php
-						echo "<img class='rounded-circle profile-widget-picture' width='100' height='100' src='pictures/".$row['image']."' alt='Profile Pic'>";
+					if($row['image']==''){
+						echo "<img class='rounded-circle profile-widget-picture' width='100' height='100' src='pictures/default.jpg' alt='Default Profile Pic'>";
+						}else{
+							echo "<img class='rounded-circle profile-widget-picture' width='100' height='100' src='pictures/".$row['image']."' alt='Profile Pic'>";
+							}
 					?>	  
-                    
-					
+					<label class="labels" style = "font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile Picture</label>
 					<form action="" method="post" enctype="multipart/form-data">
+					<br><br><br>
 						<input type="file" name="file">
+						<br>
 						<input type="submit" name="submit">
 					</form>	
                   </div>

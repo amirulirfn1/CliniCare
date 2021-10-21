@@ -193,8 +193,14 @@ header( "refresh:0; url=myProfile.php");
         <div class="col-md-3 border-right">
 
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+			
 			<?php
-                        echo "<img width='230' height='280' src='pictures/".$row['image']."' alt='Profile Pic'>";
+			if($row['image']==''){
+			echo "<img width='200' height='230' src='pictures/default.jpg' alt='Default Profile Pic'>";
+			 }else{
+                        echo "<img width='220' height='230' src='pictures/".$row['image']."' alt='Profile Pic' >";
+	  }
+
                     ?>
 		 
 			
