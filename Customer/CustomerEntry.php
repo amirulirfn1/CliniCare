@@ -33,6 +33,11 @@ else if(isset($_POST['update-profile']))
     updateProfile($_POST['update-profile']);
 }
 
+else if(isset($_POST['update']))
+{
+    updateProfile($_POST['update-profile']);
+}
+
 ?>
 
 <?php
@@ -350,17 +355,25 @@ function resetPassword(){
      $pwd = $_POST['pwd'];
      $pwdR = $_POST['pwd-repeat'];
 
-     if(strlen($pwd)<2 || strlen($pwdR)<2){
+     if(strlen($pwd)<2 || strlen($pwdR)<2)
+	 {
          header("Location: /MasterCliniCare/index.php");
          exit();
-     }else if($pwd == $pwdR){
+     }
+	 
+	 else if($pwd == $pwdR)
+	 {
 
          $pwd = md5($pwd);
          $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
 
-         if(!$con){
+         if(!$con)
+		 {
             echo "error";
-        }else{
+        }
+		
+		else
+		{
             //Construct SQL statement
             $sql = "UPDATE customer SET password='$pwd' WHERE vkey='$vkey' AND email='$email'";
 
@@ -369,13 +382,15 @@ function resetPassword(){
         	          SET password='$pwd'
         	          WHERE email='$email'";
             
-            if(!mysqli_query($con, $sql2)){
+            if(!mysqli_query($con, $sql2))
+			{
                 //echo mysqli_error($con);
                 echo "error";
                 exit();
-
-            }else{
-
+            }
+			
+			else
+			{
                 unset($_SESSION['resetVkey']);
                 unset($_SESSION['resetPassword']);
                 header("Location: /MasterCliniCare/Alerts/successRS.php");
@@ -388,7 +403,7 @@ function resetPassword(){
        header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
        exit();
      }
-    }
+}
 
 
 //function edit profile info
