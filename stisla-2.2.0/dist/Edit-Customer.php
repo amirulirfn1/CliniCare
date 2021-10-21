@@ -1,13 +1,4 @@
-<?php
 
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-session_start();
-$email = $_GET['emailhidden'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
-?>
-
-<?php echo $email ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,28 +95,32 @@ $row=mysqli_fetch_array($query);
             </div>
           </div>
             <div class="col-md-12">
-		
+		<?php
+			include "tryEditFunction.php";
+			$staffQry = getStaffInformation($_POST['staffIdToUpdate']);
+			$staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
+		?>
+	
         <div class="card">
-		<form  action="../AdminEntry.php" method = "POST">
+		<form  action="/MasterCliniCare/stisla-2.2.0/AdminEntry.php"
+			   method = "POST">
 		
 				  <div class="card-body p-0">
                     <h2 class="section-title"> <h4>Edit Customer<h4></h2>
                   </div>
-				  
-				  
-				  
+
                   <div class="card-body">
 				  
 				  <div class="form-group">
                       <label>Email</label>
                       <input type="text" class="form-control" 
-					  name = "name" value="<?php echo $row['email']; ?>" disabled >
+					  name = "email" value="<?php echo $_POST['staffIdToUpdate']; ?>" disabled >
                     </div>
 					
 					<div class="form-group">
                       <label>Name</label>
                       <input type="text" class="form-control" 
-					  name = "name" value= "<?php echo $row['name']; ?>" >
+					  name = "name" value= "<?php echo $staffRecord['name']; ?>" >
                     </div>
 					
                     <div class="form-group">
@@ -137,29 +132,24 @@ $row=mysqli_fetch_array($query);
                           </div>
                         </div>
                         <input type="text" class="form-control phone-number"
-						name = "phoneNumber" value="<?php echo $row['phoneNumber']; ?>" >
+						name = "phoneNumber" value="<?php echo $staffRecord['phoneNumber']; ?>" >
                       </div>
                     </div>
 					
                     <div class="form-group">
                       <label>IC Number</label>
                       <input type="text" class="form-control invoice-input"
-					  name = "ICnumber" value="<?php echo $row['ICnumber']; ?>" >
+					  name = "ICnumber" value="<?php echo $staffRecord['ICnumber']; ?>" >
                     </div>
-					
-                    <div class="form-group">
-                      <label>Date of Birth</label>
-                      <input type="date" class="form-control datemask" placeholder="YYYY/MM/DD"
-					  name = "birthDate" value="<?php echo $row['birthDate']; ?>" >
-                    </div>
+
                   </div>
 
 				  <div class="col-12 col-sm-12">
 					<div class="card">
 						<div class="card-body text-center">
-							<button class="btn btn-primary" id="swal-2" name="updateStaffButton">Edit</button>
-							<br><br><input type = "submit" value = "Kemaskini" 
-											name="updateStaffButton" class="submit2"> 
+							<button class="btn btn-primary"
+							name="updateCustomer">Edit</button>
+							
 						</div>
 					</div>
 				  </div>

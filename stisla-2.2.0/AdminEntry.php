@@ -27,6 +27,11 @@ else if(isSet($_POST['openAppointment']))
 	openAppointment($__POST['openAppointment']);
 }
 
+else if(isSet($_POST['updateCustomer']))
+{
+	updateCustomer($_POST['updateCustomer']);
+}
+
 ?>
 
 
@@ -63,7 +68,7 @@ function deleteCustomer(){
 		}
 }
 
-function updateProfileAdmin()
+function updateCustomer()
 {
 
         $servername = "localhost";
@@ -81,18 +86,14 @@ function updateProfileAdmin()
 		else
 		{
 
-            $email = $_SESSION['email'];
+            $email = $_POST['email'];
 
             $name = $_POST['name'];
             $phoneNumber = $_POST['phoneNumber'];
-            $icNumber = $_POST['icNumber'];
-            $birthDate = $_POST['birthDate'];
-            /* $address = $_POST['address']; */
-
-            /* $password = md5($password); */
+            $ICnumber = $_POST['ICnumber'];
 
             $sql = "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber',
-             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
+             ICnumber = '$ICnumber' WHERE email = '$email'";
 
                     if ($con->query($sql) === TRUE) 
 					{

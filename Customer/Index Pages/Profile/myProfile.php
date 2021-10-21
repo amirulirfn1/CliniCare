@@ -195,6 +195,7 @@ header( "refresh:0; url=myProfile.php");
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 			
 			<?php
+
 			if($row['image']==''){
 			echo "<img width='200' height='230' src='pictures/default.jpg' alt='Default Profile Pic'>";
 			 }else{

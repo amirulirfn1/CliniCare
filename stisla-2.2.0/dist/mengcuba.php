@@ -12,8 +12,7 @@
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
-	<link href="editCustomerStyle.css" rel="stylesheet">
-	
+
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -26,7 +25,8 @@
 
   gtag('config', 'UA-94034622-3');
 </script>
-<!-- /END GA --></head>
+<!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -190,6 +190,7 @@
           </li>
         </ul>
       </nav>
+	  
       <!--SideBar-->
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
@@ -204,78 +205,80 @@
             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>View Purchase Medicine</span></a></li>
             <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
-                    </aside>
+        </aside>
       </div>
 	  
 	  
       <!-- Main Content -->
-	  <div class="main-content">
+		<div class="main-content">
         <section class="section">
+	<?php	
+		include "tryEditFunction.php";
 		
-	  <?php
-
-
-
-	include "tryEditFunction.php";
+		$staffQry = getStaffInformation($_POST['staffIdToUpdate']);
 	
-	$staffQry = getStaffInformation($_POST['staffIdToUpdate']);
+		$staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
 	
-	$staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
-	
-	echo '<div class="page">
+        echo '<div class="section-header">
+				<div class="section-header-breadcrumb">
+					<div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+					<div class="breadcrumb-item"><a href="#">Forms</a></div>
+					<div class="breadcrumb-item">Advanced Forms</div>
+				</div>
+			  </div>
+			
+				<div class="col-md-12">
+				<div class="card">
+				
 		
-		<form action = "tryEditProcess.php" method = "POST">
-			
-			
-			<br><br><br><br><br>
-			
-			<label class="field field_v2">
-			<input class="field__input" placeholder="e.g. clinicare@info.my"
-					name="email" value = "'.$_POST['staffIdToUpdate'].'" disabled>
-			<span class="field__label-wrap">
-				<span class="field__label">Email</span>
-			</span>
-			</label>  
-			
-			<br>
-			<label class="field field_v2">
-			<input class="field__input" placeholder="e.g. Ahmad Ali"
-					name="name" value = "'.$staffRecord['name'].'">
-			<span class="field__label-wrap">
-				<span class="field__label">Name</span>
-			</span>
-			</label> 
-			
-			<br>
-			<label class="field field_v2">
-			<input class="field__input" placeholder="e.g. 0171213003"
-					name="phoneNumber" value = "'.$staffRecord['phoneNumber'].'">
-			<span class="field__label-wrap">
-				<span class="field__label">Phone Number</span>
-			</span>
-			</label> 
-			
-			<br>
-			<label class="field field_v2">
-			<input class="field__input" placeholder="e.g. 010506512201"
-					name="ICnumber" value = "'.$staffRecord['ICnumber'].'">
-			<span class="field__label-wrap">
-				<span class="field__label">IC Number</span>
-			</span>
-			</label> 
-  
-			
-			<br><br>
-			<input type = "submit" value = "Kemaskini" 
-			name="updateStaffButton" class="submit2"> 
-	
-		</form>
-		</div>';
+				 <div class="card-body p-0">
+                    <h2 class="section-title"> <h4>Edit Customer<h4></h2>
+                  </div>
+				  
+				  
+                <div class="card-body">
+				  
+				<form  action="tryEditProcess.php" method = "POST">
+                      
+					<label>Email</label>
+                    <input type = "text" name="email" 
+							class="form-control"
+							value = "'.$_POST['staffIdToUpdate'].'" 
+							required placeholder = "ID Staf" 
+							disabled> 
+					
+                    <label>Name</label>
+                    <input type="text" class="form-control" 
+							name="name" 
+							value = "'.$staffRecord['name'].'" >
+                   
 
-?>
-        
+                    <label>Contact Number</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-phone"></i>
+                          </div>
+                        </div>
+                        <input type="text" class="form-control phone-number"
+						name="phoneNumber" 
+				        value = "'.$staffRecord['phoneNumber'].'" >
+						</div>
+
+                    <label>IC Number</label>
+                    <input type="text" class="form-control invoice-input"
+							name="ICnumber"
+							value = "'.$staffRecord['ICnumber'].'" >
+							
+					<br><br><input type = "submit" value = "Kemaskini" 
+					name="updateStaffButton" class="submit2"> 
+
+				</form> 
+        </div>
+		
+	
          <!-- partial:../../partials/_footer.html -->
-         <footer class="footer">
+        <footer class="footer">
           <div class="container-fluid clearfix">
       &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
           </div>
@@ -284,7 +287,10 @@
         </div>
       </footer>
     </div>
+	</div>';
+	?>
 	</section>
+  </div>
   </div>
   </div>
 
