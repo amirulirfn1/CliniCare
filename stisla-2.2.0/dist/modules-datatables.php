@@ -97,10 +97,10 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Purchase Medicine</h1>
+            <h1>Medicine</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="index.php">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="modules-datatables.php">Purchase Medicine</a></div>
+              <div class="breadcrumb-item"><a href="modules-datatables.php">Medicine</a></div>
               <div class="breadcrumb-item">Data Tables</div>
             </div>
           </div>
