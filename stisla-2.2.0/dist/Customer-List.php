@@ -49,7 +49,7 @@
 		
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
+            
             <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
 
@@ -83,8 +83,8 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i></i><span>Customer List</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i></i><span>Customer</span></a></li>
+            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
@@ -103,7 +103,7 @@
             <h1>Customer List</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Customer List</a></div>
+              <div class="breadcrumb-item"><a href="#">Customer</a></div>
               <div class="breadcrumb-item">Table</div>
             </div>
           </div>

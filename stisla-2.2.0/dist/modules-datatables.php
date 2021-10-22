@@ -79,8 +79,8 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i></i><span>Customer List</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+             <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i></i><span>Customer</span></a></li>
+            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>

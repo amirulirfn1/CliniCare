@@ -210,11 +210,12 @@ header( "refresh:0; url=myProfile.php");
 			
 			<div class="col-md-10">
 				<label class="labels" style = "font-size: 12px">Edit Profile Picture</label>
-
+			<div class="upload-btn-wrapper">
 				<form action="" method="post" enctype="multipart/form-data">
 					<input id="upload" type="file" name="file"  onchange="submitImage()" ><br>
 					<input id="submit" type="submit" name="submit" hidden="true" >
 				</form>
+			</div>
 			</div>
 
 	
