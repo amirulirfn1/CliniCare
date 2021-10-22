@@ -48,7 +48,7 @@ header( "refresh:0; url=myProfile.php");
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
-
+<link href="profilePictureStyle.css" rel="stylesheet">
 	
   <!-- =======================================================
   * Template Name: Medilab - v4.3.0
@@ -80,45 +80,6 @@ header( "refresh:0; url=myProfile.php");
    font-size: 16px;
 }
 
-.container {
-  position: relative;
-  width: 50%;
-}
-
-.image {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.container:hover .image {
-  opacity: 0.3;
-}
-
-.container:hover .middle {
-  opacity: 1;
-}
-
-.text {
-  background-color: #04AA6D;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
-}
 </style>
 <script>
   function submitImage(){
@@ -236,27 +197,27 @@ header( "refresh:0; url=myProfile.php");
 			
 			<?php
 
-			if($row['image']==''){
-			echo "<img width='200' height='230' src='pictures/default.jpg' alt='Default Profile Pic'>";
-			 }else{
-                        echo "<img width='220' height='230' src='pictures/".$row['image']."' alt='Profile Pic' >";
-	  }
+			if($row['image']=='')
+			{
+				echo "<img width='200' height='230' src='pictures/default.jpg' alt='Default Profile Pic'>";
+			}
+			 else
+			 {
+                echo "<img width='220' height='230' src='pictures/".$row['image']."' alt='Profile Pic' >";
+			 }
+            ?>
 
-                    ?>
-		 
 			
-      <div class="col-md-10">
-						
-						<label class="labels" style = "font-size: 12px">Edit Profile Picture</label>
+			<div class="col-md-10">
+				<label class="labels" style = "font-size: 12px">Edit Profile Picture</label>
 
-						  <form action="" method="post" enctype="multipart/form-data">
-            <input id="upload" type="file" name="file"  onchange="submitImage()" ><br>
-            <input id="submit" type="submit" name="submit" hidden="true" >
-              </form>
+				<form action="" method="post" enctype="multipart/form-data">
+					<input id="upload" type="file" name="file"  onchange="submitImage()" ><br>
+					<input id="submit" type="submit" name="submit" hidden="true" >
+				</form>
+			</div>
 
-					</div>
-			
-					
+	
 			<hr>
 			
 			</div>
