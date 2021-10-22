@@ -48,7 +48,7 @@ header( "refresh:0; url=myProfile.php");
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
-<link href="profilePictureStyle.css" rel="stylesheet">
+
 	
   <!-- =======================================================
   * Template Name: Medilab - v4.3.0
