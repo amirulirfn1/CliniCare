@@ -86,7 +86,6 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
                 <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-                <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
               </ul>
             </li>
                     </aside>
@@ -104,8 +103,12 @@
           </div>
            <div class="card">
                   <div class="card-body">
-                    <div class="section-title mt-0">All Appointments</div>
-                    <table class="table table-bordered">
+                    <div class="section-title mt-0">All Appointments
+              <a class="nav-link" href="Appointments-Slot.php"  class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Add Appointment Slot</a>
+            </div>
+					
+					
+                    <table class="table table-bordered" style="text-align:center;">
                       <thead>
                         <tr>
                         <th scope="col">ID</th>
@@ -113,6 +116,7 @@
                         <th scope="col">Time</th>
                         <th scope="col">Status</th>
                         <th scope="col">Update Status</th>
+						<th scope="col">Delete Slot</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -152,16 +156,25 @@
 												name="closeAppointment" class="btn btn-icon btn-danger">
 												<h7> Set Closed <h7></button>';
 
-                        echo '<input type="hidden" name="appToOpen" 
+                        echo '&nbsp;&nbsp;<input type="hidden" name="appToOpen" 
 												value="'.$appSId.'" >';
 										echo '<button type="submit" value="Open Appointment" 
 												name="openAppointment" class="btn btn-icon btn-success">
 												<h7> Set Opened <h7></button>';
 									echo '</form></td>';
                                     
-									echo "</tr>";
+									
                                     
-                                }
+                                
+								echo '<td>';
+								
+			        echo '<form action="../AdminEntry.php" method="post" >';
+			        echo '<input type="hidden" value="'.$appSId.'" name="SlotToDelete">';		
+			        echo '<input type="submit" class="btn btn-danger" name="deleteSlot" value="Delete">';
+			        echo '</form>';
+                    echo '</td>';
+					}
+				echo "</tr>";
 
                       ?>
                         </tbody>

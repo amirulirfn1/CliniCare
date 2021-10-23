@@ -85,7 +85,6 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
                 <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-                <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
               </ul>
             </li>
         </aside>
@@ -107,23 +106,11 @@
            
                 <div class="card">
                   <div class="card-header">
+				  <a href = "All-Appointment-Slot.php"></a>
                     <h4>Add Appointment</h4>
                   </div>
-                  <a class="nav-link" href="All-Appointment-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> View All Available Appointment Slot</a>
+                  <a class="nav-link" href="All-Appointment-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> View All Appointment Slot</a>
                   <div class="card-body">
-                    <div class="section-title mt-0">Service</div>
-                    <div class="form-group">
-                      <label>Choose One</label>
-                      <select class="custom-select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">Primary Care</option>
-                        <option value="2">Medical Check-Up</option>
-                        <option value="3">Smoking Cessation</option>
-                        <option value="4">Mom & Baby Care</option>
-                        <option value="5">Pharmacy</option>
-                        <option value="6">Covid-19 Centre</option>
-                      </select>
-                    </div>
                     <div class="form-group">
                       <div class="section-title mt-0">Date</div>
                       <input type="datetime-local" class="form-control">

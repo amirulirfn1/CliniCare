@@ -32,6 +32,10 @@ else if(isSet($_POST['updateProfileAdmin']))
 	updateProfileAdmin($_POST['updateCustomer']);
 }
 
+else if(isSet($_POST['deleteSlot']))
+{
+	deleteSlot($_POST['deleteSlot']);
+}
 ?>
 
 
@@ -225,5 +229,36 @@ function openAppointment(){
                         echo "error";
                     }
 		}
+}
+
+function deleteSlot()
+{
+	    $servername = "localhost";
+        $username = "clinicarecustomer";
+        $password = "customer";
+        $dbname = "clinicare";
+
+        $con = mysqli_connect($servername, $username, $password, $dbname);
+
+	if(!$con)
+	{
+		echo "Error";
+	}
+	
+	else
+	{
+		$appSId=$_POST['SlotToDelete'];
+		$sql = "DELETE FROM appointmentslot WHERE appSId='".$appSId."'";
+	
+		if ($con->query($sql) === TRUE) 
+					{
+                        header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
+                    } 
+					
+					else
+					{
+                        echo "error";
+                    }
+	}
 }
 ?>

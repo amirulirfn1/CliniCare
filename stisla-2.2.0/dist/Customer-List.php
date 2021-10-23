@@ -91,7 +91,6 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
                 <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-                <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
               </ul>
             </li>
                     </aside>
