@@ -378,26 +378,17 @@ function resetPassword(){
             $sql = "UPDATE customer SET password='$pwd' WHERE vkey='$vkey' AND email='$email'";
 
             if($con->query($sql)== TRUE){
-				$sql2 = "UPDATE user
-        	          SET password='$pwd'
-        	          WHERE email='$email'";
+				unset($_SESSION['resetVkey']);
+                unset($_SESSION['resetPassword']);
+                header("Location: /MasterCliniCare/Alerts/successRS.php");
+                exit();
             
-            if(!mysqli_query($con, $sql2))
-			{
+            }else{
                 //echo mysqli_error($con);
                 echo "error";
                 exit();
             }
-			
-			else
-			{
-                unset($_SESSION['resetVkey']);
-                unset($_SESSION['resetPassword']);
-                header("Location: /MasterCliniCare/Alerts/successRS.php");
-                exit();
-             }
-         }
-     }
+        }
 
     }else{
        header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
