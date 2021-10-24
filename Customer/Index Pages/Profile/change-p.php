@@ -73,5 +73,3 @@ if (isset($_POST['op']) && isset($_POST['np'])
      header("Location: myProfile.php");
      exit();
 }
-
-?>

@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -12,21 +12,25 @@
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
-	<link href="editCustomerStyle.css" rel="stylesheet">
-	
+  <link href="editCustomerStyle.css" rel="stylesheet">
+
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -166,8 +170,9 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat</div></a>
+              <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat</div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.php" class="dropdown-item has-icon">
@@ -182,8 +187,8 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item" name="signout" id="signout" >
-                    <i class="fas fa-sign-out-alt" ></i> Sign Out </button>
+                  <button type="submit" class="dropdown-item" name="signout" id="signout">
+                    <i class="fas fa-sign-out-alt"></i> Sign Out </button>
                 </form>
               </a>
             </div>
@@ -201,28 +206,30 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>View Purchase Medicine</span></a></li>
             <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
-                    </aside>
+        </aside>
       </div>
-	  
-	  
+
+
       <!-- Main Content -->
-	  <div class="main-content">
+      <div class="main-content">
         <section class="section">
-		
-	  <?php
+
+          <?php
 
 
 
-	include "tryEditFunction.php";
-	
-	$staffQry = getStaffInformation($_POST['staffIdToUpdate']);
-	
-	$staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
-	
-	echo '<div class="page">
+          include "tryEditFunction.php";
+
+          $staffQry = getCustomerInfo($_POST['staffIdToUpdate']);
+
+          $staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
+
+          echo '<div class="page">
 		
 		<form action = "tryEditProcess.php" method = "POST">
 			
@@ -231,7 +238,7 @@
 			
 			<label class="field field_v2">
 			<input class="field__input" placeholder="e.g. clinicare@info.my"
-					name="email" value = "'.$_POST['staffIdToUpdate'].'" disabled>
+					name="email" value = "' . $_POST['staffIdToUpdate'] . '" disabled>
 			<span class="field__label-wrap">
 				<span class="field__label">Email</span>
 			</span>
@@ -240,7 +247,7 @@
 			<br>
 			<label class="field field_v2">
 			<input class="field__input" placeholder="e.g. Ahmad Ali"
-					name="name" value = "'.$staffRecord['name'].'">
+					name="name" value = "' . $staffRecord['name'] . '">
 			<span class="field__label-wrap">
 				<span class="field__label">Name</span>
 			</span>
@@ -249,7 +256,7 @@
 			<br>
 			<label class="field field_v2">
 			<input class="field__input" placeholder="e.g. 0171213003"
-					name="phoneNumber" value = "'.$staffRecord['phoneNumber'].'">
+					name="phoneNumber" value = "' . $staffRecord['phoneNumber'] . '">
 			<span class="field__label-wrap">
 				<span class="field__label">Phone Number</span>
 			</span>
@@ -258,7 +265,7 @@
 			<br>
 			<label class="field field_v2">
 			<input class="field__input" placeholder="e.g. 010506512201"
-					name="ICnumber" value = "'.$staffRecord['ICnumber'].'">
+					name="ICnumber" value = "' . $staffRecord['ICnumber'] . '">
 			<span class="field__label-wrap">
 				<span class="field__label">IC Number</span>
 			</span>
@@ -272,20 +279,20 @@
 		</form>
 		</div>';
 
-?>
-        
-         <!-- partial:../../partials/_footer.html -->
-         <footer class="footer">
-          <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-          </div>
-        <div class="footer-right">
-          
-        </div>
-      </footer>
+          ?>
+
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+            </div>
+            <div class="footer-right">
+
+            </div>
+          </footer>
+      </div>
+      </section>
     </div>
-	</section>
-  </div>
   </div>
 
   <!-- General JS Scripts -->
@@ -296,17 +303,18 @@
   <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
-  
+
   <!-- JS Libraies -->
-	<script src="assets/modules/sweetalert/sweetalert.min.js"></script>
- 
- <!-- Page Specific JS File -->
+  <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+
+  <!-- Page Specific JS File -->
   <script src="assets/js/page/modules-sweetalert.js"></script>
-  
+
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

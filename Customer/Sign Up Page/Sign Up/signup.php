@@ -27,8 +27,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="signup" id="register-form"
-                            action="/MasterCliniCare/Customer/CustomerEntry.php">
+                        <form method="POST" class="signup" id="register-form" action="/MasterCliniCare/Customer/CustomerEntry.php">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name" required>
@@ -39,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" pattern=".{8,}" name="password" id="password" placeholder="Password"  required title="8 characters minimum">
+                                <input type="password" pattern=".{8,}" name="password" id="password" placeholder="Password" required title="8 characters minimum">
                             </div>
                             <div class="form-group">
                                 <label for="phoneNumber"><i class="zmdi zmdi-phone"></i></label>

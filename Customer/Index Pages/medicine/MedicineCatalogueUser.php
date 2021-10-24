@@ -1,9 +1,9 @@
 <?php
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 session_start();
-$email=$_SESSION['email'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 
 
@@ -19,17 +19,15 @@ $row=mysqli_fetch_array($query);
   <title>Medicine Catalogue | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="bootstrap.css">
 
   <!-- Favicons -->
   <link href="../../../assets/img/gambar/icon.jpeg" rel="icon">
   <link href="../../../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -51,8 +49,8 @@ $row=mysqli_fetch_array($query);
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-  
+
+
 </head>
 
 <body>
@@ -66,10 +64,8 @@ $row=mysqli_fetch_array($query);
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bi bi-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -86,35 +82,36 @@ $row=mysqli_fetch_array($query);
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Home</a></li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
-		  <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
-          </ul>
-		  </li>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
+            </ul>
+          </li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Doctors</a></li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">FAQ</a></li>
           <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Contact Us</a></li>
-		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
-		  <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/purchasedMedicine.php">Buy Medicine</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
-          </ul>
-		  </li>
-          
-		 <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
-				   <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><button type="submit" href="#" 
-                        style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li></form>
-                </ul>
-              </li>
-		</ul>
+          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/purchasedMedicine.php">Buy Medicine</a></li>
+              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
+              <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                <li><a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li>
+              </form>
+            </ul>
+          </li>
+        </ul>
       </nav><!-- .navbar -->
 
     </div>
@@ -128,18 +125,18 @@ $row=mysqli_fetch_array($query);
   </section><!-- End Hero -->
 
   <main id="main">
-  
+
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container">
 
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
-            <div class="content" >
-                
+            <div class="content">
+
               <h3>Ear, Nose & Throat</h3>
-			  <br><br>
-			  <i><img src="gambar/Ear-Nose-Throat-icons.png"  class="center" width="280" alt=""></i>
+              <br><br>
+              <i><img src="gambar/Ear-Nose-Throat-icons.png" class="center" width="280" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -149,44 +146,44 @@ $row=mysqli_fetch_array($query);
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Acetin.jpg" class="img-fluid" alt=""></i>
                     <h4>Acetin Sachet 5g Tablet</h4>
-					<h5>RM 1.70</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 1.70</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/med7.jpg" class="img-fluid" alt=""></i>
                     <h4>Breacol Cough Syrup</h4>
-					<h5>RM 10.30</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 10.30</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/acetylcysteinesandoz.png" class="img-fluid" alt=""></i>
                     <h4>Acetylcysteine Tablet</h4>
-					<h5>RM 38.00</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 38.00</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
             </div><!-- End content-->
           </div>
         </div>
-		
-		<br><br>
-		
-		 <div class="row">
+
+        <br><br>
+
+        <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Fever, Pain & More</h3>
-			  <br><br>
-              <i><img src="gambar/fever.png"  class="center"  alt=""></i>
+              <br><br>
+              <i><img src="gambar/fever.png" class="center" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -196,44 +193,44 @@ $row=mysqli_fetch_array($query);
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Acugesic.png" class="img-fluid" alt=""></i>
                     <h4>Acugesic 50mg Tablet</h4>
-					<h5>RM 15.80</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 15.80</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                   <i><img src="gambar/apo.jpg" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/apo.jpg" class="img-fluid" alt=""></i>
                     <h4>Apo-Sumatriptan 50mg Tablet</h4>
-					<h5>RM 40.70</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 40.70</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Actimax.png" class="img-fluid" alt=""></i>
                     <h4>Actimax 500 <br> Tablet</h4>
-					<h5>RM 2.20</h5>
-					<br>
-					<i class="fa fa-shopping-cart"  style="font-size:36px; color:black; cursor:pointer; cursor:pointer;"></i>
+                    <h5>RM 2.20</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
             </div><!-- End .content-->
           </div>
         </div>
-		
-				<br><br>
-		
-		 <div class="row">
+
+        <br><br>
+
+        <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Pregnancy</h3>
-			  <br>
-              <i><img src="gambar/pregnancy.png"  class="center" width="297" alt=""></i>
+              <br>
+              <i><img src="gambar/pregnancy.png" class="center" width="297" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -243,43 +240,43 @@ $row=mysqli_fetch_array($query);
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Appeton.jpg" class="img-fluid" alt=""></i>
                     <h4>Appeton Folic Acid Tablet</h4>
-					<h5>RM 43.40</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 43.40</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                   <i><img src="gambar/cell.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/cell.png" class="img-fluid" alt=""></i>
                     <h4>Cell Labs ProbiDefendum</h4>
-					<h5>RM 115.20</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 115.20</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/blackmores.jpg" class="img-fluid" alt=""></i>
                     <h4>Blackmores Proceive Care</h4>
-					<h5>RM 94.50</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 94.50</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
             </div><!-- End .content-->
           </div>
         </div>
-		
-						<br><br>
-		
-		 <div class="row">
+
+        <br><br>
+
+        <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Lungs</h3>
-              <i><img src="gambar/lungs.png" class="center" width="297"  height="250" alt=""></i>
+              <i><img src="gambar/lungs.png" class="center" width="297" height="250" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -289,29 +286,29 @@ $row=mysqli_fetch_array($query);
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/aspira.png" class="img-fluid" alt=""></i>
                     <h4>Aspira 10mg <br> Tablet</h4>
-					<h5>RM 35.00</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 35.00</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                   <i><img src="gambar/Alleryl.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/Alleryl.png" class="img-fluid" alt=""></i>
                     <h4>Alleryl 4mg/5ml Syrup</h4>
-					<h5>RM 4.00</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 4.00</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/anoro.png" class="img-fluid" alt=""></i>
                     <h4>Anoro Ellipta 25mcg Accuhaler</h4>
-					<h5>RM 171.60</h5>
-					<br>
-					<i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <h5>RM 171.60</h5>
+                    <br>
+                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
                   </div>
                 </div>
               </div>
@@ -340,17 +337,14 @@ $row=mysqli_fetch_array($query);
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bx bxl-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bx bxl-instagram"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

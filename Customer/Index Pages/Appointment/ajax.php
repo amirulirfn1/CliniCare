@@ -18,4 +18,3 @@ if($date!=""){
     echo "<option>Time</option>";
     echo "</select>";
 }
-?>

@@ -1,9 +1,9 @@
-<?php  
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+<?php
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 session_start();
-$email=$_SESSION['email'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,7 @@ $row=mysqli_fetch_array($query);
   <link href="assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -59,10 +57,8 @@ $row=mysqli_fetch_array($query);
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bi bi-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -79,38 +75,40 @@ $row=mysqli_fetch_array($query);
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li class="dropdown"><a href="#services" class="nav-link scrollto">Services </a>
-		  <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
-          </ul>
-		  </li>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
+            </ul>
+          </li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
           <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
-		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
-		  <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/purchasedMedicine.php">Buy Medicine</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Purchased Medicine</a></li>
-          </ul>
-		  </li>
-		  
+          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/purchasedMedicine.php">Buy Medicine</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Purchased Medicine</a></li>
+            </ul>
+          </li>
+
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
-                  <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li>
-				  <a><button type="submit" href="#" 
-                     style="background: transparent; border: none; padding: 0; 
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">View Profile</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">View History</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
+              <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                <li>
+                  <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; 
 					 margin:0; position:relative; color:red" name="signout">
-					 Sign Out</button></a></li></form>
-                </ul>
-              </li>
+                      Sign Out</button></a>
+                </li>
+              </form>
+            </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -151,26 +149,26 @@ $row=mysqli_fetch_array($query);
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="assets/img/icons/iconSecurity.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Safety is our priority.</h4>
                     <p>When you visit CliniCare, you will receive the most up-to-date safety standards and medical
                       practises.</p>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="assets/img/icons/icon24.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>24/7 Care</h4>
                     <p>Live help available 24/7.</p>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="assets/img/icons/iconExpert.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Professional staff</h4>
                     <p>All the team experts at what they do</p>
                   </div>
@@ -188,32 +186,30 @@ $row=mysqli_fetch_array($query);
       <div class="container-fluid">
 
         <div class="row">
-          <div
-            class="col-xl-5 col-lg-6 picture-box d-flex justify-content-center align-items-stretch position-relative">
+          <div class="col-xl-5 col-lg-6 picture-box d-flex justify-content-center align-items-stretch position-relative">
             <img src="assets/img/gambar/gambar11.jpeg" width="100%" height="100%"></a>
           </div>
 
-          <div
-            class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
             <h3>Who we are ?</h3>
             <p>Welcome to Clinicare, your trusted medical aesthetic clinic in Malaysia</p>
 
             <div class="icon-box">
               <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
               <h4 class="title"><a href="">INTEGRATED PRIMARY CARE PROVIDER</a></h4>
-              <p class="description">CliniCare has developed an excellent reputation and a 
-				comprehensive clinical practise over the years. 
-				We have proceeded to restructure our medical care facilities and services 
-				in order to give a higher-quality healthcare solution.</p>
+              <p class="description">CliniCare has developed an excellent reputation and a
+                comprehensive clinical practise over the years.
+                We have proceeded to restructure our medical care facilities and services
+                in order to give a higher-quality healthcare solution.</p>
             </div>
 
             <div class="icon-box">
               <div class="icon"><i class="fas fa-headset"></i></div>
               <h4 class="title"><a href="">AVANT-GARDE INTELSYS SUPPORT SYSTEM</a></h4>
-              <p class="description">CliniCare is dedicated to developing a cutting-edge support system 
-			  and a reliable infrastructure that will provide our partners with medical options. 
-			  IntelSys' arrangement gives safe access to shared patient information 
-			  and medical histories.</p>
+              <p class="description">CliniCare is dedicated to developing a cutting-edge support system
+                and a reliable infrastructure that will provide our partners with medical options.
+                IntelSys' arrangement gives safe access to shared patient information
+                and medical histories.</p>
             </div>
 
             <div class="icon-box">
@@ -239,7 +235,7 @@ $row=mysqli_fetch_array($query);
           <h2>Services</h2>
           <p> We are constantly concerned about your family. </p>
           <p> For patients in our service area as well as the community, we provide a wide variety of services and
-              specialist health care services. </p>
+            specialist health care services. </p>
         </div>
 
         <div class="row">
@@ -389,73 +385,64 @@ $row=mysqli_fetch_array($query);
         <div class="section-title">
           <h2>Frequently Asked Questions</h2>
           <p>Do you still have any doubts?
-			 We have the answers to all the questions you might have</p>
+            We have the answers to all the questions you might have</p>
         </div>
 
         <div class="faq-list">
           <ul>
             <li data-aos="fade-up">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                data-bs-target="#faq-list-1">Are there any side effects after vaccine for COVID-19?<i
-                  class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Are there any side effects after vaccine for COVID-19?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
                 <p>
-                <strong>A : </strong>Most people don’t have serious side effects after they get vaccinated. 
-				Just like with other vaccines, your arm may be red, sore, or warm to the touch. 
-				You may also get a headache or a fever, or feel tired and achy for a day or 2. 
-				These side effects are very common in people who get COVID-19 vaccines. 
-				They’re signs that your body is building up protection — and that means the vaccine is working.
+                  <strong>A : </strong>Most people don’t have serious side effects after they get vaccinated.
+                  Just like with other vaccines, your arm may be red, sore, or warm to the touch.
+                  You may also get a headache or a fever, or feel tired and achy for a day or 2.
+                  These side effects are very common in people who get COVID-19 vaccines.
+                  They’re signs that your body is building up protection — and that means the vaccine is working.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2"
-                class="collapsed">What if I am pregnant or receiving treatment for an ongoing special condition?<i
-                  class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">What if I am pregnant or receiving treatment for an ongoing special condition?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  <strong>A : </strong>Please know that nothing changes for you right now and 
-				  you can continue scheduling appointments for care as you normally do.
-				  We are committed to you and your care.
+                  <strong>A : </strong>Please know that nothing changes for you right now and
+                  you can continue scheduling appointments for care as you normally do.
+                  We are committed to you and your care.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3"
-                class="collapsed">I would like to prescribe the same medication as provides by another clinic. Is it possible to receive the medicine only? <i
-                  class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">I would like to prescribe the same medication as provides by another clinic. Is it possible to receive the medicine only? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  <strong>A : </strong>It is necessary to meet the doctor in order to obtain the medicine, 
-				  please indicate your desirable medicine to our doctor during the consultation.
+                  <strong>A : </strong>It is necessary to meet the doctor in order to obtain the medicine,
+                  please indicate your desirable medicine to our doctor during the consultation.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4"
-                class="collapsed">Is a reservation necessary for vaccination? How much is the vaccination?<i
-                  class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Is a reservation necessary for vaccination? How much is the vaccination?<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                  <strong>A : </strong>We encourage reservation as we do not maintain the stocks 
-				  for most kind of vaccination due its short preserving period. 
-				  Please contact us directly for detailed costing.
+                  <strong>A : </strong>We encourage reservation as we do not maintain the stocks
+                  for most kind of vaccination due its short preserving period.
+                  Please contact us directly for detailed costing.
                 </p>
               </div>
             </li>
 
             <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5"
-                class="collapsed">How can I stay up-to-date on the negotiations?
-				<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">How can I stay up-to-date on the negotiations?
+                <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
                 <p>
-                 <strong>A : </strong>  We will keep you up-to-date about our ongoing negotiations
-				  through this website as new information is available. 
-				  You can also call 03-3289 6079 to contact our patient advocacy line directly with any questions.
+                  <strong>A : </strong> We will keep you up-to-date about our ongoing negotiations
+                  through this website as new information is available.
+                  You can also call 03-3289 6079 to contact our patient advocacy line directly with any questions.
                 </p>
               </div>
             </li>
@@ -470,12 +457,12 @@ $row=mysqli_fetch_array($query);
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
       <div class="container">
-		
-		<div class="section-title">
+
+        <div class="section-title">
           <h2>Testimonials</h2>
           <p><strong>Disclaimer :</strong> Each individual’s treatment and/or results may vary. Please consult doctor for more details.</p>
         </div>
-		
+
         <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
           <div class="swiper-wrapper">
 
@@ -488,7 +475,7 @@ $row=mysqli_fetch_array($query);
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                     Good ethics, kind doctor, affordable, well-informed, and provided me choices for my issues.
-					I will definitely return to the clinic and would not hesitate to suggest them.
+                    I will definitely return to the clinic and would not hesitate to suggest them.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -503,8 +490,8 @@ $row=mysqli_fetch_array($query);
                   <h4>Profesor</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Doktor serta kakitangan di situ baik dan juga sangat profesional. 
-					Perkhidmatan dan kemudahan klinik juga sangat baik.
+                    Doktor serta kakitangan di situ baik dan juga sangat profesional.
+                    Perkhidmatan dan kemudahan klinik juga sangat baik.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -519,8 +506,8 @@ $row=mysqli_fetch_array($query);
                   <h4>Documentation Master</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    I was really pleased with the service I received. The staff was kind and professional, 
-					and they took the time to explain procedures in a clear and transparent manner. 
+                    I was really pleased with the service I received. The staff was kind and professional,
+                    and they took the time to explain procedures in a clear and transparent manner.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -536,8 +523,8 @@ $row=mysqli_fetch_array($query);
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                     From the receptionist to the clinician, it was an excellent experience.
-					I felt comforted, and I was given a detailed explanation of the treatment plan and charges. 
-					I would strongly suggest it.
+                    I felt comforted, and I was given a detailed explanation of the treatment plan and charges.
+                    I would strongly suggest it.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -552,16 +539,16 @@ $row=mysqli_fetch_array($query);
                   <h4>Artist</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                   Damai Clinic has exceeded my expectations.
-				   The gastric sleeve at Damai Clinic was the finest decision I've ever made, 
-				   and it's absolutely changed my life.
+                    Damai Clinic has exceeded my expectations.
+                    The gastric sleeve at Damai Clinic was the finest decision I've ever made,
+                    and it's absolutely changed my life.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
               </div>
             </div><!-- End testimonial item -->
-			
-			<div class="swiper-slide">
+
+            <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
                   <img src="assets/img/testimonials/testimonials-6.jpg" class="testimonial-img" alt="">
@@ -569,8 +556,8 @@ $row=mysqli_fetch_array($query);
                   <h4>Restaurant Owner</h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Semasa saya pergi ke Klinik Damai untuk mendapatkan imbasan bayi secara terperinci, 
-					saya selalu mempunyai masa yang hebat. Pengurusan klinik semasa wabak COVID-19 ini sangat baik.
+                    Semasa saya pergi ke Klinik Damai untuk mendapatkan imbasan bayi secara terperinci,
+                    saya selalu mempunyai masa yang hebat. Pengurusan klinik semasa wabak COVID-19 ini sangat baik.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
@@ -677,9 +664,7 @@ $row=mysqli_fetch_array($query);
       </div>
 
       <div>
-        <iframe style="border:0; width: 100%; height: 350px;"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.078303187163!2d101.25337731404913!3d3.3308319975752663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ccf49efc5c5433%3A0xdade51eac9523558!2sKlinik%20Damai%20(Kuala%20Selangor)!5e0!3m2!1sen!2smy!4v1630218008842!5m2!1sen!2smy"
-          frameborder="0" allowfullscreen>
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.078303187163!2d101.25337731404913!3d3.3308319975752663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ccf49efc5c5433%3A0xdade51eac9523558!2sKlinik%20Damai%20(Kuala%20Selangor)!5e0!3m2!1sen!2smy!4v1630218008842!5m2!1sen!2smy" frameborder="0" allowfullscreen>
         </iframe>
       </div>
 
@@ -712,33 +697,30 @@ $row=mysqli_fetch_array($query);
 
           </div>
 
-		            <div class="col-lg-8 mt-5 mt-lg-0">
-		                <?php 
-                            $Msg = "";
-                            if(isset($_GET['error']))
-                            {
-                                $Msg = " Please Fill in the Blanks ";
-                                echo '<div class="alert alert-danger">'.$Msg.'</div>';
-								
-                            }
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            <?php
+            $Msg = "";
+            if (isset($_GET['error'])) {
+              $Msg = " Please Fill in the Blanks ";
+              echo '<div class="alert alert-danger">' . $Msg . '</div>';
+            }
 
-                            if(isset($_GET['success']))
-                            {
-                                $Msg = " Your Message Has Been Sent ";
-                                echo '<div class="alert alert-success">'.$Msg.'</div>';
-                            }
-                        
-                        ?>
+            if (isset($_GET['success'])) {
+              $Msg = " Your Message Has Been Sent ";
+              echo '<div class="alert alert-success">' . $Msg . '</div>';
+            }
 
-                    <div class="card-body">
-                        <form action="giveFeedback.php" method="post" >
-                            <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
-                            <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
-                            <input type="text" name="Subject" placeholder="Subject" class="form-control mb-2" required>
-                            <textarea name="msg" class="form-control mb-2" rows="6" placeholder="Write The Message" required></textarea>
-                            <button class="btn btn-success" name="btn-send" style="background-color:#1977cc"> Send Feedback </button>
-                        </form>
-                    </div>
+            ?>
+
+            <div class="card-body">
+              <form action="giveFeedback.php" method="post">
+                <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
+                <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
+                <input type="text" name="Subject" placeholder="Subject" class="form-control mb-2" required>
+                <textarea name="msg" class="form-control mb-2" rows="6" placeholder="Write The Message" required></textarea>
+                <button class="btn btn-success" name="btn-send" style="background-color:#1977cc"> Send Feedback </button>
+              </form>
+            </div>
 
     </section><!-- End Contact Section -->
 
@@ -799,17 +781,14 @@ $row=mysqli_fetch_array($query);
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bx bxl-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bx bxl-instagram"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

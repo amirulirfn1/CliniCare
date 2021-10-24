@@ -1,13 +1,14 @@
 <?php
-	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-	session_start();
-	$email=$_SESSION['email'];
-	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-	$row=mysqli_fetch_array($query);
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+session_start();
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -27,16 +28,20 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -51,7 +56,8 @@
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
+              <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -61,15 +67,15 @@
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center" >Sign Out </button>
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
             </div>
           </li>
         </ul>
       </nav>
-       <!--SideBar-->
-       <div class="main-sidebar sidebar-style-2">
+      <!--SideBar-->
+      <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.php">C L I N I C A R E</a>
@@ -79,16 +85,18 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer</span></a></li>
             <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-              </ul>
-            </li>
+              <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                </ul>
+              </li>
         </aside>
       </div>
       <!-- Main Content -->
@@ -98,7 +106,7 @@
             <div class="col-lg-4 col-md-4 col-sm-12">
               <div class="card card-statistic-2">
                 <div class="card-stats">
-                  <div class="card-stats-title">Order Statistics - 
+                  <div class="card-stats-title">Order Statistics -
                     <div class="dropdown d-inline">
                       <a class="font-weight-600 dropdown-toggle" data-toggle="dropdown" href="#" id="orders-month">August</a>
                       <ul class="dropdown-menu dropdown-menu-sm">
@@ -214,7 +222,9 @@
                     <li class="media">
                       <img class="mr-3 rounded" width="55" src="assets/img/paracetamol.jpg" alt="product">
                       <div class="media-body">
-                        <div class="float-right"><div class="font-weight-600 text-muted text-small">86 Sales</div></div>
+                        <div class="float-right">
+                          <div class="font-weight-600 text-muted text-small">86 Sales</div>
+                        </div>
                         <div class="media-title">Paracetamol 500mg</div>
                         <div class="mt-1">
                           <div class="budget-price">
@@ -231,7 +241,9 @@
                     <li class="media">
                       <img class="mr-3 rounded" width="55" src="assets/img/med2.png" alt="product">
                       <div class="media-body">
-                        <div class="float-right"><div class="font-weight-600 text-muted text-small">67 Sales</div></div>
+                        <div class="float-right">
+                          <div class="font-weight-600 text-muted text-small">67 Sales</div>
+                        </div>
                         <div class="media-title">Metoclopramide HCL 10mg</div>
                         <div class="mt-1">
                           <div class="budget-price">
@@ -248,7 +260,9 @@
                     <li class="media">
                       <img class="mr-3 rounded" width="55" src="assets/img/med3.jpg" alt="product">
                       <div class="media-body">
-                        <div class="float-right"><div class="font-weight-600 text-muted text-small">63 Sales</div></div>
+                        <div class="float-right">
+                          <div class="font-weight-600 text-muted text-small">63 Sales</div>
+                        </div>
                         <div class="media-title">Chlorpheniramine 4mg</div>
                         <div class="mt-1">
                           <div class="budget-price">
@@ -265,8 +279,10 @@
                     <li class="media">
                       <img class="mr-3 rounded" width="55" src="assets/img/med4.jpg" alt="product">
                       <div class="media-body">
-                        <div class="float-right"><div class="font-weight-600 text-muted text-small">28 Sales</div></div>
-                        <div class="media-title">	Diclofenac sodium 50mg</div>
+                        <div class="float-right">
+                          <div class="font-weight-600 text-muted text-small">28 Sales</div>
+                        </div>
+                        <div class="media-title"> Diclofenac sodium 50mg</div>
                         <div class="mt-1">
                           <div class="budget-price">
                             <div class="budget-price-square bg-primary" data-width="45%"></div>
@@ -282,8 +298,10 @@
                     <li class="media">
                       <img class="mr-3 rounded" width="55" src="assets/img/med5.jpg" alt="product">
                       <div class="media-body">
-                        <div class="float-right"><div class="font-weight-600 text-muted text-small">19 Sales</div></div>
-                        <div class="media-title">	Ranitidine 150mg</div>
+                        <div class="float-right">
+                          <div class="font-weight-600 text-muted text-small">19 Sales</div>
+                        </div>
+                        <div class="media-title"> Ranitidine 150mg</div>
                         <div class="mt-1">
                           <div class="budget-price">
                             <div class="budget-price-square bg-primary" data-width="35%"></div>
@@ -337,7 +355,7 @@
                           <div class="product-cta">
                             <a href="#" class="btn btn-primary">Detail</a>
                           </div>
-                        </div>  
+                        </div>
                       </div>
                     </div>
                     <div>
@@ -358,7 +376,7 @@
                           <div class="product-cta">
                             <a href="#" class="btn btn-primary">Detail</a>
                           </div>
-                        </div>  
+                        </div>
                       </div>
                     </div>
                     <div>
@@ -379,7 +397,7 @@
                           <div class="product-cta">
                             <a href="#" class="btn btn-primary">Detail</a>
                           </div>
-                        </div>  
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -394,7 +412,7 @@
                 </div>
                 <div class="card-body p-0">
                   <div class="tickets-list">
-                    
+
                     <a href="#" class="ticket-item">
                       <div class="ticket-title">
                         <h4>Please cancel my order</h4>
@@ -431,107 +449,118 @@
             </div>
           </div>
 
-            <!--Appointsment List-->
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
-            <h4>Appointments List</h4>
-            <div class="card-header-action">
-              <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
+          <!--Appointsment List-->
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Appointments List</h4>
+                <div class="card-header-action">
+                  <a href="#" class="btn btn-danger">View More <i class="fas fa-chevron-right"></i></a>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                  <table class="table table-striped">
+                    <tr>
+                      <th>Appointments ID</th>
+                      <th>Customer</th>
+                      <th>Status</th>
+                      <th>Due Date</th>
+                      <th>Action</th>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-87239</a></td>
+                      <td class="font-weight-600">Kusnadi</td>
+                      <td>
+                        <div class="badge badge-warning">Pending</div>
+                      </td>
+                      <td>July 19, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-48574</a></td>
+                      <td class="font-weight-600">Hasan Basri</td>
+                      <td>
+                        <div class="badge badge-success">On Progress</div>
+                      </td>
+                      <td>July 21, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-76824</a></td>
+                      <td class="font-weight-600">Muhamad Nuruzzaki</td>
+                      <td>
+                        <div class="badge badge-warning">Pending</div>
+                      </td>
+                      <td>July 22, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-84990</a></td>
+                      <td class="font-weight-600">Agung Ardiansyah</td>
+                      <td>
+                        <div class="badge badge-warning">Pending</div>
+                      </td>
+                      <td>July 22, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">INV-87320</a></td>
+                      <td class="font-weight-600">Ardian Rahardiansyah</td>
+                      <td>
+                        <div class="badge badge-success">On Progress</div>
+                      </td>
+                      <td>July 28, 2018</td>
+                      <td>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="card-body p-0">
-            <div class="table-responsive table-invoice">
-              <table class="table table-striped">
-                <tr>
-                  <th>Appointments ID</th>
-                  <th>Customer</th>
-                  <th>Status</th>
-                  <th>Due Date</th>
-                  <th>Action</th>
-                </tr>
-                <tr>
-                  <td><a href="#">INV-87239</a></td>
-                  <td class="font-weight-600">Kusnadi</td>
-                  <td><div class="badge badge-warning">Pending</div></td>
-                  <td>July 19, 2018</td>
-                  <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#">INV-48574</a></td>
-                  <td class="font-weight-600">Hasan Basri</td>
-                  <td><div class="badge badge-success">On Progress</div></td>
-                  <td>July 21, 2018</td>
-                  <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#">INV-76824</a></td>
-                  <td class="font-weight-600">Muhamad Nuruzzaki</td>
-                  <td><div class="badge badge-warning">Pending</div></td>
-                  <td>July 22, 2018</td>
-                  <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#">INV-84990</a></td>
-                  <td class="font-weight-600">Agung Ardiansyah</td>
-                  <td><div class="badge badge-warning">Pending</div></td>
-                  <td>July 22, 2018</td>
-                  <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#">INV-87320</a></td>
-                  <td class="font-weight-600">Ardian Rahardiansyah</td>
-                  <td><div class="badge badge-success">On Progress</div></td>
-                  <td>July 28, 2018</td>
-                  <td>
-                    <a href="#" class="btn btn-primary">Detail</a>
-                  </td>
-                </tr>
-              </table>
+
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
             </div>
-          </div>
-        </div>
-      </div>
-            
-      <footer class="footer">
-        <div class="container-fluid clearfix">
-    &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-        </div>
-      </footer>
-            </section>
+          </footer>
+        </section>
       </div>
 
-  <!-- General JS Scripts -->
-  <script src="assets/modules/jquery.min.js"></script>
-  <script src="assets/modules/popper.js"></script>
-  <script src="assets/modules/tooltip.js"></script>
-  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="assets/modules/moment.min.js"></script>
-  <script src="assets/js/stisla.js"></script>
-  
-  <!-- JS Libraies -->
-  <script src="assets/modules/jquery.sparkline.min.js"></script>
-  <script src="assets/modules/chart.min.js"></script>
-  <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
-  <script src="assets/modules/summernote/summernote-bs4.js"></script>
-  <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+      <!-- General JS Scripts -->
+      <script src="assets/modules/jquery.min.js"></script>
+      <script src="assets/modules/popper.js"></script>
+      <script src="assets/modules/tooltip.js"></script>
+      <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+      <script src="assets/modules/moment.min.js"></script>
+      <script src="assets/js/stisla.js"></script>
 
-  <!-- Page Specific JS File -->
-  <script src="assets/js/page/index.js"></script>
-  
-  <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <!-- JS Libraies -->
+      <script src="assets/modules/jquery.sparkline.min.js"></script>
+      <script src="assets/modules/chart.min.js"></script>
+      <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
+      <script src="assets/modules/summernote/summernote-bs4.js"></script>
+      <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+
+      <!-- Page Specific JS File -->
+      <script src="assets/js/page/index.js"></script>
+
+      <!-- Template JS File -->
+      <script src="assets/js/scripts.js"></script>
+      <script src="assets/js/custom.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

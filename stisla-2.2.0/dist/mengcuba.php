@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -16,16 +16,19 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA -->
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
 </head>
 
 <body>
@@ -166,8 +169,9 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat</div></a>
+              <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat</div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.php" class="dropdown-item has-icon">
@@ -182,15 +186,15 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item" name="signout" id="signout" >
-                    <i class="fas fa-sign-out-alt" ></i> Sign Out </button>
+                  <button type="submit" class="dropdown-item" name="signout" id="signout">
+                    <i class="fas fa-sign-out-alt"></i> Sign Out </button>
                 </form>
               </a>
             </div>
           </li>
         </ul>
       </nav>
-	  
+
       <!--SideBar-->
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
@@ -202,24 +206,26 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>View Purchase Medicine</span></a></li>
             <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
         </aside>
       </div>
-	  
-	  
+
+
       <!-- Main Content -->
-		<div class="main-content">
+      <div class="main-content">
         <section class="section">
-	<?php	
-		include "tryEditFunction.php";
-		
-		$staffQry = getStaffInformation($_POST['staffIdToUpdate']);
-	
-		$staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
-	
-        echo '<div class="section-header">
+          <?php
+          include "tryEditFunction.php";
+
+          $staffQry = getCustomerInfo($_POST['staffIdToUpdate']);
+
+          $staffRecord = mysqli_fetch_assoc($staffQry); //ni die akan amek satu baris record
+
+          echo '<div class="section-header">
 				<div class="section-header-breadcrumb">
 					<div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
 					<div class="breadcrumb-item"><a href="#">Forms</a></div>
@@ -243,14 +249,14 @@
 					<label>Email</label>
                     <input type = "text" name="email" 
 							class="form-control"
-							value = "'.$_POST['staffIdToUpdate'].'" 
+							value = "' . $_POST['staffIdToUpdate'] . '" 
 							required placeholder = "ID Staf" 
 							disabled> 
 					
                     <label>Name</label>
                     <input type="text" class="form-control" 
 							name="name" 
-							value = "'.$staffRecord['name'].'" >
+							value = "' . $staffRecord['name'] . '" >
                    
 
                     <label>Contact Number</label>
@@ -262,13 +268,13 @@
                         </div>
                         <input type="text" class="form-control phone-number"
 						name="phoneNumber" 
-				        value = "'.$staffRecord['phoneNumber'].'" >
+				        value = "' . $staffRecord['phoneNumber'] . '" >
 						</div>
 
                     <label>IC Number</label>
                     <input type="text" class="form-control invoice-input"
 							name="ICnumber"
-							value = "'.$staffRecord['ICnumber'].'" >
+							value = "' . $staffRecord['ICnumber'] . '" >
 							
 					<br><br><input type = "submit" value = "Kemaskini" 
 					name="updateStaffButton" class="submit2"> 
@@ -288,10 +294,10 @@
       </footer>
     </div>
 	</div>';
-	?>
-	</section>
-  </div>
-  </div>
+          ?>
+        </section>
+      </div>
+    </div>
   </div>
 
   <!-- General JS Scripts -->
@@ -302,17 +308,18 @@
   <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
-  
+
   <!-- JS Libraies -->
-	<script src="assets/modules/sweetalert/sweetalert.min.js"></script>
- 
- <!-- Page Specific JS File -->
+  <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+
+  <!-- Page Specific JS File -->
   <script src="assets/js/page/modules-sweetalert.js"></script>
-  
+
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

@@ -1,12 +1,13 @@
 <?php
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 session_start();
-$email=$_SESSION['email'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -24,16 +25,20 @@ $row=mysqli_fetch_array($query);
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -48,9 +53,10 @@ $row=mysqli_fetch_array($query);
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <?php echo "<img class='rounded-circle profile-picture' src='pictures/".$row['image']."' alt='Profile Pic'>";  ?>
-              
-            <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div></a>
+              <?php echo "<img class='rounded-circle profile-picture' src='pictures/" . $row['image'] . "' alt='Profile Pic'>";  ?>
+
+              <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -60,15 +66,15 @@ $row=mysqli_fetch_array($query);
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center" >Sign Out </button>
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
             </div>
           </li>
         </ul>
       </nav>
-     <!--SideBar-->
-     <div class="main-sidebar sidebar-style-2">
+      <!--SideBar-->
+      <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.php">C L I N I C A R E</a>
@@ -78,10 +84,12 @@ $row=mysqli_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="Appointment-Slot.php"><i class="far fa-square"></i> <span>Appointments Slot</span></a></li>
             <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
-                    </aside>
+        </aside>
       </div>
       <!-- Main Content -->
       <div class="main-content">
@@ -108,7 +116,7 @@ $row=mysqli_fetch_array($query);
                     <h4>Calendar</h4>
                   </div>
                   <div class="card-body">
-                    <div class="fc-overflow">                            
+                    <div class="fc-overflow">
                       <div id="myEvent"></div>
                     </div>
                   </div>
@@ -116,36 +124,37 @@ $row=mysqli_fetch_array($query);
               </div>
             </div>
           </div>
-        <!-- Footer-->
-            
-      <footer class="footer">
-        <div class="container-fluid clearfix">
-    &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-        </div>
-      </footer>
-            </section>
+          <!-- Footer-->
+
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+            </div>
+          </footer>
+        </section>
       </div>
 
-  <!-- General JS Scripts -->
-  <script src="assets/modules/jquery.min.js"></script>
-  <script src="assets/modules/popper.js"></script>
-  <script src="assets/modules/tooltip.js"></script>
-  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="assets/modules/moment.min.js"></script>
-  <script src="assets/js/stisla.js"></script>
-  
-  <!-- JS Libraies -->
-  <script src="assets/modules/fullcalendar/fullcalendar.min.js"></script>
+      <!-- General JS Scripts -->
+      <script src="assets/modules/jquery.min.js"></script>
+      <script src="assets/modules/popper.js"></script>
+      <script src="assets/modules/tooltip.js"></script>
+      <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+      <script src="assets/modules/moment.min.js"></script>
+      <script src="assets/js/stisla.js"></script>
 
-  <!-- Page Specific JS File -->
-	<script src="assets/js/page/modules-calendar.js"></script>
-  
-  <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <!-- JS Libraies -->
+      <script src="assets/modules/fullcalendar/fullcalendar.min.js"></script>
+
+      <!-- Page Specific JS File -->
+      <script src="assets/js/page/modules-calendar.js"></script>
+
+      <!-- Template JS File -->
+      <script src="assets/js/scripts.js"></script>
+      <script src="assets/js/custom.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>

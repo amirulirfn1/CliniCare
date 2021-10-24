@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_GET['vkey'])){
-  $_SESSION['resetVkey'] = $_GET['vkey'];
-  //validate($vkey);
+if (isset($_GET['vkey'])) {
+    $_SESSION['resetVkey'] = $_GET['vkey'];
+    //validate($vkey);
 }
 ?>
 
@@ -37,10 +37,9 @@ if(isset($_GET['vkey'])){
                         <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
                     </div>
 
-                        <div class="signin-form">
+                    <div class="signin-form">
                         <h2 class="form-title">Reset Password</h2>
-                        <form method="POST" class="signin" id="login-form"
-                            action="/MasterCliniCare/Customer/CustomerEntry.php">
+                        <form method="POST" class="signin" id="login-form" action="/MasterCliniCare/Customer/CustomerEntry.php">
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pwd" placeholder="New Password" />
@@ -66,13 +65,11 @@ if(isset($_GET['vkey'])){
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
-                   
-                </div>
-            </div>
-        </section>
-		
-   </body>
+
+</div>
+</div>
+</section>
+
+</body>
+
 </html>
-
-
-

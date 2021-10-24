@@ -1,40 +1,21 @@
 <?php
 session_start();
-if (isset($_POST['signup'])) 
-{
+if (isset($_POST['signup'])) {
     signup($_POST['signup']);
-} 
-
-else if (isset($_POST['signin'])) 
-{
+} else if (isset($_POST['signin'])) {
     signin($_POST['signin']);
-} 
-
-else if (isset($_POST['signout'])) 
-{
+} else if (isset($_POST['signout'])) {
     signout($_POST['signout']);
-} 
-
-else if (isset($_POST['submit-reset']))
-{
+} else if (isset($_POST['submit-reset'])) {
     $vkey = getVkey($_POST);
     mailReset($vkey);
     header("Location: /MasterCliniCare/Alerts/successFP.php");
     exit();
-}
-
-else if (isset($_POST['reset-password']))
-{
+} else if (isset($_POST['reset-password'])) {
     resetPassword($_POST['reset-password']);
-}
-
-else if(isset($_POST['update-profile']))
-{
+} else if (isset($_POST['update-profile'])) {
     updateProfile($_POST['update-profile']);
-}
-
-else if(isset($_POST['update']))
-{
+} else if (isset($_POST['update'])) {
     updateProfile($_POST['update-profile']);
 }
 
@@ -61,181 +42,319 @@ function signup()
         $phoneNumber = $_POST['phoneNumber'];
         $icNumber = $_POST['icNumber'];
         $birthDate = $_POST['birthDate'];
-		
-		
+
+
         $password = md5($password);
         //Generate Vkey
         $vkey = md5(time() . $name);
 
         $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)  
                     VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '','', '$vkey' )";
-                    
     }
 
-    if ($con->query($sql) === TRUE) 
-	{
+    if ($con->query($sql) === TRUE) {
         $to = $email;
         $subject = "Verify Your Email Address";
-        $headers = "From: info.clinicareweb@gmail.com\r\n";
+        $headers = "From: CliniCare\r\n";
         $headers .= "MIME-Version : 1.0\r\n";
         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        $htmlContent = '<!doctype html>
-        <html>
-            <head>
-                <meta charset=utf-8>
-                <meta name=viewport content=width=device-width, initial-scale=1>
-                <title>Snippet - GoSNippets</title>
-                <link href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css rel=stylesheet>
-                <link  rel=stylesheet>
-                <style> 
-
-/* CLIENT-SPECIFIC STYLES */
-body,
-table,
-td,
-a {
--webkit-text-size-adjust: 100%;
--ms-text-size-adjust: 100%;
-}
-
-table,
-td {
-mso-table-lspace: 0pt;
-mso-table-rspace: 0pt;
-}
-
-img {
--ms-interpolation-mode: bicubic;
-}
-
-/* RESET STYLES */
-img {
-border: 0;
-height: auto;
-line-height: 100%;
-outline: none;
-text-decoration: none;
-}
-
-table {
-border-collapse: collapse !important;
-}
-
-body {
-height: 100% !important;
-margin: 0 !important;
-padding: 0 !important;
-width: 100% !important;
-background-color: #f4f4f4;
-}
-
-/* iOS BLUE LINKS */
-a[x-apple-data-detectors] {
-color: inherit !important;
-text-decoration: none !important;
-font-size: inherit !important;
-font-family: inherit !important;
-font-weight: inherit !important;
-line-height: inherit !important;
-}
-
-/* MOBILE STYLES */
-@media screen and (max-width:600px) {
-h1 {
-font-size: 32px !important;
-line-height: 32px !important;
-}
-}
-
-/* ANDROID CENTER FIX */
-div[style*="margin: 16px 0;"] {
-margin: 0 !important;
-}</style>
-                <script type=text/javascript ></script>
-                <script type=text/javascript src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js></script>
-                <script type=text/javascript src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js></script>
-            </head>
-            <body oncontextmenu=return false class=snippet-body>
-            <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Lato, Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> Were thrilled to have you here! Get ready to dive into your new account. </div>
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-<!-- LOGO -->
-<tr>
-<td bgcolor="#ffffff" align="center">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-</table>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ffffff" align="center" style="padding: 0px 10px 0px 10px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-<tr>
-    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-        <h1 style="font-size: 42px; font-weight: 400; margin: 2;">Welcome, ' . $name .' !</h1> <img src="https://i.imgur.com/KGGAQuG.png" width="125" height="120" style="display: block; border: 0px;" />
-    </td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td bgcolor="#ffffff" align="center" style="padding: 0px 10px 0px 10px;">
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-<tr>
-    <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: Lato, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-        <p style="margin: 0;">Were excited to have you get started. First, you need to confirm your account. Just press the button below.</p>
-    </td>
-</tr>
-<tr>
-    <td bgcolor="#ffffff" align="left">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        $htmlContent = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+        <head>
+        <!--[if gte mso 9]>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="x-apple-disable-message-reformatting">
+          <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
+          <title></title>
+          
+            <style type="text/css">
+              table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; }
+        @media only screen and (min-width: 620px) {
+          .u-row {
+            width: 600px !important;
+          }
+          .u-row .u-col {
+            vertical-align: top;
+          }
+        
+          .u-row .u-col-100 {
+            width: 600px !important;
+          }
+        
+        }
+        
+        @media (max-width: 620px) {
+          .u-row-container {
+            max-width: 100% !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+          }
+          .u-row .u-col {
+            min-width: 320px !important;
+            max-width: 100% !important;
+            display: block !important;
+          }
+          .u-row {
+            width: calc(100% - 40px) !important;
+          }
+          .u-col {
+            width: 100% !important;
+          }
+          .u-col > div {
+            margin: 0 auto;
+          }
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        table,
+        tr,
+        td {
+          vertical-align: top;
+          border-collapse: collapse;
+        }
+        
+        p {
+          margin: 0;
+        }
+        
+        .ie-container table,
+        .mso-container table {
+          table-layout: fixed;
+        }
+        
+        * {
+          line-height: inherit;
+        }
+        
+        a[x-apple-data-detectors=true] {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+        
+        </style>
+          
+          
+        
+        <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
+        
+        </head>
+        
+        <body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #f9f9f9;color: #000000">
+          <!--[if IE]><div class="ie-container"><![endif]-->
+          <!--[if mso]><div class="mso-container"><![endif]-->
+          <table style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #f9f9f9;width:100%" cellpadding="0" cellspacing="0">
+          <tbody>
+          <tr style="vertical-align: top">
+            <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #f9f9f9;"><![endif]-->
+            
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: transparent;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #1977cc;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
             <tr>
-                <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
-                    <table border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td align="center" style="border-radius: 3px;" bgcolor="#e0edfb"><a href="http://localhost/MasterCliniCare/Customer/Verify.php?vkey=' .$vkey .'" target="_blank" 
-                            style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #000000; text-decoration: none; color: #000000; 
-                            text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #e0edfb; display: inline-block;">
-                            Confirm Account</a></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:20px;font-family:Cabin,sans-serif;" align="left">
+                
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="padding-right: 0px;padding-left: 0px;" align="center">
+              
+              <img align="center" border="0" src="https://i.imgur.com/KGGAQuG.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 32%;max-width: 179.2px;" width="179.2"/>
+              
+            </td>
+          </tr>
         </table>
-    </td>
-</tr> 
-
-</table>
-</td>
-</tr>
-</table>
-                <script type=text/javascript></script>
-            </body>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:Cabin,sans-serif;" align="left">
+                
+          <div style="line-height: 160%; text-align: center; word-wrap: break-word;">
+            <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 22px; line-height: 35.2px;">Hi, ' . $name . ' </span></p>
+        <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 18px; line-height: 28.8px;">You are almost ready to get started. Please click on the button below to verify your email address.</span></p>
+          </div>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:Cabin,sans-serif;" align="left">
+                
+        <div align="center">
+          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:Cabin,sans-serif;"><tr><td style="font-family:Cabin,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:46px; v-text-anchor:middle; width:234px;" arcsize="8.5%" stroke="f" fillcolor="#1977cc"><w:anchorlock/><center style="color:#FFFFFF;font-family:Cabin,sans-serif;"><![endif]-->
+            <a href="http://localhost/MasterCliniCare/Customer/Verify.php?vkey=' . $vkey . '" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+              <span style="display:block;padding:14px 44px 13px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><strong><span style="line-height: 19.2px; font-size: 16px;">VERIFY YOUR EMAIL</span></strong></span></span>
+            </a>
+          <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
+        </div>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #1977cc;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:Cabin,sans-serif;" align="left">
+                
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+            <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+          </tbody>
+          </table>
+          <!--[if mso]></div><![endif]-->
+          <!--[if IE]></div><![endif]-->
+        </body>
+        
         </html>';
-        //$message = "<a href='http://localhost/MasterCliniCare/Customer/Verify.php?vkey=$vkey'>
-		//Click Here To Verify Your Email Address</a>";
 
         mail($to, $subject, $htmlContent, $headers);
 
         $sql2 = "INSERT INTO user (email, usertype)
                             VALUES('$email', 'customer')";
-                            if($con->query($sql2) === TRUE)
-							{
-								//kalau dah successful buat sign up, keluar page ni
-                                header("Location: /MasterCliniCare/Alerts/success.php");
-                            }
-							
-							else
-							{
-                                echo "Error";
-								//header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/errorSignup.php");
-                            }
-    } 
-	
-	else 
-	{
-		//ni part bila email tu dah ade. duplicate
-       //echo "Error: " . $sql . "<br>" . $con->error;
-		header("Location: /MasterCliniCare/Alerts/unsuccess.php");
+        if ($con->query($sql2) === TRUE) {
+            //kalau dah successful buat sign up, keluar page ni
+            header("Location: /MasterCliniCare/Alerts/success.php");
+        } else {
+            echo "Error";
+            //header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/errorSignup.php");
+        }
+    } else {
+        //ni part bila email tu dah ade. duplicate
+        //echo "Error: " . $sql . "<br>" . $con->error;
+        header("Location: /MasterCliniCare/Alerts/unsuccess.php");
     }
 }
 
@@ -274,32 +393,31 @@ function signin()
                 $row = $sql3->fetch_assoc();
                 $usertype = $row['usertype'];
 
-                if($usertype == "customer"){
-                header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.php");
-                }else{
+                if ($usertype == "customer") {
+                    header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.php");
+                } else {
                     header("Location: /MasterClinicare/stisla-2.2.0/dist/index.php");
                 }
-                
             }
             //Continue
-                       
+
         } else {
-            header ("Location: /MasterClinicare/Alerts/unsuccessNVER.php");
+            header("Location: /MasterClinicare/Alerts/unsuccessNVER.php");
         }
-        
     } else {
         //Invalid login
-        header ("Location: /MasterClinicare/Alerts/unsuccessWRONG.php");
+        header("Location: /MasterClinicare/Alerts/unsuccessWRONG.php");
     }
-
 }
 
-function signout(){
+function signout()
+{
     session_destroy();
     header("Location: /MasterCliniCare/index.php");
 }
 
-function getVkey(){
+function getVkey()
+{
     $servername = "localhost";
     $username = "clinicarecustomer";
     $password = "customer";
@@ -307,131 +425,402 @@ function getVkey(){
 
     $con = new mysqli($servername, $username, $password, $dbname);
 
-        if(!$con){
-            echo mysqli_error($con);
-        }else{
-            //Construct SQL statement
-            $email = $_POST['email'];
+    if (!$con) {
+        echo mysqli_error($con);
+    } else {
+        //Construct SQL statement
+        $email = $_POST['email'];
 
-            $sql = "SELECT vkey FROM customer WHERE email='$email'";
-            $qry = mysqli_query($con, $sql);
-            $count = mysqli_num_rows($qry);
-            if($count == 1){
-                $userRecord = mysqli_fetch_assoc($qry);
-                $_SESSION['resetPassword'] = $email;
-                return $userRecord['vkey'];
-            }else{
-                header("Location: /MasterCliniCare/Alerts/unsuccessFP.php");
-                exit();
-            }
+        $sql = "SELECT vkey FROM customer WHERE email='$email'";
+        $qry = mysqli_query($con, $sql);
+        $count = mysqli_num_rows($qry);
+        if ($count == 1) {
+            $userRecord = mysqli_fetch_assoc($qry);
+            $_SESSION['resetPassword'] = $email;
+            return $userRecord['vkey'];
+        } else {
+            header("Location: /MasterCliniCare/Alerts/unsuccessFP.php");
+            exit();
         }
+    }
 }
 
-function mailReset(){
+function mailReset()
+{
+    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+    $email = $_SESSION['resetPassword'];
+    $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+    $row = mysqli_fetch_array($query);
 
-        $email = $_SESSION['resetPassword'];
+    $vkey = getVkey($_POST);
+    $to = $email;
+    $subject = "Reset Your Password";
+    $headers = "From: CliniCare\r\n";
+    $headers .= "MIME-Version : 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        $vkey = getVkey($_POST);
-        $to = $email;
-        $subject = "Verify Your Email Address";
-        $headers = "From: info.clinicareweb@gmail.com\r\n";
-        $headers .= "MIME-Version : 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+    $htmlContent = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+        <head>
+        <!--[if gte mso 9]>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta name="x-apple-disable-message-reformatting">
+          <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
+          <title></title>
+          
+            <style type="text/css">
+              table, td { color: #000000; } a { color: #0000ee; text-decoration: underline; }
+        @media only screen and (min-width: 620px) {
+          .u-row {
+            width: 600px !important;
+          }
+          .u-row .u-col {
+            vertical-align: top;
+          }
+        
+          .u-row .u-col-100 {
+            width: 600px !important;
+          }
+        
+        }
+        
+        @media (max-width: 620px) {
+          .u-row-container {
+            max-width: 100% !important;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+          }
+          .u-row .u-col {
+            min-width: 320px !important;
+            max-width: 100% !important;
+            display: block !important;
+          }
+          .u-row {
+            width: calc(100% - 40px) !important;
+          }
+          .u-col {
+            width: 100% !important;
+          }
+          .u-col > div {
+            margin: 0 auto;
+          }
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        
+        table,
+        tr,
+        td {
+          vertical-align: top;
+          border-collapse: collapse;
+        }
+        
+        p {
+          margin: 0;
+        }
+        
+        .ie-container table,
+        .mso-container table {
+          table-layout: fixed;
+        }
+        
+        * {
+          line-height: inherit;
+        }
+        
+        a[x-apple-data-detectors=true] {
+          color: inherit !important;
+          text-decoration: none !important;
+        }
+        
+        </style>
+          
+          
+        
+        <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
+        
+        </head>
+        
+        <body class="clean-body u_body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #f9f9f9;color: #000000">
+          <!--[if IE]><div class="ie-container"><![endif]-->
+          <!--[if mso]><div class="mso-container"><![endif]-->
+          <table style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #f9f9f9;width:100%" cellpadding="0" cellspacing="0">
+          <tbody>
+          <tr style="vertical-align: top">
+            <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+            <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #f9f9f9;"><![endif]-->
+            
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: transparent;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #1977cc;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:20px;font-family:Cabin,sans-serif;" align="left">
+                
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="padding-right: 0px;padding-left: 0px;" align="center">
+              
+              <img align="center" border="0" src="https://i.imgur.com/KGGAQuG.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 32%;max-width: 179.2px;" width="179.2"/>
+              
+            </td>
+          </tr>
+        </table>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #ffffff;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:33px 55px;font-family:Cabin,sans-serif;" align="left">
+                
+          <div style="line-height: 160%; text-align: center; word-wrap: break-word;">
+            <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 22px; line-height: 35.2px;">Hi, ' . $row['name'] . ' </span></p>
+        <p style="font-size: 14px; line-height: 160%;">We have received your request to reset your password. Please click on the button below to set up a new password.</span></p>
+          </div>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:Cabin,sans-serif;" align="left">
+                
+        <div align="center">
+          <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:Cabin,sans-serif;"><tr><td style="font-family:Cabin,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:46px; v-text-anchor:middle; width:234px;" arcsize="8.5%" stroke="f" fillcolor="#1977cc"><w:anchorlock/><center style="color:#FFFFFF;font-family:Cabin,sans-serif;"><![endif]-->
+            <a href="http://localhost/MasterCliniCare/Customer/Sign In Page/Sign In/resetPassword.php?vkey=' .$vkey .' target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+              <span style="display:block;padding:14px 44px 13px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><strong><span style="line-height: 19.2px; font-size: 16px;">RESET YOUR PASSWORD</span></strong></span></span>
+            </a>
+          <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
+        </div>
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <div class="u-row-container" style="padding: 0px;background-color: transparent">
+          <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
+            <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
+              <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding: 0px;background-color: transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px;"><tr style="background-color: #1977cc;"><![endif]-->
+              
+        <!--[if (mso)|(IE)]><td align="center" width="600" style="width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;" valign="top"><![endif]-->
+        <div class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
+          <div style="width: 100% !important;">
+          <!--[if (!mso)&(!IE)]><!--><div style="padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;"><!--<![endif]-->
+          
+        <table style="font-family:Cabin,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+          <tbody>
+            <tr>
+              <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:Cabin,sans-serif;" align="left">
+                
+        
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+          <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+          </div>
+        </div>
+        <!--[if (mso)|(IE)]></td><![endif]-->
+              <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+            </div>
+          </div>
+        </div>
+        
+        
+            <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+            </td>
+          </tr>
+          </tbody>
+          </table>
+          <!--[if mso]></div><![endif]-->
+          <!--[if IE]></div><![endif]-->
+        </body>
+        
+        </html>';
 
-        $message = "<a href='http://localhost/MasterCliniCare/Customer/Sign In Page/Sign In/resetPassword.php?vkey=$vkey'>
-		Click Here To Reset Your Password</a>";
-
-        mail($to, $subject, $message, $headers);
-
+    mail($to, $subject, $htmlContent, $headers);
 }
 
 
 //ni yg nak reset tuu
-function resetPassword(){
+function resetPassword()
+{
 
-     $vkey = $_SESSION['resetVkey'];
-     $email = $_SESSION['resetPassword'];
+    $vkey = $_SESSION['resetVkey'];
+    $email = $_SESSION['resetPassword'];
 
-     $pwd = $_POST['pwd'];
-     $pwdR = $_POST['pwd-repeat'];
+    $pwd = $_POST['pwd'];
+    $pwdR = $_POST['pwd-repeat'];
 
-     if(strlen($pwd)<2 || strlen($pwdR)<2)
-	 {
-         header("Location: /MasterCliniCare/index.php");
-         exit();
-     }
-	 
-	 else if($pwd == $pwdR)
-	 {
+    if (strlen($pwd) < 2 || strlen($pwdR) < 2) {
+        header("Location: /MasterCliniCare/index.php");
+        exit();
+    } else if ($pwd == $pwdR) {
 
-         $pwd = md5($pwd);
-         $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+        $pwd = md5($pwd);
+        $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 
-         if(!$con)
-		 {
+        if (!$con) {
             echo "error";
-        }
-		
-		else
-		{
+        } else {
             //Construct SQL statement
             $sql = "UPDATE customer SET password='$pwd' WHERE vkey='$vkey' AND email='$email'";
 
-            if($con->query($sql)== TRUE){
-				unset($_SESSION['resetVkey']);
+            if ($con->query($sql) == TRUE) {
+                unset($_SESSION['resetVkey']);
                 unset($_SESSION['resetPassword']);
                 header("Location: /MasterCliniCare/Alerts/successRS.php");
                 exit();
-            
-            }else{
+            } else {
                 //echo mysqli_error($con);
                 echo "error";
                 exit();
             }
         }
-
-    }else{
-       header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
-       exit();
-     }
+    } else {
+        header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
+        exit();
+    }
 }
 
 
 //function edit profile info
-function updateProfile(){
+function updateProfile()
+{
 
-        $servername = "localhost";
-        $username = "clinicarecustomer";
-        $password = "customer";
-        $dbname = "clinicare";
+    $servername = "localhost";
+    $username = "clinicarecustomer";
+    $password = "customer";
+    $dbname = "clinicare";
 
-        $con = new mysqli($servername, $username, $password, $dbname);
+    $con = new mysqli($servername, $username, $password, $dbname);
 
-        if(!$con){
-            echo "Error";
-        }else{
+    if (!$con) {
+        echo "Error";
+    } else {
 
-            $email = $_SESSION['email'];
+        $email = $_SESSION['email'];
 
-            $name = $_POST['name'];
-            $phoneNumber = $_POST['phoneNumber'];
-            $icNumber = $_POST['icNumber'];
-            $birthDate = $_POST['birthDate'];
-            $address = $_POST['address'];
+        $name = $_POST['name'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $icNumber = $_POST['icNumber'];
+        $birthDate = $_POST['birthDate'];
+        $address = $_POST['address'];
 
-            $password = md5($password);
+        $password = md5($password);
 
-            $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
+        $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
-                    if ($con->query($sql) === TRUE) {
-                        header("Location: /MasterCliniCare/Customer/Index Pages/Profile/myProfile.php");
-                    } else{
-                        echo "error";
-                    }
-    
-    }
+        if ($con->query($sql) === TRUE) {
+            header("Location: /MasterCliniCare/Customer/Index Pages/Profile/myProfile.php");
+        } else {
+            echo "error";
         }
+    }
+}
 
 ?>
 

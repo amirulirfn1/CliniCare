@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION['email'])){
-  $_SESSION['email'] = $email;
+if (isset($_SESSION['email'])) {
+    $_SESSION['email'] = $email;
 }
 
 ?>
@@ -35,14 +35,12 @@ if(isset($_SESSION['email'])){
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
-                        <a href="/MasterCliniCare/Customer/Sign Up Page/Sign Up/signup.php"
-                            class="signup-image-link">Create an account</a>
+                        <a href="/MasterCliniCare/Customer/Sign Up Page/Sign Up/signup.php" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">Forgot Password</h2>
-                        <form method="POST" class="signin" id="login-form"
-                            action="/MasterCliniCare/Customer/CustomerEntry.php">
+                        <form method="POST" class="signin" id="login-form" action="/MasterCliniCare/Customer/CustomerEntry.php">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="email" placeholder="Email Address" />
@@ -64,6 +62,3 @@ if(isset($_SESSION['email'])){
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
-
-
-

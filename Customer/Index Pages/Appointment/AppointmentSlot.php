@@ -1,9 +1,9 @@
 <?php
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 session_start();
-$email=$_SESSION['email'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 
 
@@ -25,9 +25,7 @@ $row=mysqli_fetch_array($query);
   <link href="../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -42,54 +40,53 @@ $row=mysqli_fetch_array($query);
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
-	
+
   <!-- =======================================================
   * Template Name: Medilab - v4.3.0
   * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-<style>
-  
-.error {
-   background: #F2DEDE;
-   color: #A94442;
-   padding: 10px;
-   width: 100%;
-   border-radius: 5px;
-   margin: 20px auto;
-   font-size: 16px;
-  }
 
-.success {
-   background: #D4EDDA;
-   color: #40754C;
-   padding: 10px;
-   width: 100%;
-   border-radius: 5px;
-   margin: 20px auto;
-   font-size: 16px;
-}
+  <style>
+    .error {
+      background: #F2DEDE;
+      color: #A94442;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      margin: 20px auto;
+      font-size: 16px;
+    }
 
-</style>
-<script src="index.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script>
-    function enable(){
-      if (document.getElementById("terms").checked){
+    .success {
+      background: #D4EDDA;
+      color: #40754C;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      margin: 20px auto;
+      font-size: 16px;
+    }
+  </style>
+  <script src="index.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+  <script>
+    function enable() {
+      if (document.getElementById("terms").checked) {
         document.getElementById("bookApp").disabled = false;
-      }else{
+      } else {
         document.getElementById("bookApp").disabled = true;
-        }
+      }
     }
-    function change_date(){
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "ajax.php?date="+document.getElementById("Sdate").value, false);
-        xmlhttp.send(null);
-        document.getElementById("time").innerHTML=xmlhttp.responseText;
+
+    function change_date() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", "ajax.php?date=" + document.getElementById("Sdate").value, false);
+      xmlhttp.send(null);
+      document.getElementById("time").innerHTML = xmlhttp.responseText;
     }
-</script>
+  </script>
 </head>
 
 <body>
@@ -103,10 +100,8 @@ $row=mysqli_fetch_array($query);
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bi bi-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -117,187 +112,180 @@ $row=mysqli_fetch_array($query);
 
       <!-- Uncomment below if you prefer to use an image logo -->
       <a href="#hero" class="logo me-auto">
-		<img src="../assets/img/gambar/logobanner.png" alt="" class="img-fluid">
-	  </a>
+        <img src="../assets/img/gambar/logobanner.png" alt="" class="img-fluid">
+      </a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
-		  <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
-          </ul>
-		  </li>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
+            </ul>
+          </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-		  <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
-		  <ul>
-                  <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-                  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
-				  <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
-          </ul>
-		  </li>
-          
+          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
+              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
+              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+            </ul>
+          </li>
+
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
-			<?php echo "Hello " . $row['name']; ?></span> 
-			<i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li>
-				  <a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">
-				  View Profile</a>
-				  </li>
-				  
-				  <li>
-					<a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">
-					View History</a>
-				  </li>
-				  
-                  <li>
-				  <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
-				  Make an Appointment</a>
-				  </li>
-				  
-                  <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST"><li><a><button type="submit" href="#" 
-                        style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li></form>
-                </ul>
+                <?php echo "Hello " . $row['name']; ?></span>
+              <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              <li>
+                <a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">
+                  View Profile</a>
               </li>
+
+              <li>
+                <a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">
+                  View History</a>
+              </li>
+
+              <li>
+                <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
+                  Make an Appointment</a>
+              </li>
+
+              <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                <li><a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li>
+              </form>
+            </ul>
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
     </div>
   </header><!-- End Header -->
 
- 
-<!-- MAIN CONTENT -->  
+
+  <!-- MAIN CONTENT -->
   <main id="main">
-	<br><br><br><br><br>
-	
-	
-     <!-- ======= Main My Profile Section ======= -->
+    <br><br><br><br><br>
+
+
+    <!-- ======= Main My Profile Section ======= -->
     <section id="faq" class="faq section-bg">
       <div class="container">
-		
-		<div class="section-title">
+
+        <div class="section-title">
           <h2>Book An Appointment</h2>
         </div>
-		
+
         <div class="container rounded bg-white mt-5 mb-5">
-		
-		<div class="row">
-		
-        <div class="col-md-8 border-right">
-            <div class="p-3 py-5">
+
+          <div class="row">
+
+            <div class="col-md-8 border-right">
+              <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Personal Info</h4>
-                </div>
-				
-				<form class="forms-sample" 
-				action="/MasterCliniCare/Customer/CustomerEntry.php" 
-				method="POST">         
-                
-				<div class="row mt-3">
-                    <div class="col-md-12">
-						<label class="labels" style = "font-size: 12px">Email</label>
-						<input type="text" class="form-control" 
-						name="email" value="<?php echo $row['email']; ?>" disabled >
-					</div>
-                    
-					
-					<div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Name</label>
-						<input type="text" class="form-control" 
-						name="name" id="name" value= "<?php echo $row['name']; ?>" disabled >
-					</div>
-                
-                    <div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">IC Number</label>
-						<input type="text" class="form-control" 
-						placeholder="xxxxxx-xx-xxxx" name="icNumber" 
-						id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
-					</div>
-					
-                    <div class="col-md-12">
-						<br>
-						<label class="labels" style = "font-size: 12px">Contact Number</label>
-						<input type="text" class="form-control" 
-						 placeholder="xxx-xxxxxxx" name="phoneNumber" 
-						 value="<?php echo $row['phoneNumber']; ?>" disabled >
-					</div>     
-
+                  <h4 class="text-right">Personal Info</h4>
                 </div>
 
-				</form>
+                <form class="forms-sample" action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+
+                  <div class="row mt-3">
+                    <div class="col-md-12">
+                      <label class="labels" style="font-size: 12px">Email</label>
+                      <input type="text" class="form-control" name="email" value="<?php echo $row['email']; ?>" disabled>
+                    </div>
+
+
+                    <div class="col-md-12">
+                      <br>
+                      <label class="labels" style="font-size: 12px">Name</label>
+                      <input type="text" class="form-control" name="name" id="name" value="<?php echo $row['name']; ?>" disabled>
+                    </div>
+
+                    <div class="col-md-12">
+                      <br>
+                      <label class="labels" style="font-size: 12px">IC Number</label>
+                      <input type="text" class="form-control" placeholder="xxxxxx-xx-xxxx" name="icNumber" id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
+                    </div>
+
+                    <div class="col-md-12">
+                      <br>
+                      <label class="labels" style="font-size: 12px">Contact Number</label>
+                      <input type="text" class="form-control" placeholder="xxx-xxxxxxx" name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
             </div>
-        </div>
-		
-        <div class="col-md-4 border-left">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Set Date & Time</h4>
-                </div>
-				
-				
-					<link rel="stylesheet" type="text/css">
-        
-        
-				<p class="card-description"></p>
-				
-				<form class="form-sample" action="AppointmentSlot.php" method="POST">
-                <div class="col-md-12">
-					<label class="labels" style = "font-size: 12px">Choose Date</label>
-					<select id="Sdate" name="date" class="form-control" onchange= "change_date()" required >
-          <option value="">Date</option>
-          <?php
-                    $con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 group by date ";
-                    $result = mysqli_query($con,$sql);
-                    while($row = mysqli_fetch_array($result))
-                    {
-                        echo "<option value='{$row['date']}'>".$row['date']."</option>";
-                    }
-                ?>
-          </select>
-				</div> 
-				
-				<br>
-				
-        <div class="col-md-12" id="time">
-					<label class="labels" style = "font-size: 12px">Choose Time</label>
-					<select name="time" class="form-control"  required>
-            <option value="" >Time</option>
-          </select>
-				</div><br>
 
-        <div class="col-md-12">
-					<label class="labels" style = "font-size: 12px">Terms & Conditions</label><br>
-          
-          <a href="https://www.freeprivacypolicy.com/live/791fefe3-a182-4375-a661-556ed0eec0d4">Terms & Conditions</a><br><hr>
-					<input type="checkbox" id="terms" onchange= "enable()" required ><span> I've read the terms & conditions</span>
-          </input>
-				</div>
-				
-						
-				<div class="form-group">
-					<br>	
+            <div class="col-md-4 border-left">
+              <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-right">Set Date & Time</h4>
+                </div>
+
+
+                <link rel="stylesheet" type="text/css">
+
+
+                <p class="card-description"></p>
+
+                <form class="form-sample" action="AppointmentSlot.php" method="POST">
+                  <div class="col-md-12">
+                    <label class="labels" style="font-size: 12px">Choose Date</label>
+                    <select id="Sdate" name="date" class="form-control" onchange="change_date()" required>
+                      <option value="">Date</option>
+                      <?php
+                      $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                      $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 group by date ";
+                      $result = mysqli_query($con, $sql);
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<option value='{$row['date']}'>" . $row['date'] . "</option>";
+                      }
+                      ?>
+                    </select>
+                  </div>
+
+                  <br>
+
+                  <div class="col-md-12" id="time">
+                    <label class="labels" style="font-size: 12px">Choose Time</label>
+                    <select name="time" class="form-control" required>
+                      <option value="">Time</option>
+                    </select>
+                  </div><br>
+
+                  <div class="col-md-12">
+                    <label class="labels" style="font-size: 12px">Terms & Conditions</label><br>
+
+                    <a href="https://www.freeprivacypolicy.com/live/791fefe3-a182-4375-a661-556ed0eec0d4">Terms & Conditions</a><br>
+                    <hr>
+                    <input type="checkbox" id="terms" onchange="enable()" required><span> I've read the terms & conditions</span>
+                    </input>
+                  </div>
+
+
+                  <div class="form-group">
+                    <br>
                     <label class="col-sm-0 col-form-label"></label>
                     <button type="submit" id="bookApp" class="btn btn-primary profile-button" disabled>Book Now</button>
-                </div>
-				</form>
+                  </div>
+                </form>
+              </div>
             </div>
-        </div>
-		</div>
+          </div>
 
         </div>
-	   </div>
+      </div>
     </section><!-- End Testimonials Section -->
 
   </main><!-- End #main -->
@@ -310,23 +298,20 @@ $row=mysqli_fetch_array($query);
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
           &copy; Copyright <strong><span>C L I N I C A R E</span>
-		  </strong>. All Rights Reserved
+          </strong>. All Rights Reserved
         </div>
 
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bx bxl-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bx bxl-instagram"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

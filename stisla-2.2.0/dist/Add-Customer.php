@@ -1,13 +1,14 @@
 <?php
-	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-	session_start();
-	$email=$_SESSION['email'];
-	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-	$row=mysqli_fetch_array($query);
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+session_start();
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -23,16 +24,20 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -172,8 +177,9 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat!</div></a>
+              <img alt="image" src="assets/img/doctors/doctors-1.jpg" class="rounded-circle mr-1">
+              <div class="d-sm-none d-lg-inline-block">Hi,Prof Dr Megat!</div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.php" class="dropdown-item has-icon">
@@ -188,8 +194,8 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item" name="signout" id="signout" >
-                    <i class="fas fa-sign-out-alt" ></i> Sign Out </button>
+                  <button type="submit" class="dropdown-item" name="signout" id="signout">
+                    <i class="fas fa-sign-out-alt"></i> Sign Out </button>
                 </form>
               </a>
             </div>
@@ -207,10 +213,12 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>View Purchase Medicine</span></a></li>
             <li><a class="nav-link" href="Appointment-List.php"><i class="far fa-file-alt"></i> <span>Appointments List</span></a></li>
-                    </aside>
+        </aside>
       </div>
       <!-- Main Content -->
       <div class="main-content">
@@ -222,98 +230,101 @@
               <div class="breadcrumb-item">Advanced Forms</div>
             </div>
           </div>
-            <div class="col-md-12">
-        <div class="card">
-          
-          <div class="card-body p-0">
-                    <h2 class="section-title"> <h4>Add Customer<h4></h2>
-                  </div>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <label>Name</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Phone Number</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-phone"></i>
-                          </div>
-                        </div>
-                        <input type="text" class="form-control phone-number">
+          <div class="col-md-12">
+            <div class="card">
+
+              <div class="card-body p-0">
+                <h2 class="section-title">
+                  <h4>Add Customer<h4>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-phone"></i>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label>Password Strength</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                          </div>
-                        </div>
-                        <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
-                      </div>
-                      <div id="pwindicator" class="pwindicator">
-                        <div class="bar"></div>
-                        <div class="label"></div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label>Confirm Password </label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">
-                            <i class="fas fa-lock"></i>
-                          </div>
-                        </div>
-                        <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
-                      </div>
-                      <div id="pwindicator" class="pwindicator">
-                        <div class="bar"></div>
-                        <div class="label"></div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label>IC Number</label>
-                      <input type="text" class="form-control invoice-input">
-                    </div>
-                    <div class="form-group">
-                      <label>Date</label>
-                      <input type="date" class="form-control datemask" placeholder="YYYY/MM/DD">
-                    </div>
+                    <input type="text" class="form-control phone-number">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label>Password Strength</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-lock"></i>
+                      </div>
+                    </div>
+                    <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
+                  </div>
+                  <div id="pwindicator" class="pwindicator">
+                    <div class="bar"></div>
+                    <div class="label"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password </label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-lock"></i>
+                      </div>
+                    </div>
+                    <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
+                  </div>
+                  <div id="pwindicator" class="pwindicator">
+                    <div class="bar"></div>
+                    <div class="label"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>IC Number</label>
+                  <input type="text" class="form-control invoice-input">
+                </div>
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" class="form-control datemask" placeholder="YYYY/MM/DD">
+                </div>
+              </div>
+            </div>
 
-         <!-- partial:../../partials/_footer.html -->
-         <footer class="footer">
-          <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+              <div class="container-fluid clearfix">
+                &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+              </div>
+              <div class="footer-right">
+
+              </div>
+            </footer>
           </div>
-        <div class="footer-right">
-          
-        </div>
-      </footer>
-    </div>
-  </div>
+      </div>
 
-  <!-- General JS Scripts -->
-  <script src="assets/modules/jquery.min.js"></script>
-  <script src="assets/modules/popper.js"></script>
-  <script src="assets/modules/tooltip.js"></script>
-  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="assets/modules/moment.min.js"></script>
-  <script src="assets/js/stisla.js"></script>
-  
-  <!-- JS Libraies -->
+      <!-- General JS Scripts -->
+      <script src="assets/modules/jquery.min.js"></script>
+      <script src="assets/modules/popper.js"></script>
+      <script src="assets/modules/tooltip.js"></script>
+      <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+      <script src="assets/modules/moment.min.js"></script>
+      <script src="assets/js/stisla.js"></script>
 
-  <!-- Page Specific JS File -->
-  
-  <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <!-- JS Libraies -->
+
+      <!-- Page Specific JS File -->
+
+      <!-- Template JS File -->
+      <script src="assets/js/scripts.js"></script>
+      <script src="assets/js/custom.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

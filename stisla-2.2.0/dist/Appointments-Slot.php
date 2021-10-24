@@ -1,20 +1,21 @@
 <?php
-	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
-	session_start();
-	$email=$_SESSION['email'];
-	$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-	$row=mysqli_fetch_array($query);
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+session_start();
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>Add Appointment Slot &mdash; CliniCare</title>
 
   <!-- General CSS Files -->
-  <link href="assets/img/icon.jpeg" rel="icon">
+  <link href="assets/img/icon.jpeg" rel="icon">Z
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
@@ -23,16 +24,20 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -47,9 +52,10 @@
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            
 
-            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div></a>
+
+              <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -59,7 +65,7 @@
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center" >Sign Out </button>
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
             </div>
@@ -77,16 +83,18 @@
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer List</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer List</span></a></li>
             <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
             <ul class="sidebar-menu">
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-              </ul>
-            </li>
+              <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                </ul>
+              </li>
         </aside>
       </div>
 
@@ -103,31 +111,31 @@
           </div>
 
           <div class="section-body">
-           
-                <div class="card">
-                  <div class="card-header">
-				  <a href = "All-Appointment-Slot.php"></a>
-                    <h4>Add Appointment</h4>
-                  </div>
-                  <a class="nav-link" href="All-Appointment-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> View All Appointment Slot</a>
-                  <div class="card-body">
-                    <div class="form-group">
-                      <div class="section-title mt-0">Date</div>
-                      <input type="datetime-local" class="form-control">
-                    </div>
-                    
-                    <a href="#" class="btn btn.btn-lg btn-success">Submit</a>
 
-                   
+            <div class="card">
+              <div class="card-header">
+                <a href="All-Appointment-Slot.php"></a>
+                <h4>Add Appointment</h4>
+              </div>
+              <a class="nav-link" href="All-Appointment-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> View All Appointment Slot</a>
+              <div class="card-body">
+                <div class="form-group">
+                  <div class="section-title mt-0">Date</div>
+                  <input type="datetime-local" class="form-control">
+                </div>
+
+                <a href="#" class="btn btn.btn-lg btn-success">Submit</a>
+
+
         </section>
       </div>
       <!-- partial:../../partials/_footer.html -->
       <footer class="footer">
-          <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-          </div>
+        <div class="container-fluid clearfix">
+          &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+        </div>
         <div class="footer-right">
-          
+
         </div>
       </footer>
     </div>
@@ -141,17 +149,18 @@
   <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
-  
+
   <!-- JS Libraies -->
-	<script src="assets/modules/sweetalert/sweetalert.min.js"></script>
- 
- <!-- Page Specific JS File -->
+  <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+
+  <!-- Page Specific JS File -->
   <script src="assets/js/page/modules-sweetalert.js"></script>
-  
+
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>

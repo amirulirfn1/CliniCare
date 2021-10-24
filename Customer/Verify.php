@@ -29,6 +29,3 @@ if (isset($_GET['vkey'])){
 }else{
     die();
 }
-
-
-?>

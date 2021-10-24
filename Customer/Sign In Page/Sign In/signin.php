@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION['email'])){
-  $_SESSION['email'] = $email;
+if (isset($_SESSION['email'])) {
+    $_SESSION['email'] = $email;
 }
 
 ?>
@@ -35,16 +35,13 @@ if(isset($_SESSION['email'])){
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
-                        <a href="/MasterCliniCare/Customer/Sign Up Page/Sign Up/signup.php"
-                            class="signup-image-link">Create an account</a>
-						<a href="/MasterCliniCare/Customer/Sign In Page/Sign In/forgotPassword.php"
-                            class="signup-image-link">Forgot Password?</a>
+                        <a href="/MasterCliniCare/Customer/Sign Up Page/Sign Up/signup.php" class="signup-image-link">Create an account</a>
+                        <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/forgotPassword.php" class="signup-image-link">Forgot Password?</a>
                     </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign In</h2>
-                        <form method="POST" class="signin" id="login-form"
-                            action="/MasterCliniCare/Customer/CustomerEntry.php">
+                        <form method="POST" class="signin" id="login-form" action="/MasterCliniCare/Customer/CustomerEntry.php">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="email" placeholder="Email Address" required>
@@ -55,7 +52,7 @@ if(isset($_SESSION['email'])){
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
-                                <label for="remember-me" class="label-agree-term" ><span><span></span></span>Remember
+                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
                                     me</label>
                             </div>
                             <div class="form-group form-button">

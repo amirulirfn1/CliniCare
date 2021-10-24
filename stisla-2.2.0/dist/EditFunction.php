@@ -40,4 +40,3 @@ function updateStaffInformation()
 		return $qry;
 	}	
 }
-?>

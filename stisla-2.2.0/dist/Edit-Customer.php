@@ -1,12 +1,13 @@
 <?php
-	$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 session_start();
-$email=$_SESSION['email'];
-$query=mysqli_query($con,"SELECT * FROM customer WHERE email='$email' ");
-$row=mysqli_fetch_array($query);
+$email = $_SESSION['email'];
+$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+$row = mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -22,16 +23,20 @@ $row=mysqli_fetch_array($query);
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Start GA -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-94034622-3');
+  </script>
+  <!-- /END GA -->
+</head>
 
 <body>
   <div id="app">
@@ -46,9 +51,10 @@ $row=mysqli_fetch_array($query);
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            
 
-            <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div></a>
+
+              <div class="d-sm-none d-lg-inline-block"><?php echo "Hello, " . $row['name']; ?></div>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
               <a href="features-profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
@@ -58,15 +64,15 @@ $row=mysqli_fetch_array($query);
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center" >Sign Out </button>
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
             </div>
           </li>
         </ul>
       </nav>
-       <!--SideBar-->
-       <div class="main-sidebar sidebar-style-2">
+      <!--SideBar-->
+      <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="index.php">C L I N I C A R E</a>
@@ -76,22 +82,24 @@ $row=mysqli_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i><ion-icon name="person"></ion-icon></i> </i> <span>Customer</span></a></li>
+            <li><a class="nav-link" href="Customer-List.php"><i>
+                  <ion-icon name="person"></ion-icon>
+                </i> </i> <span>Customer</span></a></li>
             <li><a class="nav-link" href=><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-                <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
-              </ul>
-            </li>
-                    </aside>
+              <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                  <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
+                </ul>
+              </li>
+        </aside>
       </div>
-	  
+
       <!-- Main Content -->
-		<div class="main-content">
+      <div class="main-content">
         <section class="section">
           <div class="section-header">
             <div class="section-header-breadcrumb">
@@ -100,95 +108,89 @@ $row=mysqli_fetch_array($query);
               <div class="breadcrumb-item">Edit Profile</div>
             </div>
           </div>
-            <div class="col-md-12">
-		<?php
-			include "EditFunction.php";
-			$Qry = getCustomerInfo($_POST['customerToUpdate']);
-			$Record = mysqli_fetch_assoc($Qry); //ni die akan amek satu baris record
-		?>
-	
-        <div class="card">
-		<form action="/MasterCliniCare/stisla-2.2.0/AdminEntry.php"
-			   method = "POST">
-		
-         <div class="card-body">
-          <div class="section-title mt-0">Edit Profile</div>
-          </div>
+          <div class="col-md-12">
+            <?php
+            include "EditFunction.php";
+            $Qry = getCustomerInfo($_POST['customerToUpdate']);
+            $Record = mysqli_fetch_assoc($Qry); //ni die akan amek satu baris record
+            ?>
 
-          <div class="card-body">
-				  
-				  <div class="form-group">
-                      <label>Email</label>
-                      <input type="text" class="form-control" 
-					  name = "email" value="<?php echo $_POST['customerToUpdate']; ?>"  >
-                    </div>
-					
-					<div class="form-group">
-                      <label>Name</label>
-                      <input type="text" class="form-control" 
-					  name = "name" value= "<?php echo $Record['name']; ?>" >
-                    </div>
-					
-                    <div class="form-group">
-                      <label>Phone Number</label>
-                        <input type="text" class="form-control phone-number"
-						name = "phoneNumber" value="<?php echo $Record['phoneNumber']; ?>" >
-                    </div>
-					
-                    <div class="form-group">
-                      <label>IC Number</label>
-                      <input type="text" class="form-control invoice-input"
-					  name = "ICnumber" value="<?php echo $Record['ICnumber']; ?>" >
-                    </div>
+            <div class="card">
+              <form action="/MasterCliniCare/stisla-2.2.0/AdminEntry.php" method="POST">
 
-                    <div class="form-group">
-                      <label>Birth Date</label>
-                      <input type="date" class="form-control" 
-					  name = "birthDate" value="<?php echo $Record['birthDate']; ?>"  >
-                    </div>
+                <div class="card-body">
+                  <div class="section-title mt-0">Edit Profile</div>
+                </div>
 
+                <div class="card-body">
+
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" value="<?php echo $_POST['customerToUpdate']; ?>">
                   </div>
 
-						<div class="card-body">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" value="<?php echo $Record['name']; ?>">
+                  </div>
 
-							<button type="submit" class="btn btn-primary"
-							name="updateCustomer">Update</button>	
-					
-				  </div>
-		</form> 
-        </div>
-         <!-- partial:../../partials/_footer.html -->
-         <footer class="footer">
-          <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control phone-number" name="phoneNumber" value="<?php echo $Record['phoneNumber']; ?>">
+                  </div>
+
+                  <div class="form-group">
+                    <label>IC Number</label>
+                    <input type="text" class="form-control invoice-input" name="ICnumber" value="<?php echo $Record['ICnumber']; ?>">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Birth Date</label>
+                    <input type="date" class="form-control" name="birthDate" value="<?php echo $Record['birthDate']; ?>">
+                  </div>
+
+                </div>
+
+                <div class="card-body">
+
+                  <button type="submit" class="btn btn-primary" name="updateCustomer">Update</button>
+
+                </div>
+              </form>
+            </div>
+            <!-- partial:../../partials/_footer.html -->
+            <footer class="footer">
+              <div class="container-fluid clearfix">
+                &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+              </div>
+              <div class="footer-right">
+
+              </div>
+            </footer>
           </div>
-        <div class="footer-right">
-          
-        </div>
-      </footer>
-    </div>
-	</section>
-  </div>
+        </section>
+      </div>
 
-  <!-- General JS Scripts -->
-  <script src="assets/modules/jquery.min.js"></script>
-  <script src="assets/modules/popper.js"></script>
-  <script src="assets/modules/tooltip.js"></script>
-  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="assets/modules/moment.min.js"></script>
-  <script src="assets/js/stisla.js"></script>
-  
-  <!-- JS Libraies -->
-	<script src="assets/modules/sweetalert/sweetalert.min.js"></script>
- 
- <!-- Page Specific JS File -->
-  <script src="assets/js/page/modules-sweetalert.js"></script>
-  
-  <!-- Template JS File -->
-  <script src="assets/js/scripts.js"></script>
-  <script src="assets/js/custom.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <!-- General JS Scripts -->
+      <script src="assets/modules/jquery.min.js"></script>
+      <script src="assets/modules/popper.js"></script>
+      <script src="assets/modules/tooltip.js"></script>
+      <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+      <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+      <script src="assets/modules/moment.min.js"></script>
+      <script src="assets/js/stisla.js"></script>
+
+      <!-- JS Libraies -->
+      <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+
+      <!-- Page Specific JS File -->
+      <script src="assets/js/page/modules-sweetalert.js"></script>
+
+      <!-- Template JS File -->
+      <script src="assets/js/scripts.js"></script>
+      <script src="assets/js/custom.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
