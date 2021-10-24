@@ -88,9 +88,14 @@ function deleteCustomer()
         $sql = "DELETE FROM customer WHERE email = '$email' ";
 
         if ($con->query($sql) === TRUE) {
-            header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
+            $sql2 = "DELETE FROM user WHERE email = '$email'";
+            if ($con->query($sql2) === TRUE) {
+                header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
+            } else {
+                echo "error sql2";
+            }
         } else {
-            echo "error";
+            echo "error sql";
         }
     }
 }
