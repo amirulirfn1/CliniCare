@@ -6,9 +6,6 @@ $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
 ?>
 
-
-<!-- PAGE FOR MY PROFILE CUSTOMER -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +14,7 @@ $row = mysqli_fetch_array($query);
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Purchased Medicine | CliniCare</title>
+  <title>Basket | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -100,8 +97,8 @@ $row = mysqli_fetch_array($query);
           <li class="dropdown"><a class="nav-link scrollto active" href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
-              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/viewBasket.php">View Basket</a></li>
+              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchase History</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">

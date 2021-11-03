@@ -6,9 +6,6 @@ $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,13 +72,13 @@ $row = mysqli_fetch_array($query);
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="#hero" class="logo me-auto"><img src="../../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="/MasterCliniCare/Customer/CustomerHomePage/index.php" class="logo me-auto"><img src="../../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Home</a></li>
-          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/Customer/CustomerHomePage/index.php">About</a></li>
+          <li class="dropdown"><a class="nav-link scrollto" href="#" class="nav-link scrollto">Services</a>
             <ul>
               <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
               <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
@@ -91,14 +88,14 @@ $row = mysqli_fetch_array($query);
               <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
             </ul>
           </li>
-          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Doctors</a></li>
-          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">FAQ</a></li>
-          <li><a href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Contact Us</a></li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Doctors</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/Customer/CustomerHomePage/index.php">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/Customer/CustomerHomePage/index.php">Contact Us</a></li>
+          <li class="dropdown"><a class="nav-link scrollto active" href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/purchasedMedicine.php">Buy Medicine</a></li>
-              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/viewCart.php">View My Cart</a></li>
+              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchase History</a></li>
             </ul>
           </li>
 
@@ -148,27 +145,101 @@ $row = mysqli_fetch_array($query);
                     <h4>Acetin Sachet 5g Tablet</h4>
                     <h5>RM 1.70</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 1";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med1" name="med1" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med1" name="med1" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
+
                   </div>
                 </div>
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/med7.jpg" class="img-fluid" alt=""></i>
-                    <h4>Breacol Cough Syrup</h4>
+                    <h4>Breacol Cough Syrup 500ml</h4>
                     <h5>RM 10.30</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 2";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med2" name="med2" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med2" name="med2" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/acetylcysteinesandoz.png" class="img-fluid" alt=""></i>
-                    <h4>Acetylcysteine Tablet</h4>
+                    <h4>Acetylcysteine Tablet 20 Tablet</h4>
                     <h5>RM 38.00</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 3";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med3" name="med3" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med3" name="med3" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -195,7 +266,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Acugesic 50mg Tablet</h4>
                     <h5>RM 15.80</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 4";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med4" name="med4" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med4" name="med4" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -205,7 +300,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Apo-Sumatriptan 50mg Tablet</h4>
                     <h5>RM 40.70</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 5";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med5" name="med5" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med5" name="med5" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -215,7 +334,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Actimax 500 <br> Tablet</h4>
                     <h5>RM 2.20</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 6";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med6" name="med6" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med6" name="med6" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -242,7 +385,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Appeton Folic Acid Tablet</h4>
                     <h5>RM 43.40</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 7";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med7" name="med7" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med7" name="med7" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -252,7 +419,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Cell Labs ProbiDefendum</h4>
                     <h5>RM 115.20</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 8";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med8" name="med8" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med8" name="med8" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -262,7 +453,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Blackmores Proceive Care</h4>
                     <h5>RM 94.50</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 9";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med9" name="med9" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med9" name="med9" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -288,7 +503,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Aspira 10mg <br> Tablet</h4>
                     <h5>RM 35.00</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 10";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med10" name="med10" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med10" name="med10" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -298,7 +537,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Alleryl 4mg/5ml Syrup</h4>
                     <h5>RM 4.00</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 11";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med11" name="med11"  class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med11" name="med11"  class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
 
@@ -308,7 +571,31 @@ $row = mysqli_fetch_array($query);
                     <h4>Anoro Ellipta 25mcg Accuhaler</h4>
                     <h5>RM 171.60</h5>
                     <br>
-                    <i class="fa fa-shopping-cart" style="font-size:36px; color:black; cursor:pointer;"></i>
+                    <?php
+
+                    $servername = "localhost";
+                    $username = "clinicarecustomer";
+                    $password = "customer";
+                    $dbname = "clinicare";
+
+                    $con = new mysqli($servername, $username, $password, $dbname);
+
+                    $userID = $row['userID'];
+
+                    $sql = "SELECT * FROM usercart WHERE userID = $userID AND productID = 12";
+                    $qry = mysqli_query($con,$sql);
+                    $count = mysqli_num_rows($qry);
+
+                    if ($count == 0) {
+
+                    echo '<form action="CartEntry.php" method="POST">
+                    <button type="submit" id="med12" name="med12" class="btn btn-play" style="font-size:20px; color:#1977cc; cursor:pointer;">Add to cart</button>
+                    </form>';
+
+                    }else{
+                      echo '<button type="submit" id="med12" name="med12" class="btn btn-play" style="font-size:20px; color:red; cursor:pointer;" disabled>Item is in cart</button>';
+                    }
+                    ?>
                   </div>
                 </div>
               </div>

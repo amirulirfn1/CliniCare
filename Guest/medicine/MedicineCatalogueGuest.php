@@ -8,17 +8,15 @@
   <title>Welcome | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="bootstrap.css">
 
   <!-- Favicons -->
   <link href="../../assets/img/gambar/icon.jpeg" rel="icon">
   <link href="../../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="../../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -40,8 +38,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  
-  
+
+
 </head>
 
 <body>
@@ -55,10 +53,8 @@
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bi bi-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bi bi-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -68,22 +64,21 @@
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="#hero" class="logo me-auto"><img src="../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="/MasterCliniCare/index.php" class="logo me-auto"><img src="../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="/MasterCliniCare/index.php">Home</a></li>
-          <li><a href="/MasterCliniCare/index.php">About</a></li>
-          <li><a href="/MasterCliniCare/index.php">Services</a></li>
-          <li><a href="/MasterCliniCare/index.php">Doctors</a></li>
-          <li><a href="/MasterCliniCare/index.php">FAQ</a></li>
-          <li><a href="/MasterCliniCare/index.php">Contact Us</a></li>
-		<li><a href="/MasterCliniCare/Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
-		</ul>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">About</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Services</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Doctors</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Contact Us</a></li>
+          <li><a class="nav-link scrollto active" href="/MasterCliniCare/Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
+        </ul>
       </nav><!-- .navbar -->
 
-      <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span
-          class="d-none d-md-inline">Sign In / Sign Up</span></a>
+      <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Sign In / Sign Up</span></a>
 
     </div>
   </header><!-- End Header -->
@@ -96,17 +91,17 @@
   </section><!-- End Hero -->
 
   <main id="main">
-  
+
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container">
 
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
-            <div class="content" >
-                
+            <div class="content">
+
               <h3>Ear, Nose & Throat</h3>
-			  <i><img src="gambar/Ear-Nose-Throat-icons.png"  class="center" width="280" alt=""></i>
+              <i><img src="gambar/Ear-Nose-Throat-icons.png" class="center" width="280" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -115,23 +110,23 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Acetin.jpg" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Acetin Sachet 5g</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/med7.jpg" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Breacol Cough Syrup</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/acetylcysteinesandoz.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Acetylcysteine Sandoz 600mg Tablet</h4>
                   </div>
                 </div>
@@ -139,14 +134,14 @@
             </div><!-- End .content-->
           </div>
         </div>
-		
-		<br><br>
-		
-		 <div class="row">
+
+        <br><br>
+
+        <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Fever, Pain & More</h3>
-              <i><img src="gambar/fever.png"  class="center"  alt=""></i>
+              <i><img src="gambar/fever.png" class="center" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -155,23 +150,23 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Acugesic.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Acugesic 50mg Tablet.</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                   <i><img src="gambar/apo.jpg" class="img-fluid" alt=""></i>
-					<br><br>
+                    <i><img src="gambar/apo.jpg" class="img-fluid" alt=""></i>
+                    <br><br>
                     <h4>Apo-Sumatriptan 50mg Tablet</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Actimax.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Actimax 500 Tablet</h4>
                   </div>
                 </div>
@@ -179,14 +174,14 @@
             </div><!-- End .content-->
           </div>
         </div>
-		
-				<br><br>
-		
-		 <div class="row">
+
+        <br><br>
+
+        <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Pregnancy</h3>
-              <i><img src="gambar/pregnancy.png"  class="center" width="297" alt=""></i>
+              <i><img src="gambar/pregnancy.png" class="center" width="297" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -195,23 +190,23 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/Appeton.jpg" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Appeton Essentials Folic Acid Tablet</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                   <i><img src="gambar/cell.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <i><img src="gambar/cell.png" class="img-fluid" alt=""></i>
+                    <br><br>
                     <h4>Cell Labs ProbiDefendum Sachet</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/blackmores.jpg" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Blackmores Proceive Care</h4>
                   </div>
                 </div>
@@ -219,14 +214,14 @@
             </div><!-- End .content-->
           </div>
         </div>
-		
-						<br><br>
-		
-		 <div class="row">
+
+        <br><br>
+
+        <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Lungs</h3>
-              <i><img src="gambar/lungs.png" class="center" width="297"  height="250" alt=""></i>
+              <i><img src="gambar/lungs.png" class="center" width="297" height="250" alt=""></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -235,23 +230,23 @@
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/aspira.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Aspira 10mg Tablet</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                   <i><img src="gambar/Alleryl.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <i><img src="gambar/Alleryl.png" class="img-fluid" alt=""></i>
+                    <br><br>
                     <h4>Alleryl 4mg/5ml Syrup</h4>
                   </div>
                 </div>
-				
+
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i><img src="gambar/anoro.png" class="img-fluid" alt=""></i>
-					<br><br>
+                    <br><br>
                     <h4>Anoro Ellipta 62.5/25mcg Accuhaler</h4>
                   </div>
                 </div>
@@ -279,17 +274,14 @@
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i
-            class="bx bxl-facebook"></i></a>
-        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i
-            class="bx bxl-instagram"></i></a>
+        <a href="https://www.facebook.com/klinikdamaikualaselangor24jam/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/klinikdamaikualaselangor24jam/" class="instagram"><i class="bx bxl-instagram"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
