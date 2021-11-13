@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['email'])){    
+    header("Location: ../MasterCliniCare/Customer/CustomerHomePage/index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,9 +80,10 @@
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
           <li><a href="/MasterCliniCare/Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
         </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Sign In / Sign Up</span></a>
+      <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" ><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
 
     </div>
   </header><!-- End Header -->

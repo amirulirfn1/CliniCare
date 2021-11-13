@@ -1,22 +1,24 @@
 <?php
 session_start();
 if (isset($_POST['signup'])) {
-    signup($_POST['signup']);
+  signup($_POST['signup']);
 } else if (isset($_POST['signin'])) {
-    signin($_POST['signin']);
+  signin($_POST['signin']);
 } else if (isset($_POST['signout'])) {
-    signout($_POST['signout']);
+  signout($_POST['signout']);
 } else if (isset($_POST['submit-reset'])) {
-    $vkey = getVkey($_POST);
-    mailReset($vkey);
-    header("Location: /MasterCliniCare/Alerts/successFP.php");
-    exit();
+  $vkey = getVkey($_POST);
+  mailReset($vkey);
+  header("Location: /MasterCliniCare/Alerts/successFP.php");
+  exit();
 } else if (isset($_POST['reset-password'])) {
-    resetPassword($_POST['reset-password']);
+  resetPassword($_POST['reset-password']);
 } else if (isset($_POST['update-profile'])) {
-    updateProfile($_POST['update-profile']);
+  updateProfile($_POST['update-profile']);
 } else if (isset($_POST['update'])) {
-    updateProfile($_POST['update-profile']);
+  updateProfile($_POST['update-profile']);
+}else if (isset($_POST['bookApp'])) {
+  bookApp($_POST['bookApp']);
 }
 
 ?>
@@ -25,41 +27,41 @@ if (isset($_POST['signup'])) {
 
 function signup()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
+  $servername = "localhost";
+  $username = "clinicarecustomer";
+  $password = "customer";
+  $dbname = "clinicare";
 
-    $con = new mysqli($servername, $username, $password, $dbname);
+  $con = new mysqli($servername, $username, $password, $dbname);
 
-    if (!$con) {
-        echo "error";
-    } else {
-        //2. Construct SQL statement
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $icNumber = $_POST['icNumber'];
-        $birthDate = $_POST['birthDate'];
+  if (!$con) {
+    echo "error";
+  } else {
+    //2. Construct SQL statement
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $icNumber = $_POST['icNumber'];
+    $birthDate = $_POST['birthDate'];
 
 
-        $password = md5($password);
-        //Generate Vkey
-        $vkey = md5(time() . $name);
+    $password = md5($password);
+    //Generate Vkey
+    $vkey = md5(time() . $name);
 
-        $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)  
+    $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)  
                     VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '','', '$vkey' )";
-    }
+  }
 
-    if ($con->query($sql) === TRUE) {
-        $to = $email;
-        $subject = "Verify Your Email Address";
-        $headers = "From: CliniCare\r\n";
-        $headers .= "MIME-Version : 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+  if ($con->query($sql) === TRUE) {
+    $to = $email;
+    $subject = "Verify Your Email Address";
+    $headers = "From: CliniCare\r\n";
+    $headers .= "MIME-Version : 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-        $htmlContent = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    $htmlContent = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>
         <!--[if gte mso 9]>
@@ -340,126 +342,126 @@ function signup()
         
         </html>';
 
-        mail($to, $subject, $htmlContent, $headers);
+    mail($to, $subject, $htmlContent, $headers);
 
-        $sql2 = "INSERT INTO user (email, usertype)
+    $sql2 = "INSERT INTO user (email, usertype)
                             VALUES('$email', 'customer')";
-        if ($con->query($sql2) === TRUE) {
-            //kalau dah successful buat sign up, keluar page ni
-            header("Location: /MasterCliniCare/Alerts/success.php");
-        } else {
-            echo "Error";
-            //header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/errorSignup.php");
-        }
+    if ($con->query($sql2) === TRUE) {
+      //kalau dah successful buat sign up, keluar page ni
+      header("Location: /MasterCliniCare/Alerts/success.php");
     } else {
-        //ni part bila email tu dah ade. duplicate
-        //echo "Error: " . $sql . "<br>" . $con->error;
-        header("Location: /MasterCliniCare/Alerts/unsuccess.php");
+      echo "Error";
+      //header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/errorSignup.php");
     }
+  } else {
+    //ni part bila email tu dah ade. duplicate
+    //echo "Error: " . $sql . "<br>" . $con->error;
+    header("Location: /MasterCliniCare/Alerts/unsuccess.php");
+  }
 }
 
 
 
 function signin()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
+  $servername = "localhost";
+  $username = "clinicarecustomer";
+  $password = "customer";
+  $dbname = "clinicare";
 
-    $mysqli = new mysqli($servername, $username, $password, $dbname);
+  $mysqli = new mysqli($servername, $username, $password, $dbname);
 
-    $email = $mysqli->real_escape_string($_POST['email']);
-    $password = $mysqli->real_escape_string($_POST['password']);
-    $password = md5($password);
+  $email = $mysqli->real_escape_string($_POST['email']);
+  $password = $mysqli->real_escape_string($_POST['password']);
+  $password = md5($password);
 
-    $resultSet = $mysqli->query("SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ");
+  $resultSet = $mysqli->query("SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ");
 
 
 
-    if ($resultSet->num_rows != 0) {
-        //Process login
-        $row = $resultSet->fetch_assoc();
-        $verified = $row['verified'];
-        $email = $row['email'];
-        $_SESSION['email'] = $email;
+  if ($resultSet->num_rows != 0) {
+    //Process login
+    $row = $resultSet->fetch_assoc();
+    $verified = $row['verified'];
+    $email = $row['email'];
+    $_SESSION['email'] = $email;
 
-        if ($verified == 1) {
+    if ($verified == 1) {
 
-            $sql3 = $mysqli->query("SELECT * FROM user WHERE email = '$email'");
+      $sql3 = $mysqli->query("SELECT * FROM user WHERE email = '$email'");
 
-            if ($sql3->num_rows != 0) {
+      if ($sql3->num_rows != 0) {
 
-                $row = $sql3->fetch_assoc();
-                $usertype = $row['usertype'];
+        $row = $sql3->fetch_assoc();
+        $usertype = $row['usertype'];
 
-                if ($usertype == "customer") {
-                    header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.php");
-                } else {
-                    header("Location: /MasterClinicare/stisla-2.2.0/dist/index.php");
-                }
-            }
-            //Continue
-
+        if ($usertype == "customer") {
+          header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.php");
         } else {
-            header("Location: /MasterClinicare/Alerts/unsuccessNVER.php");
+          header("Location: /MasterClinicare/stisla-2.2.0/dist/index.php");
         }
+      }
+      //Continue
+
     } else {
-        //Invalid login
-        header("Location: /MasterClinicare/Alerts/unsuccessWRONG.php");
+      header("Location: /MasterClinicare/Alerts/unsuccessNVER.php");
     }
+  } else {
+    //Invalid login
+    header("Location: /MasterClinicare/Alerts/unsuccessWRONG.php");
+  }
 }
 
 function signout()
 {
-    session_destroy();
-    header("Location: /MasterCliniCare/index.php");
+  session_destroy();
+  header("Location: /MasterCliniCare/index.php");
 }
 
 function getVkey()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
+  $servername = "localhost";
+  $username = "clinicarecustomer";
+  $password = "customer";
+  $dbname = "clinicare";
 
-    $con = new mysqli($servername, $username, $password, $dbname);
+  $con = new mysqli($servername, $username, $password, $dbname);
 
-    if (!$con) {
-        echo mysqli_error($con);
+  if (!$con) {
+    echo mysqli_error($con);
+  } else {
+    //Construct SQL statement
+    $email = $_POST['email'];
+
+    $sql = "SELECT vkey FROM customer WHERE email='$email'";
+    $qry = mysqli_query($con, $sql);
+    $count = mysqli_num_rows($qry);
+    if ($count == 1) {
+      $userRecord = mysqli_fetch_assoc($qry);
+      $_SESSION['resetPassword'] = $email;
+      return $userRecord['vkey'];
     } else {
-        //Construct SQL statement
-        $email = $_POST['email'];
-
-        $sql = "SELECT vkey FROM customer WHERE email='$email'";
-        $qry = mysqli_query($con, $sql);
-        $count = mysqli_num_rows($qry);
-        if ($count == 1) {
-            $userRecord = mysqli_fetch_assoc($qry);
-            $_SESSION['resetPassword'] = $email;
-            return $userRecord['vkey'];
-        } else {
-            header("Location: /MasterCliniCare/Alerts/unsuccessFP.php");
-            exit();
-        }
+      header("Location: /MasterCliniCare/Alerts/unsuccessFP.php");
+      exit();
     }
+  }
 }
 
 function mailReset()
 {
-    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-    $email = $_SESSION['resetPassword'];
-    $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-    $row = mysqli_fetch_array($query);
+  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+  $email = $_SESSION['resetPassword'];
+  $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+  $row = mysqli_fetch_array($query);
 
-    $vkey = getVkey($_POST);
-    $to = $email;
-    $subject = "Reset Your Password";
-    $headers = "From: CliniCare\r\n";
-    $headers .= "MIME-Version : 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+  $vkey = getVkey($_POST);
+  $to = $email;
+  $subject = "Reset Your Password";
+  $headers = "From: CliniCare\r\n";
+  $headers .= "MIME-Version : 1.0\r\n";
+  $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-    $htmlContent = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  $htmlContent = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>
         <!--[if gte mso 9]>
@@ -676,7 +678,7 @@ function mailReset()
                 
         <div align="center">
           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:Cabin,sans-serif;"><tr><td style="font-family:Cabin,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:46px; v-text-anchor:middle; width:234px;" arcsize="8.5%" stroke="f" fillcolor="#1977cc"><w:anchorlock/><center style="color:#FFFFFF;font-family:Cabin,sans-serif;"><![endif]-->
-            <a href="http://localhost/MasterCliniCare/Customer/Sign In Page/Sign In/resetPassword.php?vkey=' .$vkey .' target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+            <a href="http://localhost/MasterCliniCare/Customer/Sign In Page/Sign In/resetPassword.php?vkey=' . $vkey . ' target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
               <span style="display:block;padding:14px 44px 13px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><strong><span style="line-height: 19.2px; font-size: 16px;">RESET YOUR PASSWORD</span></strong></span></span>
             </a>
           <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
@@ -740,7 +742,7 @@ function mailReset()
         
         </html>';
 
-    mail($to, $subject, $htmlContent, $headers);
+  mail($to, $subject, $htmlContent, $headers);
 }
 
 
@@ -748,41 +750,41 @@ function mailReset()
 function resetPassword()
 {
 
-    $vkey = $_SESSION['resetVkey'];
-    $email = $_SESSION['resetPassword'];
+  $vkey = $_SESSION['resetVkey'];
+  $email = $_SESSION['resetPassword'];
 
-    $pwd = $_POST['pwd'];
-    $pwdR = $_POST['pwd-repeat'];
+  $pwd = $_POST['pwd'];
+  $pwdR = $_POST['pwd-repeat'];
 
-    if (strlen($pwd) < 2 || strlen($pwdR) < 2) {
-        header("Location: /MasterCliniCare/index.php");
-        exit();
-    } else if ($pwd == $pwdR) {
+  if (strlen($pwd) < 2 || strlen($pwdR) < 2) {
+    header("Location: /MasterCliniCare/index.php");
+    exit();
+  } else if ($pwd == $pwdR) {
 
-        $pwd = md5($pwd);
-        $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+    $pwd = md5($pwd);
+    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 
-        if (!$con) {
-            echo "error";
-        } else {
-            //Construct SQL statement
-            $sql = "UPDATE customer SET password='$pwd' WHERE vkey='$vkey' AND email='$email'";
-
-            if ($con->query($sql) == TRUE) {
-                unset($_SESSION['resetVkey']);
-                unset($_SESSION['resetPassword']);
-                header("Location: /MasterCliniCare/Alerts/successRS.php");
-                exit();
-            } else {
-                //echo mysqli_error($con);
-                echo "error";
-                exit();
-            }
-        }
+    if (!$con) {
+      echo "error";
     } else {
-        header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
+      //Construct SQL statement
+      $sql = "UPDATE customer SET password='$pwd' WHERE vkey='$vkey' AND email='$email'";
+
+      if ($con->query($sql) == TRUE) {
+        unset($_SESSION['resetVkey']);
+        unset($_SESSION['resetPassword']);
+        header("Location: /MasterCliniCare/Alerts/successRS.php");
         exit();
+      } else {
+        //echo mysqli_error($con);
+        echo "error";
+        exit();
+      }
     }
+  } else {
+    header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
+    exit();
+  }
 }
 
 
@@ -790,36 +792,68 @@ function resetPassword()
 function updateProfile()
 {
 
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
+  $servername = "localhost";
+  $username = "clinicarecustomer";
+  $password = "customer";
+  $dbname = "clinicare";
 
-    $con = new mysqli($servername, $username, $password, $dbname);
+  $con = new mysqli($servername, $username, $password, $dbname);
 
-    if (!$con) {
-        echo "Error";
-    } else {
+  if (!$con) {
+    echo "Error";
+  } else {
 
-        $email = $_SESSION['email'];
+    $email = $_SESSION['email'];
 
-        $name = $_POST['name'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $icNumber = $_POST['icNumber'];
-        $birthDate = $_POST['birthDate'];
-        $address = $_POST['address'];
+    $name = $_POST['name'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $icNumber = $_POST['icNumber'];
+    $birthDate = $_POST['birthDate'];
+    $address = $_POST['address'];
 
-        $password = md5($password);
+    $password = md5($password);
 
-        $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
+    $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
-        if ($con->query($sql) === TRUE) {
-            header("Location: /MasterCliniCare/Customer/Index Pages/Profile/myProfile.php");
-        } else {
-            echo "error";
-        }
+    if ($con->query($sql) === TRUE) {
+      header("Location: /MasterCliniCare/Customer/Index Pages/Profile/myProfile.php");
+    } else {
+      echo "error";
     }
+  }
+}
+
+function bookApp()
+{
+
+  $servername = "localhost";
+  $username = "clinicarecustomer";
+  $password = "customer";
+  $dbname = "clinicare";
+
+  $con = new mysqli($servername, $username, $password, $dbname);
+
+  if (!$con) {
+    echo "Error";
+  } else {
+
+    $email = $_SESSION['email'];
+
+    $name = $_POST['name'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $icNumber = $_POST['icNumber'];
+    $date = $_POST['date'];
+    $time = $_GET['time'];
+
+    echo $email;
+    echo $name;
+    echo $phoneNumber;
+    echo $icNumber;
+    echo $date;
+    echo $time;
+
+  }
 }
 
 ?>

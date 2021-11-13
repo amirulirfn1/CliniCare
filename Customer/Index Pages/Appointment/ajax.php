@@ -6,9 +6,10 @@ if($date!=""){
     $result = mysqli_query($con, $sql);
     echo "<div class='col-md-12' id='time'>";
     echo "<label class='labels' style = 'font-size: 12px'>Choose Time</label>";
-    echo "<select name='time' class='form-control' required>";
+    echo "<select name='time' id='time' class='form-control' required>";
     while($row=mysqli_fetch_array($result)){
-        echo "<option value='{$row['time']}'>".$row['time']."</option>";
+        $time = $row['time'];
+        echo "<option value='{$time}'>".$row['time']."</option>";
     }
     echo "</select>";
 }else{

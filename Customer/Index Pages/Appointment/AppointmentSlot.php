@@ -82,7 +82,7 @@ $row = mysqli_fetch_array($query);
 
     function change_date() {
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("GET", "ajax.php?date=" + document.getElementById("Sdate").value, false);
+      xmlhttp.open("GET", "ajax.php?date=" + document.getElementById("date").value, false);
       xmlhttp.send(null);
       document.getElementById("time").innerHTML = xmlhttp.responseText;
     }
@@ -200,30 +200,35 @@ $row = mysqli_fetch_array($query);
                     <div class="col-md-12">
                       <label class="labels" style="font-size: 12px">Email</label>
                       <input type="text" class="form-control" name="email" value="<?php echo $row['email']; ?>" disabled>
+                      <input type="hidden" class="form-control" name="email" id="email" value="<?php echo $row['email']; ?>" >
                     </div>
 
 
                     <div class="col-md-12">
                       <br>
                       <label class="labels" style="font-size: 12px">Name</label>
-                      <input type="text" class="form-control" name="name" id="name" value="<?php echo $row['name']; ?>" disabled>
+                      <input type="text" class="form-control" value="<?php echo $row['name']; ?>" disabled>
+                      <input type="hidden" class="form-control" name="name" id="name" value="<?php echo $row['name']; ?>" >
                     </div>
 
                     <div class="col-md-12">
                       <br>
                       <label class="labels" style="font-size: 12px">IC Number</label>
-                      <input type="text" class="form-control" placeholder="xxxxxx-xx-xxxx" name="icNumber" id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
+                      <input type="text" class="form-control"  name="icNumber" id="ICnumber" value="<?php echo $row['ICnumber']; ?>" disabled>
+                      <input type="hidden" class="form-control" name="icNumber" id="ICnumber" value="<?php echo $row['ICnumber']; ?>">
+
                     </div>
 
                     <div class="col-md-12">
                       <br>
                       <label class="labels" style="font-size: 12px">Contact Number</label>
                       <input type="text" class="form-control" placeholder="xxx-xxxxxxx" name="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" disabled>
+                      <input type="hidden" class="form-control" name="phoneNumber" id="phoneNumber" value="<?php echo $row['phoneNumber']; ?>" >
                     </div>
 
                   </div>
 
-                </form>
+                
               </div>
             </div>
 
@@ -233,23 +238,22 @@ $row = mysqli_fetch_array($query);
                   <h4 class="text-right">Set Date & Time</h4>
                 </div>
 
-
                 <link rel="stylesheet" type="text/css">
-
 
                 <p class="card-description"></p>
 
-                <form class="form-sample" action="AppointmentSlot.php" method="POST">
+                
                   <div class="col-md-12">
                     <label class="labels" style="font-size: 12px">Choose Date</label>
-                    <select id="Sdate" name="date" class="form-control" onchange="change_date()" required>
+                    <select id="date" name="date" class="form-control" onchange="change_date()" required>
                       <option value="">Date</option>
                       <?php
                       $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
                       $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 group by date ";
                       $result = mysqli_query($con, $sql);
                       while ($row = mysqli_fetch_array($result)) {
-                        echo "<option value='{$row['date']}'>" . $row['date'] . "</option>";
+                        $date = $row['date'];
+                        echo "<option name='date' id='date' value='{$row['date']}'>" . $row['date'] . "</option>";
                       }
                       ?>
                     </select>
@@ -259,8 +263,17 @@ $row = mysqli_fetch_array($query);
 
                   <div class="col-md-12" id="time">
                     <label class="labels" style="font-size: 12px">Choose Time</label>
-                    <select name="time" class="form-control" required>
+                    <select name="time" id="time" class="form-control" required>
                       <option value="">Time</option>
+                      <?php
+                      $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                      $sql = "SELECT time FROM appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
+                      $result = mysqli_query($con, $sql);
+                      while ($row = mysqli_fetch_array($result)) {
+                        $time = $row['time'];
+                        echo "<option name='date' id='date' value='{$time}'>" . $time . "</option>";
+                      }
+                      ?>
                     </select>
                   </div><br>
 
@@ -277,7 +290,7 @@ $row = mysqli_fetch_array($query);
                   <div class="form-group">
                     <br>
                     <label class="col-sm-0 col-form-label"></label>
-                    <button type="submit" id="bookApp" class="btn btn-primary profile-button" disabled>Book Now</button>
+                    <button type="submit" name="bookApp" id="bookApp" class="btn btn-primary profile-button" disabled>Book Now</button>
                   </div>
                 </form>
               </div>
