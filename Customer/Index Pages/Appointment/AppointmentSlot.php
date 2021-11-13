@@ -261,7 +261,7 @@ $row = mysqli_fetch_array($query);
 
                   <br>
 
-                  <div class="col-md-12" id="time">
+                  <div class="col-md-12" id="time1">
                     <label class="labels" style="font-size: 12px">Choose Time</label>
                     <select name="time" id="time" class="form-control" required>
                       <option value="">Time</option>

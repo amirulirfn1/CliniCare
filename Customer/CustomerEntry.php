@@ -17,7 +17,7 @@ if (isset($_POST['signup'])) {
   updateProfile($_POST['update-profile']);
 } else if (isset($_POST['update'])) {
   updateProfile($_POST['update-profile']);
-}else if (isset($_POST['bookApp'])) {
+} else if (isset($_POST['bookApp'])) {
   bookApp($_POST['bookApp']);
 }
 
@@ -844,7 +844,7 @@ function bookApp()
     $phoneNumber = $_POST['phoneNumber'];
     $icNumber = $_POST['icNumber'];
     $date = $_POST['date'];
-    $time = $_GET['time'];
+    $time = $_POST['time'];
 
     echo $email;
     echo $name;
@@ -852,7 +852,6 @@ function bookApp()
     echo $icNumber;
     echo $date;
     echo $time;
-
   }
 }
 
