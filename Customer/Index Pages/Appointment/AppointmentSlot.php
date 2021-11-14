@@ -6,9 +6,6 @@ $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
 ?>
 
-
-<!-- PAGE FOR MY PROFILE CUSTOMER -->
-
 <!DOCTYPE html>
 <html lang="en">
 

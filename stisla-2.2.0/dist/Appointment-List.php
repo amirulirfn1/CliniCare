@@ -11,7 +11,7 @@ $row = mysqli_fetch_array($query);
 
 <head>
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1.0, name=" viewport">
   <title>Appointment List | Admin</title>
 
   <!-- General CSS Files -->
@@ -115,53 +115,56 @@ $row = mysqli_fetch_array($query);
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">Customer Id</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Date/Times</th>
-                    <th scope="col">Service</th>
+                    <th scope="col">Appointment Id</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                      <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"> Info</i></a>
-                      <a href="#" class="btn btn-icon btn-success"><i class="fas fa-check"> Success</i></a>
-                      <a href="#" class="btn btn-icon btn-danger" data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times">
-                          <h7> Cancel <h7>
-                        </i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                      <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"> Info</i></a>
-                      <a href="#" class="btn btn-icon btn-success"><i class="fas fa-check"> Success</i></a>
-                      <a href="#" class="btn btn-icon btn-danger" data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times">
-                          <h7> Cancel <h7>
-                        </i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>
-                      <a href="#" class="btn btn-icon btn-info"><i class="fas fa-info-circle"> Info</i></a>
-                      <a href="#" class="btn btn-icon btn-success"><i class="fas fa-check"> Success</i></a>
-                      <a href="#" class="btn btn-icon btn-danger" data-confirm="Realy?|Do you want to continue?" data-confirm-yes="alert('Deleted :)');"><i class="fas fa-times">
-                          <h7> Cancel <h7>
-                        </i></a>
-                    </td>
-                  </tr>
+                  <?php
+                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                  $sql = "SELECT * FROM appointment";
+                  $result = mysqli_query($con, $sql);
+                  $x = 1;
+                  while ($row = mysqli_fetch_array($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['appId'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td>" . $row['name'] . "</td>";
+                    echo "<td>" . $row['phoneNumber'] . "</td>";
+                    echo "<td>" . $row['date'] . "</td>";
+                    echo "<td>" . $row['time'] . "</td>";
+
+                    //if status 1 echo "Pending" else echo "Done"
+                    if ($row['status'] == 1) {
+                      echo "<td>Pending</td>";
+                      echo '<td><form action="../AdminEntry.php" method="POST">
+                        <input type="hidden" name="emailToDone" 
+												value="' . $customerS . '" > 
+                        <button type="submit" value="Appointment Done" 
+												name="doneApp" id="doneApp" class="btn btn-icon btn-primary">
+												<h7>Appointment Done<h7></button> 
+                        </form></td></tr>';
+                    } else {
+                      echo "<td>Done</td>";
+                      echo '<td>Appointment Done</td></tr>';
+                    }
+                    $customerS = $row['email'];
+
+
+
+
+
+
+                    $x++;
+                  }
+
+                  ?>
                 </tbody>
               </table>
               </tbody>

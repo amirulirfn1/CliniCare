@@ -15,6 +15,8 @@ if (isset($_POST['deleteCustomer'])) {
     updateProfileAdmin($_POST['updateCustomer']);
 } else if (isset($_POST['deleteSlot'])) {
     deleteSlot($_POST['deleteSlot']);
+}else if (isset($_POST['addSlot'])) {
+    addSlot($_POST['addSlot']);
 }
 ?>
 
@@ -151,7 +153,7 @@ function closeAppointment()
         $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = '$appSId' ";
 
         if ($con->query($sql) === TRUE) {
-            header("refresh:0; url=dist/All-Appointment-Slot.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
         } else {
             echo "error";
         }
@@ -176,7 +178,7 @@ function openAppointment()
         $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = '$appSId' ";
 
         if ($con->query($sql) === TRUE) {
-            header("refresh:0; url=dist/All-Appointment-Slot.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
         } else {
             echo "error";
         }
@@ -203,6 +205,37 @@ function deleteSlot()
         } else {
             echo "error";
         }
+    }
+}
+
+function addSlot()
+{
+    $servername = "localhost";
+    $username = "clinicarecustomer";
+    $password = "customer";
+    $dbname = "clinicare";
+
+    $con = mysqli_connect($servername, $username, $password, $dbname);
+
+    if (!$con) {
+        echo "Error";
+    } else {
+        $time1 = "9AM - 1PM";
+        $time2 = "2PM - 6PM";
+        $time3 = "7PM - 11PM";
+        $date = $_POST['date'];
+        
+        $sql = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time1', 0, 10)";
+        $sql2 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time2', 0, 10)";
+        $sql3 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time3', 0, 10)";
+        
+        // check sql, sql2, sql3 for success
+        if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
+        } else {
+            echo "error";
+        }
+  
     }
 }
 ?>

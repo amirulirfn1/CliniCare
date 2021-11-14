@@ -19,7 +19,6 @@ if (isset($_POST['signup'])) {
   updateProfile($_POST['update-profile']);
 } else if (isset($_POST['bookApp'])) {
   bookApp($_POST['bookApp']);
-  
 }
 
 ?>
@@ -837,46 +836,41 @@ function bookApp()
 
   $con = new mysqli($servername, $username, $password, $dbname);
 
-  if (!$con) 
-  {
+  if (!$con) {
     echo "Error";
-  } 
-  
-  else 
-  {
-
+  } else {
     $email = $_SESSION['email'];
 
     $name = $_POST['name'];
     $phoneNumber = $_POST['phoneNumber'];
-    /* $icNumber = $_POST['icNumber']; */
     $date = $_POST['date'];
     $time = $_POST['time'];
-	
-	$sql = "insert into appointment(email,name, phoneNumber,date,time)
-			values('$email','$name','$phoneNumber','$date','$time')";
+    $dateToday = date("Y-m-d");
 
-	if(!mysqli_query($con,$sql))
-	{
-		echo mysqli_error($con);
-	}
-	
-	else
-	{
-		echo 'success';
-		
-		/* echo $email;
-		echo $name;
-		echo $phoneNumber;
-		echo $icNumber;
-		echo $date;
-		echo $time; */
-		
-		header( "Location: /MasterCliniCare/Customer/Index Pages/History/myHistory.php");
-	}
-    
-	
-	
+    //check if date is past today
+    if ($date < $dateToday) {
+      // show script popup message for date is past today and redirect to AppointmentSlot.php
+      echo "<script>alert('Date is past today');
+      window.location.href='/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php';</script>";
+
+      //update table appointmentslot set status = 1
+      $sql = "UPDATE appointmentslot SET status = 1 WHERE date = '$date' ";
+      //run sql statement
+      $con->query($sql);
+      exit();
+    } else {
+      $sql = "INSERT INTO appointment (email, name, phoneNumber, date, time) VALUES ('$email', '$name', '$phoneNumber', '$date', '$time')";
+
+      if ($con->query($sql) === TRUE) {
+        //update table appointmentslot set status minus 1
+        $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
+        //run sql2 statement
+        $con->query($sql2);
+        header("Location: /MasterCliniCare/Customer/Index Pages/History/myHistory.php");
+      } else {
+        echo "error";
+      }
+    }
   }
 }
 

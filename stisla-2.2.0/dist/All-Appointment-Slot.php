@@ -168,18 +168,12 @@ $row = mysqli_fetch_array($query);
                     echo '<button type="submit" value="Open Appointment" 
 												name="openAppointment" class="btn btn-icon btn-success">
 												<h7> Set Opened <h7></button>';
-                    echo '</form></td>';
-
-
-
 
                     echo '<td>';
-
-                    echo '<form action="../AdminEntry.php" method="post" >';
                     echo '<input type="hidden" value="' . $appSId . '" name="SlotToDelete">';
-                    echo '<input type="submit" class="btn btn-danger" name="deleteSlot" value="Delete">';
-                    echo '</form>';
+                    echo '<input type="submit" class="btn btn-danger" name="deleteSlot" id="deleteSlot" value="Delete">';
                     echo '</td>';
+                    echo '</form></td>';
                   }
                   echo "</tr>";
 

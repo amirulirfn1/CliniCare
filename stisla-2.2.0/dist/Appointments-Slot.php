@@ -109,33 +109,29 @@ $row = mysqli_fetch_array($query);
               <div class="breadcrumb-item">Add Appointment Slot</div>
             </div>
           </div>
-
           <div class="section-body">
-
             <div class="card">
               <div class="card-header">
                 <a href="All-Appointment-Slot.php"></a>
-                <h4>Add Appointment</h4>
+                <div class="section-title mt-0">Add Appointment</div>
               </div>
-              <a class="nav-link" href="All-Appointment-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> View All Appointment Slot</a>
               <div class="card-body">
+                <form action="../AdminEntry.php" method="POST">
                 <div class="form-group">
-                  <div class="section-title mt-0">Date</div>
-                  <input type="datetime-local" class="form-control">
+                  <h6>Date</h6>
+                  <input name="date" id="date" type="date" class="form-control">
                 </div>
-
-                <a href="#" class="btn btn.btn-lg btn-success">Submit</a>
-
-
+                <button type="submit" name="addSlot" id="addSlot" class="btn btn.btn-lg btn-success">Submit</button>
+                </form>
         </section>
       </div>
-      <!-- partial:../../partials/_footer.html -->
+
+      <!---Footer-->
       <footer class="footer">
         <div class="container-fluid clearfix">
           &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
         </div>
         <div class="footer-right">
-
         </div>
       </footer>
     </div>
