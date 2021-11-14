@@ -19,6 +19,7 @@ if (isset($_POST['signup'])) {
   updateProfile($_POST['update-profile']);
 } else if (isset($_POST['bookApp'])) {
   bookApp($_POST['bookApp']);
+  
 }
 
 ?>
@@ -824,6 +825,8 @@ function updateProfile()
   }
 }
 
+
+
 function bookApp()
 {
 
@@ -834,24 +837,46 @@ function bookApp()
 
   $con = new mysqli($servername, $username, $password, $dbname);
 
-  if (!$con) {
+  if (!$con) 
+  {
     echo "Error";
-  } else {
+  } 
+  
+  else 
+  {
 
     $email = $_SESSION['email'];
 
     $name = $_POST['name'];
     $phoneNumber = $_POST['phoneNumber'];
-    $icNumber = $_POST['icNumber'];
+    /* $icNumber = $_POST['icNumber']; */
     $date = $_POST['date'];
     $time = $_POST['time'];
+	
+	$sql = "insert into appointment(email,name, phoneNumber,date,time)
+			values('$email','$name','$phoneNumber','$date','$time')";
 
-    echo $email;
-    echo $name;
-    echo $phoneNumber;
-    echo $icNumber;
-    echo $date;
-    echo $time;
+	if(!mysqli_query($con,$sql))
+	{
+		echo mysqli_error($con);
+	}
+	
+	else
+	{
+		echo 'success';
+		
+		/* echo $email;
+		echo $name;
+		echo $phoneNumber;
+		echo $icNumber;
+		echo $date;
+		echo $time; */
+		
+		header( "Location: /MasterCliniCare/Customer/Index Pages/History/myHistory.php");
+	}
+    
+	
+	
   }
 }
 

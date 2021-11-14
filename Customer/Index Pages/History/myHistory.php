@@ -81,7 +81,7 @@ $row = mysqli_fetch_array($query);
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
             <ul>
@@ -158,77 +158,57 @@ $row = mysqli_fetch_array($query);
 
             <div class="col-md-5 border-right">
               <div class="p-3 py-5">
-
-
+				
                 <div class="table-wrapper">
                   <table class="fl-table">
 
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Services</th>
                         <th>Date</th>
+						<th>Time</th>
                         <th>Status</th>
                       </tr>
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Primary Care</td>
-                        <td>31/8/2021</td>
-                        <td>Pending</td>
-                      </tr>
+					
+                      <?php
+                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                  $sql = "SELECT appointment.date, appointment.time, appointment.status FROM appointment 
+                      INNER JOIN user ON appointment.email = user.email";
+                  $result = mysqli_query($con, $sql);
+                  $x = 1;
+                  while ($row = mysqli_fetch_array($result)) {
+                    echo "<tr>";
+						echo "<td> $x </td>";
+						echo "<td>" . $row['date'] . "</td>";
+						echo "<td>" . $row['time'] . "</td>";
+						
+						if($row['status'] == 1)
+						{
+							echo "<td>Pending</td>";
+						}
+						
+						else
+						{
+							echo "<td>Done</td>";
+						}
+					
+					echo "</tr>";
 
-                      <tr>
-                        <td>2</td>
-                        <td>Primary Care</td>
-                        <td>24/7/2021</td>
-                        <td>Completed</td>
-                      </tr>
+                    $x++;
+                  }
 
-                      <tr>
-                        <td>3</td>
-                        <td>Mom & Baby Care</td>
-                        <td>24/7/2021</td>
-                        <td>Cancelled</td>
-                      </tr>
-
-                      <tr>
-                        <td>4</td>
-                        <td>Medical Check-Up</td>
-                        <td>13/6/2021</td>
-                        <td>Completed</td>
-                      </tr>
-
-                      <tr>
-                        <td>5</td>
-                        <td>Medical Check-Up</td>
-                        <td>2/5/2021</td>
-                        <td>Completed</td>
-                      </tr>
-
-                      <tr>
-                        <td>6</td>
-                        <td>Medical Check-Up</td>
-                        <td>1/12/2020</td>
-                        <td>Completed</td>
-                      </tr>
-
-                      <tr>
-                        <td>7</td>
-                        <td>Pharmacy</td>
-                        <td>1/10/2020</td>
-                        <td>Completed</td>
-                      </tr>
+                  ?>
+					  
                     <tbody>
                   </table>
-                </div>
+                </div> 
 
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section><!-- End Testimonials Section -->
