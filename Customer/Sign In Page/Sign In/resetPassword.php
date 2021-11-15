@@ -2,7 +2,6 @@
 session_start();
 if (isset($_GET['vkey'])) {
     $_SESSION['resetVkey'] = $_GET['vkey'];
-    //validate($vkey);
 }
 ?>
 
@@ -39,7 +38,7 @@ if (isset($_GET['vkey'])) {
 
                     <div class="signin-form">
                         <h2 class="form-title">Reset Password</h2>
-                        <form method="POST" class="signin" id="login-form" action="/MasterCliniCare/Customer/CustomerEntry.php">
+                        <form method="POST" class="signin" id="login-form" action="../../CustomerEntry.php">
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pwd" placeholder="New Password" />
@@ -56,20 +55,17 @@ if (isset($_GET['vkey'])) {
                 </div>
             </div>
         </section>
-
     </div>
 
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
-
 </div>
 </div>
 </section>
-
 </body>
 
 </html>

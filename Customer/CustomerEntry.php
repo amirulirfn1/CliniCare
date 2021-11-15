@@ -9,7 +9,7 @@ if (isset($_POST['signup'])) {
 } else if (isset($_POST['submit-reset'])) {
   $vkey = getVkey($_POST);
   mailReset($vkey);
-  header("Location: /MasterCliniCare/Alerts/successFP.php");
+  header("Location: ../Alerts/successFP.php");
   exit();
 } else if (isset($_POST['reset-password'])) {
   resetPassword($_POST['reset-password']);
@@ -24,7 +24,6 @@ if (isset($_POST['signup'])) {
 ?>
 
 <?php
-
 function signup()
 {
   $servername = "localhost";
@@ -144,11 +143,9 @@ function signup()
           color: inherit !important;
           text-decoration: none !important;
         }
-        
+      
         </style>
           
-          
-        
         <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
         
         </head>
@@ -161,8 +158,7 @@ function signup()
           <tr style="vertical-align: top">
             <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
             <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #f9f9f9;"><![endif]-->
-            
-        
+                   
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -181,9 +177,7 @@ function signup()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -202,9 +196,7 @@ function signup()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -243,9 +235,7 @@ function signup()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -278,7 +268,7 @@ function signup()
                 
         <div align="center">
           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:Cabin,sans-serif;"><tr><td style="font-family:Cabin,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:46px; v-text-anchor:middle; width:234px;" arcsize="8.5%" stroke="f" fillcolor="#1977cc"><w:anchorlock/><center style="color:#FFFFFF;font-family:Cabin,sans-serif;"><![endif]-->
-            <a href="http://localhost/MasterCliniCare/Customer/Verify.php?vkey=' . $vkey . '" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+            <a href="https://clinicaremy.com/Customer/Verify.php?vkey=' . $vkey . '" target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
               <span style="display:block;padding:14px 44px 13px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><strong><span style="line-height: 19.2px; font-size: 16px;">VERIFY YOUR EMAIL</span></strong></span></span>
             </a>
           <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
@@ -297,9 +287,7 @@ function signup()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -315,7 +303,6 @@ function signup()
             <tr>
               <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:Cabin,sans-serif;" align="left">
                 
-        
               </td>
             </tr>
           </tbody>
@@ -329,7 +316,6 @@ function signup()
             </div>
           </div>
         </div>
-        
         
             <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
             </td>
@@ -348,15 +334,12 @@ function signup()
                             VALUES('$email', 'customer')";
     if ($con->query($sql2) === TRUE) {
       //kalau dah successful buat sign up, keluar page ni
-      header("Location: /MasterCliniCare/Alerts/success.php");
+      header("Location: ../Alerts/success.php");
     } else {
       echo "Error";
-      //header("Location: /MasterCliniCare/Customer/Sign Up Page/Sign Up/errorSignup.php");
     }
   } else {
-    //ni part bila email tu dah ade. duplicate
-    //echo "Error: " . $sql . "<br>" . $con->error;
-    header("Location: /MasterCliniCare/Alerts/unsuccess.php");
+    header("Location: ../Alerts/unsuccess.php");
   }
 }
 
@@ -377,8 +360,6 @@ function signin()
 
   $resultSet = $mysqli->query("SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ");
 
-
-
   if ($resultSet->num_rows != 0) {
     //Process login
     $row = $resultSet->fetch_assoc();
@@ -396,26 +377,26 @@ function signin()
         $usertype = $row['usertype'];
 
         if ($usertype == "customer") {
-          header("Location: /MasterCliniCare/Customer/CustomerHomePage/index.php");
+          header("Location: ../Customer/CustomerHomePage/index.php");
         } else {
-          header("Location: /MasterClinicare/stisla-2.2.0/dist/index.php");
+          header("Location: ../AdminPage/dist/index.php");
         }
       }
       //Continue
 
     } else {
-      header("Location: /MasterClinicare/Alerts/unsuccessNVER.php");
+      header("Location: ../Alerts/unsuccessNVER.php");
     }
   } else {
     //Invalid login
-    header("Location: /MasterClinicare/Alerts/unsuccessWRONG.php");
+    header("Location: ../Alerts/unsuccessWRONG.php");
   }
 }
 
 function signout()
 {
   session_destroy();
-  header("Location: /MasterCliniCare/index.php");
+  header("Location: ../index.php");
 }
 
 function getVkey()
@@ -441,7 +422,7 @@ function getVkey()
       $_SESSION['resetPassword'] = $email;
       return $userRecord['vkey'];
     } else {
-      header("Location: /MasterCliniCare/Alerts/unsuccessFP.php");
+      header("Location: ../Alerts/unsuccessFP.php");
       exit();
     }
   }
@@ -493,7 +474,6 @@ function mailReset()
           }
         
         }
-        
         @media (max-width: 620px) {
           .u-row-container {
             max-width: 100% !important;
@@ -546,9 +526,7 @@ function mailReset()
         }
         
         </style>
-          
-          
-        
+
         <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family=Cabin:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
         
         </head>
@@ -562,7 +540,6 @@ function mailReset()
             <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
             <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #f9f9f9;"><![endif]-->
             
-        
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -581,9 +558,7 @@ function mailReset()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -602,9 +577,7 @@ function mailReset()
             </div>
           </div>
         </div>
-        
-        
-        
+ 
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -643,9 +616,7 @@ function mailReset()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -678,7 +649,7 @@ function mailReset()
                 
         <div align="center">
           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:Cabin,sans-serif;"><tr><td style="font-family:Cabin,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:46px; v-text-anchor:middle; width:234px;" arcsize="8.5%" stroke="f" fillcolor="#1977cc"><w:anchorlock/><center style="color:#FFFFFF;font-family:Cabin,sans-serif;"><![endif]-->
-            <a href="http://localhost/MasterCliniCare/Customer/Sign In Page/Sign In/resetPassword.php?vkey=' . $vkey . ' target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+            <a href="https://clinicaremy.com/Customer/Sign In Page/Sign In/resetPassword.php?vkey=' . $vkey . ' target="_blank" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
               <span style="display:block;padding:14px 44px 13px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><strong><span style="line-height: 19.2px; font-size: 16px;">RESET YOUR PASSWORD</span></strong></span></span>
             </a>
           <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
@@ -697,9 +668,7 @@ function mailReset()
             </div>
           </div>
         </div>
-        
-        
-        
+
         <div class="u-row-container" style="padding: 0px;background-color: transparent">
           <div class="u-row" style="Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;">
             <div style="border-collapse: collapse;display: table;width: 100%;background-color: transparent;">
@@ -715,7 +684,6 @@ function mailReset()
             <tr>
               <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:Cabin,sans-serif;" align="left">
                 
-        
               </td>
             </tr>
           </tbody>
@@ -729,7 +697,6 @@ function mailReset()
             </div>
           </div>
         </div>
-        
         
             <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
             </td>
@@ -745,11 +712,8 @@ function mailReset()
   mail($to, $subject, $htmlContent, $headers);
 }
 
-
-//ni yg nak reset tuu
 function resetPassword()
 {
-
   $vkey = $_SESSION['resetVkey'];
   $email = $_SESSION['resetPassword'];
 
@@ -757,7 +721,7 @@ function resetPassword()
   $pwdR = $_POST['pwd-repeat'];
 
   if (strlen($pwd) < 2 || strlen($pwdR) < 2) {
-    header("Location: /MasterCliniCare/index.php");
+    header("Location: ../index.php");
     exit();
   } else if ($pwd == $pwdR) {
 
@@ -773,7 +737,7 @@ function resetPassword()
       if ($con->query($sql) == TRUE) {
         unset($_SESSION['resetVkey']);
         unset($_SESSION['resetPassword']);
-        header("Location: /MasterCliniCare/Alerts/successRS.php");
+        header("Location: ../Alerts/successRS.php");
         exit();
       } else {
         //echo mysqli_error($con);
@@ -782,13 +746,11 @@ function resetPassword()
       }
     }
   } else {
-    header("Location: /MasterCliniCare/Alerts/unsuccessRS.php");
+    header("Location: ../Alerts/unsuccessRS.php");
     exit();
   }
 }
 
-
-//function edit profile info
 function updateProfile()
 {
 
@@ -817,14 +779,12 @@ function updateProfile()
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
     if ($con->query($sql) === TRUE) {
-      header("Location: /MasterCliniCare/Customer/Index Pages/Profile/myProfile.php");
+      header("Location: ../Customer/Index Pages/Profile/myProfile.php");
     } else {
       echo "error";
     }
   }
 }
-
-
 
 function bookApp()
 {
@@ -851,7 +811,7 @@ function bookApp()
     if ($date < $dateToday) {
       // show script popup message for date is past today and redirect to AppointmentSlot.php
       echo "<script>alert('Date is past today');
-      window.location.href='/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php';</script>";
+      window.location.href='../Customer/Index Pages/Appointment/AppointmentSlot.php';</script>";
 
       //update table appointmentslot set status = 1
       $sql = "UPDATE appointmentslot SET status = 1 WHERE date = '$date' ";
@@ -866,7 +826,7 @@ function bookApp()
         $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
         //run sql2 statement
         $con->query($sql2);
-        header("Location: /MasterCliniCare/Customer/Index Pages/History/myHistory.php");
+        header("Location: ../Customer/Index Pages/History/myHistory.php");
       } else {
         echo "error";
       }

@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['email'])){    
-    header("Location: ../MasterCliniCare/Customer/CustomerHomePage/index.php");
-}
+if (isset($_SESSION['email'])) {
+  header("Location: ../MasterCliniCare/Customer/CustomerHomePage/index.php");
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,12 +38,6 @@ if(isset($_SESSION['email'])){
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Medilab - v4.3.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -78,12 +72,12 @@ if(isset($_SESSION['email'])){
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
           <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
-          <li><a href="/MasterCliniCare/Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
+          <li><a href="Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" ><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
+      <a href="Customer/Sign In Page/Sign In/signin.php"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
 
     </div>
   </header><!-- End Header -->

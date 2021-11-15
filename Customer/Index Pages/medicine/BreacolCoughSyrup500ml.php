@@ -14,7 +14,7 @@ $row = mysqli_fetch_array($query);
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Breacol Cough Syrup 500ml | CliniCare</title>
+    <title>Breacol Cough Syrup 500ml</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -40,14 +40,6 @@ $row = mysqli_fetch_array($query);
 
     <!-- Services CSS File -->
     <link href="services.css" rel="stylesheet">
-
-
-    <!-- =======================================================
-  * Template Name: Medilab - v4.3.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 
 </head>
 
@@ -105,7 +97,7 @@ $row = mysqli_fetch_array($query);
         <div class="container d-flex align-items-center">
 
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="#hero" class="logo me-auto">
+            <a href="../../CustomerHomePage/index.php" class="logo me-auto">
                 <img src="../assets/img/gambar/logobanner.png" alt="" class="img-fluid">
             </a>
 
@@ -115,12 +107,12 @@ $row = mysqli_fetch_array($query);
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
                     <li class="dropdown"><a class="nav-link scrollto" href="#" class="play-btn"><span class="d-none d-md-inline">Services</span></a>
                         <ul>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/services/primaryCare.php">Primary Care</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/services/checkup.php">Medical Check-Up</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/services/smoking.php">Smoking Cessation</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/services/pharmacy.php">Pharmacy</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/services/covid.php">Covid-19 Centre</a></li>
+                            <li><a href="../services/primaryCare.php">Primary Care</a></li>
+                            <li><a href="../services/checkup.php">Medical Check-Up</a></li>
+                            <li><a href="../services/smoking.php">Smoking Cessation</a></li>
+                            <li><a href="../services/momBaby.php">Mom & Baby Care</a></li>
+                            <li><a href="../services/pharmacy.php">Pharmacy</a></li>
+                            <li><a href="../services/covid.php">Covid-19 Centre</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
@@ -128,32 +120,20 @@ $row = mysqli_fetch_array($query);
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
                     <li class="dropdown"><a class="nav-link scrollto active" href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
                         <ul>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/viewCart.php">View My Cart</a></li>
-                            <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchase History</a></li>
+                            <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
+                            <li><a href="../medicine/viewCart.php">View My Cart</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
-                                <?php echo "Hello " . $row['name']; ?></span>
-                            <i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
                         <ul>
-                            <li>
-                                <a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">
-                                    View Profile</a>
-                            </li>
-
-                            <li>
-                                <a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">
-                                    View History</a>
-                            </li>
-
-                            <li>
-                                <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
-                                    Make an Appointment</a>
-                            </li>
-
-                            <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                                <li><a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">Sign Out</button></a></li>
+                            <li><a href="../Profile/myProfile.php">View Profile</a></li>
+                            <li><a href="../History/myHistory.php">View History</a></li>
+                            <li><a href="../Appointment/AppointmentSlot.php">Make an Appointment</a></li>
+                            <form action="../../CustomerEntry.php" method="POST">
+                                <li>
+                                    <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
+                                            Sign Out</button></a>
+                                </li>
                             </form>
                         </ul>
                     </li>
@@ -163,11 +143,9 @@ $row = mysqli_fetch_array($query);
         </div>
     </header><!-- End Header -->
 
-
     <!-- MAIN CONTENT -->
     <main id="main">
         <br><br><br><br>
-
 
         <!-- ======= Main My Profile Section ======= -->
         <section id="services" class="services section-bg">

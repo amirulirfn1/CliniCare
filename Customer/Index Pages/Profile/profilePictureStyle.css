@@ -14,7 +14,7 @@
   font-weight: bold;
 }
 
-.uploadButton input[type=file] {
+.uploadButton input[type="file"] {
   font-size: 100px;
   position: absolute;
   left: 0;

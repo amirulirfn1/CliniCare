@@ -23,13 +23,13 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 		$c_np = validate($_POST['c_np']);
 
 		if (empty($op)) {
-			header("Location: myProfile.php?error=Current Password is required");
+			header("Location: profile.php?error=Current Password is required");
 			exit();
 		} else if (empty($np)) {
-			header("Location: myProfile.php?error=New Password is required");
+			header("Location: profile.php?error=New Password is required");
 			exit();
 		} else if ($np !== $c_np) {
-			header("Location: myProfile.php?error=The confirmation password  does not match");
+			header("Location: profile.php?error=The confirmation password  does not match");
 			exit();
 		} else {
 			// hashing the password
@@ -56,18 +56,18 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
         	          SET password='$np'
         	          WHERE email='$email'";
 				mysqli_query($conn, $sql_3);
-				header("Location: myProfile.php?success=Your password has been changed successfully");
+				header("Location: profile.php?success=Your password has been changed successfully");
 				exit();
 			} else if ($conn->query($sql_2) === FALSE) {
-				header("Location: myProfile.php?error= Current Password is incorrect");
+				header("Location: profile.php?error= Current Password is incorrect");
 				exit();
 			}
 		}
 	} else {
-		header("Location: myProfile.php");
+		header("Location: profile.php");
 		exit();
 	}
 } else {
-	header("Location: myProfile.php");
+	header("Location: profile.php");
 	exit();
 }

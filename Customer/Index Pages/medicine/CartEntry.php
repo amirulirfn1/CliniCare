@@ -24,11 +24,11 @@ if (isset($_POST['med1'])) {
     med11($_POST['med11']);
 } elseif (isset($_POST['med12'])) {
     med12($_POST['med12']);
-}elseif (isset($_POST['-'])) {
+} elseif (isset($_POST['-'])) {
     minus($_POST['-']);
-}elseif (isset($_POST['+'])) {
+} elseif (isset($_POST['+'])) {
     add($_POST['+']);
-}elseif (isset($_POST['deleteMed'])) {
+} elseif (isset($_POST['deleteMed'])) {
     deleteMed($_POST['deleteMed']);
 }
 
@@ -54,13 +54,13 @@ function med1()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 1 AND userID= $userID");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 1 AND userID= $userID AND status = 1");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 1) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 1 AND userID = $userID";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 1 AND userID = $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: AcetinSachet5gTablet.php");
@@ -71,7 +71,7 @@ function med1()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '1', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -96,13 +96,13 @@ function med2()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 2 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 2 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 2) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 2 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 2 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: BreacolCoughSyrup500ml.php");
@@ -113,7 +113,7 @@ function med2()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '2', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -139,13 +139,13 @@ function med3()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 3 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID = 3 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 3) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 3 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 3 AND userID= $userID AND status = 1";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: AcetylcysteineSandoz20Tablet.php");
@@ -156,7 +156,7 @@ function med3()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '3', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -182,13 +182,13 @@ function med4()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 4 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 4 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 4) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 4 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 4 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: Acugesic50mgTablet.php");
@@ -199,7 +199,7 @@ function med4()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '4', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -225,13 +225,13 @@ function med5()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 5 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 5 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 5) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 5 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 5 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: Apo-Sumatriptan50mgTablet.php");
@@ -242,7 +242,7 @@ function med5()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '5', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -268,13 +268,13 @@ function med6()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 6 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 6 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 6) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 6 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 6 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: Actimax500Tablet.php");
@@ -285,7 +285,7 @@ function med6()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '6', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -311,13 +311,13 @@ function med7()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 7 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 7 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 7) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 7 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 7 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: AppetonFolicAcidTablet.php");
@@ -328,7 +328,7 @@ function med7()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '7', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -354,13 +354,13 @@ function med8()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 8 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 8 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 8) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 8 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 8 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: CellLabsProbiDefendum.php");
@@ -371,7 +371,7 @@ function med8()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '8', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -397,13 +397,13 @@ function med9()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 9 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 9 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 9) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 9 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 9 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: BlackmoresProceiveCare.php");
@@ -414,7 +414,7 @@ function med9()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '9', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -440,13 +440,13 @@ function med10()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 10 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 10 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 10) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 10 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 10 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: Aspira10mgTablet.php");
@@ -457,7 +457,7 @@ function med10()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '10', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -483,13 +483,13 @@ function med11()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 11 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 11 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 11) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 11 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 11 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: Alleryl5mlSyrup.php");
@@ -500,7 +500,7 @@ function med11()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '11', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -526,13 +526,13 @@ function med12()
         echo "error";
     } else {
 
-        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 12 AND userID= $userID ");
+        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE productID= 12 AND userID= $userID AND status = 1 ");
         $row2 = mysqli_fetch_array($query2);
 
         //check row2 has a value or not
         if ($row2['productID'] == 12) {
 
-            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 12 AND userID= $userID ";
+            $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = 12 AND userID= $userID AND status = 1 ";
             //check if $sql is successful
             if (mysqli_query($con, $sql)) {
                 header("Location: AnoroEllipta.php");
@@ -543,7 +543,7 @@ function med12()
             $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '12', '1')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
-                header("Location: MedicineCatalogueUser.php");
+                header("Location: viewCart.php");
             } else {
                 echo "error";
             }
@@ -570,7 +570,7 @@ function minus()
         echo "error";
     } else {
         //delete 1 from database
-        $sql = "UPDATE usercart SET quantity = quantity - 1 WHERE productID = $productID AND userID= $userID ";
+        $sql = "UPDATE usercart SET quantity = quantity - 1 WHERE productID = $productID AND userID= $userID AND status = 1 ";
         //check if $sql is successful
         if (mysqli_query($con, $sql)) {
             //refresh page
@@ -578,8 +578,7 @@ function minus()
         } else {
             echo "error";
         }
-
-    } 
+    }
 }
 
 function add()
@@ -601,7 +600,7 @@ function add()
         echo "error";
     } else {
         //delete 1 from database
-        $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = $productID AND userID= $userID ";
+        $sql = "UPDATE usercart SET quantity = quantity + 1 WHERE productID = $productID AND userID= $userID AND status = 1 ";
         //check if $sql is successful
         if (mysqli_query($con, $sql)) {
             //refresh page
@@ -609,8 +608,7 @@ function add()
         } else {
             echo "error";
         }
-
-    } 
+    }
 }
 
 function deleteMed()
@@ -632,7 +630,7 @@ function deleteMed()
         echo "error";
     } else {
         //delete 1 from database
-        $sql = "DELETE FROM usercart  WHERE productID = $productID AND userID= $userID ";
+        $sql = "DELETE FROM usercart  WHERE productID = $productID AND userID= $userID AND status = 1 ";
         //check if $sql is successful
         if (mysqli_query($con, $sql)) {
             //refresh page
@@ -640,8 +638,7 @@ function deleteMed()
         } else {
             echo "error";
         }
-
-    } 
+    }
 }
 
 ?>
