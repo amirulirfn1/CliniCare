@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($query);
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Customer List | CliniCare</title>
+  <title>Payment History | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -20,7 +20,9 @@ $row = mysqli_fetch_array($query);
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
-  <link rel="stylesheet" href="assets/modules/prism/prism.css">
+  <link rel="stylesheet" href="assets/modules/datatables/datatables.min.css">
+  <link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
 
   <!-- Template CSS -->
@@ -51,11 +53,9 @@ $row = mysqli_fetch_array($query);
               <a href="profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
+              <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item" name="signout" id="signout">
-                    <i class="fas fa-sign-out-alt"></i> Sign Out </button>
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
             </div>
@@ -95,69 +95,55 @@ $row = mysqli_fetch_array($query);
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Customer List</h1>
+            <h1>Medicine Payment History</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-              <div class="breadcrumb-item"><a href="#">Customer</a></div>
-              <div class="breadcrumb-item">Table</div>
+              <div class="breadcrumb-item"><a href="#">Medicine</a></div>
+              <div class="breadcrumb-item">Purchase History</div>
             </div>
           </div>
           <div class="card">
             <div class="card-body">
-              <div class="section-title mt-0">All Customer</div>
+              <div class="section-title mt-0">All Payments</div>
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">IC Number</th>
-                    <th scope="col">Birth Date</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Edit</th>
-
+                    <th>No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Total Price</th>
+                    <th>Transaction ID</th>
+                    <th>Payment Date</th>
                   </tr>
                 </thead>
                 <tbody>
 
                   <?php
                   $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-                  $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
-                      INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
-                  $result = mysqli_query($con, $sql);
+                  $query = mysqli_query($con, "SELECT * FROM userpayment");
                   $x = 1;
-                  while ($row = mysqli_fetch_array($result)) {
+
+                  while ($row = mysqli_fetch_array($query)) {
+                    $userID = $row['userID'];
+                    $name = $row['name'];
+                    $email = $row['email'];
+                    $price = $row['price'];
+                    $date = $row['date'];
+                    $date = date('d-m-Y', strtotime($date));
+                    $transactionID = $row['transactionID'];
+
                     echo "<tr>";
                     echo "<td> $x </td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['phoneNumber'] . "</td>";
-                    echo "<td>" . $row['ICnumber'] . "</td>";
-                    echo "<td>" . $row['birthDate'] . "</td>";
-
-                    $customerS = $row['email'];
-
-                    echo '<td><form action="../AdminEntry.php" method="POST">';
-                    echo '<input type="hidden" name="emailToDelete" 
-												value="' . $customerS . '" >';
-                    echo '<button type="submit" value="Delete Customer" 
-												name="deleteCustomer" class="btn btn-icon btn-danger">
-												<i class="fas fa-times"><h7> Delete <h7></i></button>';
-                    echo '</form></td>';
-
-                    echo '<td><form action="editCustomer.php" method="POST">';
-                    echo '<input type="hidden" name="customerToUpdate" 
-												value="' . $customerS . '" >';
-                    echo '<button type="submit" value="editCustomer" 
-												name="editCustomer" class="btn btn-icon btn-primary">
-												<i class="fas fa-edit"><h7> Edit <h7></i></button>';
-                    echo '</form></td>';
+                    echo "<td> $name </td>";
+                    echo "<td> $email </td>";
+                    echo "<td>RM $price </td>";
+                    echo "<td> $transactionID </td>";
+                    echo "<td> $date </td>";
                     echo "</tr>";
                     $x++;
                   }
-                  ?>
 
+                  ?>
                 </tbody>
               </table>
               </tbody>
@@ -166,7 +152,7 @@ $row = mysqli_fetch_array($query);
         </section>
       </div>
     </div>
-    </ <!-- partial:../../partials/_footer.html -->
+                </div>
     <footer class="main-footer">
       <div class="footer-left">
         Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
@@ -185,17 +171,19 @@ $row = mysqli_fetch_array($query);
   <script src="assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
-  <script src="assets/modules/prism/prism.js"></script>
+  <script src="assets/modules/datatables/datatables.min.js"></script>
+  <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+  <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/bootstrap-modal.js"></script>
+  <script src="assets/js/page/modules-datatables.js"></script>
 
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

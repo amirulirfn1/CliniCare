@@ -20,6 +20,7 @@ $row = mysqli_fetch_array($query);
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/modules/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="assets/modules/summernote/summernote-bs4.css">
   <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
@@ -28,19 +29,10 @@ $row = mysqli_fetch_array($query);
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-94034622-3');
-  </script>
-  <!-- /END GA -->
 </head>
 
 <body>
@@ -59,11 +51,8 @@ $row = mysqli_fetch_array($query);
               <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="features-profile.php" class="dropdown-item has-icon">
+              <a href="profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
@@ -84,19 +73,22 @@ $row = mysqli_fetch_array($query);
             <a href="index.php">CC</a>
           </div>
           <ul class="sidebar-menu">
-            <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="customerList.php"><i>
-                  <ion-icon name="person"></ion-icon>
-                </i> </i> <span>Customer</span></a></li>
-            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
-            <ul class="sidebar-menu">
-              <li class="dropdown">
-                <a class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
-                </ul>
-              </li>
+            <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
+            <li class="dropdown">
+              <a class="nav-link has-dropdown" href="purchaseHistory.php"><i class="ion-medkit"></i> <span>Medicine</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
+                <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link has-dropdown"><i class="ion-clipboard"></i><span>Appointments</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
+              </ul>
+            </li>
         </aside>
       </div>
       <!-- Main Content -->
@@ -529,40 +521,40 @@ $row = mysqli_fetch_array($query);
             </div>
           </div>
 
-  </div>
-          <footer class="main-footer">
-            <div class="footer-left">
-               Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
-            </div>
-          </footer>
-        </section>
       </div>
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
+        </div>
+      </footer>
+      </section>
+    </div>
   </div>
 
-      <!-- General JS Scripts -->
-      <script src="assets/modules/jquery.min.js"></script>
-      <script src="assets/modules/popper.js"></script>
-      <script src="assets/modules/tooltip.js"></script>
-      <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-      <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-      <script src="assets/modules/moment.min.js"></script>
-      <script src="assets/js/stisla.js"></script>
+  <!-- General JS Scripts -->
+  <script src="assets/modules/jquery.min.js"></script>
+  <script src="assets/modules/popper.js"></script>
+  <script src="assets/modules/tooltip.js"></script>
+  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="assets/modules/moment.min.js"></script>
+  <script src="assets/js/stisla.js"></script>
 
-      <!-- JS Libraies -->
-      <script src="assets/modules/jquery.sparkline.min.js"></script>
-      <script src="assets/modules/chart.min.js"></script>
-      <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
-      <script src="assets/modules/summernote/summernote-bs4.js"></script>
-      <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+  <!-- JS Libraies -->
+  <script src="assets/modules/jquery.sparkline.min.js"></script>
+  <script src="assets/modules/chart.min.js"></script>
+  <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
+  <script src="assets/modules/summernote/summernote-bs4.js"></script>
+  <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 
-      <!-- Page Specific JS File -->
-      <script src="assets/js/page/index.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="assets/js/page/index.js"></script>
 
-      <!-- Template JS File -->
-      <script src="assets/js/scripts.js"></script>
-      <script src="assets/js/custom.js"></script>
-      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Template JS File -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

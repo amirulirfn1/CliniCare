@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($query);
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Medicine Purchase History | CliniCare</title>
+  <title>Purchase History | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -23,85 +23,79 @@ $row = mysqli_fetch_array($query);
   <link rel="stylesheet" href="assets/modules/datatables/datatables.min.css">
   <link rel="stylesheet" href="assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-94034622-3');
-  </script>
   <!-- /END GA -->
 </head>
 
-<body></body>
-<div id="app">
-  <div class="main-wrapper main-wrapper-1">
-    <div class="navbar-bg"></div>
-    <nav class="navbar navbar-expand-lg main-navbar">
-      <form class="form-inline mr-auto">
-        <ul class="navbar-nav mr-3">
-          <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-          <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+<body>
+  <div id="app">
+    <div class="main-wrapper main-wrapper-1">
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+              <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="profile.php" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Profile
+              </a>
+              <a href="features-settings.html" class="dropdown-item has-icon">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <a href="#" class="dropdown-item has-icon">
+                <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
+                </form>
+              </a>
+            </div>
+          </li>
         </ul>
-      </form>
-      <ul class="navbar-nav navbar-right">
-        <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a href="features-profile.php" class="dropdown-item has-icon">
-              <i class="far fa-user"></i> Profile
-            </a>
-            <a href="features-settings.html" class="dropdown-item has-icon">
-              <i class="fas fa-cog"></i> Settings
-            </a>
-            <a href="#" class="dropdown-item has-icon">
-              <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
-                <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
-              </form>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </nav>
+      </nav>
 
-    <!--SideBar-->
-    <div class="main-sidebar sidebar-style-2">
-      <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-          <a href="index.php">C L I N I C A R E</a>
-        </div>
-        <div class="sidebar-brand sidebar-brand-sm">
-          <a href="index.php">CC</a>
-        </div>
-        <ul class="sidebar-menu">
-          <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-          <li><a class="nav-link" href="customerList.php"><i>
-                <ion-icon name="person"></ion-icon>
-              </i></i><span>Customer</span></a></li>
-          <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
+      <!--SideBar-->
+      <div class="main-sidebar sidebar-style-2">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="index.php">C L I N I C A R E</a>
+          </div>
+          <div class="sidebar-brand sidebar-brand-sm">
+            <a href="index.php">CC</a>
+          </div>
           <ul class="sidebar-menu">
+            <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
+              <a class="nav-link has-dropdown" href="purchaseHistory.php"><i class="ion-medkit"></i> <span>Medicine</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
+                <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link has-dropdown"><i class="ion-clipboard"></i><span>Appointments</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
                 <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
               </ul>
             </li>
-      </aside>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
+        </aside>
+      </div>
+      <!-- Main Content -->
+      <div class="main-content">
         <section class="section">
           <div class="section-header">
             <h1>Medicine Purchase History</h1>
@@ -113,61 +107,69 @@ $row = mysqli_fetch_array($query);
           </div>
           <div class="card">
             <div class="card-body">
-              <div class="section-title mt-0">All Customer</div>
+              <div class="section-title mt-0">All Purchases</div>
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">IC Number</th>
-                    <th scope="col">Birth Date</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Edit</th>
+                    <th>No.</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Date</th>
                   </tr>
                 </thead>
                 <tbody>
 
                   <?php
                   $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-                  $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
-                      INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
-                  $result = mysqli_query($con, $sql);
+                  $query = mysqli_query($con, "SELECT * FROM customer ");
+                  $row = mysqli_fetch_array($query);
+
+                  $query3 = mysqli_query($con, "SELECT * FROM userpayment ");
+                  $row3 = mysqli_fetch_array($query3);
+                  $date = $row3['date'];
+                  $date = date('d-m-Y', strtotime($date));
+                  $price = $row3['price'];
+
+                  $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE status = 0");
                   $x = 1;
-                  while ($row = mysqli_fetch_array($result)) {
+
+                  while ($row2 = mysqli_fetch_array($query2)) {
                     echo "<tr>";
                     echo "<td> $x </td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['phoneNumber'] . "</td>";
-                    echo "<td>" . $row['ICnumber'] . "</td>";
-                    echo "<td>" . $row['birthDate'] . "</td>";
-
-                    $customerS = $row['email'];
-
-                    echo '<td><form action="../AdminEntry.php" method="POST">';
-                    echo '<input type="hidden" name="emailToDelete" 
-												value="' . $customerS . '" >';
-                    echo '<button type="submit" value="Delete Customer" 
-												name="deleteCustomer" class="btn btn-icon btn-danger">
-												<i class="fas fa-times"><h7> Delete <h7></i></button>';
-                    echo '</form></td>';
-
-                    echo '<td><form action="editCustomer.php" method="POST">';
-                    echo '<input type="hidden" name="customerToUpdate" 
-												value="' . $customerS . '" >';
-                    echo '<button type="submit" value="editCustomer" 
-												name="editCustomer" class="btn btn-icon btn-primary">
-												<i class="fas fa-edit"><h7> Edit <h7></i></button>';
-                    echo '</form></td>';
-
+                    if ($row2['productID'] == 1) {
+                      echo "<td>Acetin Sachet 5g Tablet</td>";
+                    } else if ($row2['productID'] == 2) {
+                      echo "<td>Breacol Cough Syrup 500ml</td>";
+                    } else if ($row2['productID'] == 3) {
+                      echo "<td>Acetylcysteine Sandoz 20 Tablet</td>";
+                    } else if ($row2['productID'] == 4) {
+                      echo "<td>Acugesic 50mg Tablet</td>";
+                    } else if ($row2['productID'] == 5) {
+                      echo "<td>Apo-Sumatriptan 50mg Tablet</td>";
+                    } else if ($row2['productID'] == 6) {
+                      echo "<td>Actimax 500 Tablet</td>";
+                    } else if ($row2['productID'] == 7) {
+                      echo "<td>Appeton Folic Acid Tablet</td>";
+                    } else if ($row2['productID'] == 8) {
+                      echo "<td>Cell Labs ProbiDefendum</td>";
+                    } else if ($row2['productID'] == 9) {
+                      echo "<td>Blackmores Proceive Care</td>";
+                    } else if ($row2['productID'] == 10) {
+                      echo "<td>Aspira 10mg Tablet</td>";
+                    } else if ($row2['productID'] == 11) {
+                      echo "<td>Alleryl 4mg/5ml Syrup</td>";
+                    } else if ($row2['productID'] == 12) {
+                      echo "<td>Anoro Ellipta 25mcg Accuhaler</td>";
+                    }
+                    echo "<td>" . $row2['quantity'] . "</td>";
+                    echo "<td>RM" . $price . "</td>";
+                    echo "<td>" . $date . "</td>";
                     echo "</tr>";
-
                     $x++;
                   }
-                  ?>
 
+                  ?>
                 </tbody>
               </table>
               </tbody>
@@ -182,31 +184,31 @@ $row = mysqli_fetch_array($query);
       </div>
     </footer>
   </div>
-</div>
+  </div>
 
-<!-- General JS Scripts -->
-<script src="assets/modules/jquery.min.js"></script>
-<script src="assets/modules/popper.js"></script>
-<script src="assets/modules/tooltip.js"></script>
-<script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-<script src="assets/modules/moment.min.js"></script>
-<script src="assets/js/stisla.js"></script>
+  <!-- General JS Scripts -->
+  <script src="assets/modules/jquery.min.js"></script>
+  <script src="assets/modules/popper.js"></script>
+  <script src="assets/modules/tooltip.js"></script>
+  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="assets/modules/moment.min.js"></script>
+  <script src="assets/js/stisla.js"></script>
 
-<!-- JS Libraies -->
-<script src="assets/modules/datatables/datatables.min.js"></script>
-<script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-<script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
+  <!-- JS Libraies -->
+  <script src="assets/modules/datatables/datatables.min.js"></script>
+  <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+  <script src="assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
+  <script src="assets/modules/jquery-ui/jquery-ui.min.js"></script>
 
-<!-- Page Specific JS File -->
-<script src="assets/js/page/modules-datatables.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="assets/js/page/modules-datatables.js"></script>
 
-<!-- Template JS File -->
-<script src="assets/js/scripts.js"></script>
-<script src="assets/js/custom.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Template JS File -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

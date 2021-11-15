@@ -21,23 +21,15 @@ $row = mysqli_fetch_array($query);
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="assets/modules/prism/prism.css">
+  <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
+
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-94034622-3');
-  </script>
-  <!-- /END GA -->
 </head>
 
 <body>
@@ -56,11 +48,8 @@ $row = mysqli_fetch_array($query);
               <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="features-profile.php" class="dropdown-item has-icon">
+              <a href="profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="/MasterCliniCare/Customer/CustomerEntry.php" method="POST">
@@ -81,19 +70,22 @@ $row = mysqli_fetch_array($query);
             <a href="index.php">CC</a>
           </div>
           <ul class="sidebar-menu">
-            <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="customerList.php"><i>
-                  <ion-icon name="person"></ion-icon>
-                </i> </i> <span>Customer</span></a></li>
-            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
-            <ul class="sidebar-menu">
-              <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
-                <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
-                </ul>
-              </li>
+            <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
+            <li class="dropdown">
+              <a class="nav-link has-dropdown" href="purchaseHistory.php"><i class="ion-medkit"></i> <span>Medicine</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
+                <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="nav-link has-dropdown"><i class="ion-clipboard"></i><span>Appointments</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
+              </ul>
+            </li>
         </aside>
       </div>
       <!-- Main Content -->
