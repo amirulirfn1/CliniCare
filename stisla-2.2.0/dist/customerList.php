@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($query);
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Customer List &mdash; CliniCare</title>
+  <title>Customer List | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -34,7 +34,6 @@ $row = mysqli_fetch_array($query);
       dataLayer.push(arguments);
     }
     gtag('js', new Date());
-
     gtag('config', 'UA-94034622-3');
   </script>
   <!-- /END GA -->
@@ -89,16 +88,16 @@ $row = mysqli_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i>
+            <li><a class="nav-link" href="customerList.php"><i>
                   <ion-icon name="person"></ion-icon>
                 </i></i><span>Customer</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
+            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
               <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
@@ -150,7 +149,6 @@ $row = mysqli_fetch_array($query);
 
                     $customerS = $row['email'];
 
-
                     echo '<td><form action="../AdminEntry.php" method="POST">';
                     echo '<input type="hidden" name="emailToDelete" 
 												value="' . $customerS . '" >';
@@ -159,19 +157,16 @@ $row = mysqli_fetch_array($query);
 												<i class="fas fa-times"><h7> Delete <h7></i></button>';
                     echo '</form></td>';
 
-                    echo '<td><form action="Edit-Customer.php" method="POST">';
+                    echo '<td><form action="editCustomer.php" method="POST">';
                     echo '<input type="hidden" name="customerToUpdate" 
 												value="' . $customerS . '" >';
                     echo '<button type="submit" value="editCustomer" 
 												name="editCustomer" class="btn btn-icon btn-primary">
 												<i class="fas fa-edit"><h7> Edit <h7></i></button>';
                     echo '</form></td>';
-
                     echo "</tr>";
-
                     $x++;
                   }
-
                   ?>
 
                 </tbody>
@@ -179,20 +174,15 @@ $row = mysqli_fetch_array($query);
               </tbody>
               </table>
             </div>
-          </div>
+        </section>
       </div>
     </div>
-  </div>
-  </div>
-  </section>
-  </div>
-  <!-- partial:../../partials/_footer.html -->
-  <footer class="footer">
-    <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-    </div>
-    <div class="footer-right"></div>
-  </footer>
+    </ <!-- partial:../../partials/_footer.html -->
+    <footer class="main-footer">
+      <div class="footer-left">
+        Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
+      </div>
+    </footer>
   </div>
   </div>
 

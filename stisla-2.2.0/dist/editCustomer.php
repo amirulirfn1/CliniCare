@@ -5,20 +5,19 @@ $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Edit Customer &mdash; CliniCare</title>
+  <title>Edit Customer | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
-
-  <!-- CSS Libraries -->
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -91,8 +90,7 @@ $row = mysqli_fetch_array($query);
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
                   <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-                  <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
+                  <li><a class="nav-link" href="All-Appointment-Slot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
@@ -112,7 +110,7 @@ $row = mysqli_fetch_array($query);
             <?php
             include "EditFunction.php";
             $Qry = getCustomerInfo($_POST['customerToUpdate']);
-            $Record = mysqli_fetch_assoc($Qry); //ni die akan amek satu baris record
+            $Record = mysqli_fetch_assoc($Qry);
             ?>
 
             <div class="card">
@@ -150,47 +148,45 @@ $row = mysqli_fetch_array($query);
                   </div>
 
                 </div>
-
                 <div class="card-body">
-
                   <button type="submit" class="btn btn-primary" name="updateCustomer">Update</button>
 
                 </div>
               </form>
             </div>
-            <!-- partial:../../partials/_footer.html -->
-            <footer class="footer">
-              <div class="container-fluid clearfix">
-                &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-              </div>
-              <div class="footer-right">
-
-              </div>
-            </footer>
           </div>
-        </section>
       </div>
+      <!-- partial:../../partials/_footer.html -->
+      <footer class="main-footer">
+        <div class="footer-left">
+          Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
+        </div>
+      </footer>
+    </div>
+    </section>
+  </div>
+  </div>
 
-      <!-- General JS Scripts -->
-      <script src="assets/modules/jquery.min.js"></script>
-      <script src="assets/modules/popper.js"></script>
-      <script src="assets/modules/tooltip.js"></script>
-      <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-      <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-      <script src="assets/modules/moment.min.js"></script>
-      <script src="assets/js/stisla.js"></script>
+  <!-- General JS Scripts -->
+  <script src="assets/modules/jquery.min.js"></script>
+  <script src="assets/modules/popper.js"></script>
+  <script src="assets/modules/tooltip.js"></script>
+  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="assets/modules/moment.min.js"></script>
+  <script src="assets/js/stisla.js"></script>
 
-      <!-- JS Libraies -->
-      <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+  <!-- JS Libraies -->
+  <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
 
-      <!-- Page Specific JS File -->
-      <script src="assets/js/page/modules-sweetalert.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="assets/js/page/modules-sweetalert.js"></script>
 
-      <!-- Template JS File -->
-      <script src="assets/js/scripts.js"></script>
-      <script src="assets/js/custom.js"></script>
-      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Template JS File -->
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/custom.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

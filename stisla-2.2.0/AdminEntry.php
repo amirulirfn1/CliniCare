@@ -4,7 +4,7 @@ session_start();
 if (isset($_POST['deleteCustomer'])) {
     deleteCustomer($_POST['deleteCustomer']);
 } else if (isset($_POST['editCustomer'])) {
-    header("Location: /MasterCliniCare/stisla-2.2.0/dist/Edit-Customer.php");
+    header("Location: /MasterCliniCare/stisla-2.2.0/dist/editCustomer.php");
 } else if (isset($_POST['closeAppointment'])) {
     closeAppointment($__POST['closeAppointment']);
 } else if (isset($_POST['openAppointment'])) {
@@ -15,18 +15,20 @@ if (isset($_POST['deleteCustomer'])) {
     updateProfileAdmin($_POST['updateCustomer']);
 } else if (isset($_POST['deleteSlot'])) {
     deleteSlot($_POST['deleteSlot']);
-}else if (isset($_POST['addSlot'])) {
+} else if (isset($_POST['addSlot'])) {
     addSlot($_POST['addSlot']);
+} else if (isset($_POST['doneApp'])) {
+    doneApp($_POST['doneApp']);
+} else if (isset($_POST['cancelApp'])) {
+    cancelApp($_POST['cancelApp']);
 }
 ?>
 
 
 <?php
-
 //function edit profile info
 function updateProfileAdmin()
 {
-
     $servername = "localhost";
     $username = "clinicarecustomer";
     $password = "customer";
@@ -39,7 +41,6 @@ function updateProfileAdmin()
     } else {
 
         $email = $_SESSION['email'];
-
         $name = $_POST['name'];
         $phoneNumber = $_POST['phoneNumber'];
         $icNumber = $_POST['icNumber'];
@@ -63,7 +64,6 @@ function updateProfileAdmin()
 function getCustomerInfo($email)
 {
     $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-
     if (!$con) {
         echo "error";
     } else {
@@ -79,20 +79,17 @@ function deleteCustomer()
     $username = "clinicarecustomer";
     $password = "customer";
     $dbname = "clinicare";
-
     $con = new mysqli($servername, $username, $password, $dbname);
 
     if (!$con) {
         echo "Error";
     } else {
         $email = $_POST['emailToDelete'];
-
         $sql = "DELETE FROM customer WHERE email = '$email' ";
-
         if ($con->query($sql) === TRUE) {
             $sql2 = "DELETE FROM user WHERE email = '$email'";
             if ($con->query($sql2) === TRUE) {
-                header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
+                header("Location: /MasterCliniCare/stisla-2.2.0/dist/customerList.php");
             } else {
                 echo "error sql2";
             }
@@ -109,15 +106,12 @@ function updateCustomer()
     $username = "clinicarecustomer";
     $password = "customer";
     $dbname = "clinicare";
-
     $con = new mysqli($servername, $username, $password, $dbname);
 
     if (!$con) {
         echo "Error";
     } else {
-
         $email = $_POST['email'];
-
         $name = $_POST['name'];
         $phoneNumber = $_POST['phoneNumber'];
         $ICnumber = $_POST['ICnumber'];
@@ -128,7 +122,7 @@ function updateCustomer()
 
         if ($con->query($sql) === TRUE) {
             //echo $email;
-            header("Location: /MasterCliniCare/stisla-2.2.0/dist/Customer-List.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/customerList.php");
         } else {
             echo "error";
         }
@@ -137,23 +131,20 @@ function updateCustomer()
 
 function closeAppointment()
 {
-
     $servername = "localhost";
     $username = "clinicarecustomer";
     $password = "customer";
     $dbname = "clinicare";
-
     $con = new mysqli($servername, $username, $password, $dbname);
 
     if (!$con) {
         echo "Error";
     } else {
         $appSId = $_POST['appToClose'];
-
         $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = '$appSId' ";
 
         if ($con->query($sql) === TRUE) {
-            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/appointmentSlot.php");
         } else {
             echo "error";
         }
@@ -162,12 +153,10 @@ function closeAppointment()
 
 function openAppointment()
 {
-
     $servername = "localhost";
     $username = "clinicarecustomer";
     $password = "customer";
     $dbname = "clinicare";
-
     $con = new mysqli($servername, $username, $password, $dbname);
 
     if (!$con) {
@@ -178,7 +167,7 @@ function openAppointment()
         $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = '$appSId' ";
 
         if ($con->query($sql) === TRUE) {
-            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/appointmentSlot.php");
         } else {
             echo "error";
         }
@@ -191,7 +180,6 @@ function deleteSlot()
     $username = "clinicarecustomer";
     $password = "customer";
     $dbname = "clinicare";
-
     $con = mysqli_connect($servername, $username, $password, $dbname);
 
     if (!$con) {
@@ -201,7 +189,7 @@ function deleteSlot()
         $sql = "DELETE FROM appointmentslot WHERE appSId='" . $appSId . "'";
 
         if ($con->query($sql) === TRUE) {
-            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/appointmentSlot.php");
         } else {
             echo "error";
         }
@@ -214,7 +202,6 @@ function addSlot()
     $username = "clinicarecustomer";
     $password = "customer";
     $dbname = "clinicare";
-
     $con = mysqli_connect($servername, $username, $password, $dbname);
 
     if (!$con) {
@@ -224,18 +211,61 @@ function addSlot()
         $time2 = "2PM - 6PM";
         $time3 = "7PM - 11PM";
         $date = $_POST['date'];
-        
+
         $sql = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time1', 0, 10)";
         $sql2 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time2', 0, 10)";
         $sql3 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time3', 0, 10)";
-        
+
         // check sql, sql2, sql3 for success
         if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
-            header("Location: /MasterCliniCare/stisla-2.2.0/dist/All-Appointment-Slot.php");
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/appointmentSlot.php");
         } else {
             echo "error";
         }
-  
+    }
+}
+
+function doneApp()
+{
+    $servername = "localhost";
+    $username = "clinicarecustomer";
+    $password = "customer";
+    $dbname = "clinicare";
+    $con = mysqli_connect($servername, $username, $password, $dbname);
+
+    if (!$con) {
+        echo "Error";
+    } else {
+        $appID = $_POST['appID'];
+        //update table appointment status = 0 
+        $sql = "UPDATE appointment SET status = 0 WHERE appId = '$appID'";
+        if ($con->query($sql) === TRUE) {
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/appointmentList.php");
+        } else {
+            echo "error";
+        }
+    }
+}
+
+function cancelApp()
+{
+    $servername = "localhost";
+    $username = "clinicarecustomer";
+    $password = "customer";
+    $dbname = "clinicare";
+    $con = mysqli_connect($servername, $username, $password, $dbname);
+
+    if (!$con) {
+        echo "Error";
+    } else {
+        $appID = $_POST['appID'];
+        //update table appointment status = 2 
+        $sql = "UPDATE appointment SET status = 2 WHERE appId = '$appID'";
+        if ($con->query($sql) === TRUE) {
+            header("Location: /MasterCliniCare/stisla-2.2.0/dist/appointmentList.php");
+        } else {
+            echo "error";
+        }
     }
 }
 ?>

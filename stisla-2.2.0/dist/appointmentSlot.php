@@ -11,8 +11,8 @@ $row = mysqli_fetch_array($query);
 
 <head>
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1.0, name=" viewport">
-  <title>Appointment List | Admin</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Available Slot | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -53,8 +53,6 @@ $row = mysqli_fetch_array($query);
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-
-
               <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
@@ -84,16 +82,16 @@ $row = mysqli_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i>
+            <li><a class="nav-link" href="customerList.php"><i>
                   <ion-icon name="person"></ion-icon>
-                </i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+                </i> </i> <span>Customer</span></a></li>
+            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
               <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
@@ -102,72 +100,83 @@ $row = mysqli_fetch_array($query);
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Appointments List</h1>
+            <h1>Available Appointments</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="index.php">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Appointment</a></div>
-              <div class="breadcrumb-item">Appointment List</div>
+              <div class="breadcrumb-item">All Appointment Slot</div>
             </div>
           </div>
           <div class="card">
             <div class="card-body">
-              <div class="section-title mt-0">All Appointments</div>
-              <table class="table table-bordered">
+              <div class="section-title mt-0">All Appointments
+                <a class="nav-link" href="addSlot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Add Appointment Slot</a>
+              </div>
+
+
+              <table class="table table-bordered" style="text-align:center;">
                 <thead>
                   <tr>
-                    <th scope="col">Appointment Id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone Number</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Update Status</th>
+                    <th scope="col">Delete Slot</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-                  $sql = "SELECT * FROM appointment";
+                  $sql = "SELECT * FROM appointmentslot";
                   $result = mysqli_query($con, $sql);
                   $x = 1;
+
                   while ($row = mysqli_fetch_array($result)) {
+
                     echo "<tr>";
-                    echo "<td>" . $row['appId'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['phoneNumber'] . "</td>";
+                    echo "<td>" . $row['appSId'] . "</td>";
                     echo "<td>" . $row['date'] . "</td>";
                     echo "<td>" . $row['time'] . "</td>";
 
-                    //if status 1 echo "Pending" else echo "Done"
-                    if ($row['status'] == 1) {
-                      echo "<td>Pending</td>";
-                      echo '<td><form action="../AdminEntry.php" method="POST">
-                        <input type="hidden" name="emailToDone" 
-												value="' . $customerS . '" > 
-                        <button type="submit" value="Appointment Done" 
-												name="doneApp" id="doneApp" class="btn btn-icon btn-primary">
-												<h7>Appointment Done<h7></button> 
-                        </form></td></tr>';
+                    if ($row['count'] > 0) {
+                      if ($row['status']  == 0) {
+                        echo "<td style='color:#00D100'>Available (" . $row['count'] . ")</td>";
+                      } else {
+                        echo "<td style='color:#D10000'>Closed </td>";
+                      }
                     } else {
-                      echo "<td>Done</td>";
-                      echo '<td>Appointment Done</td></tr>';
+                      echo "<td style='color:#D10000'>Unavailable (" . $row['count'] . ")</td>";
                     }
-                    $customerS = $row['email'];
 
 
+                    $appSId = $row['appSId'];
 
 
+                    echo '<td><form action="../AdminEntry.php" method="POST">';
 
+                    echo '<input type="hidden" name="appToClose" 
+												value="' . $appSId . '" >';
+                    echo '<button type="submit" value="Close Appointment" 
+												name="closeAppointment" class="btn btn-icon btn-danger">
+												<h7> Set Closed <h7></button>';
 
-                    $x++;
+                    echo '&nbsp;&nbsp;<input type="hidden" name="appToOpen" 
+												value="' . $appSId . '" >';
+                    echo '<button type="submit" value="Open Appointment" 
+												name="openAppointment" class="btn btn-icon btn-success">
+												<h7> Set Opened <h7></button>';
+
+                    echo '<td>';
+                    echo '<input type="hidden" value="' . $appSId . '" name="SlotToDelete">';
+                    echo '<input type="submit" class="btn btn-danger" name="deleteSlot" id="deleteSlot" value="Delete">';
+                    echo '</td>';
+                    echo '</form></td>';
                   }
+                  echo "</tr>";
 
                   ?>
                 </tbody>
-              </table>
-              </tbody>
               </table>
             </div>
           </div>
@@ -177,13 +186,12 @@ $row = mysqli_fetch_array($query);
   </div>
   </section>
   </div>
+  </div>
+  </div>
   <!-- partial:../../partials/_footer.html -->
-  <footer class="footer">
-    <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-    </div>
-    <div class="footer-right">
-
+  <footer class="main-footer">
+    <div class="footer-left">
+      Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
     </div>
   </footer>
   </div>

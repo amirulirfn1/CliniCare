@@ -11,15 +11,16 @@ $row = mysqli_fetch_array($query);
 
 <head>
   <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Add Appointment Slot &mdash; CliniCare</title>
+  <meta content="width=device-width, initial-scale=1.0, name=" viewport">
+  <title>Appointment List | Admin</title>
 
   <!-- General CSS Files -->
-  <link href="assets/img/icon.jpeg" rel="icon">Z
+  <link href="assets/img/icon.jpeg" rel="icon">
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
+  <link rel="stylesheet" href="assets/modules/prism/prism.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -83,58 +84,102 @@ $row = mysqli_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i>
+            <li><a class="nav-link" href="customerList.php"><i>
                   <ion-icon name="person"></ion-icon>
-                </i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+                </i> </i> <span>Customer</span></a></li>
+            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
               <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
       </div>
-
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Appointment</h1>
+            <h1>Appointments List</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="index.php">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Appointment</a></div>
-              <div class="breadcrumb-item">Add Appointment Slot</div>
+              <div class="breadcrumb-item">Appointment List</div>
             </div>
           </div>
-          <div class="section-body">
-            <div class="card">
-              <div class="card-header">
-                <a href="All-Appointment-Slot.php"></a>
-                <div class="section-title mt-0">Add Appointment</div>
-              </div>
-              <div class="card-body">
-                <form action="../AdminEntry.php" method="POST">
-                <div class="form-group">
-                  <h6>Date</h6>
-                  <input name="date" id="date" type="date" class="form-control">
-                </div>
-                <button type="submit" name="addSlot" id="addSlot" class="btn btn.btn-lg btn-success">Submit</button>
-                </form>
-        </section>
-      </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="section-title mt-0">All Appointments</div>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Appointment Id</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                  $sql = "SELECT * FROM appointment";
+                  $result = mysqli_query($con, $sql);
+                  $x = 1;
 
-      <!---Footer-->
-      <footer class="footer">
-        <div class="container-fluid clearfix">
-          &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-        </div>
-        <div class="footer-right">
-        </div>
-      </footer>
+                  while ($row = mysqli_fetch_array($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['appId'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td>" . $row['name'] . "</td>";
+                    echo "<td>" . $row['phoneNumber'] . "</td>";
+                    echo "<td>" . $row['date'] . "</td>";
+                    echo "<td>" . $row['time'] . "</td>";
+
+                    $appID = $row['appId'];
+                    //if status 1 echo "Pending" else echo "Done"
+                    if ($row['status'] == 1) {
+                      echo '<td><form action="../AdminEntry.php" method="POST">
+                        <input type="hidden" name="appID" id="appID" value="' . $appID . '" > 
+                        <button type="submit" name="doneApp" id="doneApp" class="btn btn-icon btn-primary">
+												<h7>Set Complete<h7></button> 
+
+                        <button type="submit" name="cancelApp" id="cancelApp" class="btn btn-icon btn-danger">
+												<h7>Set Cancel<h7></button> 
+                        </form></td></tr>';
+                    } else if ($row['status'] == 2) {
+                      echo '<td style="color:red">Cancelled</td></tr>';
+                    } else {
+                      echo '<td style="color:#4CBB17">Completed</td></tr>';
+                    }
+
+                    $x++;
+                  }
+                  ?>
+                </tbody>
+              </table>
+              </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
     </div>
+  </div>
+  </div>
+  </section>
+  </div>
+  </div>
+  <!-- partial:../../partials/_footer.html -->
+  <footer class="main-footer">
+    <div class="footer-left">
+      Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
+    </div>
+  </footer>
+  </div>
   </div>
 
   <!-- General JS Scripts -->
@@ -147,16 +192,17 @@ $row = mysqli_fetch_array($query);
   <script src="assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
-  <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
+  <script src="assets/modules/prism/prism.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/modules-sweetalert.js"></script>
+  <script src="assets/js/page/bootstrap-modal.js"></script>
 
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

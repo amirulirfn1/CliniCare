@@ -40,8 +40,9 @@
 
       //check if sql success
       if ($conn->query($sql) === TRUE) {
-        //delete from database table
-        $sql2 = "DELETE FROM usercart WHERE userID = '$userID'";
+        //update status from database table to 0
+        $sql2 = "UPDATE usercart SET status='0' WHERE userID='$userID'";
+        
         //check if sql2 success
         if ($conn->query($sql2) === TRUE) {
           header("Location:/MasterCliniCare/Alerts/successPayment.php");

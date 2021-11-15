@@ -91,7 +91,6 @@ $row = mysqli_fetch_array($query);
             <ul>
               <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
               <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/viewCart.php">View My Cart</a></li>
-              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchase History</a></li>
             </ul>
           </li>
 

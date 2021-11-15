@@ -6,7 +6,6 @@ $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
 ?>
 
-
 <!-- PAGE FOR MY PROFILE CUSTOMER -->
 
 <!DOCTYPE html>
@@ -40,18 +39,200 @@ $row = mysqli_fetch_array($query);
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
-  <!-- My History CSS File -->
-  <link href="history.css" rel="stylesheet">
-
-
-  <!-- =======================================================
-  * Template Name: Medilab - v4.3.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
 </head>
+
+<style>
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+  }
+
+  .tabs {
+    display: block;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .tabs [class^="tab"] label,
+  .tabs [class*=" tab"] label {
+    color: black;
+    cursor: pointer;
+    display: block;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1em;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .tabs [class^="tab"] [type="radio"],
+  .tabs [class*=" tab"] [type="radio"] {
+    border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tabs [class^="tab"] [type="radio"]:hover,
+  .tabs [class^="tab"] [type="radio"]:focus,
+  .tabs [class*=" tab"] [type="radio"]:hover,
+  .tabs [class*=" tab"] [type="radio"]:focus {
+    border-bottom: 1px solid #1977cc;
+  }
+
+  .tabs [class^="tab"] [type="radio"]:checked,
+  .tabs [class*=" tab"] [type="radio"]:checked {
+    border-bottom: 2px solid #1977cc;
+  }
+
+  .tabs [class^="tab"] [type="radio"]:checked+div,
+  .tabs [class*=" tab"] [type="radio"]:checked+div {
+    opacity: 1;
+  }
+
+  .tabs [class^="tab"] [type="radio"]+div,
+  .tabs [class*=" tab"] [type="radio"]+div {
+    display: block;
+    opacity: 0;
+    padding: 2rem 0;
+    width: 90%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tabs .tab-2 {
+    width: 50%;
+  }
+
+  .tabs .tab-2 [type="radio"]+div {
+    width: 200%;
+    margin-left: 200%;
+  }
+
+  .tabs .tab-2 [type="radio"]:checked+div {
+    margin-left: 0;
+  }
+
+  .tabs .tab-2:last-child [type="radio"]+div {
+    margin-left: 100%;
+  }
+
+  .tabs .tab-2:last-child [type="radio"]:checked+div {
+    margin-left: -100%;
+  }
+
+  table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  table * {
+    position: relative;
+  }
+
+  table td,
+  table th {
+    padding-left: 15px;
+  }
+
+  table thead tr {
+    height: 60px;
+    background: #f1f7fd;
+    font-size: 16px;
+  }
+
+  table tbody tr {
+    height: 48px;
+    border-bottom: 1px solid #e3f1d5;
+  }
+
+  table tbody tr:last-child {
+    border: 0;
+  }
+
+  table td,
+  table th {
+    text-align: left;
+  }
+
+  table td.l,
+  table th.l {
+    text-align: right;
+  }
+
+  table td.c,
+  table th.c {
+    text-align: center;
+  }
+
+  table td.r,
+  table th.r {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 5.5em) {
+    table {
+      display: block;
+    }
+
+    table>*,
+    table tr,
+    table td,
+    table th {
+      display: block;
+    }
+
+    table thead {
+      display: none;
+    }
+
+    table tbody tr {
+      height: auto;
+      padding: 8px 0;
+    }
+
+    table tbody tr td {
+      padding-left: 45%;
+      margin-bottom: 12px;
+    }
+
+    table tbody tr td:last-child {
+      margin-bottom: 0;
+    }
+
+    table tbody tr td:before {
+      position: absolute;
+      font-weight: 700;
+      width: 40%;
+      left: 10px;
+      top: 0;
+    }
+  }
+</style>
 
 <body>
 
@@ -112,12 +293,10 @@ $row = mysqli_fetch_array($query);
                 <a href="/MasterCliniCare/Customer/Index Pages/Profile/myProfile.php">
                   View Profile</a>
               </li>
-
               <li>
                 <a href="/MasterCliniCare/Customer/Index Pages/History/myHistory.php">
                   View History</a>
               </li>
-
               <li>
                 <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
                   Make an Appointment</a>
@@ -134,98 +313,157 @@ $row = mysqli_fetch_array($query);
     </div>
   </header><!-- End Header -->
 
-
   <!-- MAIN CONTENT -->
   <main id="main">
-    <br><br><br><br><br>
-
+    <br><br><br><br>
 
     <!-- ======= Main My Profile Section ======= -->
     <section id="faq" class="faq section-bg">
       <div class="container">
-
         <div class="section-title">
-          <h2>Appointment History</h2>
+          <h2>My History</h2>
           <p><strong>Disclaimer :
             </strong> Each individual’s treatment and/or results may vary.
             Please consult doctor for more details.</p>
-        </div>
-
-        <div class="container rounded bg-white mt-5 mb-5">
-
-          <div class="row">
 
 
-            <div class="col-md-5 border-right">
-              <div class="p-3 py-5">
-				
-                <div class="table-wrapper">
-                  <table class="fl-table">
+          <div class="container rounded bg-white mt-5 mb-5">
+            <div class="tabs">
+              <div class="tab-2">
+                <label for="tab2-1">Appointments</label>
+                <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+                <div>
+                  <div class="table-wrapper">
+                    <table class="f1-table">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
 
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Date</th>
-						<th>Time</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-					
-                      <?php
-                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-                  $sql = "SELECT appointment.date, appointment.time, appointment.status FROM appointment 
+                        <?php
+                        $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                        $sql = "SELECT appointment.date, appointment.time, appointment.status FROM appointment 
                       INNER JOIN user ON appointment.email = user.email";
-                  $result = mysqli_query($con, $sql);
-                  $x = 1;
-                  while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-						echo "<td> $x </td>";
-						echo "<td>" . $row['date'] . "</td>";
-						echo "<td>" . $row['time'] . "</td>";
-						
-						if($row['status'] == 1)
-						{
-							echo "<td>Pending</td>";
-						}
-						
-						else
-						{
-							echo "<td>Done</td>";
-						}
-					
-					echo "</tr>";
+                        $result = mysqli_query($con, $sql);
+                        $x = 1;
+                        while ($row = mysqli_fetch_array($result)) {
+                          echo "<tr>";
+                          echo "<td> $x </td>";
+                          echo "<td>" . $row['date'] . "</td>";
+                          echo "<td>" . $row['time'] . "</td>";
 
-                    $x++;
-                  }
+                          if ($row['status'] == 1) {
+                            echo "<td>Confirmed</td>";
+                          } else if ($row['status'] == 2) {
+                            echo "<td style='color:red'>Cancelled</td>";
+                          } else {
+                            echo "<td style='color:#4CBB17'>Completed</td>";
+                          }
+                          echo "</tr>";
 
-                  ?>
-					  
-                    <tbody>
-                  </table>
-                </div> 
+                          $x++;
+                        }
 
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-2">
+                <label for="tab2-2">Purchases</label>
+                <input id="tab2-2" name="tabs-two" type="radio">
+                <div>
+                  <div class="table-wrapper">
+                    <table class="f1-table">
+                      <thead>
+                        <tr>
+                          <th>No.</th>
+                          <th>Product</th>
+                          <th>Quantity</th>
+                          <th>Total Price</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <?php
+                        $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                        $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
+                        $row = mysqli_fetch_array($query);
+                        $userID = $row['userID'];
+
+                        $query3 = mysqli_query($con, "SELECT * FROM userpayment WHERE email='$email'");
+                        $row3 = mysqli_fetch_array($query3);
+                        $date = $row3['date'];
+                        $date = date('d-m-Y', strtotime($date));
+                        $price = $row3['price'];
+
+                        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0");
+                        $x = 1;
+
+                        while ($row2 = mysqli_fetch_array($query2)) {
+                          echo "<tr>";
+                          echo "<td> $x </td>";
+                          if ($row2['productID'] == 1) {
+                            echo "<td>Acetin Sachet 5g Tablet</td>";
+                          } else if ($row2['productID'] == 2) {
+                            echo "<td>Breacol Cough Syrup 500ml</td>";
+                          } else if ($row2['productID'] == 3) {
+                            echo "<td>Acetylcysteine Sandoz 20 Tablet</td>";
+                          } else if ($row2['productID'] == 4) {
+                            echo "<td>Acugesic 50mg Tablet</td>";
+                          } else if ($row2['productID'] == 5) {
+                            echo "<td>Apo-Sumatriptan 50mg Tablet</td>";
+                          } else if ($row2['productID'] == 6) {
+                            echo "<td>Actimax 500 Tablet</td>";
+                          } else if ($row2['productID'] == 7) {
+                            echo "<td>Appeton Folic Acid Tablet</td>";
+                          } else if ($row2['productID'] == 8) {
+                            echo "<td>Cell Labs ProbiDefendum</td>";
+                          } else if ($row2['productID'] == 9) {
+                            echo "<td>Blackmores Proceive Care</td>";
+                          } else if ($row2['productID'] == 10) {
+                            echo "<td>Aspira 10mg Tablet</td>";
+                          } else if ($row2['productID'] == 11) {
+                            echo "<td>Alleryl 4mg/5ml Syrup</td>";
+                          } else if ($row2['productID'] == 12) {
+                            echo "<td>Anoro Ellipta 25mcg Accuhaler</td>";
+                          }
+                          echo "<td>" . $row2['quantity'] . "</td>";
+                          echo "<td>RM" . $price . "</td>";
+                          echo "<td>" . $date . "</td>";
+                          echo "</tr>";
+                          $x++;
+                        }
+
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
-      </div>
     </section><!-- End Testimonials Section -->
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" style="background-color : white">
-
     <div class="container d-md-flex py-4">
-
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
           &copy; Copyright <strong><span>C L I N I C A R E</span>
           </strong>. All Rights Reserved
         </div>
-
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="https://twitter.com/klinikdamai?s=20" class="twitter"><i class="bx bxl-twitter"></i></a>

@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($query);
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Available Slot &mdash; CliniCare</title>
+  <title>Add Slot | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -20,7 +20,6 @@ $row = mysqli_fetch_array($query);
   <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
-  <link rel="stylesheet" href="assets/modules/prism/prism.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -53,8 +52,6 @@ $row = mysqli_fetch_array($query);
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-
-
               <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
@@ -86,118 +83,56 @@ $row = mysqli_fetch_array($query);
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="Customer-List.php"><i>
                   <ion-icon name="person"></ion-icon>
-                </i> </i> <span>Customer List</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Purchase Medicine</span></a></li>
+                </i> </i> <span>Customer</span></a></li>
+            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
               <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
       </div>
+
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Available Appointments</h1>
+            <h1>Appointment</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="index.php">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="#">Appointment</a></div>
-              <div class="breadcrumb-item">All Appointment Slot</div>
+              <div class="breadcrumb-item">Add Appointment Slot</div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-body">
-              <div class="section-title mt-0">All Appointments
-                <a class="nav-link" href="Appointments-Slot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Add Appointment Slot</a>
+          <div class="section-body">
+            <div class="card">
+              <div class="card-header">
+                <a href="All-Appointment-Slot.php"></a>
+                <div class="section-title mt-0">Add Appointment</div>
               </div>
-
-
-              <table class="table table-bordered" style="text-align:center;">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Update Status</th>
-                    <th scope="col">Delete Slot</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
-                  $sql = "SELECT * FROM appointmentslot";
-                  $result = mysqli_query($con, $sql);
-                  $x = 1;
-
-                  while ($row = mysqli_fetch_array($result)) {
-
-                    echo "<tr>";
-                    echo "<td>" . $row['appSId'] . "</td>";
-                    echo "<td>" . $row['date'] . "</td>";
-                    echo "<td>" . $row['time'] . "</td>";
-
-                    if ($row['count'] > 0) {
-                      if ($row['status']  == 0) {
-                        echo "<td style='color:#00D100'>Available (" . $row['count'] . ")</td>";
-                      } else {
-                        echo "<td style='color:#D10000'>Closed </td>";
-                      }
-                    } else {
-                      echo "<td style='color:#D10000'>Unavailable (" . $row['count'] . ")</td>";
-                    }
-
-
-                    $appSId = $row['appSId'];
-
-
-                    echo '<td><form action="../AdminEntry.php" method="POST">';
-
-                    echo '<input type="hidden" name="appToClose" 
-												value="' . $appSId . '" >';
-                    echo '<button type="submit" value="Close Appointment" 
-												name="closeAppointment" class="btn btn-icon btn-danger">
-												<h7> Set Closed <h7></button>';
-
-                    echo '&nbsp;&nbsp;<input type="hidden" name="appToOpen" 
-												value="' . $appSId . '" >';
-                    echo '<button type="submit" value="Open Appointment" 
-												name="openAppointment" class="btn btn-icon btn-success">
-												<h7> Set Opened <h7></button>';
-
-                    echo '<td>';
-                    echo '<input type="hidden" value="' . $appSId . '" name="SlotToDelete">';
-                    echo '<input type="submit" class="btn btn-danger" name="deleteSlot" id="deleteSlot" value="Delete">';
-                    echo '</td>';
-                    echo '</form></td>';
-                  }
-                  echo "</tr>";
-
-                  ?>
-                </tbody>
-              </table>
-            </div>
-          </div>
+              <div class="card-body">
+                <form action="../AdminEntry.php" method="POST">
+                <div class="form-group">
+                  <h6>Date</h6>
+                  <input name="date" id="date" type="date" class="form-control">
+                </div>
+                <button type="submit" name="addSlot" id="addSlot" class="btn btn.btn-lg btn-success">Submit</button>
+                </form>
+        </section>
       </div>
-    </div>
-  </div>
-  </div>
-  </section>
-  </div>
-  <!-- partial:../../partials/_footer.html -->
-  <footer class="footer">
-    <div class="container-fluid clearfix">
-      &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
-    </div>
-    <div class="footer-right">
 
+      <!---Footer-->
+      <footer class="footer">
+        <div class="container-fluid clearfix">
+          &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+        </div>
+        <div class="footer-right">
+        </div>
+      </footer>
     </div>
-  </footer>
-  </div>
   </div>
 
   <!-- General JS Scripts -->
@@ -210,17 +145,16 @@ $row = mysqli_fetch_array($query);
   <script src="assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
-  <script src="assets/modules/prism/prism.js"></script>
+  <script src="assets/modules/sweetalert/sweetalert.min.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="assets/js/page/bootstrap-modal.js"></script>
+  <script src="assets/js/page/modules-sweetalert.js"></script>
 
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

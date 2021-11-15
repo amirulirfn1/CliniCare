@@ -15,7 +15,7 @@ $row = mysqli_fetch_array($query);
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Cart | CliniCare</title>
-  
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -334,52 +334,58 @@ $row = mysqli_fetch_array($query);
               $custaddress = $row['address'];
 
               //show all from usercart database according to userid
-              $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE userid = $userID");
+              $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE userid = $userID AND status = 1");
 
-              //while there is data in the database echo it
-              while ($row2 = mysqli_fetch_array($query2)) {
-
-                $productID = $row2['productID'];
-
-                $query3 = mysqli_query($con, "SELECT * FROM product WHERE productID = $row2[productID]");
-                $row3 = mysqli_fetch_array($query3);
-
-                $quantity = $row2['quantity'];
-                $name = $row3['name'];
-                $price = $row3['price'];
-
-                $totalQuantity += $quantity;
-                $price = $price * $quantity;
-                $totalPrice += $price;
-
-                echo "<div class='row border-top border-bottom'>
-                <div class='row main align-items-center'>";
-                if ($productID == 1) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/Acetin.jpg'></div>";
-                } else if ($productID == 2) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/med7.jpg'></div>";
-                } else if ($productID == 3) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/Acetylcysteine.jpg'></div>";
-                } else if ($productID == 4) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/Acugesic.png'></div>";
-                } else if ($productID == 5) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/apo.jpg'></div>";
-                } else if ($productID == 6) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/Actimax.jpg'></div>";
-                } else if ($productID == 7) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/Appeton.jpg'></div>";
-                } else if ($productID == 8) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/cell.jpg'></div>";
-                } else if ($productID == 9) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/blackmores.jpg'></div>";
-                } else if ($productID == 10) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/aspira.jpg'></div>";
-                } else if ($productID == 11) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/Alleryl.jpg'></div>";
-                } else if ($productID == 12) {
-                  echo "<div class='col-2'><img class='img-fluid' src='gambar/anoro.jpg'></div>";
-                }
+              //if there is no item in query2
+              if (mysqli_num_rows($query2) == 0) {
                 echo "<div class='col'>
+                        <div class='row'>You have no items in your cart</div>
+                      </div>";
+              } else {
+                //if there is item in query2
+                while ($row2 = mysqli_fetch_array($query2)) {
+
+                  $productID = $row2['productID'];
+
+                  $query3 = mysqli_query($con, "SELECT * FROM product WHERE productID = $row2[productID]");
+                  $row3 = mysqli_fetch_array($query3);
+
+                  $quantity = $row2['quantity'];
+                  $name = $row3['name'];
+                  $price = $row3['price'];
+
+                  $totalQuantity += $quantity;
+                  $price = $price * $quantity;
+                  $totalPrice += $price;
+
+                  echo "<div class='row border-top border-bottom'>
+                <div class='row main align-items-center'>";
+                  if ($productID == 1) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/Acetin.jpg'></div>";
+                  } else if ($productID == 2) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/med7.jpg'></div>";
+                  } else if ($productID == 3) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/Acetylcysteine.jpg'></div>";
+                  } else if ($productID == 4) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/Acugesic.png'></div>";
+                  } else if ($productID == 5) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/apo.jpg'></div>";
+                  } else if ($productID == 6) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/Actimax.jpg'></div>";
+                  } else if ($productID == 7) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/Appeton.jpg'></div>";
+                  } else if ($productID == 8) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/cell.jpg'></div>";
+                  } else if ($productID == 9) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/blackmores.jpg'></div>";
+                  } else if ($productID == 10) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/aspira.jpg'></div>";
+                  } else if ($productID == 11) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/Alleryl.jpg'></div>";
+                  } else if ($productID == 12) {
+                    echo "<div class='col-2'><img class='img-fluid' src='gambar/anoro.jpg'></div>";
+                  }
+                  echo "<div class='col'>
                     <div class='col'>" . $name . "</div>
                   </div>
                   
@@ -397,8 +403,8 @@ $row = mysqli_fetch_array($query);
                   </form>
                 </div>
               </div>";
-              }
-              echo "<div class='back-to-shop'><a href='MedicineCatalogueUser.php'>&leftarrow;</a><span class='text-muted'>Back to Catalogue</span></div>
+                }
+                echo "<div class='back-to-shop'><a href='MedicineCatalogueUser.php'>&leftarrow;</a><span class='text-muted'>Back to Catalogue</span></div>
               
                       </div><div class='col-md-4 summary'>
                         <div>
@@ -425,15 +431,15 @@ $row = mysqli_fetch_array($query);
                           <input  name='custName' id='custName'  placeholder='Enter your name' required>
 
                           <p>Email Address</p> 
-                          <input type='email'  placeholder='Enter your email address' value=".$email." required disabled>
-                          <input type='hidden'  name='custEmail' id='custEmail'  placeholder='Enter your email address' value=".$email.">
+                          <input type='email'  placeholder='Enter your email address' value=" . $email . " required disabled>
+                          <input type='hidden'  name='custEmail' id='custEmail'  placeholder='Enter your email address' value=" . $email . ">
 
                           <p>Phone Number</p> 
                           <input  name='custPhone' id='custPhone'  placeholder='Enter your phone number' required>
 
                           <p>Shipping Address</p> <input type='address' name='custAddress' id='custAddress'  placeholder='Enter your shipping address' required></input>
                         
-                          <input type='hidden' name='userID' id='userID' value=" . $userID. ">
+                          <input type='hidden' name='userID' id='userID' value=" . $userID . ">
 
                           <input type='hidden' name='totalPrice' id='totalPrice' value=" . number_format((float)$totalPrice + 10, 2, '.', '') . ">
                           <div class='row' style='border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;'>
@@ -444,6 +450,7 @@ $row = mysqli_fetch_array($query);
                       </div>
                     </div>
                   </div>";
+              }
               ?>
 
     </section><!-- End Testimonials Section -->

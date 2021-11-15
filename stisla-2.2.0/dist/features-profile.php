@@ -1,7 +1,4 @@
 <?php
-
-//session_start();
-
 $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
 session_start();
 $email = $_SESSION['email'];
@@ -15,9 +12,6 @@ if (isset($_POST['submit'])) {
   header("refresh:0; url=features-profile.php");
 }
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +49,6 @@ if (isset($_POST['submit'])) {
 
     gtag('config', 'UA-94034622-3');
   </script>
-
 
   <style>
     .error {
@@ -134,9 +127,8 @@ if (isset($_POST['submit'])) {
               <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
-                  <li><a class="nav-link" href="Appointments-Slot.php">Add Appointments Slot</a></li>
+                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
@@ -161,7 +153,6 @@ if (isset($_POST['submit'])) {
             <div class="row mt-sm-4">
               <div class="col-12 col-md-12 col-lg-5">
                 <div class="card profile-widget">
-
                   <div class="profile-widget-header">
 
                     <?php

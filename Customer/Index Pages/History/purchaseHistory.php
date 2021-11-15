@@ -37,22 +37,183 @@ $row = mysqli_fetch_array($query);
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
-  <!-- Services CSS File -->
-  <link href="services.css" rel="stylesheet">
+  <!-- History CSS File -->
+  <link href="history.css" rel="stylesheet">
 
-
-  <!-- =======================================================
-  * Template Name: Medilab - v4.3.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 
 </head>
+<style>
+  button:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+  }
+
+  .tabs {
+    display: block;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .tabs [class^="tab"] label,
+  .tabs [class*=" tab"] label {
+    color: black;
+    cursor: pointer;
+    display: block;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1em;
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .tabs [class^="tab"] [type="radio"],
+  .tabs [class*=" tab"] [type="radio"] {
+    border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tabs [class^="tab"] [type="radio"]:hover,
+  .tabs [class^="tab"] [type="radio"]:focus,
+  .tabs [class*=" tab"] [type="radio"]:hover,
+  .tabs [class*=" tab"] [type="radio"]:focus {
+    border-bottom: 1px solid #1977cc;
+  }
+
+  .tabs [class^="tab"] [type="radio"]:checked,
+  .tabs [class*=" tab"] [type="radio"]:checked {
+    border-bottom: 2px solid #1977cc;
+  }
+
+  .tabs [class^="tab"] [type="radio"]:checked+div,
+  .tabs [class*=" tab"] [type="radio"]:checked+div {
+    opacity: 1;
+  }
+
+  .tabs [class^="tab"] [type="radio"]+div,
+  .tabs [class*=" tab"] [type="radio"]+div {
+    display: block;
+    opacity: 0;
+    padding: 2rem 0;
+    width: 90%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .tabs .tab-2 {
+    width: 50%;
+  }
+
+  .tabs .tab-2 [type="radio"]+div {
+    width: 200%;
+    margin-left: 200%;
+  }
+
+  .tabs .tab-2 [type="radio"]:checked+div {
+    margin-left: 0;
+  }
+
+  .tabs .tab-2:last-child [type="radio"]+div {
+    margin-left: 100%;
+  }
+
+  .tabs .tab-2:last-child [type="radio"]:checked+div {
+    margin-left: -100%;
+  }
+  table {
+	 border-spacing: 1;
+	 border-collapse: collapse;
+	 background: white;
+	 border-radius: 6px;
+	 overflow: hidden;
+	 width: 100%;
+	 margin: 0 auto;
+	 position: relative;
+}
+ table * {
+	 position: relative;
+}
+ table td, table th {
+	 padding-left: 8px;
+}
+ table thead tr {
+	 height: 60px;
+	 background: #f1f7fd;
+	 font-size: 16px;
+}
+ table tbody tr {
+	 height: 48px;
+	 border-bottom: 1px solid #e3f1d5;
+}
+ table tbody tr:last-child {
+	 border: 0;
+}
+ table td, table th {
+	 text-align: left;
+}
+ table td.l, table th.l {
+	 text-align: right;
+}
+ table td.c, table th.c {
+	 text-align: center;
+}
+ table td.r, table th.r {
+	 text-align: center;
+}
+ @media screen and (max-width: 35.5em) {
+	 table {
+		 display: block;
+	}
+	 table > *, table tr, table td, table th {
+		 display: block;
+	}
+	 table thead {
+		 display: none;
+	}
+	 table tbody tr {
+		 height: auto;
+		 padding: 8px 0;
+	}
+	 table tbody tr td {
+		 padding-left: 45%;
+		 margin-bottom: 12px;
+	}
+	 table tbody tr td:last-child {
+		 margin-bottom: 0;
+	}
+	 table tbody tr td:before {
+		 position: absolute;
+		 font-weight: 700;
+		 width: 40%;
+		 left: 10px;
+		 top: 0;
+	}
+}
+ 
+</style>
 
 <body>
 
@@ -99,9 +260,9 @@ $row = mysqli_fetch_array($query);
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
           <li class="dropdown"><a class="nav-link scrollto active" href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Medicine Catalogue</a></li>
-              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Buy Medicine</a></li>
-              <li><a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">Purchased Medicine</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/medicine/viewCart.php">View My Cart</a></li>
+              <li><a href="/MasterCliniCare/Customer/Index Pages/History/purchaseHistory.php">Purchase History</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
@@ -119,7 +280,7 @@ $row = mysqli_fetch_array($query);
               </li>
 
               <li>
-                <a href="/MasterCliniCare/Customer/Dashboard Page/Dashboard for Customer/icons/mdi.php">
+                <a href="/MasterCliniCare/Customer/Index Pages/Appointment/AppointmentSlot.php">
                   Make an Appointment</a>
               </li>
 
@@ -134,110 +295,76 @@ $row = mysqli_fetch_array($query);
     </div>
   </header><!-- End Header -->
 
-
   <!-- MAIN CONTENT -->
   <main id="main">
-    <br><br><br><br><br>
-
+    <br><br><br><br>
 
     <!-- ======= Main My Profile Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container">
 
         <div class="section-title">
-          <h2>Mom & Baby Care - Services</h2>
+          <h2>My history</h2>
         </div>
 
+        <div class="container rounded bg-white mt-5 mb-5">
+        <div class="tabs">
+          <div class="tab-2">
+            <label for="tab2-1">Appointments</label>
+            <input id="tab2-1" name="tabs-two" type="radio" checked="checked">
+            <div>
+              <div class="table-wrapper">
+                <table class="f1-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-        <div class="row">
-          <div class="col-md-4 grid-margin stretch-card">
-            <p>
-              <img src="../assets/img/gambar/mom.png" style="width : 300px">
-            </p>
-          </div>
+                    <?php
+                    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                    $sql = "SELECT appointment.date, appointment.time, appointment.status FROM appointment 
+                      INNER JOIN user ON appointment.email = user.email";
+                    $result = mysqli_query($con, $sql);
+                    $x = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<tr>";
+                      echo "<td> $x </td>";
+                      echo "<td>" . $row['date'] . "</td>";
+                      echo "<td>" . $row['time'] . "</td>";
 
-          <div class="col-md-8 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h6><strong>Provide a wide range of antenatal and postnatal services</strong> </h6>
-                <p class="card-description"></p>
+                      if ($row['status'] == 1) {
+                        echo "<td>Confirmed</td>";
+                      } else if ($row['status'] == 2) {
+                        echo "<td style='color:red'>Cancelled</td>";
+                      } else {
+                        echo "<td style='color:#4CBB17'>Completed</td>";
+                      }
+                      echo "</tr>";
 
-                <ul class="list-star">
+                      $x++;
+                    }
 
-                  <li>This services provide both antenatal education services
-                    as well as postnatal support to parents and a range of services
-                    to babies and children of up to the age of five years. </li>
-
-                  <br>
-
-                  <li>Antenatal and postnatal care for mother and baby are
-                    essential to identify and promptly address possible health problems</li>
-
-                </ul>
+                    ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-
-
-          <div class="col-md-8 grid-margin stretch-card">
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h4 class="card-title"><strong>How we care for you?</strong></h4>
-                    <p class="card-description">Our experts will take care of mom and child.</p>
-
-                    <div class="template-demo d-flex justify-content-between flex-nowrap">
-                      <ul class="list-arrow">
-                        <li><strong>Breastfeeding Education and Support</strong>
-                          <p>To encourages all moms to breastfeed their newborns.
-                        </li>
-
-                        <li><strong>Women's Health</strong>
-                          <p>To detect breast cancer as early as possible.
-                        </li>
-
-                        <li><strong>Prenatal Education</strong>
-                          <p>Offers pre-natal training to minimize a mother’s
-                            effort through education and stress-reducing techniques.
-                        </li>
-
-                        <li><strong>Postpartum Services</strong>
-                          <p>To offer you support for many aspects of growing into motherhood
-                            and meeting your and your baby’s needs.
-                        </li>
-
-                        <li><strong>Child Health Clinics</strong>
-                          <p>Offer regular baby health and development reviews and vaccinations.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 grid-margin stretch-card">
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title"><strong>Gallery</strong></h4>
-                <p class="card-description"></p>
-
-                <div class="template-demo">
-                  <br>
-                  <p>
-                    <img src="../assets/img/gambar/mom1.jpg" style="width : 280px">
-                  </p>
-                  <br>
-                  <img src="../assets/img/gambar/mom3.jpg" style="width : 280px">
-                </div>
-              </div>
+          <div class="tab-2">
+            <label for="tab2-2">Two</label>
+            <input id="tab2-2" name="tabs-two" type="radio">
+            <div>
+              <h4>Tab Two</h4>
+              <p>Quisque sit amet turpis leo. Maecenas sed dolor mi. Pellentesque varius elit in neque ornare commodo ac non tellus. Mauris id iaculis quam. Donec eu felis quam. Morbi tristique lorem eget iaculis consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean at tellus eget risus tempus ultrices. Nam condimentum nisi enim, scelerisque faucibus lectus sodales at.</p>
             </div>
           </div>
         </div>
+
       </div>
     </section><!-- End Testimonials Section -->
   </main><!-- End #main -->

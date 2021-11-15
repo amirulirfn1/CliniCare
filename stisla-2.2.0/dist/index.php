@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($query);
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Dashboard &mdash; CliniCare</title>
+  <title>Dashboard | CliniCare</title>
 
   <!-- General CSS Files -->
   <link href="assets/img/icon.jpeg" rel="icon">
@@ -85,16 +85,16 @@ $row = mysqli_fetch_array($query);
           </div>
           <ul class="sidebar-menu">
             <li><a class="nav-link" href="index.php"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="Customer-List.php"><i>
+            <li><a class="nav-link" href="customerList.php"><i>
                   <ion-icon name="person"></ion-icon>
                 </i> </i> <span>Customer</span></a></li>
-            <li><a class="nav-link" href="modules-datatables.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
+            <li><a class="nav-link" href="purchaseHistory.php"><i class="far fa-square"></i> <span>Medicine</span></a></li>
             <ul class="sidebar-menu">
               <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
+                <a class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Appointments</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="Appointment-List.php">Appointments List</a></li>
-                  <li><a class="nav-link" href="All-Appointment-Slot.php">All Appointments Slot</a></li>
+                  <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
+                  <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
                 </ul>
               </li>
         </aside>
@@ -529,13 +529,15 @@ $row = mysqli_fetch_array($query);
             </div>
           </div>
 
-          <footer class="footer">
-            <div class="container-fluid clearfix">
-              &copy; Copyright <strong><span>C L I N I C A R E</span></strong>
+  </div>
+          <footer class="main-footer">
+            <div class="footer-left">
+               Copyright &copy; <strong><span>C L I N I C A R E</span></strong>
             </div>
           </footer>
         </section>
       </div>
+  </div>
 
       <!-- General JS Scripts -->
       <script src="assets/modules/jquery.min.js"></script>
