@@ -37,14 +37,6 @@ $row = mysqli_fetch_array($query);
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
-
-  <!-- =======================================================
-  * Template Name: Medilab - v4.3.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
   <style>
     .error {
       background: #F2DEDE;
@@ -116,7 +108,7 @@ $row = mysqli_fetch_array($query);
         <ul>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="nav-link scrollto">Services</a>
+          <li class="dropdown"><a href="#" class="nav-link scrollto">Services<i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../services/primaryCare.php">Primary Care</a></li>
               <li><a href="../services/checkup.php">Medical Check-Up</a></li>
@@ -129,13 +121,13 @@ $row = mysqli_fetch_array($query);
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a href="#" class="play-btn">Medicine <i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
               <li><a href="../medicine/viewCart.php">View My Cart</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a href="#" class="play-btn"><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="..//Profile/myProfile.php">View Profile</a></li>
               <li><a href="../History/myHistory.php">View History</a></li>

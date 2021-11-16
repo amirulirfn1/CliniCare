@@ -263,7 +263,7 @@ $row = mysqli_fetch_array($query);
             <ul>
               <li><a href="../../Index Pages/Profile/myProfile.php">View Profile</a></li>
               <li><a href="../../Index Pages/History/myHistory.php">View History</a></li>
-              <li><a href="../../Appointment/AppointmentSlot.php">Make an Appointment</a></li>
+              <li><a href="../../Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
               <form action="../../CustomerEntry.php" method="POST">
                 <li><a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
                       Sign Out</button></a></li>
@@ -368,7 +368,7 @@ $row = mysqli_fetch_array($query);
                   </div>
                   
                   <div class='col'> 
-                  <form action='cartEntry.php' method='POST'>
+                  <form action='CartEntry.php' method='POST'>
                   <button type='submit' href='#' style='padding: 0 2vh' id='-' name='-' style='background-color: Transparent;' >-</button>
                   <input type='hidden' name='productIDToMinus' value='$productID'>             
                   <a href='#' class='border' style='padding: 0 2vh;'>" . $quantity . "</a> 

@@ -56,21 +56,21 @@
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="/MasterCliniCare/index.php" class="logo me-auto"><img src="../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="../../index.php" class="logo me-auto"><img src="../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Home</a></li>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">About</a></li>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Services</a></li>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">FAQ</a></li>
-          <li><a class="nav-link scrollto" href="/MasterCliniCare/index.php">Contact Us</a></li>
-          <li><a class="nav-link scrollto active" href="/MasterCliniCare/Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
+          <li><a class="nav-link scrollto" href="../../index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="../../index.php">About</a></li>
+          <li><a class="nav-link scrollto" href="../../index.php">Services</a></li>
+          <li><a class="nav-link scrollto" href="../../index.php">Doctors</a></li>
+          <li><a class="nav-link scrollto" href="../../index.php">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="../../index.php">Contact Us</a></li>
+          <li><a class="nav-link scrollto active" href="../medicine/MedicineCatalogueGuest.php">Medicine</a></li>
         </ul>
       </nav><!-- .navbar -->
 
-      <a href="/MasterCliniCare/Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Sign In / Sign Up</span></a>
+      <a href="../../Customer/Sign In Page/Sign In/signin.php" class="appointment-btn scrollto"><span class="d-none d-md-inline">Sign In / Sign Up</span></a>
 
     </div>
   </header><!-- End Header -->
