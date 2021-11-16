@@ -136,7 +136,7 @@ $row = mysqli_fetch_array($query);
                     echo "<td> $x </td>";
                     echo "<td> $name </td>";
                     echo "<td> $email </td>";
-                    echo "<td>RM $price </td>";
+                    echo "<td>RM " . number_format((float)$price, 2, '.', '') . " </td>";
                     echo "<td> $transactionID </td>";
                     echo "<td> $date </td>";
                     echo "</tr>";

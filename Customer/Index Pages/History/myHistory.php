@@ -389,56 +389,31 @@ $row = mysqli_fetch_array($query);
                         $row = mysqli_fetch_array($query);
                         $userID = $row['userID'];
 
-                        $query3 = mysqli_query($con, "SELECT * FROM userpayment WHERE email='$email'");
-                        $row3 = mysqli_fetch_array($query3);
-                        $date = $row3['date'];
-                        $date = date('d-m-Y', strtotime($date));
-
-                        $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0");
+                        $query = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID'");
                         $x = 1;
-
-                        while ($row2 = mysqli_fetch_array($query2)) {
-                          $query4 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row2[productID]'");
-                          $row4 = mysqli_fetch_array($query4);
-                          $price = $row4['price'];
-
-                          $quantity = $row2['quantity'];
-                          $price = $price * $quantity;
-
+      
+                        while ($row = mysqli_fetch_array($query)) {
+      
+                          $query2 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row[productID]'");
+                          $row2 = mysqli_fetch_array($query2);
+                          $price = $row2['price'];
+                          $product = $row2['name'];
+      
+                          $quantity = $row['quantity'];
+                          $totalPrice = $price * $quantity;
+                          $date = $row['date'];
+                          $date = date('d-m-Y', strtotime($date));
+      
                           echo "<tr>";
                           echo "<td> $x </td>";
-                          if ($row2['productID'] == 1) {
-                            echo "<td>Acetin Sachet 5g Tablet</td>";
-                          } else if ($row2['productID'] == 2) {
-                            echo "<td>Breacol Cough Syrup 500ml</td>";
-                          } else if ($row2['productID'] == 3) {
-                            echo "<td>Acetylcysteine Sandoz 20 Tablet</td>";
-                          } else if ($row2['productID'] == 4) {
-                            echo "<td>Acugesic 50mg Tablet</td>";
-                          } else if ($row2['productID'] == 5) {
-                            echo "<td>Apo-Sumatriptan 50mg Tablet</td>";
-                          } else if ($row2['productID'] == 6) {
-                            echo "<td>Actimax 500 Tablet</td>";
-                          } else if ($row2['productID'] == 7) {
-                            echo "<td>Appeton Folic Acid Tablet</td>";
-                          } else if ($row2['productID'] == 8) {
-                            echo "<td>Cell Labs ProbiDefendum</td>";
-                          } else if ($row2['productID'] == 9) {
-                            echo "<td>Blackmores Proceive Care</td>";
-                          } else if ($row2['productID'] == 10) {
-                            echo "<td>Aspira 10mg Tablet</td>";
-                          } else if ($row2['productID'] == 11) {
-                            echo "<td>Alleryl 4mg/5ml Syrup</td>";
-                          } else if ($row2['productID'] == 12) {
-                            echo "<td>Anoro Ellipta 25mcg Accuhaler</td>";
-                          }
-                          echo "<td>" . $quantity . "</td>";
-                          echo "<td>RM" . $price . "</td>";
-                          echo "<td>" . $date . "</td>";
+                          echo "<td> $product </td>";
+                          echo "<td> $quantity </td>";
+                          echo "<td>RM " . number_format((float)$totalPrice, 2, '.', '') . " </td>";
+                          echo "<td> $date </td>";
                           echo "</tr>";
                           $x++;
                         }
-
+      
                         ?>
                       </tbody>
                     </table>

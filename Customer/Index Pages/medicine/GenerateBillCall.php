@@ -33,6 +33,7 @@ if ($billpaymentStatus == 1) {
   $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$billEmail' ");
   $row = mysqli_fetch_array($query);
   $userID = $row['userID'];
+  $dateToday = date("Y-m-d");
 
   //update database table
   $sql = "INSERT INTO userpayment (transactionID, userID, name, email, phoneNumber, price, status) 
@@ -41,7 +42,7 @@ if ($billpaymentStatus == 1) {
   //check if sql success
   if ($con->query($sql) === TRUE) {
     //update status from database table to 0
-    $sql2 = "UPDATE usercart SET status='0' WHERE userID='$userID'";
+    $sql2 = "UPDATE usercart SET status='0', date='$dateToday' WHERE userID='$userID'";
 
     //check if sql2 success
     if ($con->query($sql2) === TRUE) {
