@@ -102,7 +102,7 @@ function med2()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '2', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '2', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -141,7 +141,7 @@ function med3()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '3', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '3', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -180,7 +180,7 @@ function med4()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '4', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '4', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -219,7 +219,7 @@ function med5()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '5', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '5', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -258,7 +258,7 @@ function med6()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '6', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '6', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -297,7 +297,7 @@ function med7()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '7', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '7', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -336,7 +336,7 @@ function med8()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '8', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '8', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -375,7 +375,7 @@ function med9()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '9', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '9', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -414,7 +414,7 @@ function med10()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '10', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '10', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -453,7 +453,7 @@ function med11()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '11', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '11', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
@@ -492,7 +492,7 @@ function med12()
                 echo "error";
             }
         } else {
-            $sql2 = "INSERT INTO usercart (userID, productID, quantity) VALUES ('$userID', '12', '1', '$dateToday')";
+            $sql2 = "INSERT INTO usercart (userID, productID, quantity, date) VALUES ('$userID', '12', '1', '$dateToday')";
             //check if $sql2 is successful
             if (mysqli_query($con, $sql2)) {
                 header("Location: viewCart.php");
