@@ -164,7 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>Used to treat COPD and other respiratory conditions. They contain anticholinergics and B2-stimulants, 
+									both bronchodilators, which help facilitate breathing by opening up 
+									the airways. Commonly prescribed anticholinergic combinations with B2-stimulants. </p>
                                     <h2 class="labels">
                                         RM171.60
                                     </h2>
@@ -175,11 +177,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Take it once a day, at the same time every day. If you miss a dose, take it as soon as you remember.</li>
+                                        <li><i class="fa fa-check text-success"></i> Take no more than one puff per day.</li>
                                     </ul>
                                 </div>
                             </div>

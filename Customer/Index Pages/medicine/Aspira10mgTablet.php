@@ -164,7 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>Used to prevent asthma and exercise-induced narrowing of the muscles in the lungs. 
+									It is a prescription medicine. This medicine works by blocking the action of certain chemicals in the lungs. 
+									Aspira is also used to relieve seasonal allergies such as irritation in the eyes, a runny nose and a sore throat</p>
                                     <h2 class="labels">
                                         RM35.00
                                     </h2>
@@ -175,11 +177,11 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
+									<p>Dosage for asthma</p>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Adults and children > 14 years : <strong>10 mg</strong> by mouth per day once in the evening. </li>
+                                        <li><i class="fa fa-check text-success"></i> Children 2-5 years : <strong>4 mg</strong> per day</li>
                                     </ul>
                                 </div>
                             </div>

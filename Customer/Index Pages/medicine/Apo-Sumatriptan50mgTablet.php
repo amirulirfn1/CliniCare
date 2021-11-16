@@ -164,7 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>This medicine is for oral use only. Sumatriptan is used to relieve a migraine attack. 
+									This medicine may be used for migraine headaches with or without what is known as 'aura'.
+										Sumatriptan belongs to a group of drugs called serotonin agonists.</p>
                                     <h2 class="labels">
                                         RM40.70
                                     </h2>
@@ -175,11 +177,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Adult : <strong>50 mg / 1 tab.</strong></li>
+                                        <li><i class="fa fa-check text-success"></i> <strong>Do not</strong> take more than 300 mg of this medicine in any 24 hours. </li>
                                     </ul>
                                 </div>
                             </div>

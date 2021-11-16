@@ -164,7 +164,8 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>Acetin sachet contains acetylcysteine which is a type of mucolytic medicine, which works by thinning the mucus (phlegm) 
+									so that it can be coughed up more easily.</p>
                                     <h2 class="labels">
                                         RM1.70
                                     </h2>
@@ -175,11 +176,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Adults and children above 6 years: <strong>2 sachets 3 times a day.</strong></li>
+                                        <li><i class="fa fa-check text-success"></i> Children 2-6 years: <strong>2 sachets 2 times a day.</strong></li>
                                     </ul>
                                 </div>
                             </div>

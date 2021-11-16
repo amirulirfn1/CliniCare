@@ -164,7 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>Breacol Expectorant is used as an expectorant for symptomatic relief of coughs due to 
+									colds and upper respiratory tract infections. Used for Cough, Chest congestion and other conditions. 
+									Breacol G Plus Cough Syrup may also be used for purposes not listed in this medication guide.</p>
                                     <h2 class="labels">
                                         RM10.30
                                     </h2>
@@ -175,11 +177,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+										<li><i class="fa fa-check text-success"></i> Adult > 12 children 6-12 years : <strong>10-20 mL</strong> every 4 hr</li>
+                                        <li><i class="fa fa-check text-success"></i> Children 2-6 years : <strong>5-10 mL</strong> every 4 hour. </li>
                                     </ul>
                                 </div>
                             </div>

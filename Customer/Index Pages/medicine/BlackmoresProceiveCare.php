@@ -166,7 +166,10 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>A functional food powder specially formulated to nourish the body with 
+									comprehensive nutrients and increase vitality for a healthy pregnancy. 
+									It helps increase blood circulation to the uterus and regulate hormonal changes in women.
+									This product is suitable for women. Specially formulated to nourish the body</p>
                                     <h2 class="labels">
                                         RM94.50
                                     </h2>
@@ -177,11 +180,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Recommended to take 1 tsp a day or alternate day for <strong>general maintenance.</strong></li>
+                                        <li><i class="fa fa-check text-success"></i> For <strong>hormonal or fertility issues</strong>, recommended to take 1 tsp 2-3 times a day </li>
                                     </ul>
                                 </div>
                             </div>

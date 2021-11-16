@@ -164,7 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>Used for the relief of fever and mild to moderate pain including headache, 
+									migraine, symptoms of colds and flu, dental pain, period pain, back pain, 
+									muscular pain, nerve pain and osteoarthritis.</p>
                                     <h2 class="labels">
                                         RM2.20
                                     </h2>
@@ -175,11 +177,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Adults and children above 12 years: <strong>1 to 2 tablets every 4 to 6 hours.</strong></li>
+                                        <li><i class="fa fa-check text-success"></i> Children 2-12 years: <strong>Give ½ to 1 tablet every 4 to 6 hours.</strong></li>
                                     </ul>
                                 </div>
                             </div>

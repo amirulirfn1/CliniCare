@@ -164,7 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                                    <p>Severe acute & chronic pain. Painful diagnostic or therapeutic measures. Dizziness, drowsiness, vomiting, nausea, and constipation are some of t
+									he most frequent adverse effects of this medication. The use of this medication by pregnant or nursing 
+									women should be discussed with a doctor.</p>
                                     <h2 class="labels">
                                         RM15.80
                                     </h2>
@@ -175,11 +177,10 @@ $row = mysqli_fetch_array($query);
                                         </button>
                                     </form>
 
-                                    <h3 class="box-title mt-5">Features</h3>
+                                    <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-                                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                                        <li><i class="fa fa-check text-success"></i> Adult & adolescent above 14 years: <strong>1 cap/tab.</strong></li>
+                                        <li><i class="fa fa-check text-success"></i> Children from 1 years: <strong>1-2 mg/kg. Max: 400 mg.</strong></li>
                                     </ul>
                                 </div>
                             </div>
