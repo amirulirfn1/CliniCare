@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (isset($_SESSION['email'])) {
-  header("Location: ../MasterCliniCare/Customer/CustomerHomePage/index.php");
-} 
+  header("Location: Customer/CustomerHomePage/index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

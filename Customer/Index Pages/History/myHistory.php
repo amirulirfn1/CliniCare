@@ -337,8 +337,8 @@ $row = mysqli_fetch_array($query);
 
                         <?php
                         include "../../db_conn.php";
-                        $sql = "SELECT appointment.date, appointment.time, appointment.status FROM appointment 
-                        INNER JOIN user ON appointment.email = user.email";
+                        $email = $_SESSION['email'];
+                        $sql = "SELECT * FROM appointment WHERE email='$email'";
                         $result = mysqli_query($con, $sql);
                         $x = 1;
                         while ($row = mysqli_fetch_array($result)) {
@@ -384,6 +384,7 @@ $row = mysqli_fetch_array($query);
 
                         <?php
                         include "../../db_conn.php";
+                        $email = $_SESSION['email'];
                         $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
                         $row = mysqli_fetch_array($query);
                         $userID = $row['userID'];
@@ -392,12 +393,18 @@ $row = mysqli_fetch_array($query);
                         $row3 = mysqli_fetch_array($query3);
                         $date = $row3['date'];
                         $date = date('d-m-Y', strtotime($date));
-                        $price = $row3['price'];
 
                         $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0");
                         $x = 1;
 
                         while ($row2 = mysqli_fetch_array($query2)) {
+                          $query4 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row2[productID]'");
+                          $row4 = mysqli_fetch_array($query4);
+                          $price = $row4['price'];
+
+                          $quantity = $row2['quantity'];
+                          $price = $price * $quantity;
+
                           echo "<tr>";
                           echo "<td> $x </td>";
                           if ($row2['productID'] == 1) {
@@ -425,7 +432,7 @@ $row = mysqli_fetch_array($query);
                           } else if ($row2['productID'] == 12) {
                             echo "<td>Anoro Ellipta 25mcg Accuhaler</td>";
                           }
-                          echo "<td>" . $row2['quantity'] . "</td>";
+                          echo "<td>" . $quantity . "</td>";
                           echo "<td>RM" . $price . "</td>";
                           echo "<td>" . $date . "</td>";
                           echo "</tr>";
