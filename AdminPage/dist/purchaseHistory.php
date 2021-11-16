@@ -53,9 +53,6 @@ $row = mysqli_fetch_array($query);
               <a href="profile.php" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
-              </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="../../Customer/CustomerEntry.php" method="POST">
                   <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
@@ -122,19 +119,23 @@ $row = mysqli_fetch_array($query);
 
                   <?php
                   include "../db_conn.php";
-                  $query = mysqli_query($con, "SELECT * FROM customer ");
-                  $row = mysqli_fetch_array($query);
 
-                  $query3 = mysqli_query($con, "SELECT * FROM userpayment ");
-                  $row3 = mysqli_fetch_array($query3);
-                  $date = $row3['date'];
+                  $query = mysqli_query($con, "SELECT * FROM userpayment");
+                  $row = mysqli_fetch_array($query);
+                  $date = $row['date'];
                   $date = date('d-m-Y', strtotime($date));
-                  $price = $row3['price'];
 
                   $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE status = 0");
                   $x = 1;
 
                   while ($row2 = mysqli_fetch_array($query2)) {
+                    $query3 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row2[productID]'");
+                    $row3 = mysqli_fetch_array($query3);
+                    $price = $row3['price'];
+
+                    $quantity = $row2['quantity'];
+                    $price = $price * $quantity;
+
                     echo "<tr>";
                     echo "<td> $x </td>";
                     if ($row2['productID'] == 1) {
@@ -162,7 +163,7 @@ $row = mysqli_fetch_array($query);
                     } else if ($row2['productID'] == 12) {
                       echo "<td>Anoro Ellipta 25mcg Accuhaler</td>";
                     }
-                    echo "<td>" . $row2['quantity'] . "</td>";
+                    echo "<td>" . $quantity . "</td>";
                     echo "<td>RM" . $price . "</td>";
                     echo "<td>" . $date . "</td>";
                     echo "</tr>";

@@ -750,12 +750,12 @@ $row = mysqli_fetch_array($query);
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Pharmacy</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Primary Care</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Mom & Baby Care</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Medical Check-Up</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Swab Test Covid-19</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Smoking Cessation Campaign</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/primaryCare.php">Primary Care</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/covid.php">Covid-19 Centre</a></li>
             </ul>
           </div>
 
