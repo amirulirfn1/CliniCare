@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+include "../../db_conn.php";
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -227,7 +227,7 @@ $row = mysqli_fetch_array($query);
                   <select id="date" name="date" class="form-control" onchange="change_date()" required>
                     <option value="">Date</option>
                     <?php
-                    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                    include "../../db_conn.php";
                     $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 group by date ";
                     $result = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($result)) {
@@ -245,7 +245,7 @@ $row = mysqli_fetch_array($query);
                   <select name="time" id="time" class="form-control" required>
                     <option value="">Time</option>
                     <?php
-                    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                    include "../../db_conn.php";
                     $sql = "SELECT time FROM appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
                     $result = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($result)) {

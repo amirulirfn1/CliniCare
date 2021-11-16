@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+include "../db_conn.php";
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -54,8 +54,7 @@ $row = mysqli_fetch_array($query);
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <form action="../../Customer/CustomerEntry.php" method="POST">
-                  <button type="submit" class="dropdown-item" name="signout" id="signout">
-                    <i class="fas fa-sign-out-alt"></i> Sign Out </button>
+                  <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
             </div>
@@ -76,7 +75,7 @@ $row = mysqli_fetch_array($query);
             <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
             <li class="dropdown">
-              <a class="nav-link has-dropdown" href="purchaseHistory.php"><i class="ion-medkit"></i> <span>Medicine</span></a>
+              <a class="nav-link has-dropdown"><i class="ion-medkit"></i> <span>Medicine</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
                 <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
@@ -122,7 +121,7 @@ $row = mysqli_fetch_array($query);
                 <tbody>
 
                   <?php
-                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                  include "../db_conn.php";
                   $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
                       INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
                   $result = mysqli_query($con, $sql);

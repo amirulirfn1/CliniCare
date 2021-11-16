@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+include "../../db_conn.php";
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");

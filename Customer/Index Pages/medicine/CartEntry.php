@@ -38,12 +38,7 @@ if (isset($_POST['med1'])) {
 
 function med1()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -80,12 +75,7 @@ function med1()
 }
 function med2()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -123,12 +113,7 @@ function med2()
 
 function med3()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -166,12 +151,7 @@ function med3()
 
 function med4()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -209,12 +189,7 @@ function med4()
 
 function med5()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -252,12 +227,7 @@ function med5()
 
 function med6()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -295,12 +265,7 @@ function med6()
 
 function med7()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -338,12 +303,7 @@ function med7()
 
 function med8()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -381,12 +341,7 @@ function med8()
 
 function med9()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -424,12 +379,7 @@ function med9()
 
 function med10()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -467,12 +417,7 @@ function med10()
 
 function med11()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -510,12 +455,7 @@ function med11()
 
 function med12()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -553,12 +493,7 @@ function med12()
 
 function minus()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -583,12 +518,7 @@ function minus()
 
 function add()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -613,12 +543,7 @@ function add()
 
 function deleteMed()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "../../db_conn.php";
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");

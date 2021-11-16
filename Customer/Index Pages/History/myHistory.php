@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+include "../../db_conn.php";
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -336,9 +336,9 @@ $row = mysqli_fetch_array($query);
                       <tbody>
 
                         <?php
-                        $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                        include "../../db_conn.php";
                         $sql = "SELECT appointment.date, appointment.time, appointment.status FROM appointment 
-                      INNER JOIN user ON appointment.email = user.email";
+                        INNER JOIN user ON appointment.email = user.email";
                         $result = mysqli_query($con, $sql);
                         $x = 1;
                         while ($row = mysqli_fetch_array($result)) {
@@ -383,7 +383,7 @@ $row = mysqli_fetch_array($query);
                       <tbody>
 
                         <?php
-                        $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                        include "../../db_conn.php";
                         $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
                         $row = mysqli_fetch_array($query);
                         $userID = $row['userID'];

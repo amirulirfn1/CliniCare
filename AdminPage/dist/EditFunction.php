@@ -2,7 +2,7 @@
 
 function getCustomerInfo($email)
 {
-	$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+	include "../db_conn.php";
 
 	if (!$con) {
 		echo "error";
@@ -16,7 +16,7 @@ function getCustomerInfo($email)
 function updateStaffInformation()
 {
 
-	$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+	include "../db_conn.php";
 
 	if (!$con) {
 		echo "Error";

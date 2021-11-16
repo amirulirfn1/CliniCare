@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+include "../db_conn.php";
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -8,6 +8,7 @@ $row = mysqli_fetch_array($query);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0, name=" viewport">
@@ -72,7 +73,7 @@ $row = mysqli_fetch_array($query);
             <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
             <li class="dropdown">
-              <a class="nav-link has-dropdown" href="purchaseHistory.php"><i class="ion-medkit"></i> <span>Medicine</span></a>
+              <a class="nav-link has-dropdown"><i class="ion-medkit"></i> <span>Medicine</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
                 <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
@@ -115,7 +116,7 @@ $row = mysqli_fetch_array($query);
                 </thead>
                 <tbody>
                   <?php
-                  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+                  include "../db_conn.php";
                   $sql = "SELECT * FROM appointment";
                   $result = mysqli_query($con, $sql);
                   $x = 1;

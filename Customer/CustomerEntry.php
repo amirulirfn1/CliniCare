@@ -26,12 +26,7 @@ if (isset($_POST['signup'])) {
 <?php
 function signup()
 {
-  $servername = "localhost";
-  $username = "clinicarecustomer";
-  $password = "customer";
-  $dbname = "clinicare";
-
-  $con = new mysqli($servername, $username, $password, $dbname);
+  include "db_conn.php";
 
   if (!$con) {
     echo "error";
@@ -347,33 +342,30 @@ function signup()
 
 function signin()
 {
-  $servername = "localhost";
-  $username = "clinicarecustomer";
-  $password = "customer";
-  $dbname = "clinicare";
+  include "db_conn.php";
 
-  $mysqli = new mysqli($servername, $username, $password, $dbname);
-
-  $email = $mysqli->real_escape_string($_POST['email']);
-  $password = $mysqli->real_escape_string($_POST['password']);
+  $email = $_POST['email'];
+  $password = $_POST['password'];
   $password = md5($password);
 
-  $resultSet = $mysqli->query("SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ");
+  $query = "SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ";
+  $result = mysqli_query($con, $query);
 
-  if ($resultSet->num_rows != 0) {
+  if ($result->num_rows != 0) {
     //Process login
-    $row = $resultSet->fetch_assoc();
+    $row = $result->fetch_assoc();
     $verified = $row['verified'];
     $email = $row['email'];
     $_SESSION['email'] = $email;
 
     if ($verified == 1) {
 
-      $sql3 = $mysqli->query("SELECT * FROM user WHERE email = '$email'");
+      $sql3 = "SELECT * FROM user WHERE email = '$email'";
+      $result3 = mysqli_query($con, $sql3);
 
-      if ($sql3->num_rows != 0) {
+      if ($result3->num_rows != 0) {
 
-        $row = $sql3->fetch_assoc();
+        $row = $result3->fetch_assoc();
         $usertype = $row['usertype'];
 
         if ($usertype == "customer") {
@@ -401,15 +393,10 @@ function signout()
 
 function getVkey()
 {
-  $servername = "localhost";
-  $username = "clinicarecustomer";
-  $password = "customer";
-  $dbname = "clinicare";
-
-  $con = new mysqli($servername, $username, $password, $dbname);
+  include "db_conn.php";
 
   if (!$con) {
-    echo mysqli_error($con);
+    echo "No connection";
   } else {
     //Construct SQL statement
     $email = $_POST['email'];
@@ -430,7 +417,7 @@ function getVkey()
 
 function mailReset()
 {
-  $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+  include "db_conn.php";
   $email = $_SESSION['resetPassword'];
   $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
   $row = mysqli_fetch_array($query);
@@ -726,7 +713,7 @@ function resetPassword()
   } else if ($pwd == $pwdR) {
 
     $pwd = md5($pwd);
-    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+    include "db_conn.php";
 
     if (!$con) {
       echo "error";
@@ -753,13 +740,7 @@ function resetPassword()
 
 function updateProfile()
 {
-
-  $servername = "localhost";
-  $username = "clinicarecustomer";
-  $password = "customer";
-  $dbname = "clinicare";
-
-  $con = new mysqli($servername, $username, $password, $dbname);
+  include "db_conn.php";
 
   if (!$con) {
     echo "Error";
@@ -788,13 +769,7 @@ function updateProfile()
 
 function bookApp()
 {
-
-  $servername = "localhost";
-  $username = "clinicarecustomer";
-  $password = "customer";
-  $dbname = "clinicare";
-
-  $con = new mysqli($servername, $username, $password, $dbname);
+  include "db_conn.php";
 
   if (!$con) {
     echo "Error";

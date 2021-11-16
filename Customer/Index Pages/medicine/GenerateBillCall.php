@@ -29,8 +29,8 @@ $billpaymentInvoiceNo = $result[0]['billpaymentInvoiceNo'];
 
 if ($billpaymentStatus == 1) {
   //connect database connection
-  $conn = new mysqli("localhost", "clinicarecustomer", "customer", "clinicare");
-  $query = mysqli_query($conn, "SELECT * FROM customer WHERE email='$billEmail' ");
+  include "../../db_conn.php";
+  $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$billEmail' ");
   $row = mysqli_fetch_array($query);
   $userID = $row['userID'];
 
@@ -39,21 +39,21 @@ if ($billpaymentStatus == 1) {
       VALUES ('$billpaymentInvoiceNo', '$userID', '$billTo', '$billEmail', '$billPhone', '$billpaymentAmount', '$billpaymentStatus')";
 
   //check if sql success
-  if ($conn->query($sql) === TRUE) {
+  if ($con->query($sql) === TRUE) {
     //update status from database table to 0
     $sql2 = "UPDATE usercart SET status='0' WHERE userID='$userID'";
 
     //check if sql2 success
-    if ($conn->query($sql2) === TRUE) {
-      header("Location:../Alerts/successPayment.php");
+    if ($con->query($sql2) === TRUE) {
+      header("Location:../../../Alerts/successPayment.php");
     } else {
-      echo "Error: " . $sql2 . "<br>" . $conn->error;
+      echo "Error: " . $sql2 . "<br>" . $con->error;
     }
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $con->error;
   }
 } else if ($billpaymentStatus == 3) {
-  header("Location:../Alerts/unsuccessPayment.php");
+  header("Location:../../../Alerts/unsuccessPayment.php");
 } else {
   echo "pending";
 }

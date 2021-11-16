@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 
-	include "db_conn.php";
+	include "../db_conn.php";
 
 	if (
 		isset($_POST['op']) && isset($_POST['np'])
@@ -41,7 +41,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
                 FROM customer WHERE 
                 email='$email' AND password='$op'";
 
-			$result = mysqli_query($conn, $sql);
+			$result = mysqli_query($con, $sql);
 			if (mysqli_num_rows($result) === 1) {
 
 				$sql_2 = "UPDATE customer
@@ -49,16 +49,16 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
         	          WHERE email='$email'";
 
 
-				mysqli_query($conn, $sql_2);
+				mysqli_query($cnn, $sql_2);
 			}
-			if ($conn->query($sql_2) === TRUE) {
+			if ($con->query($sql_2) === TRUE) {
 				$sql_3 = "UPDATE user
         	          SET password='$np'
         	          WHERE email='$email'";
-				mysqli_query($conn, $sql_3);
+				mysqli_query($con, $sql_3);
 				header("Location: profile.php?success=Your password has been changed successfully");
 				exit();
-			} else if ($conn->query($sql_2) === FALSE) {
+			} else if ($con->query($sql_2) === FALSE) {
 				header("Location: profile.php?error= Current Password is incorrect");
 				exit();
 			}

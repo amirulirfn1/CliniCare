@@ -28,12 +28,7 @@ if (isset($_POST['deleteCustomer'])) {
 //function edit profile info
 function updateProfileAdmin()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -60,7 +55,7 @@ function updateProfileAdmin()
 
 function getCustomerInfo($email)
 {
-    $con = mysqli_connect("localhost", "clinicarecustomer", "customer", "clinicare");
+    include "db_conn.php";
     if (!$con) {
         echo "error";
     } else {
@@ -72,11 +67,7 @@ function getCustomerInfo($email)
 
 function deleteCustomer()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -98,12 +89,7 @@ function deleteCustomer()
 
 function updateCustomer()
 {
-
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -128,11 +114,7 @@ function updateCustomer()
 
 function closeAppointment()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -150,11 +132,7 @@ function closeAppointment()
 
 function openAppointment()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -173,11 +151,7 @@ function openAppointment()
 
 function deleteSlot()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = mysqli_connect($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -195,11 +169,7 @@ function deleteSlot()
 
 function addSlot()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = mysqli_connect($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -224,11 +194,7 @@ function addSlot()
 
 function doneApp()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = mysqli_connect($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";
@@ -246,11 +212,7 @@ function doneApp()
 
 function cancelApp()
 {
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    $con = mysqli_connect($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     if (!$con) {
         echo "Error";

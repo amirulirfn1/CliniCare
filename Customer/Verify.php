@@ -3,12 +3,7 @@ if (isset($_GET['vkey'])){
     //Process the vkey
     $vkey = $_GET['vkey'];
 
-    $servername = "localhost";
-    $username = "clinicarecustomer";
-    $password = "customer";
-    $dbname = "clinicare";
-    
-    $con = new mysqli($servername, $username, $password, $dbname);
+    include "db_conn.php";
 
     $resultSet = $con->query("SELECT verified, vkey FROM customer WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");
 
@@ -17,13 +12,13 @@ if (isset($_GET['vkey'])){
         $update = $con->query("UPDATE customer SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
 
         if($update){
-            header("Location: /MasterCliniCare/Alerts/successVER.php");
+            header("Location: ../Alerts/successVER.php");
         }else{
             echo $mysqli->error;
         }
 
     }else{
-        header("Location: /MasterCliniCare/Alerts/unsuccessVER.php");
+        header("Location: ../Alerts/unsuccessVER.php");
     }
     
 }else{

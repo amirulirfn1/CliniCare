@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","clinicarecustomer","customer","clinicare");
+include "../../db_conn.php";
 $date = $_GET["date"];
 $sql = "select time from appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
 if($date!=""){
