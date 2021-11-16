@@ -100,7 +100,7 @@ $row = mysqli_fetch_array($query);
               <li><a href="../Profile/myProfile.php">View Profile</a></li>
               <li><a href="../History/myHistory.php">View History</a></li>
               <li><a href="../Appointment/AppointmentSlot.php">Make an Appointment</a></li>
-              <form action="../CustomerEntry.php" method="POST">
+              <form action="../../CustomerEntry.php" method="POST">
                 <li>
                   <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
                       Sign Out</button></a>
