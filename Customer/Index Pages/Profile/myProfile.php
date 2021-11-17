@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="#hero" class="logo me-auto">
+      <a href="../../CustomerHomePage/index.php" class="logo me-auto">
         <img src="../assets/img/gambar/logobanner.png" alt="" class="img-fluid">
       </a>
 
