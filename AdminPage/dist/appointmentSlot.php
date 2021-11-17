@@ -104,79 +104,79 @@ $row = mysqli_fetch_array($query);
               <div class="section-title mt-0">All Appointments
                 <a class="nav-link" href="addSlot.php" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Add Appointment Slot</a>
               </div>
+              <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Update Status</th>
+                        <th scope="col">Delete Slot</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      include "../db_conn.php";
+                      $sql = "SELECT * FROM appointmentslot";
+                      $result = mysqli_query($con, $sql);
+                      $x = 1;
+
+                      while ($row = mysqli_fetch_array($result)) {
+
+                        echo "<tr>";
+                        echo "<td>" . $row['appSId'] . "</td>";
+                        echo "<td>" . $row['date'] . "</td>";
+                        echo "<td>" . $row['time'] . "</td>";
+
+                        if ($row['count'] > 0) {
+                          if ($row['status']  == 0) {
+                            echo "<td style='color:#00D100'>Available (" . $row['count'] . ")</td>";
+                          } else {
+                            echo "<td style='color:#D10000'>Closed </td>";
+                          }
+                        } else {
+                          echo "<td style='color:#D10000'>Unavailable (" . $row['count'] . ")</td>";
+                        }
 
 
-              <table class="table table-bordered" style="text-align:center;">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Update Status</th>
-                    <th scope="col">Delete Slot</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  include "../db_conn.php";
-                  $sql = "SELECT * FROM appointmentslot";
-                  $result = mysqli_query($con, $sql);
-                  $x = 1;
-
-                  while ($row = mysqli_fetch_array($result)) {
-
-                    echo "<tr>";
-                    echo "<td>" . $row['appSId'] . "</td>";
-                    echo "<td>" . $row['date'] . "</td>";
-                    echo "<td>" . $row['time'] . "</td>";
-
-                    if ($row['count'] > 0) {
-                      if ($row['status']  == 0) {
-                        echo "<td style='color:#00D100'>Available (" . $row['count'] . ")</td>";
-                      } else {
-                        echo "<td style='color:#D10000'>Closed </td>";
-                      }
-                    } else {
-                      echo "<td style='color:#D10000'>Unavailable (" . $row['count'] . ")</td>";
-                    }
+                        $appSId = $row['appSId'];
 
 
-                    $appSId = $row['appSId'];
+                        echo '<td><form action="../AdminEntry.php" method="POST">';
 
-
-                    echo '<td><form action="../AdminEntry.php" method="POST">';
-
-                    echo '<input type="hidden" name="appToClose" 
+                        echo '<input type="hidden" name="appToClose" 
 												value="' . $appSId . '" >';
-                    echo '<button type="submit" value="Close Appointment" 
+                        echo '<button type="submit" value="Close Appointment" 
 												name="closeAppointment" class="btn btn-icon btn-danger">
 												<h7> Set Closed <h7></button>';
 
-                    echo '&nbsp;&nbsp;<input type="hidden" name="appToOpen" 
+                        echo '&nbsp;&nbsp;<input type="hidden" name="appToOpen" 
 												value="' . $appSId . '" >';
-                    echo '<button type="submit" value="Open Appointment" 
+                        echo '<button type="submit" value="Open Appointment" 
 												name="openAppointment" class="btn btn-icon btn-success">
 												<h7> Set Opened <h7></button>';
 
-                    echo '<td>';
-                    echo '<input type="hidden" value="' . $appSId . '" name="SlotToDelete">';
-                    echo '<input type="submit" class="btn btn-danger" name="deleteSlot" id="deleteSlot" value="Delete">';
-                    echo '</td>';
-                    echo '</form></td>';
-                  }
-                  echo "</tr>";
+                        echo '<td>';
+                        echo '<input type="hidden" value="' . $appSId . '" name="SlotToDelete">';
+                        echo '<input type="submit" class="btn btn-danger" name="deleteSlot" id="deleteSlot" value="Delete">';
+                        echo '</td>';
+                        echo '</form></td>';
+                      }
+                      echo "</tr>";
 
-                  ?>
-                </tbody>
-              </table>
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
       </div>
     </div>
-  </div>
-  </div>
-  </section>
+    </section>
   </div>
   </div>
   </div>

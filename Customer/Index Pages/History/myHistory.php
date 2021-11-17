@@ -256,7 +256,7 @@ $row = mysqli_fetch_array($query);
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="#hero" class="logo me-auto">
+      <a href="../../CustomerHomePage/index.php" class="logo me-auto">
         <img src="../assets/img/gambar/logobanner.png" alt="" class="img-fluid">
       </a>
 
@@ -284,7 +284,7 @@ $row = mysqli_fetch_array($query);
             </ul>
           </li>
 
-          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"><?php echo "Hello " . $row['name']; ?></span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?> <i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../Profile/myProfile.php">View Profile</a></li>
               <li><a href="../History/myHistory.php">View History</a></li>

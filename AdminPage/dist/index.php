@@ -76,7 +76,7 @@ $row = mysqli_fetch_array($query);
             <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
             <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
             <li class="dropdown">
-              <a class="nav-link has-dropdown" ><i class="ion-medkit"></i> <span>Medicine</span></a>
+              <a class="nav-link has-dropdown"><i class="ion-medkit"></i> <span>Medicine</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
                 <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
@@ -95,9 +95,9 @@ $row = mysqli_fetch_array($query);
       <div class="main-content">
         <section class="section">
           <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12" style="cursor: pointer;" onClick="window.location='purchaseHistory.php';">
+            <div class="col-lg-4 col-md-4 col-sm-12" style="cursor: pointer;" onClick="window.location='purchaseHistory.php';">
               <div class="card card-statistic-2">
-                <div class="card-icon shadow-primary bg-primary" >
+                <div class="card-icon shadow-primary bg-primary">
                   <i class="fas fa-shopping-bag"></i>
                 </div>
                 <div class="card-wrap">
@@ -125,7 +125,7 @@ $row = mysqli_fetch_array($query);
                     <h4>Total Sales</h4>
                   </div>
                   <div class="card-body">
-                  <?php
+                    <?php
                     include '../db_conn.php';
                     $query = mysqli_query($con, "SELECT SUM(quantity) FROM usercart WHERE status=0");
                     $row = mysqli_fetch_array($query);
@@ -145,7 +145,7 @@ $row = mysqli_fetch_array($query);
                     <h4>Total Payments</h4>
                   </div>
                   <div class="card-body">
-                  <?php
+                    <?php
                     include '../db_conn.php';
                     $query = mysqli_query($con, "SELECT SUM(price) FROM userpayment");
                     $row = mysqli_fetch_array($query);
@@ -160,51 +160,51 @@ $row = mysqli_fetch_array($query);
           </div>
         </section>
 
-          <!--Appointsment List-->
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4>Confirmed Appointments List</h4>
-                <div class="card-header-action">
-                  <a href="appointmentList.php" class="btn btn-danger">View Full List <i class="fas fa-chevron-right"></i></a>
-                </div>
+        <!--Appointsment List-->
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Confirmed Appointments List</h4>
+              <div class="card-header-action">
+                <a href="appointmentList.php" class="btn btn-danger">View Full List <i class="fas fa-chevron-right"></i></a>
               </div>
-              <div class="card-body p-0">
-                <div class="table-responsive table-invoice">
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive table-invoice">
                 <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">Appointment Id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  include "../db_conn.php";
-                  $sql = "SELECT * FROM appointment WHERE status = 1";
-                  $result = mysqli_query($con, $sql);
+                  <thead>
+                    <tr>
+                      <th scope="col">Appointment Id</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Phone Number</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    include "../db_conn.php";
+                    $sql = "SELECT * FROM appointment WHERE status = 1";
+                    $result = mysqli_query($con, $sql);
 
-                  while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['appId'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['phoneNumber'] . "</td>";
-                    echo "<td>" . $row['date'] . "</td>";
-                    echo "<td>" . $row['time'] . "</td>";
-                    echo "</tr>";                    
-                  }
-                  ?>
-                </tbody>
-              </table>
-                </div>
+                    while ($row = mysqli_fetch_array($result)) {
+                      echo "<tr>";
+                      echo "<td>" . $row['appId'] . "</td>";
+                      echo "<td>" . $row['email'] . "</td>";
+                      echo "<td>" . $row['name'] . "</td>";
+                      echo "<td>" . $row['phoneNumber'] . "</td>";
+                      echo "<td>" . $row['date'] . "</td>";
+                      echo "<td>" . $row['time'] . "</td>";
+                      echo "</tr>";
+                    }
+                    ?>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
+        </div>
 
       </div>
       <footer class="main-footer">

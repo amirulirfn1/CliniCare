@@ -105,49 +105,51 @@ $row = mysqli_fetch_array($query);
           <div class="card">
             <div class="card-body">
               <div class="section-title mt-0">All Payments</div>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Total Price</th>
-                    <th>Transaction ID</th>
-                    <th>Payment Date</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Total Price</th>
+                        <th>Transaction ID</th>
+                        <th>Payment Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
-                  <?php
-                  include "../db_conn.php";
-                  $query = mysqli_query($con, "SELECT * FROM userpayment");
-                  $x = 1;
+                      <?php
+                      include "../db_conn.php";
+                      $query = mysqli_query($con, "SELECT * FROM userpayment");
+                      $x = 1;
 
-                  while ($row = mysqli_fetch_array($query)) {
-                    $userID = $row['userID'];
-                    $name = $row['name'];
-                    $email = $row['email'];
-                    $price = $row['price'];
-                    $date = $row['date'];
-                    $date = date('d-m-Y', strtotime($date));
-                    $transactionID = $row['transactionID'];
+                      while ($row = mysqli_fetch_array($query)) {
+                        $userID = $row['userID'];
+                        $name = $row['name'];
+                        $email = $row['email'];
+                        $price = $row['price'];
+                        $date = $row['date'];
+                        $date = date('d-m-Y', strtotime($date));
+                        $transactionID = $row['transactionID'];
 
-                    echo "<tr>";
-                    echo "<td> $x </td>";
-                    echo "<td> $name </td>";
-                    echo "<td> $email </td>";
-                    echo "<td>RM " . number_format((float)$price, 2, '.', '') . " </td>";
-                    echo "<td> $transactionID </td>";
-                    echo "<td> $date </td>";
-                    echo "</tr>";
-                    $x++;
-                  }
+                        echo "<tr>";
+                        echo "<td> $x </td>";
+                        echo "<td> $name </td>";
+                        echo "<td> $email </td>";
+                        echo "<td>RM " . number_format((float)$price, 2, '.', '') . " </td>";
+                        echo "<td> $transactionID </td>";
+                        echo "<td> $date </td>";
+                        echo "</tr>";
+                        $x++;
+                      }
 
-                  ?>
-                </tbody>
-              </table>
-              </tbody>
-              </table>
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
         </section>
       </div>

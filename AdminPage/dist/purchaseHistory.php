@@ -105,52 +105,54 @@ $row = mysqli_fetch_array($query);
           <div class="card">
             <div class="card-body">
               <div class="section-title mt-0">All Purchases</div>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Total Price</th>
-                    <th>Date</th>
-                  </tr>
-                </thead>
-                <tbody>
+              <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
 
-                  <?php
-                  include "../db_conn.php";
-                  
-                  $query = mysqli_query($con, "SELECT * FROM usercart");
-                  $x = 1;
+                      <?php
+                      include "../db_conn.php";
 
-                  while ($row = mysqli_fetch_array($query)) {
+                      $query = mysqli_query($con, "SELECT * FROM usercart");
+                      $x = 1;
 
-                    $query2 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row[productID]'");
-                    $row2 = mysqli_fetch_array($query2);
-                    $price = $row2['price'];
-                    $product = $row2['name'];
+                      while ($row = mysqli_fetch_array($query)) {
 
-                    $quantity = $row['quantity'];
-                    $totalPrice = $price * $quantity;
-                    $date = $row['date'];
-                    $date = date('d-m-Y', strtotime($date));
+                        $query2 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row[productID]'");
+                        $row2 = mysqli_fetch_array($query2);
+                        $price = $row2['price'];
+                        $product = $row2['name'];
 
-                    echo "<tr>";
-                    echo "<td> $x </td>";
-                    echo "<td> $product </td>";
-                    echo "<td> $quantity </td>";
-                    echo "<td>RM " . number_format((float)$totalPrice, 2, '.', '') . " </td>";
-                    echo "<td> $date </td>";
-                    echo "</tr>";
-                    $x++;
-                  }
+                        $quantity = $row['quantity'];
+                        $totalPrice = $price * $quantity;
+                        $date = $row['date'];
+                        $date = date('d-m-Y', strtotime($date));
 
-                  ?>
-                  
-                </tbody>
-              </table>
-              </tbody>
-              </table>
+                        echo "<tr>";
+                        echo "<td> $x </td>";
+                        echo "<td> $product </td>";
+                        echo "<td> $quantity </td>";
+                        echo "<td>RM " . number_format((float)$totalPrice, 2, '.', '') . " </td>";
+                        echo "<td> $date </td>";
+                        echo "</tr>";
+                        $x++;
+                      }
+
+                      ?>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
         </section>
       </div>

@@ -102,38 +102,40 @@ $row = mysqli_fetch_array($query);
           <div class="card">
             <div class="card-body">
               <div class="section-title mt-0">All Appointments</div>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">Appointment Id</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Time</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  include "../db_conn.php";
-                  $sql = "SELECT * FROM appointment";
-                  $result = mysqli_query($con, $sql);
-                  $x = 1;
+              <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Appointment Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      include "../db_conn.php";
+                      $sql = "SELECT * FROM appointment";
+                      $result = mysqli_query($con, $sql);
+                      $x = 1;
 
-                  while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['appId'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['phoneNumber'] . "</td>";
-                    echo "<td>" . $row['date'] . "</td>";
-                    echo "<td>" . $row['time'] . "</td>";
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['appId'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['name'] . "</td>";
+                        echo "<td>" . $row['phoneNumber'] . "</td>";
+                        echo "<td>" . $row['date'] . "</td>";
+                        echo "<td>" . $row['time'] . "</td>";
 
-                    $appID = $row['appId'];
-                    //if status 1 echo "Pending" else echo "Done"
-                    if ($row['status'] == 1) {
-                      echo '<td><form action="../AdminEntry.php" method="POST">
+                        $appID = $row['appId'];
+                        //if status 1 echo "Pending" else echo "Done"
+                        if ($row['status'] == 1) {
+                          echo '<td><form action="../AdminEntry.php" method="POST">
                         <input type="hidden" name="appID" id="appID" value="' . $appID . '" > 
                         <button type="submit" name="doneApp" id="doneApp" class="btn btn-icon btn-primary">
 												<h7>Set Complete<h7></button> 
@@ -141,19 +143,19 @@ $row = mysqli_fetch_array($query);
                         <button type="submit" name="cancelApp" id="cancelApp" class="btn btn-icon btn-danger">
 												<h7>Set Cancel<h7></button> 
                         </form></td></tr>';
-                    } else if ($row['status'] == 2) {
-                      echo '<td style="color:red">Cancelled</td></tr>';
-                    } else {
-                      echo '<td style="color:#4CBB17">Completed</td></tr>';
-                    }
+                        } else if ($row['status'] == 2) {
+                          echo '<td style="color:red">Cancelled</td></tr>';
+                        } else {
+                          echo '<td style="color:#4CBB17">Completed</td></tr>';
+                        }
 
-                    $x++;
-                  }
-                  ?>
-                </tbody>
-              </table>
-              </tbody>
-              </table>
+                        $x++;
+                      }
+                      ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
       </div>

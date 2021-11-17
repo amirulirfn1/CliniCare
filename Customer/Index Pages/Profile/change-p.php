@@ -58,7 +58,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 				mysqli_query($con, $sql_3);
 				header("Location: myProfile.php?success=Your password has been changed successfully");
 				exit();
-			} else if ($cnn->query($sql_2) === FALSE) {
+			} else if ($con->query($sql_2) === FALSE) {
 				header("Location: myProfile.php?error= Current Password is incorrect");
 				exit();
 			}

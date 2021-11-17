@@ -100,7 +100,7 @@ $row = mysqli_fetch_array($query);
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="#hero" class="logo me-auto">
+      <a href="../../CustomerHomePage/index.php" class="logo me-auto">
         <img src="../assets/img/gambar/logobanner.png" alt="" class="img-fluid">
       </a>
 
@@ -149,7 +149,7 @@ $row = mysqli_fetch_array($query);
 
   <!-- MAIN CONTENT -->
   <main id="main">
-    <br><br><br><br><br>
+    <br><br><br><br>
 
 
     <!-- ======= Main My Profile Section ======= -->

@@ -104,63 +104,65 @@ $row = mysqli_fetch_array($query);
           <div class="card">
             <div class="card-body">
               <div class="section-title mt-0">All Customer</div>
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">IC Number</th>
-                    <th scope="col">Birth Date</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Edit</th>
+              <div class="card-body p-0">
+                <div class="table-responsive table-invoice">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">IC Number</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Edit</th>
 
-                  </tr>
-                </thead>
-                <tbody>
-
-                  <?php
-                  include "../db_conn.php";
-                  $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      include "../db_conn.php";
+                      $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
                       INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
-                  $result = mysqli_query($con, $sql);
-                  $x = 1;
-                  while ($row = mysqli_fetch_array($result)) {
-                    echo "<tr>";
-                    echo "<td> $x </td>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['phoneNumber'] . "</td>";
-                    echo "<td>" . $row['ICnumber'] . "</td>";
-                    echo "<td>" . $row['birthDate'] . "</td>";
+                      $result = mysqli_query($con, $sql);
+                      $x = 1;
+                      while ($row = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td> $x </td>";
+                        echo "<td>" . $row['name'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['phoneNumber'] . "</td>";
+                        echo "<td>" . $row['ICnumber'] . "</td>";
+                        echo "<td>" . $row['birthDate'] . "</td>";
 
-                    $customerS = $row['email'];
+                        $customerS = $row['email'];
 
-                    echo '<td><form action="../AdminEntry.php" method="POST">';
-                    echo '<input type="hidden" name="emailToDelete" 
+                        echo '<td><form action="../AdminEntry.php" method="POST">';
+                        echo '<input type="hidden" name="emailToDelete" 
 												value="' . $customerS . '" >';
-                    echo '<button type="submit" value="Delete Customer" 
+                        echo '<button type="submit" value="Delete Customer" 
 												name="deleteCustomer" class="btn btn-icon btn-danger">
 												<i class="fas fa-times"><h7> Delete <h7></i></button>';
-                    echo '</form></td>';
+                        echo '</form></td>';
 
-                    echo '<td><form action="editCustomer.php" method="POST">';
-                    echo '<input type="hidden" name="customerToUpdate" 
+                        echo '<td><form action="editCustomer.php" method="POST">';
+                        echo '<input type="hidden" name="customerToUpdate" 
 												value="' . $customerS . '" >';
-                    echo '<button type="submit" value="editCustomer" 
+                        echo '<button type="submit" value="editCustomer" 
 												name="editCustomer" class="btn btn-icon btn-primary">
 												<i class="fas fa-edit"><h7> Edit <h7></i></button>';
-                    echo '</form></td>';
-                    echo "</tr>";
-                    $x++;
-                  }
-                  ?>
+                        echo '</form></td>';
+                        echo "</tr>";
+                        $x++;
+                      }
+                      ?>
 
-                </tbody>
-              </table>
-              </tbody>
-              </table>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
             </div>
         </section>
       </div>

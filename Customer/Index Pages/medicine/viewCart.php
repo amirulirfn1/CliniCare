@@ -236,9 +236,9 @@ $row = mysqli_fetch_array($query);
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto" class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
+          <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a class="nav-link scrollto" class="play-btn"><span class="d-none d-md-inline">Services</span></a>
+          <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../services/primaryCare.php">Primary Care</a></li>
               <li><a href="../services/checkup.php">Medical Check-Up</a></li>
@@ -251,20 +251,23 @@ $row = mysqli_fetch_array($query);
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span>Medicine<i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../../Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
-              <li><a href="../../Index Pages/medicine/viewCart.php">View My Cart</a></li>
+              <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
+              <li><a href="../medicine/viewCart.php">View My Cart</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
+
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?> <i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../../Index Pages/Profile/myProfile.php">View Profile</a></li>
-              <li><a href="../../Index Pages/History/myHistory.php">View History</a></li>
-              <li><a href="../../Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
+              <li><a href="../Profile/myProfile.php">View Profile</a></li>
+              <li><a href="../History/myHistory.php">View History</a></li>
+              <li><a href="../Appointment/AppointmentSlot.php">Make an Appointment</a></li>
               <form action="../../CustomerEntry.php" method="POST">
-                <li><a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
-                      Sign Out</button></a></li>
+                <li>
+                  <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
+                      Sign Out</button></a>
+                </li>
               </form>
             </ul>
           </li>
@@ -273,7 +276,6 @@ $row = mysqli_fetch_array($query);
       </nav><!-- .navbar -->
     </div>
   </header><!-- End Header -->
-
   <!-- MAIN CONTENT -->
   <main id="main">
     <br><br><br><br>
