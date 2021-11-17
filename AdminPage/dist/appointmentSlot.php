@@ -113,7 +113,7 @@ if (!isset($_SESSION['email'])) {
                   <table class="table table-bordered">
                     <thead>
                       <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">No.</th>
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col">Status</th>
@@ -131,7 +131,7 @@ if (!isset($_SESSION['email'])) {
                       while ($row = mysqli_fetch_array($result)) {
 
                         echo "<tr>";
-                        echo "<td>" . $row['appSId'] . "</td>";
+                        echo "<td>" . $x . "</td>";
                         echo "<td>" . $row['date'] . "</td>";
                         echo "<td>" . $row['time'] . "</td>";
 
@@ -155,21 +155,23 @@ if (!isset($_SESSION['email'])) {
 												value="' . $appSId . '" >';
                         echo '<button type="submit" value="Close Appointment" 
 												name="closeAppointment" class="btn btn-icon btn-danger">
-												<h7> Set Closed <h7></button>';
+												<h7> Close <h7></button>';
 
                         echo '&nbsp;&nbsp;<input type="hidden" name="appToOpen" 
 												value="' . $appSId . '" >';
                         echo '<button type="submit" value="Open Appointment" 
 												name="openAppointment" class="btn btn-icon btn-success">
-												<h7> Set Opened <h7></button>';
+												<h7> Open <h7></button>';
 
                         echo '<td>';
                         echo '<input type="hidden" value="' . $appSId . '" name="SlotToDelete">';
                         echo '<input type="submit" class="btn btn-danger" name="deleteSlot" id="deleteSlot" value="Delete">';
                         echo '</td>';
                         echo '</form></td>';
+                        echo "</tr>";
+                        $x++;
                       }
-                      echo "</tr>";
+                      
 
                       ?>
                     </tbody>

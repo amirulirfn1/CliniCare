@@ -178,7 +178,7 @@ if (!isset($_SESSION['email'])) {
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">Appointment Id</th>
+                      <th scope="col">No.</th>
                       <th scope="col">Email</th>
                       <th scope="col">Name</th>
                       <th scope="col">Phone Number</th>
@@ -191,16 +191,17 @@ if (!isset($_SESSION['email'])) {
                     include "../db_conn.php";
                     $sql = "SELECT * FROM appointment WHERE status = 1";
                     $result = mysqli_query($con, $sql);
-
+                    $x=1;
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<tr>";
-                      echo "<td>" . $row['appId'] . "</td>";
+                      echo "<td>" . $x . "</td>";
                       echo "<td>" . $row['email'] . "</td>";
                       echo "<td>" . $row['name'] . "</td>";
                       echo "<td>" . $row['phoneNumber'] . "</td>";
                       echo "<td>" . $row['date'] . "</td>";
                       echo "<td>" . $row['time'] . "</td>";
                       echo "</tr>";
+                      $x++;
                     }
                     ?>
                   </tbody>

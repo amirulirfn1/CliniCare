@@ -111,7 +111,7 @@ if (!isset($_SESSION['email'])) {
                   <table class="table table-bordered">
                     <thead>
                       <tr>
-                        <th scope="col">Appointment Id</th>
+                        <th scope="col">No.</th>
                         <th scope="col">Email</th>
                         <th scope="col">Name</th>
                         <th scope="col">Phone Number</th>
@@ -129,7 +129,7 @@ if (!isset($_SESSION['email'])) {
 
                       while ($row = mysqli_fetch_array($result)) {
                         echo "<tr>";
-                        echo "<td>" . $row['appId'] . "</td>";
+                        echo "<td>" . $x . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['name'] . "</td>";
                         echo "<td>" . $row['phoneNumber'] . "</td>";
@@ -141,11 +141,11 @@ if (!isset($_SESSION['email'])) {
                         if ($row['status'] == 1) {
                           echo '<td><form action="../AdminEntry.php" method="POST">
                         <input type="hidden" name="appID" id="appID" value="' . $appID . '" > 
-                        <button type="submit" name="doneApp" id="doneApp" class="btn btn-icon btn-primary">
-												<h7>Set Complete<h7></button> 
+                        <button type="submit" name="doneApp" id="doneApp" title="Update Completed" class="btn btn-icon btn-primary">
+												<h7>&#10003;<h7></button> 
 
-                        <button type="submit" name="cancelApp" id="cancelApp" class="btn btn-icon btn-danger">
-												<h7>Set Cancel<h7></button> 
+                        <button type="submit" name="cancelApp" id="cancelApp" title="Update Cancelled" class="btn btn-icon btn-danger">
+												<h7>X<h7></button> 
                         </form></td></tr>';
                         } else if ($row['status'] == 2) {
                           echo '<td style="color:red">Cancelled</td></tr>';
