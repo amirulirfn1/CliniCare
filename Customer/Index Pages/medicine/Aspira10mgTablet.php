@@ -105,7 +105,7 @@ $row = mysqli_fetch_array($query);
                 <ul>
                     <li><a class="nav-link scrollto" class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-                    <li class="dropdown"><a href="#" class="nav-link scrollto">Services<i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../services/primaryCare.php">Primary Care</a></li>
                             <li><a href="../services/checkup.php">Medical Check-Up</a></li>
@@ -118,13 +118,13 @@ $row = mysqli_fetch_array($query);
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-                    <li class="dropdown"><a class="nav-link scrollto active"  class="play-btn">Medicine<i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span>Medicine<i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
                             <li><a href="../medicine/viewCart.php">View My Cart</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="play-btn"><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../Profile/myProfile.php">View Profile</a></li>
                             <li><a href="../History/myHistory.php">View History</a></li>
@@ -164,9 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Used to prevent asthma and exercise-induced narrowing of the muscles in the lungs. 
-									It is a prescription medicine. This medicine works by blocking the action of certain chemicals in the lungs. 
-									Aspira is also used to relieve seasonal allergies such as irritation in the eyes, a runny nose and a sore throat</p>
+                                    <p>Used to prevent asthma and exercise-induced narrowing of the muscles in the lungs.
+                                        It is a prescription medicine. This medicine works by blocking the action of certain chemicals in the lungs.
+                                        Aspira is also used to relieve seasonal allergies such as irritation in the eyes, a runny nose and a sore throat</p>
                                     <h2 class="labels">
                                         RM35.00
                                     </h2>
@@ -178,7 +178,7 @@ $row = mysqli_fetch_array($query);
                                     </form>
 
                                     <h3 class="box-title mt-5">Directions To Use</h3>
-									<p>Dosage for asthma</p>
+                                    <p>Dosage for asthma</p>
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-check text-success"></i> Adults and children > 14 years : <strong>10 mg</strong> by mouth per day once in the evening. </li>
                                         <li><i class="fa fa-check text-success"></i> Children 2-5 years : <strong>4 mg</strong> per day</li>

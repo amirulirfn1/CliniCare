@@ -105,7 +105,7 @@ $row = mysqli_fetch_array($query);
                 <ul>
                     <li><a class="nav-link scrollto" class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-                    <li class="dropdown"><a href="#" class="nav-link scrollto">Services<i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../services/primaryCare.php">Primary Care</a></li>
                             <li><a href="../services/checkup.php">Medical Check-Up</a></li>
@@ -118,13 +118,13 @@ $row = mysqli_fetch_array($query);
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-                    <li class="dropdown"><a class="nav-link scrollto active"  class="play-btn">Medicine<i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span>Medicine<i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
                             <li><a href="../medicine/viewCart.php">View My Cart</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="play-btn"><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../Profile/myProfile.php">View Profile</a></li>
                             <li><a href="../History/myHistory.php">View History</a></li>
@@ -164,9 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>This medicine is for oral use only. Sumatriptan is used to relieve a migraine attack. 
-									This medicine may be used for migraine headaches with or without what is known as 'aura'.
-										Sumatriptan belongs to a group of drugs called serotonin agonists.</p>
+                                    <p>This medicine is for oral use only. Sumatriptan is used to relieve a migraine attack.
+                                        This medicine may be used for migraine headaches with or without what is known as 'aura'.
+                                        Sumatriptan belongs to a group of drugs called serotonin agonists.</p>
                                     <h2 class="labels">
                                         RM40.70
                                     </h2>

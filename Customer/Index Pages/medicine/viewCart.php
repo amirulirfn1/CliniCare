@@ -238,7 +238,7 @@ $row = mysqli_fetch_array($query);
         <ul>
           <li><a class="nav-link scrollto" class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a class="nav-link scrollto" href="#" class="play-btn"><span class="d-none d-md-inline">Services</span></a>
+          <li class="dropdown"><a class="nav-link scrollto" class="play-btn"><span class="d-none d-md-inline">Services</span></a>
             <ul>
               <li><a href="../services/primaryCare.php">Primary Care</a></li>
               <li><a href="../services/checkup.php">Medical Check-Up</a></li>
@@ -251,15 +251,13 @@ $row = mysqli_fetch_array($query);
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-          <li class="dropdown"><a class="nav-link scrollto active" href="#" class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline">Medicine</span> <i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../../Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
               <li><a href="../../Index Pages/medicine/viewCart.php">View My Cart</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#" class="play-btn"><span class="d-none d-md-inline">
-                <?php echo "Hello " . $row['name']; ?></span>
-              <i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../../Index Pages/Profile/myProfile.php">View Profile</a></li>
               <li><a href="../../Index Pages/History/myHistory.php">View History</a></li>
@@ -382,7 +380,7 @@ $row = mysqli_fetch_array($query);
                 </div>
               </div>";
                 }
-                echo "<div class='back-to-shop'><a href='MedicineCatalogueUser.php'>&leftarrow;</a><span class='text-muted'>Back to Catalogue</span></div>
+                echo "<div class='back-to-shop'><a href='MedicineCatalogueUser.php'>&leftarrow;<span class='text-muted'>Back to Catalogue</span></a></div>
               
                       </div><div class='col-md-4 summary'>
                         <div>

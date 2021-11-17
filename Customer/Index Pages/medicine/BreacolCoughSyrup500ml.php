@@ -105,7 +105,7 @@ $row = mysqli_fetch_array($query);
                 <ul>
                     <li><a class="nav-link scrollto" class="nav-link scrollto active" href="../../CustomerHomePage/index.php">Home</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-                    <li class="dropdown"><a href="#" class="nav-link scrollto">Services<i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../services/primaryCare.php">Primary Care</a></li>
                             <li><a href="../services/checkup.php">Medical Check-Up</a></li>
@@ -118,13 +118,13 @@ $row = mysqli_fetch_array($query);
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
                     <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-                    <li class="dropdown"><a class="nav-link scrollto active"  class="play-btn">Medicine<i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span>Medicine<i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
                             <li><a href="../medicine/viewCart.php">View My Cart</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="play-btn"><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
+                    <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
                         <ul>
                             <li><a href="../Profile/myProfile.php">View Profile</a></li>
                             <li><a href="../History/myHistory.php">View History</a></li>
@@ -142,7 +142,7 @@ $row = mysqli_fetch_array($query);
             </nav><!-- .navbar -->
         </div>
     </header><!-- End Header -->
-
+    
     <!-- MAIN CONTENT -->
     <main id="main">
         <br><br><br><br>
@@ -164,9 +164,9 @@ $row = mysqli_fetch_array($query);
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-6">
                                     <h4 class="box-title mt-5" style="font-size:30px;">Product description</h4>
-                                    <p>Breacol Expectorant is used as an expectorant for symptomatic relief of coughs due to 
-									colds and upper respiratory tract infections. Used for Cough, Chest congestion and other conditions. 
-									Breacol G Plus Cough Syrup may also be used for purposes not listed in this medication guide.</p>
+                                    <p>Breacol Expectorant is used as an expectorant for symptomatic relief of coughs due to
+                                        colds and upper respiratory tract infections. Used for Cough, Chest congestion and other conditions.
+                                        Breacol G Plus Cough Syrup may also be used for purposes not listed in this medication guide.</p>
                                     <h2 class="labels">
                                         RM10.30
                                     </h2>
@@ -179,7 +179,7 @@ $row = mysqli_fetch_array($query);
 
                                     <h3 class="box-title mt-5">Directions To Use</h3>
                                     <ul class="list-unstyled">
-										<li><i class="fa fa-check text-success"></i> Adult > 12 children 6-12 years : <strong>10-20 mL</strong> every 4 hr</li>
+                                        <li><i class="fa fa-check text-success"></i> Adult > 12 children 6-12 years : <strong>10-20 mL</strong> every 4 hr</li>
                                         <li><i class="fa fa-check text-success"></i> Children 2-6 years : <strong>5-10 mL</strong> every 4 hour. </li>
                                     </ul>
                                 </div>

@@ -76,7 +76,7 @@ $row = mysqli_fetch_array($query);
         <ul>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
-          <li class="dropdown"><a href="#" class="nav-link scrollto">Services<i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../../Index Pages/services/primaryCare.php">Primary Care</a></li>
               <li><a href="../../Index Pages/services/checkup.php">Medical Check-Up</a></li>
@@ -89,13 +89,13 @@ $row = mysqli_fetch_array($query);
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">FAQ</a></li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Contact Us</a></li>
-          <li class="dropdown"><a href="#" class="play-btn">Medicine<i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span>Medicine<i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../medicine/MedicineCatalogueUser.php">Catalogue</a></li>
               <li><a href="../medicine/viewCart.php">View My Cart</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#" class="play-btn"><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
+          <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
             <ul>
               <li><a href="../Profile/myProfile.php">View Profile</a></li>
               <li><a href="../History/myHistory.php">View History</a></li>

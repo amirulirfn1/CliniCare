@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['vkey'])){
+if (isset($_GET['vkey'])) {
     //Process the vkey
     $vkey = $_GET['vkey'];
 
@@ -11,16 +11,14 @@ if (isset($_GET['vkey'])){
         //validate the email address
         $update = $con->query("UPDATE customer SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
 
-        if($update){
+        if ($update) {
             header("Location: ../Alerts/successVER.php");
-        }else{
+        } else {
             echo $mysqli->error;
         }
-
-    }else{
+    } else {
         header("Location: ../Alerts/unsuccessVER.php");
     }
-    
-}else{
+} else {
     die();
 }
