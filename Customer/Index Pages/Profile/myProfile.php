@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
             <ul>
               <li><a href="../../Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
               <li><a href="../../Index Pages/medicine/viewCart.php">View My Cart</a></li>
-            </ul>s
+            </ul>
           </li>
 
           <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
