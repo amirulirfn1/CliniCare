@@ -342,24 +342,32 @@ if (!isset($_SESSION['email'])) {
                         <?php
                         include "../../db_conn.php";
                         $email = $_SESSION['email'];
-                        $sql = "SELECT * FROM appointment WHERE email='$email'";
+                        $sql = "SELECT * FROM appointment WHERE email='$email' ORDER BY date";
                         $result = mysqli_query($con, $sql);
+                        $dateToday = date("Y-m-d");
                         $x = 1;
                         while ($row = mysqli_fetch_array($result)) {
+                          $date = $row['date'];
+                          $time = $row['time'];
+                          $status = $row['status'];
                           echo "<tr>";
                           echo "<td> $x </td>";
-                          echo "<td>" . $row['date'] . "</td>";
-                          echo "<td>" . $row['time'] . "</td>";
+                          echo "<td>" . $date . "</td>";
+                          echo "<td>" . $time . "</td>";
 
-                          if ($row['status'] == 1) {
-                            echo "<td>Confirmed</td>";
-                          } else if ($row['status'] == 2) {
-                            echo "<td style='color:red'>Cancelled</td>";
+                          if ($dateToday > $date) {
+                            $sql = "UPDATE appointment SET status=3 
+                              WHERE email='$email' AND date < '$dateToday'";
+                            //run sql statement
+                            mysqli_query($con, $sql);
+                            echo "<td style='color:red'>Date Passed</td>";
                           } else {
-                            echo "<td style='color:#4CBB17'>Completed</td>";
+                            if ($status == 1) {
+                              echo "<td style='color:green'>Confirmed</td>";
+                            } else if ($status == 2) {
+                              echo "<td style='color:red'>Cancelled</td>";
+                            }
                           }
-                          echo "</tr>";
-
                           $x++;
                         }
 
@@ -393,7 +401,7 @@ if (!isset($_SESSION['email'])) {
                         $row = mysqli_fetch_array($query);
                         $userID = $row['userID'];
 
-                        $query = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID'");
+                        $query = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0");
                         $x = 1;
 
                         while ($row = mysqli_fetch_array($query)) {

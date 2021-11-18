@@ -113,7 +113,12 @@ if (!isset($_SESSION['email'])) {
                     include '../db_conn.php';
                     $query = mysqli_query($con, "SELECT COUNT(transactionID) FROM userpayment");
                     $row = mysqli_fetch_array($query);
-                    echo "$row[0] Purchases";
+                    if ($row[0] == 0) {
+                      echo "0 Purchases";
+                    } else {
+                      echo "$row[0] Purchases";
+                    }
+
                     ?>
                   </div>
                 </div>
@@ -133,7 +138,12 @@ if (!isset($_SESSION['email'])) {
                     include '../db_conn.php';
                     $query = mysqli_query($con, "SELECT SUM(quantity) FROM usercart WHERE status=0");
                     $row = mysqli_fetch_array($query);
-                    echo "$row[0] Items Sold";
+                    if ($row[0] == null) {
+                      echo "0 Items Sold";
+                    } else {
+                      echo "$row[0] Items Sold";
+                    }
+
                     ?>
                   </div>
                 </div>
@@ -155,7 +165,11 @@ if (!isset($_SESSION['email'])) {
                     $row = mysqli_fetch_array($query);
                     $price = $row[0];
                     $totalPrice = number_format($price, 2);
-                    echo "RM $totalPrice ";
+                    if ($row[0] == null) {
+                      echo "RM 0.00";
+                    } else {
+                      echo "RM $totalPrice";
+                    }
                     ?>
                   </div>
                 </div>
@@ -191,7 +205,7 @@ if (!isset($_SESSION['email'])) {
                     include "../db_conn.php";
                     $sql = "SELECT * FROM appointment WHERE status = 1";
                     $result = mysqli_query($con, $sql);
-                    $x=1;
+                    $x = 1;
                     while ($row = mysqli_fetch_array($result)) {
                       echo "<tr>";
                       echo "<td>" . $x . "</td>";

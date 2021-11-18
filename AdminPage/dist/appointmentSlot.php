@@ -124,7 +124,7 @@ if (!isset($_SESSION['email'])) {
                     <tbody>
                       <?php
                       include "../db_conn.php";
-                      $sql = "SELECT * FROM appointmentslot";
+                      $sql = "SELECT * FROM appointmentslot ORDER BY date";
                       $result = mysqli_query($con, $sql);
                       $x = 1;
 

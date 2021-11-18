@@ -178,6 +178,7 @@ function addSlot()
         $time2 = "2PM - 6PM";
         $time3 = "7PM - 11PM";
         $date = $_POST['date'];
+        $dateToday = date("Y-m-d");
 
         $query = mysqli_query($con, "SELECT * FROM appointmentslot WHERE date = '$date'");
         $row = mysqli_fetch_array($query);
@@ -186,16 +187,21 @@ function addSlot()
             //show popup message
             echo "<script>alert('Slot already exist, choose another date');</script>";
             //if press ok then go to appointmentSlot.php
-            echo "<script>window.location.href='../AdminPage/dist/appointmentSlot.php';</script>";
+            echo "<script>window.location.href='../AdminPage/dist/addSlot.php';</script>";
         } else {
-            $sql = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time1', 0, 10)";
-            $sql2 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time2', 0, 10)";
-            $sql3 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time3', 0, 10)";
-
-            if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
-                header("Location: ../AdminPage/dist/appointmentSlot.php");
+            if ($date < $dateToday) {
+                echo "<script>alert('Date must be today or later');</script>";
+                echo "<script>window.location.href='../AdminPage/dist/addSlot.php';</script>";
             } else {
-                echo "error";
+                $sql = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time1')";
+                $sql2 = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time2')";
+                $sql3 = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time3')";
+
+                if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
+                    header("Location: ../AdminPage/dist/appointmentSlot.php");
+                } else {
+                    echo "error";
+                }
             }
         }
     }

@@ -123,36 +123,48 @@ if (!isset($_SESSION['email'])) {
                     <tbody>
                       <?php
                       include "../db_conn.php";
-                      $sql = "SELECT * FROM appointment";
+                      $sql = "SELECT * FROM appointment ORDER BY date";
                       $result = mysqli_query($con, $sql);
+                      $dateToday = date("Y-m-d");
                       $x = 1;
 
                       while ($row = mysqli_fetch_array($result)) {
+                        $date = $row['date'];
+                        $time = $row['time'];
+                        $email = $row['email'];
+                        $name = $row['name'];
+                        $phone = $row['phoneNumber'];
                         echo "<tr>";
                         echo "<td>" . $x . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . $row['name'] . "</td>";
-                        echo "<td>" . $row['phoneNumber'] . "</td>";
-                        echo "<td>" . $row['date'] . "</td>";
-                        echo "<td>" . $row['time'] . "</td>";
+                        echo "<td>" . $email . "</td>";
+                        echo "<td>" . $name . "</td>";
+                        echo "<td>" . $phone . "</td>";
+                        echo "<td>" . $date . "</td>";
+                        echo "<td>" . $time . "</td>";
 
                         $appID = $row['appId'];
-                        //if status 1 echo "Pending" else echo "Done"
-                        if ($row['status'] == 1) {
-                          echo '<td><form action="../AdminEntry.php" method="POST">
-                        <input type="hidden" name="appID" id="appID" value="' . $appID . '" > 
-                        <button type="submit" name="doneApp" id="doneApp" title="Update Completed" class="btn btn-icon btn-primary">
-												<h7>&#10003;<h7></button> 
 
-                        <button type="submit" name="cancelApp" id="cancelApp" title="Update Cancelled" class="btn btn-icon btn-danger">
-												<h7>X<h7></button> 
-                        </form></td></tr>';
-                        } else if ($row['status'] == 2) {
-                          echo '<td style="color:red">Cancelled</td></tr>';
-                        } else {
-                          echo '<td style="color:#4CBB17">Completed</td></tr>';
-                        }
-
+                        if ($dateToday > $date){
+                          $sql = "UPDATE appointment SET status = 3 WHERE date < '$dateToday'";
+                          mysqli_query($con, $sql);
+                          echo '<td style="color:red">Date Passed</td></tr>';
+                        }else{
+                          if ($row['status'] == 1) {
+                            echo '<td><form action="../AdminEntry.php" method="POST">
+                          <input type="hidden" name="appID" id="appID" value="' . $appID . '" > 
+                          <button type="submit" name="doneApp" id="doneApp" title="Update Completed" class="btn btn-icon btn-primary">
+                          <h7>&#10003;<h7></button> 
+  
+                          <button type="submit" name="cancelApp" id="cancelApp" title="Update Cancelled" class="btn btn-icon btn-danger">
+                          <h7>X<h7></button> 
+                          </form></td></tr>';
+                          } else if ($row['status'] == 2) {
+                            echo '<td style="color:red">Cancelled</td></tr>';    
+                          } else {
+                            echo '<td style="color:#4CBB17">Completed</td></tr>';
+                          }
+                          
+                        } 
                         $x++;
                       }
                       ?>

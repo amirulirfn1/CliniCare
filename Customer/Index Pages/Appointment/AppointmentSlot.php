@@ -217,14 +217,13 @@ if (!isset($_SESSION['email'])) {
 
                 <p class="card-description"></p>
 
-
                 <div class="col-md-12">
                   <label class="labels" style="font-size: 12px">Choose Date</label>
                   <select id="date" name="date" class="form-control" onchange="change_date()" required>
                     <option value="">Date</option>
                     <?php
                     include "../../db_conn.php";
-                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 group by date ";
+                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 GROUP BY date ORDER BY date ";
                     $result = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($result)) {
                       $date = $row['date'];
