@@ -144,7 +144,7 @@ if (!isset($_SESSION['email'])) {
 
                         $appID = $row['appId'];
 
-                        if ($dateToday > $date){
+                        if ($dateToday > $date && $status == 0){
                           $sql = "UPDATE appointment SET status = 3 WHERE date < '$dateToday'";
                           mysqli_query($con, $sql);
                           echo '<td style="color:red">Date Passed</td></tr>';

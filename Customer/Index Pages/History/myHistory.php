@@ -355,7 +355,9 @@ if (!isset($_SESSION['email'])) {
                           echo "<td>" . $date . "</td>";
                           echo "<td>" . $time . "</td>";
 
-                          if ($dateToday > $date) {
+                          //if date is passed and status not = 0
+
+                          if ($dateToday > $date && $status != 0) {
                             $sql = "UPDATE appointment SET status = 3 
                               WHERE email='$email' AND date < '$dateToday'";
                             //run sql statement

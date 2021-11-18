@@ -126,7 +126,7 @@ if (!isset($_SESSION['email'])) {
                       <?php
                       include "../db_conn.php";
 
-                      $query = mysqli_query($con, "SELECT * FROM usercart");
+                      $query = mysqli_query($con, "SELECT * FROM usercart ORDER BY date");
                       $x = 1;
 
                       while ($row = mysqli_fetch_array($query)) {
