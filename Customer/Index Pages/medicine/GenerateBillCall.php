@@ -42,7 +42,7 @@ if ($billpaymentStatus == 1) {
   //check if sql success
   if ($con->query($sql) === TRUE) {
     //update status from database table to 0
-    $sql2 = "UPDATE usercart SET status='0', date='$dateToday' WHERE userID='$userID'";
+    $sql2 = "UPDATE usercart SET status='0', date='$dateToday' WHERE userID='$userID' AND status='0'";
 
     //check if sql2 success
     if ($con->query($sql2) === TRUE) {

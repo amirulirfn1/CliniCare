@@ -403,7 +403,7 @@ if (!isset($_SESSION['email'])) {
                         $row = mysqli_fetch_array($query);
                         $userID = $row['userID'];
 
-                        $query = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0");
+                        $query = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0 ORDER BY date");
                         $x = 1;
 
                         while ($row = mysqli_fetch_array($query)) {
