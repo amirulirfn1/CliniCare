@@ -6,8 +6,8 @@ $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
 //if session is not set, then go to login page
 if (!isset($_SESSION['email'])) {
-    header("Location: ../../index.php");
-    exit;
+  header("Location: ../../index.php");
+  exit;
 }
 ?>
 
@@ -713,7 +713,7 @@ if (!isset($_SESSION['email'])) {
                 <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
                 <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
                 <input type="text" name="Subject" placeholder="Subject" class="form-control mb-2" required>
-                <textarea name="msg" class="form-control mb-2" rows="6" placeholder="Write The Message" required></textarea>
+                <textarea name="message" class="form-control mb-2" rows="6" placeholder="Write The Message" required></textarea>
                 <button class="btn btn-success" name="btn-send" style="background-color:#1977cc"> Send Feedback </button>
               </form>
             </div>

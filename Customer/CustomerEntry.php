@@ -1,8 +1,10 @@
 <?php
 session_start();
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 if (isset($_POST['signup'])) {
   signup($_POST['signup']);
 } else if (isset($_POST['signin'])) {
@@ -325,50 +327,50 @@ function signup()
         
         </html>';
 
-        try {
-          //Server settings
-          $mail->SMTPDebug = false;                      //Enable verbose debug output
-          $mail->isSMTP();                                            //Send using SMTP
-          $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
-          $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-          $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
-          $mail->Password   = 'clinicare123';                               //SMTP password
-          $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-          $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-  
-          //Recipients
-          $mail->setFrom('info@clinicaremy.com', 'CliniCare');
-          //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-          $mail->addAddress($email);               //Name is optional
-          //$mail->addReplyTo('info@example.com', 'Information');
-          //$mail->addCC('cc@example.com');
-          //$mail->addBCC('bcc@example.com');
-  
-          //Attachments
-          //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-          //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-  
-          //Content
-          $mail->isHTML(true);                                  //Set email format to HTML
-          $mail->Subject = $subject;
-          $mail->Body    = $msg;
-          //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-  
-          $mail->send();
-          
+    try {
+      //Server settings
+      $mail->SMTPDebug = false;                      //Enable verbose debug output
+      $mail->isSMTP();                                            //Send using SMTP
+      $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
+      $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+      $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
+      $mail->Password   = 'clinicare123';                               //SMTP password
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    $sql2 = "INSERT INTO user (email, usertype)
+      //Recipients
+      $mail->setFrom('info@clinicaremy.com', 'CliniCare');
+      //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+      $mail->addAddress($email);               //Name is optional
+      //$mail->addReplyTo('info@example.com', 'Information');
+      //$mail->addCC('cc@example.com');
+      //$mail->addBCC('bcc@example.com');
+
+      //Attachments
+      //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+      //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+      //Content
+      $mail->isHTML(true);                                  //Set email format to HTML
+      $mail->Subject = $subject;
+      $mail->Body    = $msg;
+      //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+      $mail->send();
+
+
+      $sql2 = "INSERT INTO user (email, usertype)
                             VALUES('$email', 'customer')";
-    if ($con->query($sql2) === TRUE) {
-      //kalau dah successful buat sign up, keluar page ni
-      header("Location: ../Alerts/success.php");
-    } else {
-      header("Location: ../Alerts/unsuccess.php");
+      if ($con->query($sql2) === TRUE) {
+        //kalau dah successful buat sign up, keluar page ni
+        header("Location: ../Alerts/success.php");
+      } else {
+        header("Location: ../Alerts/unsuccess.php");
+      }
+    } catch (Exception $e) {
+      echo "Message cannot be sent";
     }
-  } catch (Exception $e) {
-    echo "Message cannot be sent";
   }
-}
 }
 
 
@@ -453,7 +455,7 @@ function mailReset()
   require "PHPMailer/src/Exception.php";
   require "PHPMailer/src/PHPMailer.php";
   require "PHPMailer/src/SMTP.php";
-  
+
   $email = $_SESSION['resetPassword'];
   $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
   $row = mysqli_fetch_array($query);
@@ -729,39 +731,39 @@ function mailReset()
         
         </html>';
 
-        try {
-          //Server settings
-          $mail->SMTPDebug = false;                      //Enable verbose debug output
-          $mail->isSMTP();                                            //Send using SMTP
-          $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
-          $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-          $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
-          $mail->Password   = 'clinicare123';                               //SMTP password
-          $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-          $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-  
-          //Recipients
-          $mail->setFrom('info@clinicaremy.com', 'CliniCare');
-          //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-          $mail->addAddress($email);               //Name is optional
-          //$mail->addReplyTo('info@example.com', 'Information');
-          //$mail->addCC('cc@example.com');
-          //$mail->addBCC('bcc@example.com');
-  
-          //Attachments
-          //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-          //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-  
-          //Content
-          $mail->isHTML(true);                                  //Set email format to HTML
-          $mail->Subject = $subject;
-          $mail->Body    = $msg;
-          //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-  
-          $mail->send();
-        } catch (Exception $e) {
-          echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-        }
+  try {
+    //Server settings
+    $mail->SMTPDebug = false;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
+    $mail->Password   = 'clinicare123';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('info@clinicaremy.com', 'CliniCare');
+    //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+    $mail->addAddress($email);               //Name is optional
+    //$mail->addReplyTo('info@example.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
+
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $msg;
+    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+  } catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+  }
 }
 
 function resetPassword()
@@ -784,7 +786,7 @@ function resetPassword()
     } else {
       //update customer set password = '$pwd' where vkey = '$vkey'
       $sql = "update customer set password = '$pwd' where vkey = '$vkey'";
-  
+
       if ($con->query($sql) == TRUE) {
         unset($_SESSION['resetVkey']);
         unset($_SESSION['resetPassword']);

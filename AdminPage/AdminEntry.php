@@ -179,15 +179,24 @@ function addSlot()
         $time3 = "7PM - 11PM";
         $date = $_POST['date'];
 
-        $sql = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time1', 0, 10)";
-        $sql2 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time2', 0, 10)";
-        $sql3 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time3', 0, 10)";
-
-        // check sql, sql2, sql3 for success
-        if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
-            header("Location: ../AdminPage/dist/appointmentSlot.php");
+        $query = mysqli_query($con, "SELECT * FROM appointmentslot WHERE date = '$date'");
+        $row = mysqli_fetch_array($query);
+        //if row has result then
+        if ($row) {
+            //show popup message
+            echo "<script>alert('Slot already exist, choose another date');</script>";
+            //if press ok then go to appointmentSlot.php
+            echo "<script>window.location.href='../AdminPage/dist/appointmentSlot.php';</script>";
         } else {
-            echo "error";
+            $sql = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time1', 0, 10)";
+            $sql2 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time2', 0, 10)";
+            $sql3 = "INSERT INTO appointmentslot (date, time, status, count) VALUES ('$date', '$time3', 0, 10)";
+
+            if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
+                header("Location: ../AdminPage/dist/appointmentSlot.php");
+            } else {
+                echo "error";
+            }
         }
     }
 }
