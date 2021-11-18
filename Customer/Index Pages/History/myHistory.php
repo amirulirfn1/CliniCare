@@ -351,19 +351,21 @@ if (!isset($_SESSION['email'])) {
                           $time = $row['time'];
                           $status = $row['status'];
                           echo "<tr>";
-                          echo "<td> $x </td>";
+                          echo "<td>" . $x . "</td>";
                           echo "<td>" . $date . "</td>";
                           echo "<td>" . $time . "</td>";
 
                           if ($dateToday > $date) {
-                            $sql = "UPDATE appointment SET status=3 
+                            $sql = "UPDATE appointment SET status = 3 
                               WHERE email='$email' AND date < '$dateToday'";
                             //run sql statement
                             mysqli_query($con, $sql);
                             echo "<td style='color:red'>Date Passed</td>";
                           } else {
-                            if ($status == 1) {
-                              echo "<td style='color:green'>Confirmed</td>";
+                            if ($status == 0) {
+                              echo "<td style='color:green'>Completed</td>";
+                            } else if ($status == 1) {
+                              echo "<td style='color:black'>Confirmed</td>";
                             } else if ($status == 2) {
                               echo "<td style='color:red'>Cancelled</td>";
                             }
