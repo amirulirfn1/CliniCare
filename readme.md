@@ -31,7 +31,7 @@ Installation Manual for UniServer
 
 #Account for customer
 - email address : customer@gmail.com
-- password : customer
+- password : customer123
 
 #Username and Password used for database phpMyAdmin
 - username : clinicarecustomer
