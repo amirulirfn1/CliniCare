@@ -1,13 +1,11 @@
 <?php
 include "../db_conn.php";
 session_start();
+require_once __DIR__ . '/../../app/Middleware/Auth.php';
+Auth::requireRole('admin');
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
-if (!isset($_SESSION['email'])) {
-  header("Location: ../../index.php");
-  exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +126,7 @@ if (!isset($_SESSION['email'])) {
                       <?php
                       include "../db_conn.php";
                       $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
-                      INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
+                      INNER JOIN user ON customer.email = user.email WHERE user.role = 'customer' order by name";
                       $result = mysqli_query($con, $sql);
                       $x = 1;
                       while ($row = mysqli_fetch_array($result)) {

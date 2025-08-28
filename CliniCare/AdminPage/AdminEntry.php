@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once __DIR__ . '/../app/Middleware/Auth.php';
+Auth::requireRole('admin', '../index.php');
 
 if (isset($_POST['deleteCustomer'])) {
     deleteCustomer($_POST['deleteCustomer']);

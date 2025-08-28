@@ -359,7 +359,7 @@ function signup()
       $mail->send();
 
 
-      $sql2 = "INSERT INTO user (email, usertype)
+      $sql2 = "INSERT INTO user (email, role)
                             VALUES('$email', 'customer')";
       if ($con->query($sql2) === TRUE) {
         //kalau dah successful buat sign up, keluar page ni
@@ -400,9 +400,10 @@ function signin()
       if ($result3->num_rows != 0) {
 
         $row = $result3->fetch_assoc();
-        $usertype = $row['usertype'];
+        $role = $row['role'];
+        $_SESSION['role'] = $role;
 
-        if ($usertype == "customer") {
+        if ($role == "customer") {
           header("Location: ../Customer/CustomerHomePage/index.php");
         } else {
           header("Location: ../AdminPage/dist/index.php");

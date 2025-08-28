@@ -1,13 +1,11 @@
 <?php
 include "../db_conn.php";
 session_start();
+require_once __DIR__ . '/../../app/Middleware/Auth.php';
+Auth::requireRole('admin');
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
-if (!isset($_SESSION['email'])) {
-  header("Location: ../../index.php");
-  exit;
-}
 ?>
 
 <!DOCTYPE html>

@@ -1,9 +1,11 @@
 <?php
 session_start();
+require_once __DIR__ . '/../../app/Middleware/Auth.php';
+Auth::requireRole('admin');
 
 if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 
-	include "../db_conn.php";
+        include "../db_conn.php";
 
 	if (
 		isset($_POST['op']) && isset($_POST['np'])

@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../../app/Middleware/Auth.php';
+Auth::requireRole('admin');
 
 function getCustomerInfo($email)
 {
