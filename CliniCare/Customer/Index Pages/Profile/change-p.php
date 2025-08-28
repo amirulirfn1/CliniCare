@@ -3,7 +3,8 @@ session_start();
 
 if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 
-	include "../../db_conn.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
 	if (
 		isset($_POST['op']) && isset($_POST['np'])

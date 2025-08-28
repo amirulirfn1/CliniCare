@@ -1,5 +1,6 @@
 <?php
-include "../../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -222,7 +223,8 @@ if (!isset($_SESSION['email'])) {
                   <select id="date" name="date" class="form-control" onchange="change_date()" required>
                     <option value="">Date</option>
                     <?php
-                    include "../../db_conn.php";
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                     $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 GROUP BY date ORDER BY date ";
                     $result = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($result)) {
@@ -240,7 +242,8 @@ if (!isset($_SESSION['email'])) {
                   <select name="time" id="time" class="form-control" required>
                     <option value="">Time</option>
                     <?php
-                    include "../../db_conn.php";
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                     $sql = "SELECT time FROM appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
                     $result = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($result)) {

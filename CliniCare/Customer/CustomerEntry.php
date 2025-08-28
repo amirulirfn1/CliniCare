@@ -31,7 +31,8 @@ if (isset($_POST['signup'])) {
 <?php
 function signup()
 {
-  include "db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
   require "PHPMailer/src/Exception.php";
   require "PHPMailer/src/PHPMailer.php";
   require "PHPMailer/src/SMTP.php";
@@ -376,7 +377,8 @@ function signup()
 
 function signin()
 {
-  include "db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
   $email = $_POST['email'];
   $password = $_POST['password'];
@@ -427,7 +429,8 @@ function signout()
 
 function getVkey()
 {
-  include "db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
   if (!$con) {
     echo "No connection";
@@ -451,7 +454,8 @@ function getVkey()
 
 function mailReset()
 {
-  include "db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
   require "PHPMailer/src/Exception.php";
   require "PHPMailer/src/PHPMailer.php";
   require "PHPMailer/src/SMTP.php";
@@ -779,7 +783,8 @@ function resetPassword()
   } else if ($pwd == $pwdR) {
 
     $pwd = md5($pwd);
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
       echo "error";
@@ -806,7 +811,8 @@ function resetPassword()
 
 function updateProfile()
 {
-  include "db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
   if (!$con) {
     echo "Error";
@@ -835,7 +841,8 @@ function updateProfile()
 
 function bookApp()
 {
-  include "db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
   if (!$con) {
     echo "Error";

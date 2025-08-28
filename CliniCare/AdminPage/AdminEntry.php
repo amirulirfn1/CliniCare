@@ -28,7 +28,8 @@ if (isset($_POST['deleteCustomer'])) {
 //function edit profile info
 function updateProfileAdmin()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -55,7 +56,8 @@ function updateProfileAdmin()
 
 function getCustomerInfo($email)
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
     if (!$con) {
         echo "error";
     } else {
@@ -67,7 +69,8 @@ function getCustomerInfo($email)
 
 function deleteCustomer()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -89,7 +92,8 @@ function deleteCustomer()
 
 function updateCustomer()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -114,7 +118,8 @@ function updateCustomer()
 
 function closeAppointment()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -132,7 +137,8 @@ function closeAppointment()
 
 function openAppointment()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -151,7 +157,8 @@ function openAppointment()
 
 function deleteSlot()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -169,7 +176,8 @@ function deleteSlot()
 
 function addSlot()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -209,7 +217,8 @@ function addSlot()
 
 function doneApp()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";
@@ -227,7 +236,8 @@ function doneApp()
 
 function cancelApp()
 {
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     if (!$con) {
         echo "Error";

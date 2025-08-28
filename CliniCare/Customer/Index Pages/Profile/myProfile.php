@@ -1,5 +1,6 @@
 <?php
-include "../../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -11,7 +12,8 @@ if (!isset($_SESSION['email'])) {
 
 if (isset($_POST['submit'])) {
   move_uploaded_file($_FILES['file']['tmp_name'], "pictures/" . $_FILES['file']['name']);
-  include "../../db_conn.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
   $q = mysqli_query($con, "UPDATE customer SET image = '" . $_FILES['file']['name'] . "' WHERE email='$email' ");
   header("refresh:0; url=myProfile.php");
 }

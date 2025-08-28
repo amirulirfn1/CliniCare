@@ -1,5 +1,6 @@
 <?php
-include "../../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -340,7 +341,8 @@ if (!isset($_SESSION['email'])) {
                       <tbody>
 
                         <?php
-                        include "../../db_conn.php";
+                        require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                         $email = $_SESSION['email'];
                         $sql = "SELECT * FROM appointment WHERE email='$email' ORDER BY date";
                         $result = mysqli_query($con, $sql);
@@ -399,7 +401,8 @@ if (!isset($_SESSION['email'])) {
                       <tbody>
 
                         <?php
-                        include "../../db_conn.php";
+                        require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                         $email = $_SESSION['email'];
                         $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
                         $row = mysqli_fetch_array($query);

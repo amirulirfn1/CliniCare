@@ -1,5 +1,6 @@
 <?php
-include "../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -126,7 +127,8 @@ if (!isset($_SESSION['email'])) {
                     </thead>
                     <tbody>
                       <?php
-                      include "../db_conn.php";
+                      require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                       $sql = "SELECT customer.name, customer.email, customer.phoneNumber, customer.ICnumber, customer.birthDate FROM customer 
                       INNER JOIN user ON customer.email = user.email WHERE user.usertype = 'customer' order by name";
                       $result = mysqli_query($con, $sql);

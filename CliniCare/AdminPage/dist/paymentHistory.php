@@ -1,5 +1,6 @@
 <?php
-include "../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -125,7 +126,8 @@ if (!isset($_SESSION['email'])) {
                     <tbody>
 
                       <?php
-                      include "../db_conn.php";
+                      require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                       $query = mysqli_query($con, "SELECT * FROM userpayment ORDER BY date");
                       $x = 1;
 

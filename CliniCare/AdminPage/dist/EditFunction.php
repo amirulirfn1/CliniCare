@@ -2,7 +2,8 @@
 
 function getCustomerInfo($email)
 {
-	include "../db_conn.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
 	if (!$con) {
 		echo "error";
@@ -16,7 +17,8 @@ function getCustomerInfo($email)
 function updateStaffInformation()
 {
 
-	include "../db_conn.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
 	if (!$con) {
 		echo "Error";

@@ -3,7 +3,8 @@ if (isset($_GET['vkey'])) {
     //Process the vkey
     $vkey = $_GET['vkey'];
 
-    include "db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $resultSet = $con->query("SELECT verified, vkey FROM customer WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");
 

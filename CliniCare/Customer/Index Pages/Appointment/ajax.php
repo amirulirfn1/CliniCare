@@ -1,5 +1,6 @@
 <?php
-include "../../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 $date = $_GET["date"];
 $sql = "select time from appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
 if($date!=""){

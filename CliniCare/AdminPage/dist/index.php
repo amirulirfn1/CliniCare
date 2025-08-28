@@ -1,5 +1,6 @@
 <?php
-include "../db_conn.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
@@ -110,7 +111,8 @@ if (!isset($_SESSION['email'])) {
                   </div>
                   <div class="card-body">
                     <?php
-                    include '../db_conn.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                     $query = mysqli_query($con, "SELECT COUNT(transactionID) FROM userpayment");
                     $row = mysqli_fetch_array($query);
                     if ($row[0] == 0) {
@@ -135,7 +137,8 @@ if (!isset($_SESSION['email'])) {
                   </div>
                   <div class="card-body">
                     <?php
-                    include '../db_conn.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                     $query = mysqli_query($con, "SELECT SUM(quantity) FROM usercart WHERE status=0");
                     $row = mysqli_fetch_array($query);
                     if ($row[0] == null) {
@@ -160,7 +163,8 @@ if (!isset($_SESSION['email'])) {
                   </div>
                   <div class="card-body">
                     <?php
-                    include '../db_conn.php';
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                     $query = mysqli_query($con, "SELECT SUM(price) FROM userpayment");
                     $row = mysqli_fetch_array($query);
                     $price = $row[0];
@@ -202,7 +206,8 @@ if (!isset($_SESSION['email'])) {
                   </thead>
                   <tbody>
                     <?php
-                    include "../db_conn.php";
+                    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
                     $sql = "SELECT * FROM appointment WHERE status = 1";
                     $result = mysqli_query($con, $sql);
                     $x = 1;

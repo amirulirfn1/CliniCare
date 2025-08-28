@@ -38,7 +38,8 @@ if (isset($_POST['med1'])) {
 
 function med1()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -76,7 +77,8 @@ function med1()
 }
 function med2()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -115,7 +117,8 @@ function med2()
 
 function med3()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -154,7 +157,8 @@ function med3()
 
 function med4()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -193,7 +197,8 @@ function med4()
 
 function med5()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -232,7 +237,8 @@ function med5()
 
 function med6()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -271,7 +277,8 @@ function med6()
 
 function med7()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -310,7 +317,8 @@ function med7()
 
 function med8()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -349,7 +357,8 @@ function med8()
 
 function med9()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -388,7 +397,8 @@ function med9()
 
 function med10()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -427,7 +437,8 @@ function med10()
 
 function med11()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -466,7 +477,8 @@ function med11()
 
 function med12()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -505,7 +517,8 @@ function med12()
 
 function minus()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -530,7 +543,8 @@ function minus()
 
 function add()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
@@ -555,7 +569,8 @@ function add()
 
 function deleteMed()
 {
-    include "../../db_conn.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+$con = Database::getConnection();
 
     $email = $_SESSION['email'];
     $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
