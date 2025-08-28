@@ -142,7 +142,7 @@ if (!isset($_SESSION['email'])) {
 
                         $customerS = $row['email'];
 
-                        echo '<td><form action="../AdminEntry.php" method="POST">';
+                        echo '<td><form action="../../public/admin.php" method="POST">';
                         echo '<input type="hidden" name="emailToDelete" 
 												value="' . $customerS . '" >';
                         echo '<button type="submit" value="Delete Customer" 

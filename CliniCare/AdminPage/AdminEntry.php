@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-if (isset($_POST['deleteCustomer'])) {
-    deleteCustomer($_POST['deleteCustomer']);
-} else if (isset($_POST['editCustomer'])) {
+if (isset($_POST['editCustomer'])) {
     header("Location: ../AdminPage/dist/editCustomer.php");
 } else if (isset($_POST['closeAppointment'])) {
     closeAppointment($__POST['closeAppointment']);
@@ -11,8 +9,6 @@ if (isset($_POST['deleteCustomer'])) {
     openAppointment($__POST['openAppointment']);
 } else if (isset($_POST['updateCustomer'])) {
     updateCustomer($_POST['updateCustomer']);
-} else if (isset($_POST['updateProfileAdmin'])) {
-    updateProfileAdmin($_POST['updateCustomer']);
 } else if (isset($_POST['deleteSlot'])) {
     deleteSlot($_POST['deleteSlot']);
 } else if (isset($_POST['addSlot'])) {
@@ -26,31 +22,6 @@ if (isset($_POST['deleteCustomer'])) {
 
 <?php
 //function edit profile info
-function updateProfileAdmin()
-{
-    include "db_conn.php";
-
-    if (!$con) {
-        echo "Error";
-    } else {
-
-        $email = $_SESSION['email'];
-        $name = $_POST['name'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $icNumber = $_POST['icNumber'];
-        $birthDate = $_POST['birthDate'];
-        $address = $_POST['address'];
-
-        $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
-             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
-
-        if ($con->query($sql) === TRUE) {
-            header("Location: ../AdminPage/dist/profile.php");
-        } else {
-            echo "error";
-        }
-    }
-}
 
 
 function getCustomerInfo($email)
@@ -65,27 +36,6 @@ function getCustomerInfo($email)
     }
 }
 
-function deleteCustomer()
-{
-    include "db_conn.php";
-
-    if (!$con) {
-        echo "Error";
-    } else {
-        $email = $_POST['emailToDelete'];
-        $sql = "DELETE FROM customer WHERE email = '$email' ";
-        if ($con->query($sql) === TRUE) {
-            $sql2 = "DELETE FROM user WHERE email = '$email'";
-            if ($con->query($sql2) === TRUE) {
-                header("Location: ../AdminPage/dist/customerList.php");
-            } else {
-                echo "error sql2";
-            }
-        } else {
-            echo "error sql";
-        }
-    }
-}
 
 function updateCustomer()
 {
