@@ -1,6 +1,10 @@
 <?php
 include "../../db_conn.php";
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -134,6 +138,7 @@ if (!isset($_SESSION['email'])) {
                             <li><a href="../History/myHistory.php">View History</a></li>
                             <li><a href="../Appointment/AppointmentSlot.php">Make an Appointment</a></li>
                             <form action="../../CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                                 <li>
                                     <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
                                             Sign Out</button></a>
@@ -176,6 +181,7 @@ if (!isset($_SESSION['email'])) {
                                     </h2>
 
                                     <form action="CartEntry.php" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                                         <button type="submit" id="med12" name="med12" class="btn btn-primary" style="font-size:17px; color:white; ">
                                             Add to cart
                                         </button>

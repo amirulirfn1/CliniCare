@@ -1,6 +1,10 @@
 <?php
 include "../db_conn.php";
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -42,6 +46,7 @@ if (!isset($_SESSION['email'])) {
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
@@ -58,6 +63,7 @@ if (!isset($_SESSION['email'])) {
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <form action="../../Customer/CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                   <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
@@ -142,7 +148,8 @@ if (!isset($_SESSION['email'])) {
 
                         $customerS = $row['email'];
 
-                        echo '<td><form action="../AdminEntry.php" method="POST">';
+                        echo '<td><form action="../AdminEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">';
                         echo '<input type="hidden" name="emailToDelete" 
 												value="' . $customerS . '" >';
                         echo '<button type="submit" value="Delete Customer" 
@@ -150,7 +157,8 @@ if (!isset($_SESSION['email'])) {
 												<i class="fas fa-times"><h7> Delete <h7></i></button>';
                         echo '</form></td>';
 
-                        echo '<td><form action="editCustomer.php" method="POST">';
+                        echo '<td><form action="editCustomer.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">';
                         echo '<input type="hidden" name="customerToUpdate" 
 												value="' . $customerS . '" >';
                         echo '<button type="submit" value="editCustomer" 
