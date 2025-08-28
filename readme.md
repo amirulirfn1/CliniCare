@@ -38,3 +38,7 @@ Installation Manual for UniServer
 - password : customer
 ```
 
+
+## Naming Guidelines
+
+- Use snake_case for directory names and avoid spaces.

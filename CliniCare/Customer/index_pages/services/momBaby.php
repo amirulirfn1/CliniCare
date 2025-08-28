@@ -20,13 +20,13 @@ if (!isset($_SESSION['email'])) {
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Medical Check-Up | CliniCare</title>
+  <title>Mom & Baby Care | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../../../assets/img/gambar/icon.jpeg" rel="icon">
-  <link href="../../../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
+  <link href="../assets/img/gambar/icon.jpeg" rel="icon">
+  <link href="../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -81,12 +81,12 @@ if (!isset($_SESSION['email'])) {
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../../Index Pages/services/primaryCare.php">Primary Care</a></li>
-              <li><a href="../../Index Pages/services/checkup.php">Medical Check-Up</a></li>
-              <li><a href="../../Index Pages/services/smoking.php">Smoking Cessation</a></li>
-              <li><a href="../../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-              <li><a href="../../Index Pages/services/pharmacy.php">Pharmacy</a></li>
-              <li><a href="../../Index Pages/services/covid.php">Covid-19 Centre</a></li>
+              <li><a href="../../index_pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="../../index_pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="../../index_pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="../../index_pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="../../index_pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="../../index_pages/services/covid.php">Covid-19 Centre</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
@@ -122,39 +122,36 @@ if (!isset($_SESSION['email'])) {
     <br><br><br><br>
 
     <!-- ======= Main My Profile Section ======= -->
-    <section id="faq" class="faq section-bg">
+    <section id="services" class="services section-bg">
       <div class="container">
 
         <div class="section-title">
-          <h2>Medical Check-Up - Services</h2>
+          <h2>Mom & Baby Care - Services</h2>
         </div>
 
         <div class="row">
           <div class="col-md-4 grid-margin stretch-card">
             <p>
-              <img src="../assets/img/gambar/medical.png" style="width : 300px">
+              <img src="../assets/img/gambar/mom.png" style="width : 300px">
             </p>
           </div>
 
           <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6>We provide a regular check-up</h6>
+                <h6><strong>Provide a wide range of antenatal and postnatal services</strong> </h6>
                 <p class="card-description"></p>
 
                 <ul class="list-star">
 
-                  <li>Health check-ups are not merely the physical check-ups by
-                    a doctor but also include screening in
-                    the form of laboratory tests and other scans.
-                    The doctors can also help advise patients on
-                    how they can work towards avoiding
-                    any impending problems because of their lifestyle.</li>
+                  <li>This services provide both antenatal education services
+                    as well as postnatal support to parents and a range of services
+                    to babies and children of up to the age of five years. </li>
 
                   <br>
 
-                  <li>Regular health check-ups are essential because
-                    they help identify potential problems at an early stage.</li>
+                  <li>Antenatal and postnatal care for mother and baby are
+                    essential to identify and promptly address possible health problems</li>
 
                 </ul>
               </div>
@@ -167,46 +164,31 @@ if (!isset($_SESSION['email'])) {
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
-                    <h4 class="card-title">How we care for you?</h4>
-                    <p class="card-description">We offer a full range of basic medical check-up services for our patients.</p>
+                    <h4 class="card-title"><strong>How we care for you?</strong></h4>
+                    <p class="card-description">Our experts will take care of mom and child.</p>
 
                     <div class="template-demo d-flex justify-content-between flex-nowrap">
                       <ul class="list-arrow">
-                        <li><strong>Physical Examination</strong>
-                          <p>Measure height & weight, check vital signs, review personal health concerns
-                            , review medication list and more.
+                        <li><strong>Breastfeeding Education and Support</strong>
+                          <p>To encourages all moms to breastfeed their newborns.
                         </li>
 
-                        <li><strong>Blood Tests</strong>
-                          <p>Taking a blood sample from a
-                            blood vessel in your arm for laboratory analysis to assess
-                            general state of health, organ function, infection, genetic
-                            condition and many more.
+                        <li><strong>Women's Health</strong>
+                          <p>To detect breast cancer as early as possible.
                         </li>
 
-                        <li><strong>Urine Tests</strong>
-                          <p>A complete urinalysis consists of visual examination, chemical
-                            examination, and microscopic examination, to detect
-                            and/or measure several substances in the urine.
+                        <li><strong>Prenatal Education</strong>
+                          <p>Offers pre-natal training to minimize a mother’s
+                            effort through education and stress-reducing techniques.
                         </li>
 
-                        <li><strong>Imaging</strong>
-                          <p>Modern diagnostic imaging technologies enable to have visual diagnosis
-                            of your health condition by virtually looking
-                            indside your body.
+                        <li><strong>Postpartum Services</strong>
+                          <p>To offer you support for many aspects of growing into motherhood
+                            and meeting your and your baby’s needs.
                         </li>
 
-                        <li><strong>Insurance Medical Examination</strong>
-                          <p>It is a requirement by most of the insurance companies
-                            for their potential policyholders to
-                            undergo a set of medical examination for
-                            their judgement on the insurance premium to be paid.
-                        </li>
-
-                        <li><strong>Diabetes Checks & Tests</strong>
-                          <p>Include a fasting blood sugar level test,
-                            which measures the amount of glucose in your blood after
-                            you have fasted (haven’t eaten for a while).
+                        <li><strong>Child Health Clinics</strong>
+                          <p>Offer regular baby health and development reviews and vaccinations.
                         </li>
                       </ul>
                     </div>
@@ -215,27 +197,27 @@ if (!isset($_SESSION['email'])) {
               </div>
             </div>
           </div>
+
           <div class="col-md-4 grid-margin stretch-card">
             <br>
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Gallery</h4>
+                <h4 class="card-title"><strong>Gallery</strong></h4>
                 <p class="card-description"></p>
-                <br>
 
                 <div class="template-demo">
-                  <p>
-                    <img src="../assets/img/gambar/vital.jpg" style="width : 280px">
-                  </p>
                   <br>
                   <p>
-                    <img src="../assets/img/gambar/ctScan.jpg" style="width : 280px">
+                    <img src="../assets/img/gambar/mom1.jpg" style="width : 280px">
                   </p>
                   <br>
+                  <img src="../assets/img/gambar/mom3.jpg" style="width : 280px">
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
     </section><!-- End Testimonials Section -->
   </main><!-- End #main -->
 

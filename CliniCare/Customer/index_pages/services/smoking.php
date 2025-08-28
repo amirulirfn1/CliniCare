@@ -82,12 +82,12 @@ if (!isset($_SESSION['email'])) {
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../../Index Pages/services/primaryCare.php">Primary Care</a></li>
-              <li><a href="../../Index Pages/services/checkup.php">Medical Check-Up</a></li>
-              <li><a href="../../Index Pages/services/smoking.php">Smoking Cessation</a></li>
-              <li><a href="../../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-              <li><a href="../../Index Pages/services/pharmacy.php">Pharmacy</a></li>
-              <li><a href="../../Index Pages/services/covid.php">Covid-19 Centre</a></li>
+              <li><a href="../../index_pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="../../index_pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="../../index_pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="../../index_pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="../../index_pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="../../index_pages/services/covid.php">Covid-19 Centre</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>

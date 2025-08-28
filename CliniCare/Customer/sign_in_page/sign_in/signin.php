@@ -35,8 +35,8 @@ if (isset($_SESSION['email'])) {
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
-                        <a href="../../Sign Up Page/Sign Up/signup.php" class="signup-image-link">Create an account</a>
-                        <a href="../../Sign In Page/Sign In/forgotPassword.php" class="signup-image-link">Forgot Password?</a>
+                        <a href="../../sign_up_page/sign_up/signup.php" class="signup-image-link">Create an account</a>
+                        <a href="../../sign_in_page/sign_in/forgotPassword.php" class="signup-image-link">Forgot Password?</a>
                     </div>
 
                     <div class="signin-form">

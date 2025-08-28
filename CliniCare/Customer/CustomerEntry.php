@@ -671,7 +671,7 @@ function mailReset()
                 
         <div align="center">
           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;font-family:Cabin,sans-serif;"><tr><td style="font-family:Cabin,sans-serif;" align="center"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:46px; v-text-anchor:middle; width:234px;" arcsize="8.5%" stroke="f" fillcolor="#1977cc"><w:anchorlock/><center style="color:#FFFFFF;font-family:Cabin,sans-serif;"><![endif]-->
-            <a href="https://clinicaremy.com/Customer/Sign In Page/Sign In/resetPassword.php?vkey=' . $vkey . '" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
+            <a href="https://clinicaremy.com/Customer/sign_in_page/sign_in/resetPassword.php?vkey=' . $vkey . '" style="box-sizing: border-box;display: inline-block;font-family:Cabin,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #1977cc; border-radius: 4px;-webkit-border-radius: 4px; -moz-border-radius: 4px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
               <span style="display:block;padding:14px 44px 13px;line-height:120%;"><span style="font-size: 16px; line-height: 19.2px;"><strong><span style="line-height: 19.2px; font-size: 16px;">RESET YOUR PASSWORD</span></strong></span></span>
             </a>
           <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
@@ -826,7 +826,7 @@ function updateProfile()
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
     if ($con->query($sql) === TRUE) {
-      header("Location: ../Customer/Index Pages/Profile/myProfile.php");
+      header("Location: ../Customer/index_pages/Profile/myProfile.php");
     } else {
       echo "error";
     }
@@ -852,7 +852,7 @@ function bookApp()
     if ($date < $dateToday) {
       // show script popup message for date is past today and redirect to AppointmentSlot.php
       echo "<script>alert('Date is past today');
-      window.location.href='../Customer/Index Pages/Appointment/AppointmentSlot.php';</script>";
+      window.location.href='../Customer/index_pages/Appointment/AppointmentSlot.php';</script>";
 
       //update table appointmentslot set status = 1
       $sql = "UPDATE appointmentslot SET status = 1 WHERE date = '$date' ";
@@ -867,7 +867,7 @@ function bookApp()
         $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
         //run sql2 statement
         $con->query($sql2);
-        header("Location: ../Customer/Index Pages/History/myHistory.php");
+        header("Location: ../Customer/index_pages/History/myHistory.php");
       } else {
         echo "error";
       }

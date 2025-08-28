@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
 }
 ?>
 
-<!-- PAGE FOR MY PROFILE CUSTOMER -->
+<!-- PAGE FOR SERVICES- COVID-19 -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ if (!isset($_SESSION['email'])) {
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Mom & Baby Care | CliniCare</title>
+  <title>Covid-19 Centre | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -81,12 +81,12 @@ if (!isset($_SESSION['email'])) {
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../../Index Pages/services/primaryCare.php">Primary Care</a></li>
-              <li><a href="../../Index Pages/services/checkup.php">Medical Check-Up</a></li>
-              <li><a href="../../Index Pages/services/smoking.php">Smoking Cessation</a></li>
-              <li><a href="../../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-              <li><a href="../../Index Pages/services/pharmacy.php">Pharmacy</a></li>
-              <li><a href="../../Index Pages/services/covid.php">Covid-19 Centre</a></li>
+              <li><a href="../../index_pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="../../index_pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="../../index_pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="../../index_pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="../../index_pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="../../index_pages/services/covid.php">Covid-19 Centre</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
@@ -126,38 +126,39 @@ if (!isset($_SESSION['email'])) {
       <div class="container">
 
         <div class="section-title">
-          <h2>Mom & Baby Care - Services</h2>
+          <h2>Covid-19 Centre - Services</h2>
         </div>
 
         <div class="row">
           <div class="col-md-4 grid-margin stretch-card">
             <p>
-              <img src="../assets/img/gambar/mom.png" style="width : 300px">
+              <img src="../assets/img/gambar/covid.png" style="width : 300px">
             </p>
           </div>
 
           <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6><strong>Provide a wide range of antenatal and postnatal services</strong> </h6>
+                <h6><strong>Get your free from Covid-19 virus</strong></h6>
                 <p class="card-description"></p>
 
                 <ul class="list-star">
 
-                  <li>This services provide both antenatal education services
-                    as well as postnatal support to parents and a range of services
-                    to babies and children of up to the age of five years. </li>
+                  <li>We host Covid-19 vaccine clinics.
+                    Appointments are required.</li>
 
                   <br>
 
-                  <li>Antenatal and postnatal care for mother and baby are
-                    essential to identify and promptly address possible health problems</li>
+                  <li>Vaccine appointments are open to all patients
+                    who want to take the vaccine. </li>
 
+                  <br>
+
+                  <li>Get covid 19 swab test and get result in 24 hours.</li>
                 </ul>
               </div>
             </div>
           </div>
-
           <div class="col-md-8 grid-margin stretch-card">
             <br>
             <div class="card">
@@ -165,30 +166,19 @@ if (!isset($_SESSION['email'])) {
                 <div class="row">
                   <div class="col-md-12">
                     <h4 class="card-title"><strong>How we care for you?</strong></h4>
-                    <p class="card-description">Our experts will take care of mom and child.</p>
+                    <p class="card-description">Helping you get the best for your medicines.</p>
 
                     <div class="template-demo d-flex justify-content-between flex-nowrap">
                       <ul class="list-arrow">
-                        <li><strong>Breastfeeding Education and Support</strong>
-                          <p>To encourages all moms to breastfeed their newborns.
+                        <li><strong>Swab Test</strong>
+                          <p>Undergo a COVID-19 PCR swab test by walk-in, drive-thru or at your home.
                         </li>
 
-                        <li><strong>Women's Health</strong>
-                          <p>To detect breast cancer as early as possible.
-                        </li>
-
-                        <li><strong>Prenatal Education</strong>
-                          <p>Offers pre-natal training to minimize a mother’s
-                            effort through education and stress-reducing techniques.
-                        </li>
-
-                        <li><strong>Postpartum Services</strong>
-                          <p>To offer you support for many aspects of growing into motherhood
-                            and meeting your and your baby’s needs.
-                        </li>
-
-                        <li><strong>Child Health Clinics</strong>
-                          <p>Offer regular baby health and development reviews and vaccinations.
+                        <li><strong>Vaccination</strong>
+                          <p>If you don't get your vaccine appointment yet,
+                            please do book at our clinic. We are now offering coronavirus (COVID-19)
+                            vaccination services as the vaccination programme
+                            has nearly completed first doses for all adults in Kuala selangor.
                         </li>
                       </ul>
                     </div>
@@ -208,10 +198,9 @@ if (!isset($_SESSION['email'])) {
                 <div class="template-demo">
                   <br>
                   <p>
-                    <img src="../assets/img/gambar/mom1.jpg" style="width : 280px">
+                    <img src="../assets/img/gambar/covid1.jpg" style="width : 280px">
                   </p>
-                  <br>
-                  <img src="../assets/img/gambar/mom3.jpg" style="width : 280px">
+
                 </div>
               </div>
             </div>

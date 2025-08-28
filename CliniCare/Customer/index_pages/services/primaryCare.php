@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
 }
 ?>
 
-<!-- PAGE FOR SERVICES- PHARMACY -->
+<!-- PAGE FOR MY PROFILE CUSTOMER -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +20,13 @@ if (!isset($_SESSION['email'])) {
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Pharmacy | CliniCare</title>
+  <title>Primary Care | CliniCare</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/gambar/icon.jpeg" rel="icon">
-  <link href="../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
+  <link href="../../../assets/img/gambar/icon.jpeg" rel="icon">
+  <link href="../../../assets/img/gambar/icon.jpeg" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -81,12 +81,12 @@ if (!isset($_SESSION['email'])) {
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">About</a></li>
           <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span>Services<i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../../Index Pages/services/primaryCare.php">Primary Care</a></li>
-              <li><a href="../../Index Pages/services/checkup.php">Medical Check-Up</a></li>
-              <li><a href="../../Index Pages/services/smoking.php">Smoking Cessation</a></li>
-              <li><a href="../../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-              <li><a href="../../Index Pages/services/pharmacy.php">Pharmacy</a></li>
-              <li><a href="../../Index Pages/services/covid.php">Covid-19 Centre</a></li>
+              <li><a href="../../index_pages/services/primaryCare.php">Primary Care</a></li>
+              <li><a href="../../index_pages/services/checkup.php">Medical Check-Up</a></li>
+              <li><a href="../../index_pages/services/smoking.php">Smoking Cessation</a></li>
+              <li><a href="../../index_pages/services/momBaby.php">Mom & Baby Care</a></li>
+              <li><a href="../../index_pages/services/pharmacy.php">Pharmacy</a></li>
+              <li><a href="../../index_pages/services/covid.php">Covid-19 Centre</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="../../CustomerHomePage/index.php">Doctors</a></li>
@@ -122,40 +122,44 @@ if (!isset($_SESSION['email'])) {
     <br><br><br><br>
 
     <!-- ======= Main My Profile Section ======= -->
-    <section id="services" class="services section-bg">
+    <section id="faq" class="faq section-bg">
       <div class="container">
 
         <div class="section-title">
-          <h2>Pharmacy - Services</h2>
+          <h2>Primary Care - Services</h2>
         </div>
+
 
         <div class="row">
           <div class="col-md-4 grid-margin stretch-card">
             <p>
-              <img src="../assets/img/gambar/pharmacy.png" style="width : 380px">
+              <img src="../assets/img/gambar/primaryCare.png" style="width : 300px">
             </p>
           </div>
 
           <div class="col-md-8 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h6><strong>Provide you with comprehensive pharmacy services</strong></h6>
+                <h6>We offer a full range of primary care services for adults and children </h6>
                 <p class="card-description"></p>
 
                 <ul class="list-star">
 
-                  <li>Provide patients with timely and accurate prescriptions
-                    while also educating them on the necessity of their drug therapy. </li>
+                  <li>A primary care clinic is a medical facility that focuses on
+                    the initial treatment of medical ailments.
+                    In most cases, the conditions seen at the clinic are not serious,
+                    or not considered life threatening.
+                    If there is a condition discovered at a primary care clinic
+                    that may be considered extremely dangerous to the patient,
+                    a referral to a specialist may be made.</li>
 
                   <br>
 
-                  <li>Provides less walk-in prescription wait times than
-                    some of the larger corporate franchises.</li>
-
-                  <br>
-
-                  <li>Provides pharmaceutical care that optimizes the use of
-                    medication and promotes health, wellness and disease prevention.</li>
+                  <li>Primary care clinics provide day-to-day healthcare services to patients.
+                    Primary care acts as the principal point of continuous healthcare for patients
+                    and also coordinates specialist care as may be required by the patient.
+                    Primary care is usually provided by general practitioners,
+                    family medicine doctors.</li>
 
                 </ul>
               </div>
@@ -167,22 +171,33 @@ if (!isset($_SESSION['email'])) {
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-12">
-                    <h4 class="card-title"><strong>How we care for you?</strong></h4>
-                    <p class="card-description">Helping you get the best for your medicines.</p>
+                    <h4 class="card-title">How we care for you?</h4>
+                    <p class="card-description">We offer a quit-smoking-plan for our patients.</p>
 
                     <div class="template-demo d-flex justify-content-between flex-nowrap">
                       <ul class="list-arrow">
-                        <li><strong>Drug information services</strong>
-                          <p>We will give enough details and information
-                            about our patients' prescription.
+                        <li><strong>Family Medicine</strong>
+                          <p> Offers care such as Workplace injuries and Children’s issues.
                         </li>
 
-                        <li><strong>Specialty pharmacy services</strong>
-                          <p>Our pharmacies are at the best level to guide our patients.
+                        <li><strong>Annual Physicals</strong>
+                          <p> We care for all members of your family.
                         </li>
 
-                        <li><strong>Delivery Services</strong>
-                          <p>We will deliver right to your doorstep.
+                        <li><strong>Laboratary Testing</strong>
+                          <p>For check a sample of your blood, urine, or body tissues.
+                        </li>
+
+                        <li><strong>Screening for Health Conditions </strong>
+                          <p>Like diabetes, high blood pressure, and high cholesterol.
+                        </li>
+
+                        <li><strong>Treatment of Mild Symptoms</strong>
+                          <p>Such as fever, headache, cough, and sore throat.
+                        </li>
+
+                        <li><strong>Treatment of Minor Injuries </strong>
+                          <p>Such as mild cuts, scrapes, or burns.
                         </li>
                       </ul>
                     </div>
@@ -191,20 +206,22 @@ if (!isset($_SESSION['email'])) {
               </div>
             </div>
           </div>
-
           <div class="col-md-4 grid-margin stretch-card">
             <br>
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title"><strong>Gallery</strong></h4>
+                <h4 class="card-title">Gallery</h4>
                 <p class="card-description"></p>
 
                 <div class="template-demo">
-                  <br>
                   <p>
-                    <img src="../assets/img/gambar/medicine1.jpg" style="width : 280px">
+                    <img src="../assets/img/gambar/headache.jpg" style="width : 280px">
                   </p>
+                  <br>
 
+                  <p>
+                    <img src="../assets/img/gambar/broke.jpg" style="width : 280px">
+                  </p>
                 </div>
               </div>
             </div>

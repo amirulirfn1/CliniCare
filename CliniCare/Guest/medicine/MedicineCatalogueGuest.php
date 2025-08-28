@@ -71,7 +71,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="../../Customer/Sign In Page/Sign In/signin.php"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
+      <a href="../../Customer/sign_in_page/sign_in/signin.php"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
     </div>
   </header><!-- End Header -->
 
