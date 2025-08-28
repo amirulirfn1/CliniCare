@@ -127,12 +127,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #topbar .contact-info a {
   line-height: 1;
-  color: #444444;
+  color: #222222;
   transition: 0.3s;
 }
 
 #topbar .contact-info a:hover {
-  color: #1977cc;
+  color: #0b5ba8;
 }
 
 #topbar .contact-info i {
@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topbar .social-links a {
-  color: #437099;
+  color: #1a4e85;
   padding-left: 15px;
   display: inline-block;
   line-height: 1px;
@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topbar .social-links a:hover {
-  color: #1977cc;
+  color: #0b5ba8;
 }
 
 #topbar .social-links a:first-child {
@@ -1731,4 +1731,11 @@ section {
   background: #1c84e3;
   color: #fff;
   text-decoration: none;
+}
+
+/* Responsive typography for hero section */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 32px;
+  }
 }
