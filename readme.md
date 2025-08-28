@@ -38,3 +38,29 @@ Installation Manual for UniServer
 - password : customer
 ```
 
+
+## Asset compilation
+
+Front-end assets are built with [Vite](https://vitejs.dev/).
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+Outputs minified CSS and JavaScript to `public/assets`.
+
+### Watch for changes
+
+```bash
+npm run watch
+```
+
+Rebuilds assets whenever source files change.
