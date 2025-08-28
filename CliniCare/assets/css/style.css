@@ -10,16 +10,16 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  color: #2c2c2c;
 }
 
 a {
-  color: #1977cc;
+  color: #0056b3;
   text-decoration: none;
 }
 
 a:hover {
-  color: #3291e6;
+  color: #003d80;
   text-decoration: none;
 }
 
@@ -1428,6 +1428,8 @@ section {
 }
 
 .gallery .gallery-item img {
+  width: 100%;
+  height: auto;
   transition: all ease-in-out 0.4s;
 }
 
