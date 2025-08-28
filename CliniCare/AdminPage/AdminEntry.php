@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../app/Helpers/Input.php';
 
 if (isset($_POST['deleteCustomer'])) {
     deleteCustomer($_POST['deleteCustomer']);
@@ -34,12 +35,26 @@ function updateProfileAdmin()
         echo "Error";
     } else {
 
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'name' => 'string',
+            'phoneNumber' => 'string',
+            'icNumber' => 'string',
+            'birthDate' => 'date',
+            'address' => 'string'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
         $email = $_SESSION['email'];
-        $name = $_POST['name'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $icNumber = $_POST['icNumber'];
-        $birthDate = $_POST['birthDate'];
-        $address = $_POST['address'];
+        $name = $data['name'];
+        $phoneNumber = $data['phoneNumber'];
+        $icNumber = $data['icNumber'];
+        $birthDate = $data['birthDate'];
+        $address = $data['address'];
 
         $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
@@ -72,7 +87,17 @@ function deleteCustomer()
     if (!$con) {
         echo "Error";
     } else {
-        $email = $_POST['emailToDelete'];
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'emailToDelete' => 'email'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $email = $data['emailToDelete'];
         $sql = "DELETE FROM customer WHERE email = '$email' ";
         if ($con->query($sql) === TRUE) {
             $sql2 = "DELETE FROM user WHERE email = '$email'";
@@ -94,11 +119,25 @@ function updateCustomer()
     if (!$con) {
         echo "Error";
     } else {
-        $email = $_POST['email'];
-        $name = $_POST['name'];
-        $phoneNumber = $_POST['phoneNumber'];
-        $ICnumber = $_POST['ICnumber'];
-        $birthDate = $_POST['birthDate'];
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'email' => 'email',
+            'name' => 'string',
+            'phoneNumber' => 'string',
+            'ICnumber' => 'string',
+            'birthDate' => 'date'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $email = $data['email'];
+        $name = $data['name'];
+        $phoneNumber = $data['phoneNumber'];
+        $ICnumber = $data['ICnumber'];
+        $birthDate = $data['birthDate'];
 
         $sql = "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber',
              ICnumber = '$ICnumber', birthDate = '$birthDate 'WHERE email = '$email'";
@@ -119,7 +158,17 @@ function closeAppointment()
     if (!$con) {
         echo "Error";
     } else {
-        $appSId = $_POST['appToClose'];
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'appToClose' => 'int'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $appSId = $data['appToClose'];
         $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = '$appSId' ";
 
         if ($con->query($sql) === TRUE) {
@@ -137,7 +186,17 @@ function openAppointment()
     if (!$con) {
         echo "Error";
     } else {
-        $appSId = $_POST['appToOpen'];
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'appToOpen' => 'int'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $appSId = $data['appToOpen'];
 
         $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = '$appSId' ";
 
@@ -156,7 +215,17 @@ function deleteSlot()
     if (!$con) {
         echo "Error";
     } else {
-        $appSId = $_POST['SlotToDelete'];
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'SlotToDelete' => 'int'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $appSId = $data['SlotToDelete'];
         $sql = "DELETE FROM appointmentslot WHERE appSId='" . $appSId . "'";
 
         if ($con->query($sql) === TRUE) {
@@ -177,7 +246,18 @@ function addSlot()
         $time1 = "9AM - 1PM";
         $time2 = "2PM - 6PM";
         $time3 = "7PM - 11PM";
-        $date = $_POST['date'];
+
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'date' => 'date'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $date = $data['date'];
         $dateToday = date("Y-m-d");
 
         $query = mysqli_query($con, "SELECT * FROM appointmentslot WHERE date = '$date'");
@@ -214,8 +294,18 @@ function doneApp()
     if (!$con) {
         echo "Error";
     } else {
-        $appID = $_POST['appID'];
-        //update table appointment status = 0 
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'appID' => 'int'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $appID = $data['appID'];
+        //update table appointment status = 0
         $sql = "UPDATE appointment SET status = 0 WHERE appId = '$appID'";
         if ($con->query($sql) === TRUE) {
             header("Location: ../AdminPage/dist/appointmentList.php");
@@ -232,8 +322,18 @@ function cancelApp()
     if (!$con) {
         echo "Error";
     } else {
-        $appID = $_POST['appID'];
-        //update table appointment status = 2 
+        list($data, $errors) = Input::sanitizeArray($_POST, [
+            'appID' => 'int'
+        ]);
+
+        if ($errors) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'errors' => $errors]);
+            return;
+        }
+
+        $appID = $data['appID'];
+        //update table appointment status = 2
         $sql = "UPDATE appointment SET status = 2 WHERE appId = '$appID'";
         if ($con->query($sql) === TRUE) {
             header("Location: ../AdminPage/dist/appointmentList.php");

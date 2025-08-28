@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/../app/Helpers/Input.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -40,12 +41,27 @@ function signup()
     echo "error";
   } else {
     //2. Construct SQL statement
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $icNumber = $_POST['icNumber'];
-    $birthDate = $_POST['birthDate'];
+    list($data, $errors) = Input::sanitizeArray($_POST, [
+      'name' => 'string',
+      'email' => 'email',
+      'password' => 'string',
+      'phoneNumber' => 'string',
+      'icNumber' => 'string',
+      'birthDate' => 'date'
+    ]);
+
+    if ($errors) {
+      header('Content-Type: application/json');
+      echo json_encode(['success' => false, 'errors' => $errors]);
+      return;
+    }
+
+    $name = $data['name'];
+    $email = $data['email'];
+    $password = $data['password'];
+    $phoneNumber = $data['phoneNumber'];
+    $icNumber = $data['icNumber'];
+    $birthDate = $data['birthDate'];
 
     $password = md5($password);
     //Generate Vkey
@@ -378,9 +394,19 @@ function signin()
 {
   include "db_conn.php";
 
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $password = md5($password);
+  list($data, $errors) = Input::sanitizeArray($_POST, [
+    'email' => 'email',
+    'password' => 'string'
+  ]);
+
+  if ($errors) {
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'errors' => $errors]);
+    return;
+  }
+
+  $email = $data['email'];
+  $password = md5($data['password']);
 
   $query = "SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ";
   $result = mysqli_query($con, $query);
@@ -433,7 +459,17 @@ function getVkey()
     echo "No connection";
   } else {
     //Construct SQL statement
-    $email = $_POST['email'];
+    list($data, $errors) = Input::sanitizeArray($_POST, [
+      'email' => 'email'
+    ]);
+
+    if ($errors) {
+      header('Content-Type: application/json');
+      echo json_encode(['success' => false, 'errors' => $errors]);
+      return;
+    }
+
+    $email = $data['email'];
 
     $sql = "SELECT vkey FROM customer WHERE email='$email'";
     $qry = mysqli_query($con, $sql);
@@ -770,8 +806,19 @@ function resetPassword()
 {
   $vkey = $_SESSION['resetVkey'];
 
-  $pwd = $_POST['pwd'];
-  $pwdR = $_POST['pwd-repeat'];
+  list($data, $errors) = Input::sanitizeArray($_POST, [
+    'pwd' => 'string',
+    'pwd-repeat' => 'string'
+  ]);
+
+  if ($errors) {
+    header('Content-Type: application/json');
+    echo json_encode(['success' => false, 'errors' => $errors]);
+    return;
+  }
+
+  $pwd = $data['pwd'];
+  $pwdR = $data['pwd-repeat'];
 
   if (strlen($pwd) < 2 || strlen($pwdR) < 2) {
     header("Location: ../index.php");
@@ -814,13 +861,25 @@ function updateProfile()
 
     $email = $_SESSION['email'];
 
-    $name = $_POST['name'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $icNumber = $_POST['icNumber'];
-    $birthDate = $_POST['birthDate'];
-    $address = $_POST['address'];
+    list($data, $errors) = Input::sanitizeArray($_POST, [
+      'name' => 'string',
+      'phoneNumber' => 'string',
+      'icNumber' => 'string',
+      'birthDate' => 'date',
+      'address' => 'string'
+    ]);
 
-    $password = md5($password);
+    if ($errors) {
+      header('Content-Type: application/json');
+      echo json_encode(['success' => false, 'errors' => $errors]);
+      return;
+    }
+
+    $name = $data['name'];
+    $phoneNumber = $data['phoneNumber'];
+    $icNumber = $data['icNumber'];
+    $birthDate = $data['birthDate'];
+    $address = $data['address'];
 
     $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
@@ -842,10 +901,23 @@ function bookApp()
   } else {
     $email = $_SESSION['email'];
 
-    $name = $_POST['name'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $date = $_POST['date'];
-    $time = $_POST['time'];
+    list($data, $errors) = Input::sanitizeArray($_POST, [
+      'name' => 'string',
+      'phoneNumber' => 'string',
+      'date' => 'date',
+      'time' => 'string'
+    ]);
+
+    if ($errors) {
+      header('Content-Type: application/json');
+      echo json_encode(['success' => false, 'errors' => $errors]);
+      return;
+    }
+
+    $name = $data['name'];
+    $phoneNumber = $data['phoneNumber'];
+    $date = $data['date'];
+    $time = $data['time'];
     $dateToday = date("Y-m-d");
 
     //check if date is past today
