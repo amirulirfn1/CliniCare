@@ -38,3 +38,18 @@ Installation Manual for UniServer
 - password : customer
 ```
 
+
+## Running Tests
+
+Install dependencies:
+
+```bash
+composer install
+```
+
+Run the test suite:
+
+```bash
+vendor/bin/phpunit tests
+```
+
