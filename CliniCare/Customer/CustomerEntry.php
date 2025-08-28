@@ -55,7 +55,13 @@ function signup()
                     VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '','', '$vkey' )";
   }
 
-  if ($con->query($sql) === TRUE) {
+    try {
+      $con->query($sql);
+    } catch (mysqli_sql_exception $e) {
+      getLogger()->error('Signup failed: ' . $e->getMessage());
+      echo 'An unexpected error occurred. Please try again later.';
+      return;
+    }
     $mail = new PHPMailer(true);
     $subject = "Verify Your Email Address";
 
@@ -327,51 +333,47 @@ function signup()
         
         </html>';
 
-    try {
-      //Server settings
-      $mail->SMTPDebug = false;                      //Enable verbose debug output
-      $mail->isSMTP();                                            //Send using SMTP
-      $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
-      $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
-      $mail->Password   = 'clinicare123';                               //SMTP password
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+      try {
+        //Server settings
+        $mail->SMTPDebug = false;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
+        $mail->Password   = 'clinicare123';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-      //Recipients
-      $mail->setFrom('info@clinicaremy.com', 'CliniCare');
-      //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-      $mail->addAddress($email);               //Name is optional
-      //$mail->addReplyTo('info@example.com', 'Information');
-      //$mail->addCC('cc@example.com');
-      //$mail->addBCC('bcc@example.com');
+        //Recipients
+        $mail->setFrom('info@clinicaremy.com', 'CliniCare');
+        //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+        $mail->addAddress($email);               //Name is optional
+        //$mail->addReplyTo('info@example.com', 'Information');
+        //$mail->addCC('cc@example.com');
+        //$mail->addBCC('bcc@example.com');
 
-      //Attachments
-      //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
-      //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+        //Attachments
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
-      //Content
-      $mail->isHTML(true);                                  //Set email format to HTML
-      $mail->Subject = $subject;
-      $mail->Body    = $msg;
-      //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $msg;
+        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-      $mail->send();
+        $mail->send();
 
-
-      $sql2 = "INSERT INTO user (email, usertype)
-                            VALUES('$email', 'customer')";
-      if ($con->query($sql2) === TRUE) {
-        //kalau dah successful buat sign up, keluar page ni
-        header("Location: ../Alerts/success.php");
-      } else {
-        header("Location: ../Alerts/unsuccess.php");
-      }
-    } catch (Exception $e) {
-      echo "Message cannot be sent";
+        $sql2 = "INSERT INTO user (email, usertype)
+                              VALUES('$email', 'customer')";
+      $con->query($sql2);
+      header("Location: ../Alerts/success.php");
+    } catch (\Exception $e) {
+      getLogger()->error('Signup email or user insert failed: ' . $e->getMessage());
+      header("Location: ../Alerts/unsuccess.php");
     }
-  }
 }
+
 
 
 function signin()
@@ -456,9 +458,15 @@ function mailReset()
   require "PHPMailer/src/PHPMailer.php";
   require "PHPMailer/src/SMTP.php";
 
-  $email = $_SESSION['resetPassword'];
-  $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-  $row = mysqli_fetch_array($query);
+    $email = $_SESSION['resetPassword'];
+    try {
+      $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+      $row = mysqli_fetch_array($query);
+    } catch (mysqli_sql_exception $e) {
+      getLogger()->error('mailReset lookup failed: ' . $e->getMessage());
+      echo 'An unexpected error occurred. Please try again later.';
+      return;
+    }
 
   $vkey = getVkey($_POST);
   $mail = new PHPMailer(true);
@@ -761,8 +769,9 @@ function mailReset()
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-  } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+  } catch (\Exception $e) {
+    getLogger()->error('Password reset email failed: ' . $e->getMessage());
+    echo 'Unable to send reset email. Please try again later.';
   }
 }
 
@@ -787,14 +796,15 @@ function resetPassword()
       //update customer set password = '$pwd' where vkey = '$vkey'
       $sql = "update customer set password = '$pwd' where vkey = '$vkey'";
 
-      if ($con->query($sql) == TRUE) {
+      try {
+        $con->query($sql);
         unset($_SESSION['resetVkey']);
         unset($_SESSION['resetPassword']);
         header("Location: ../Alerts/successRS.php");
         exit();
-      } else {
-        //echo mysqli_error($con);
-        echo "error";
+      } catch (mysqli_sql_exception $e) {
+        getLogger()->error('Reset password failed: ' . $e->getMessage());
+        echo 'An unexpected error occurred. Please try again later.';
         exit();
       }
     }
@@ -825,11 +835,13 @@ function updateProfile()
     $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
 
-    if ($con->query($sql) === TRUE) {
-      header("Location: ../Customer/Index Pages/Profile/myProfile.php");
-    } else {
-      echo "error";
-    }
+      try {
+        $con->query($sql);
+        header("Location: ../Customer/Index Pages/Profile/myProfile.php");
+      } catch (mysqli_sql_exception $e) {
+        getLogger()->error('Update profile failed: ' . $e->getMessage());
+        echo 'An unexpected error occurred. Please try again later.';
+      }
   }
 }
 
@@ -856,21 +868,28 @@ function bookApp()
 
       //update table appointmentslot set status = 1
       $sql = "UPDATE appointmentslot SET status = 1 WHERE date = '$date' ";
-      //run sql statement
-      $con->query($sql);
-      exit();
+        //run sql statement
+        try {
+          $con->query($sql);
+        } catch (mysqli_sql_exception $e) {
+          getLogger()->error('Failed to update appointment slot: ' . $e->getMessage());
+          echo 'An unexpected error occurred. Please try again later.';
+        }
+        exit();
     } else {
       $sql = "INSERT INTO appointment (email, name, phoneNumber, date, time) VALUES ('$email', '$name', '$phoneNumber', '$date', '$time')";
 
-      if ($con->query($sql) === TRUE) {
-        //update table appointmentslot set status minus 1
-        $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
-        //run sql2 statement
-        $con->query($sql2);
-        header("Location: ../Customer/Index Pages/History/myHistory.php");
-      } else {
-        echo "error";
-      }
+        try {
+          $con->query($sql);
+          //update table appointmentslot set status minus 1
+          $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
+          //run sql2 statement
+          $con->query($sql2);
+          header("Location: ../Customer/Index Pages/History/myHistory.php");
+        } catch (mysqli_sql_exception $e) {
+          getLogger()->error('Booking appointment failed: ' . $e->getMessage());
+          echo 'An unexpected error occurred. Please try again later.';
+        }
     }
   }
 }

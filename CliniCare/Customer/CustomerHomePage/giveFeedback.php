@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../../logger.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -302,8 +304,9 @@ if (isset($_POST['btn-send'])) {
       $mail->send();
       //if mail is sent successfully
       header('location:index.php?success');
-    } catch (Exception $e) {
-      echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    } catch (\Exception $e) {
+      getLogger()->error('Feedback email failed: ' . $e->getMessage());
+      echo 'Unable to send your message at this time. Please try again later.';
     }
   }
 }
