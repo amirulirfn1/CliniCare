@@ -47,7 +47,7 @@ function signup()
     $icNumber = $_POST['icNumber'];
     $birthDate = $_POST['birthDate'];
 
-    $password = md5($password);
+    $password = password_hash($password, PASSWORD_DEFAULT);
     //Generate Vkey
     $vkey = md5(time() . $name);
 
@@ -380,14 +380,31 @@ function signin()
 
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $password = md5($password);
 
-  $query = "SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ";
+  $query = "SELECT * FROM customer  WHERE email = '$email' LIMIT 1 ";
   $result = mysqli_query($con, $query);
 
   if ($result->num_rows != 0) {
     //Process login
     $row = $result->fetch_assoc();
+    $storedPwd = $row['password'];
+
+    if (password_verify($password, $storedPwd)) {
+      // password verified
+    } else if (password_verify(md5($password), $storedPwd)) {
+      // migrated hash based on md5, upgrade to direct hash
+      $newHash = password_hash($password, PASSWORD_DEFAULT);
+      mysqli_query($con, "UPDATE customer SET password = '$newHash' WHERE email = '$email'");
+    } else if ($storedPwd === md5($password)) {
+      // legacy md5 hash, upgrade to modern hash
+      $newHash = password_hash($password, PASSWORD_DEFAULT);
+      mysqli_query($con, "UPDATE customer SET password = '$newHash' WHERE email = '$email'");
+    } else {
+      //Invalid login
+      header("Location: ../Alerts/unsuccessWRONG.php");
+      return;
+    }
+
     $verified = $row['verified'];
     $email = $row['email'];
     $_SESSION['email'] = $email;
@@ -778,7 +795,7 @@ function resetPassword()
     exit();
   } else if ($pwd == $pwdR) {
 
-    $pwd = md5($pwd);
+    $pwd = password_hash($pwd, PASSWORD_DEFAULT);
     include "db_conn.php";
 
     if (!$con) {
@@ -819,8 +836,6 @@ function updateProfile()
     $icNumber = $_POST['icNumber'];
     $birthDate = $_POST['birthDate'];
     $address = $_POST['address'];
-
-    $password = md5($password);
 
     $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
              icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
