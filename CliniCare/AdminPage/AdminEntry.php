@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "../db_functions.php";
 
 if (isset($_POST['deleteCustomer'])) {
     deleteCustomer($_POST['deleteCustomer']);
@@ -41,10 +42,12 @@ function updateProfileAdmin()
         $birthDate = $_POST['birthDate'];
         $address = $_POST['address'];
 
-        $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
-             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
+        $sql = "UPDATE customer SET name = ?, address = ?, phoneNumber = ?,
+             icNumber = ?, birthDate = ? WHERE email = ?";
 
-        if ($con->query($sql) === TRUE) {
+        $stmt = run_prepared_query($con, $sql, [$name, $address, $phoneNumber, $icNumber, $birthDate, $email]);
+
+        if ($stmt) {
             header("Location: ../AdminPage/dist/profile.php");
         } else {
             echo "error";
@@ -59,9 +62,12 @@ function getCustomerInfo($email)
     if (!$con) {
         echo "error";
     } else {
-        $sql = 'select * from customer where email = "' . $email . '"';
-        $qry = mysqli_query($con, $sql);
-        return $qry;
+        $sql = "SELECT * FROM customer WHERE email = ?";
+        $stmt = run_prepared_query($con, $sql, [$email]);
+        if ($stmt) {
+            return mysqli_stmt_get_result($stmt);
+        }
+        return false;
     }
 }
 
@@ -73,10 +79,12 @@ function deleteCustomer()
         echo "Error";
     } else {
         $email = $_POST['emailToDelete'];
-        $sql = "DELETE FROM customer WHERE email = '$email' ";
-        if ($con->query($sql) === TRUE) {
-            $sql2 = "DELETE FROM user WHERE email = '$email'";
-            if ($con->query($sql2) === TRUE) {
+        $sql = "DELETE FROM customer WHERE email = ?";
+        $stmt = run_prepared_query($con, $sql, [$email]);
+        if ($stmt) {
+            $sql2 = "DELETE FROM user WHERE email = ?";
+            $stmt2 = run_prepared_query($con, $sql2, [$email]);
+            if ($stmt2) {
                 header("Location: ../AdminPage/dist/customerList.php");
             } else {
                 echo "error sql2";
@@ -100,10 +108,12 @@ function updateCustomer()
         $ICnumber = $_POST['ICnumber'];
         $birthDate = $_POST['birthDate'];
 
-        $sql = "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber',
-             ICnumber = '$ICnumber', birthDate = '$birthDate 'WHERE email = '$email'";
+        $sql = "UPDATE customer SET name = ?, phoneNumber = ?,
+             ICnumber = ?, birthDate = ? WHERE email = ?";
 
-        if ($con->query($sql) === TRUE) {
+        $stmt = run_prepared_query($con, $sql, [$name, $phoneNumber, $ICnumber, $birthDate, $email]);
+
+        if ($stmt) {
             //echo $email;
             header("Location: ../AdminPage/dist/customerList.php");
         } else {
@@ -120,9 +130,11 @@ function closeAppointment()
         echo "Error";
     } else {
         $appSId = $_POST['appToClose'];
-        $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = '$appSId' ";
+        $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = ?";
 
-        if ($con->query($sql) === TRUE) {
+        $stmt = run_prepared_query($con, $sql, [$appSId]);
+
+        if ($stmt) {
             header("Location: ../AdminPage/dist/appointmentSlot.php");
         } else {
             echo "error";
@@ -139,9 +151,11 @@ function openAppointment()
     } else {
         $appSId = $_POST['appToOpen'];
 
-        $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = '$appSId' ";
+        $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = ?";
 
-        if ($con->query($sql) === TRUE) {
+        $stmt = run_prepared_query($con, $sql, [$appSId]);
+
+        if ($stmt) {
             header("Location: ../AdminPage/dist/appointmentSlot.php");
         } else {
             echo "error";
@@ -157,9 +171,11 @@ function deleteSlot()
         echo "Error";
     } else {
         $appSId = $_POST['SlotToDelete'];
-        $sql = "DELETE FROM appointmentslot WHERE appSId='" . $appSId . "'";
+        $sql = "DELETE FROM appointmentslot WHERE appSId = ?";
 
-        if ($con->query($sql) === TRUE) {
+        $stmt = run_prepared_query($con, $sql, [$appSId]);
+
+        if ($stmt) {
             header("Location: ../AdminPage/dist/appointmentSlot.php");
         } else {
             echo "error";
@@ -180,8 +196,8 @@ function addSlot()
         $date = $_POST['date'];
         $dateToday = date("Y-m-d");
 
-        $query = mysqli_query($con, "SELECT * FROM appointmentslot WHERE date = '$date'");
-        $row = mysqli_fetch_array($query);
+        $stmtCheck = run_prepared_query($con, "SELECT * FROM appointmentslot WHERE date = ?", [$date]);
+        $row = mysqli_fetch_array(mysqli_stmt_get_result($stmtCheck));
         //if row has result then
         if ($row) {
             //show popup message
@@ -193,11 +209,12 @@ function addSlot()
                 echo "<script>alert('Date must be today or later');</script>";
                 echo "<script>window.location.href='../AdminPage/dist/addSlot.php';</script>";
             } else {
-                $sql = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time1')";
-                $sql2 = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time2')";
-                $sql3 = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time3')";
+                $insertSql = "INSERT INTO appointmentslot (date, time) VALUES (?, ?)";
+                $stmt1 = run_prepared_query($con, $insertSql, [$date, $time1]);
+                $stmt2 = run_prepared_query($con, $insertSql, [$date, $time2]);
+                $stmt3 = run_prepared_query($con, $insertSql, [$date, $time3]);
 
-                if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
+                if ($stmt1 && $stmt2 && $stmt3) {
                     header("Location: ../AdminPage/dist/appointmentSlot.php");
                 } else {
                     echo "error";
@@ -215,9 +232,10 @@ function doneApp()
         echo "Error";
     } else {
         $appID = $_POST['appID'];
-        //update table appointment status = 0 
-        $sql = "UPDATE appointment SET status = 0 WHERE appId = '$appID'";
-        if ($con->query($sql) === TRUE) {
+        //update table appointment status = 0
+        $sql = "UPDATE appointment SET status = 0 WHERE appId = ?";
+        $stmt = run_prepared_query($con, $sql, [$appID]);
+        if ($stmt) {
             header("Location: ../AdminPage/dist/appointmentList.php");
         } else {
             echo "error";
@@ -233,9 +251,10 @@ function cancelApp()
         echo "Error";
     } else {
         $appID = $_POST['appID'];
-        //update table appointment status = 2 
-        $sql = "UPDATE appointment SET status = 2 WHERE appId = '$appID'";
-        if ($con->query($sql) === TRUE) {
+        //update table appointment status = 2
+        $sql = "UPDATE appointment SET status = 2 WHERE appId = ?";
+        $stmt = run_prepared_query($con, $sql, [$appID]);
+        if ($stmt) {
             header("Location: ../AdminPage/dist/appointmentList.php");
         } else {
             echo "error";

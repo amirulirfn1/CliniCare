@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "../db_functions.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -51,11 +52,12 @@ function signup()
     //Generate Vkey
     $vkey = md5(time() . $name);
 
-    $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)  
-                    VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '','', '$vkey' )";
+    $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)
+                    VALUES(?, ?, ?, ?, ?, ?, '', '', ?)";
+    $stmt = run_prepared_query($con, $sql, [$name, $email, $password, $phoneNumber, $icNumber, $birthDate, $vkey]);
   }
 
-  if ($con->query($sql) === TRUE) {
+  if ($stmt) {
     $mail = new PHPMailer(true);
     $subject = "Verify Your Email Address";
 
@@ -359,9 +361,9 @@ function signup()
       $mail->send();
 
 
-      $sql2 = "INSERT INTO user (email, usertype)
-                            VALUES('$email', 'customer')";
-      if ($con->query($sql2) === TRUE) {
+      $sql2 = "INSERT INTO user (email, usertype) VALUES (?, ?)";
+      $stmt2 = run_prepared_query($con, $sql2, [$email, 'customer']);
+      if ($stmt2) {
         //kalau dah successful buat sign up, keluar page ni
         header("Location: ../Alerts/success.php");
       } else {
@@ -382,10 +384,11 @@ function signin()
   $password = $_POST['password'];
   $password = md5($password);
 
-  $query = "SELECT * FROM customer  WHERE email = '$email' AND password = '$password' LIMIT 1 ";
-  $result = mysqli_query($con, $query);
+  $query = "SELECT * FROM customer  WHERE email = ? AND password = ? LIMIT 1 ";
+  $stmt = run_prepared_query($con, $query, [$email, $password]);
+  $result = $stmt ? mysqli_stmt_get_result($stmt) : false;
 
-  if ($result->num_rows != 0) {
+  if ($result && $result->num_rows != 0) {
     //Process login
     $row = $result->fetch_assoc();
     $verified = $row['verified'];
@@ -394,10 +397,11 @@ function signin()
 
     if ($verified == 1) {
 
-      $sql3 = "SELECT * FROM user WHERE email = '$email'";
-      $result3 = mysqli_query($con, $sql3);
+      $sql3 = "SELECT * FROM user WHERE email = ?";
+      $stmt3 = run_prepared_query($con, $sql3, [$email]);
+      $result3 = $stmt3 ? mysqli_stmt_get_result($stmt3) : false;
 
-      if ($result3->num_rows != 0) {
+      if ($result3 && $result3->num_rows != 0) {
 
         $row = $result3->fetch_assoc();
         $usertype = $row['usertype'];
@@ -435,11 +439,11 @@ function getVkey()
     //Construct SQL statement
     $email = $_POST['email'];
 
-    $sql = "SELECT vkey FROM customer WHERE email='$email'";
-    $qry = mysqli_query($con, $sql);
-    $count = mysqli_num_rows($qry);
-    if ($count == 1) {
-      $userRecord = mysqli_fetch_assoc($qry);
+    $sql = "SELECT vkey FROM customer WHERE email=?";
+    $stmt = run_prepared_query($con, $sql, [$email]);
+    $result = $stmt ? mysqli_stmt_get_result($stmt) : false;
+    if ($result && mysqli_num_rows($result) == 1) {
+      $userRecord = mysqli_fetch_assoc($result);
       $_SESSION['resetPassword'] = $email;
       return $userRecord['vkey'];
     } else {
@@ -457,8 +461,8 @@ function mailReset()
   require "PHPMailer/src/SMTP.php";
 
   $email = $_SESSION['resetPassword'];
-  $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-  $row = mysqli_fetch_array($query);
+  $stmt = run_prepared_query($con, "SELECT * FROM customer WHERE email = ?", [$email]);
+  $row = mysqli_fetch_array(mysqli_stmt_get_result($stmt));
 
   $vkey = getVkey($_POST);
   $mail = new PHPMailer(true);
@@ -785,9 +789,10 @@ function resetPassword()
       echo "error";
     } else {
       //update customer set password = '$pwd' where vkey = '$vkey'
-      $sql = "update customer set password = '$pwd' where vkey = '$vkey'";
+      $sql = "UPDATE customer SET password = ? WHERE vkey = ?";
+      $stmt = run_prepared_query($con, $sql, [$pwd, $vkey]);
 
-      if ($con->query($sql) == TRUE) {
+      if ($stmt) {
         unset($_SESSION['resetVkey']);
         unset($_SESSION['resetPassword']);
         header("Location: ../Alerts/successRS.php");
@@ -822,10 +827,11 @@ function updateProfile()
 
     $password = md5($password);
 
-    $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
-             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
+    $sql = "UPDATE customer SET name = ?, address = ?, phoneNumber = ?,
+             icNumber = ?, birthDate = ? WHERE email = ?";
+    $stmt = run_prepared_query($con, $sql, [$name, $address, $phoneNumber, $icNumber, $birthDate, $email]);
 
-    if ($con->query($sql) === TRUE) {
+    if ($stmt) {
       header("Location: ../Customer/Index Pages/Profile/myProfile.php");
     } else {
       echo "error";
@@ -855,18 +861,20 @@ function bookApp()
       window.location.href='../Customer/Index Pages/Appointment/AppointmentSlot.php';</script>";
 
       //update table appointmentslot set status = 1
-      $sql = "UPDATE appointmentslot SET status = 1 WHERE date = '$date' ";
+      $sql = "UPDATE appointmentslot SET status = 1 WHERE date = ?";
       //run sql statement
-      $con->query($sql);
+      run_prepared_query($con, $sql, [$date]);
       exit();
     } else {
-      $sql = "INSERT INTO appointment (email, name, phoneNumber, date, time) VALUES ('$email', '$name', '$phoneNumber', '$date', '$time')";
+      $sql = "INSERT INTO appointment (email, name, phoneNumber, date, time) VALUES (?, ?, ?, ?, ?)";
 
-      if ($con->query($sql) === TRUE) {
+      $stmt = run_prepared_query($con, $sql, [$email, $name, $phoneNumber, $date, $time]);
+
+      if ($stmt) {
         //update table appointmentslot set status minus 1
-        $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
+        $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = ? AND time = ?";
         //run sql2 statement
-        $con->query($sql2);
+        run_prepared_query($con, $sql2, [$date, $time]);
         header("Location: ../Customer/Index Pages/History/myHistory.php");
       } else {
         echo "error";
