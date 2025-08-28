@@ -56,9 +56,9 @@
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="../../index.php" class="logo me-auto"><img src="../../assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="../../index.php" class="logo me-auto"><img src="../../assets/img/gambar/logobanner.png" alt="CliniCare logo" class="img-fluid"></a>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0" role="navigation" aria-label="Main Navigation">
         <ul>
           <li><a class="nav-link scrollto" href="../../index.php">Home</a></li>
           <li><a class="nav-link scrollto" href="../../index.php">About</a></li>
@@ -68,7 +68,7 @@
           <li><a class="nav-link scrollto" href="../../index.php">Contact Us</a></li>
           <li><a class="nav-link scrollto active" href="../medicine/MedicineCatalogueGuest.php">Medicine</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle" role="button" aria-label="Toggle navigation"></i>
       </nav><!-- .navbar -->
 
       <a href="../../Customer/Sign In Page/Sign In/signin.php"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
@@ -93,7 +93,7 @@
             <div class="content">
 
               <h3>Ear, Nose & Throat</h3>
-              <i><img src="gambar/Ear-Nose-Throat-icons.png" class="center" width="280" alt=""></i>
+              <i><img src="gambar/Ear-Nose-Throat-icons.png" class="center" width="280" alt="Ear nose throat icon"></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -101,7 +101,7 @@
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/Acetin.jpg" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/Acetin.jpg" class="img-fluid" alt="Acetin sachet"></i>
                     <br><br>
                     <h4>Acetin Sachet 5g</h4>
                   </div>
@@ -109,7 +109,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/med7.jpg" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/med7.jpg" class="img-fluid" alt="Breacol cough syrup"></i>
                     <br><br>
                     <h4>Breacol Cough Syrup</h4>
                   </div>
@@ -117,7 +117,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/acetylcysteinesandoz.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/acetylcysteinesandoz.png" class="img-fluid" alt="Acetylcysteine Sandoz"></i>
                     <br><br>
                     <h4>Acetylcysteine Sandoz 600mg Tablet</h4>
                   </div>
@@ -133,7 +133,7 @@
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Fever, Pain & More</h3>
-              <i><img src="gambar/fever.png" class="center" alt=""></i>
+              <i><img src="gambar/fever.png" class="center" alt="Fever category icon"></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -141,7 +141,7 @@
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/Acugesic.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/Acugesic.png" class="img-fluid" alt="Acugesic tablet"></i>
                     <br><br>
                     <h4>Acugesic 50mg Tablet.</h4>
                   </div>
@@ -149,7 +149,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/apo.jpg" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/apo.jpg" class="img-fluid" alt="Apo Sumatriptan tablet"></i>
                     <br><br>
                     <h4>Apo-Sumatriptan 50mg Tablet</h4>
                   </div>
@@ -157,7 +157,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/Actimax.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/Actimax.png" class="img-fluid" alt="Actimax tablet"></i>
                     <br><br>
                     <h4>Actimax 500 Tablet</h4>
                   </div>
@@ -173,7 +173,7 @@
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Pregnancy</h3>
-              <i><img src="gambar/pregnancy.png" class="center" width="297" alt=""></i>
+              <i><img src="gambar/pregnancy.png" class="center" width="297" alt="Pregnancy category icon"></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -181,7 +181,7 @@
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/Appeton.jpg" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/Appeton.jpg" class="img-fluid" alt="Appeton folic acid"></i>
                     <br><br>
                     <h4>Appeton Essentials Folic Acid Tablet</h4>
                   </div>
@@ -189,7 +189,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/cell.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/cell.png" class="img-fluid" alt="Cell Labs ProbiDefendum"></i>
                     <br><br>
                     <h4>Cell Labs ProbiDefendum Sachet</h4>
                   </div>
@@ -197,7 +197,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/blackmores.jpg" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/blackmores.jpg" class="img-fluid" alt="Blackmores Proceive Care"></i>
                     <br><br>
                     <h4>Blackmores Proceive Care</h4>
                   </div>
@@ -213,7 +213,7 @@
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
               <h3>Lungs</h3>
-              <i><img src="gambar/lungs.png" class="center" width="297" height="250" alt=""></i>
+              <i><img src="gambar/lungs.png" class="center" width="297" height="250" alt="Lungs category icon"></i>
             </div>
           </div>
           <div class="col-lg-8 d-flex align-items-stretch">
@@ -221,7 +221,7 @@
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/aspira.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/aspira.png" class="img-fluid" alt="Aspira tablet"></i>
                     <br><br>
                     <h4>Aspira 10mg Tablet</h4>
                   </div>
@@ -229,7 +229,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/Alleryl.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/Alleryl.png" class="img-fluid" alt="Alleryl syrup"></i>
                     <br><br>
                     <h4>Alleryl 4mg/5ml Syrup</h4>
                   </div>
@@ -237,7 +237,7 @@
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="gambar/anoro.png" class="img-fluid" alt=""></i>
+                    <i><img src="gambar/anoro.png" class="img-fluid" alt="Anoro Ellipta inhaler"></i>
                     <br><br>
                     <h4>Anoro Ellipta 62.5/25mcg Accuhaler</h4>
                   </div>

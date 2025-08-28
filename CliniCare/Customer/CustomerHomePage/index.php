@@ -66,9 +66,9 @@ if (!isset($_SESSION['email'])) {
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.php" class="logo me-auto"><img src="assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="index.php" class="logo me-auto"><img src="assets/img/gambar/logobanner.png" alt="CliniCare logo" class="img-fluid"></a>
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
+      <nav id="navbar" class="navbar order-last order-lg-0" role="navigation" aria-label="Main Navigation">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
@@ -106,7 +106,7 @@ if (!isset($_SESSION['email'])) {
             </ul>
           </li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle" role="button" aria-label="Toggle navigation"></i>
       </nav><!-- .navbar -->
 
     </div>
@@ -144,7 +144,7 @@ if (!isset($_SESSION['email'])) {
               <div class="row">
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="assets/img/icons/iconSecurity.png" class="img-fluid" alt=""></i>
+                    <i><img src="assets/img/icons/iconSecurity.png" class="img-fluid" alt="Security shield icon"></i>
                     <br><br>
                     <h4>Safety is our priority.</h4>
                     <p>When you visit CliniCare, you will receive the most up-to-date safety standards and medical
@@ -154,7 +154,7 @@ if (!isset($_SESSION['email'])) {
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="assets/img/icons/icon24.png" class="img-fluid" alt=""></i>
+                    <i><img src="assets/img/icons/icon24.png" class="img-fluid" alt="24-hour service icon"></i>
                     <br><br>
                     <h4>24/7 Care</h4>
                     <p>Live help available 24/7.</p>
@@ -163,7 +163,7 @@ if (!isset($_SESSION['email'])) {
 
                 <div class="col-xl-4 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
-                    <i><img src="assets/img/icons/iconExpert.png" class="img-fluid" alt=""></i>
+                    <i><img src="assets/img/icons/iconExpert.png" class="img-fluid" alt="Expert staff icon"></i>
                     <br><br>
                     <h4>Professional staff</h4>
                     <p>All the team experts at what they do</p>
@@ -183,7 +183,7 @@ if (!isset($_SESSION['email'])) {
 
         <div class="row">
           <div class="col-xl-5 col-lg-6 picture-box d-flex justify-content-center align-items-stretch position-relative">
-            <img src="assets/img/gambar/gambar11.jpeg" width="100%" height="100%"></a>
+            <img src="assets/img/gambar/gambar11.jpeg" class="img-fluid" alt="Clinic interior">
           </div>
 
           <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
@@ -303,7 +303,7 @@ if (!isset($_SESSION['email'])) {
 
           <div class="col-lg-6">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/gambar/doctor1new.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/gambar/doctor1new.jpg" class="img-fluid" alt="Doctor portrait 1"></div>
               <div class="member-info">
                 <h4>Dr. Hafiz</h4>
                 <span>Chief Medical Officer</span>
@@ -320,7 +320,7 @@ if (!isset($_SESSION['email'])) {
 
           <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/gambar/doctor7copy.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/gambar/doctor7copy.jpg" class="img-fluid" alt="Doctor portrait 2"></div>
               <div class="member-info">
                 <h4>Dr. Najmudin</h4>
                 <span>Anesthesiologist</span>
@@ -337,7 +337,7 @@ if (!isset($_SESSION['email'])) {
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/gambar/doctor3new.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/gambar/doctor3new.jpg" class="img-fluid" alt="Doctor portrait 3"></div>
               <div class="member-info">
                 <h4>Dr. Adila Halwa</h4>
                 <span>Cardiology</span>
@@ -354,7 +354,7 @@ if (!isset($_SESSION['email'])) {
 
           <div class="col-lg-6 mt-4">
             <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/gambar/doctor4copy.jpg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/gambar/doctor4copy.jpg" class="img-fluid" alt="Doctor portrait 4"></div>
               <div class="member-info">
                 <h4>Dr. Masri</h4>
                 <span>Neurosurgeon</span>
@@ -465,7 +465,7 @@ if (!isset($_SESSION['email'])) {
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="Testimonial 1">
                   <h3>Ahmad Megat</h3>
                   <h4>Driver</h4>
                   <p>
@@ -481,7 +481,7 @@ if (!isset($_SESSION['email'])) {
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="Testimonial 2">
                   <h3>Mia Mirara</h3>
                   <h4>Profesor</h4>
                   <p>
@@ -497,7 +497,7 @@ if (!isset($_SESSION['email'])) {
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="Testimonial 3">
                   <h3>Nadiana Aminah</h3>
                   <h4>Documentation Master</h4>
                   <p>
@@ -513,7 +513,7 @@ if (!isset($_SESSION['email'])) {
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="Testimonial 4">
                   <h3>Irfan Hakim</h3>
                   <h4>Store Owner</h4>
                   <p>
@@ -530,7 +530,7 @@ if (!isset($_SESSION['email'])) {
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="Testimonial 5">
                   <h3>Aiman Tajudin</h3>
                   <h4>Artist</h4>
                   <p>
@@ -547,7 +547,7 @@ if (!isset($_SESSION['email'])) {
             <div class="swiper-slide">
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <img src="assets/img/testimonials/testimonials-6.jpg" class="testimonial-img" alt="">
+                  <img src="assets/img/testimonials/testimonials-6.jpg" class="testimonial-img" alt="Testimonial 6">
                   <h3>Farrah Ixora</h3>
                   <h4>Restaurant Owner</h4>
                   <p>
@@ -583,7 +583,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar8.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar8.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar8.jpg" class="img-fluid" alt="Clinic facility 1">
               </a>
             </div>
           </div>
@@ -591,7 +591,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar9.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar9.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar9.jpg" class="img-fluid" alt="Clinic facility 2">
               </a>
             </div>
           </div>
@@ -599,7 +599,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar2.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar2.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar2.jpg" class="img-fluid" alt="Clinic facility 3">
               </a>
             </div>
           </div>
@@ -607,7 +607,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar3.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar3.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar3.jpg" class="img-fluid" alt="Clinic facility 4">
               </a>
             </div>
           </div>
@@ -615,7 +615,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar4.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar4.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar4.jpg" class="img-fluid" alt="Clinic facility 5">
               </a>
             </div>
           </div>
@@ -623,7 +623,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar5.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar5.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar5.jpg" class="img-fluid" alt="Clinic facility 6">
               </a>
             </div>
           </div>
@@ -631,7 +631,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar7.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar7.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar7.jpg" class="img-fluid" alt="Clinic facility 7">
               </a>
             </div>
           </div>
@@ -639,7 +639,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/gambar/gambar10.jpg" class="galelry-lightbox">
-                <img src="assets/img/gambar/gambar10.jpg" width="410" height="400" alt="">
+                <img src="assets/img/gambar/gambar10.jpg" class="img-fluid" alt="Clinic facility 8">
               </a>
             </div>
           </div>
