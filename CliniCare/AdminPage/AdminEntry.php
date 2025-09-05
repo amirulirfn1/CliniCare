@@ -16,9 +16,9 @@ if (isset($_POST['deleteCustomer'])) {
 } else if (isset($_POST['editCustomer'])) {
     header("Location: ../AdminPage/dist/editCustomer.php");
 } else if (isset($_POST['closeAppointment'])) {
-    closeAppointment($__POST['closeAppointment']);
+    closeAppointment($_POST['closeAppointment']);
 } else if (isset($_POST['openAppointment'])) {
-    openAppointment($__POST['openAppointment']);
+    openAppointment($_POST['openAppointment']);
 } else if (isset($_POST['updateCustomer'])) {
     updateCustomer($_POST['updateCustomer']);
 } else if (isset($_POST['updateProfileAdmin'])) {
