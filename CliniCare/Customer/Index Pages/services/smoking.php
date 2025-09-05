@@ -6,8 +6,11 @@ if (empty($_SESSION["csrf_token"])) {
 }
 
 $email = $_SESSION['email'];
-$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-$row = mysqli_fetch_array($query);
+$stmt = $con->prepare("SELECT * FROM customer WHERE email = ?");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$res = $stmt->get_result();
+$row = mysqli_fetch_array($res);
 if (!isset($_SESSION['email'])) {
   header("Location: ../../../index.php");
   exit;

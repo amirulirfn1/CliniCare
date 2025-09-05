@@ -30,28 +30,29 @@ $billpaymentInvoiceNo = $result[0]['billpaymentInvoiceNo'];
 if ($billpaymentStatus == 1) {
   //connect database connection
   include "../../db_conn.php";
-  $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$billEmail' ");
-  $row = mysqli_fetch_array($query);
+  $stmt = $con->prepare("SELECT userID FROM customer WHERE email = ?");
+  $stmt->bind_param('s', $billEmail);
+  $stmt->execute();
+  $res = $stmt->get_result();
+  $row = mysqli_fetch_array($res);
   $userID = $row['userID'];
   $dateToday = date("Y-m-d");
 
-  //update database table
-  $sql = "INSERT INTO userpayment (transactionID, userID, name, email, phoneNumber, price, status) 
-      VALUES ('$billpaymentInvoiceNo', '$userID', '$billTo', '$billEmail', '$billPhone', '$billpaymentAmount', '$billpaymentStatus')";
+  //insert payment
+  $ins = $con->prepare("INSERT INTO userpayment (transactionID, userID, name, email, phoneNumber, price, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $ins->bind_param('sisssii', $billpaymentInvoiceNo, $userID, $billTo, $billEmail, $billPhone, $billpaymentAmount, $billpaymentStatus);
 
-  //check if sql success
-  if ($con->query($sql) === TRUE) {
+  if ($ins->execute()) {
     //update status from database table to 0
-    $sql2 = "UPDATE usercart SET status='0', date='$dateToday' WHERE userID='$userID' AND status='1'";
-
-    //check if sql2 success
-    if ($con->query($sql2) === TRUE) {
+    $up = $con->prepare("UPDATE usercart SET status = 0, date = ? WHERE userID = ? AND status = 1");
+    $up->bind_param('si', $dateToday, $userID);
+    if ($up->execute()) {
       header("Location:../../../Alerts/successPayment.php");
     } else {
-      echo "Error: " . $sql2 . "<br>" . $con->error;
+      echo "Error updating cart status";
     }
   } else {
-    echo "Error: " . $sql . "<br>" . $con->error;
+    echo "Error creating payment record";
   }
 } else if ($billpaymentStatus == 3) {
   header("Location:../../../Alerts/unsuccessPayment.php");

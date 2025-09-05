@@ -21,6 +21,15 @@ if (class_exists('Dotenv\\Dotenv')) {
     }
 }
 
+$sameSite = getenv('SESSION_SAMESITE') ?: 'Lax';
+@ini_set('session.use_strict_mode', '1');
+@ini_set('session.cookie_httponly', '1');
+@ini_set('session.cookie_samesite', $sameSite);
+$secure = getenv('SESSION_SECURE');
+if ($secure !== false) {
+    @ini_set('session.cookie_secure', $secure ? '1' : '0');
+}
+
 $host = getenv('DB_HOST');
 $user = getenv('DB_USER');
 $pass = getenv('DB_PASS');

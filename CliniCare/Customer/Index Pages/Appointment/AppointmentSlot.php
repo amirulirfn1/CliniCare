@@ -6,8 +6,11 @@ if (empty($_SESSION["csrf_token"])) {
 }
 
 $email = $_SESSION['email'];
-$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-$row = mysqli_fetch_array($query);
+$stmt = $con->prepare("SELECT * FROM customer WHERE email = ?");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$res = $stmt->get_result();
+$row = mysqli_fetch_array($res);
 if (!isset($_SESSION['email'])) {
   header("Location: ../../../index.php");
   exit;
@@ -229,8 +232,9 @@ if (!isset($_SESSION['email'])) {
                     <option value="">Date</option>
                     <?php
                     include "../../db_conn.php";
-                    $sql = "SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 GROUP BY date ORDER BY date ";
-                    $result = mysqli_query($con, $sql);
+                    $stmt2 = $con->prepare("SELECT date FROM appointmentslot WHERE status = 0 AND count > 0 GROUP BY date ORDER BY date");
+                    $stmt2->execute();
+                    $result = $stmt2->get_result();
                     while ($row = mysqli_fetch_array($result)) {
                       $date = $row['date'];
                       echo "<option name='date' id='date' value='{$row['date']}'>" . $row['date'] . "</option>";
@@ -247,8 +251,10 @@ if (!isset($_SESSION['email'])) {
                     <option value="">Time</option>
                     <?php
                     include "../../db_conn.php";
-                    $sql = "SELECT time FROM appointmentslot WHERE date = '$date' AND status = 0 AND count > 0 ";
-                    $result = mysqli_query($con, $sql);
+                    $stmt3 = $con->prepare("SELECT time FROM appointmentslot WHERE date = ? AND status = 0 AND count > 0");
+                    $stmt3->bind_param('s', $date);
+                    $stmt3->execute();
+                    $result = $stmt3->get_result();
                     while ($row = mysqli_fetch_array($result)) {
                       $time = $row['time'];
                       echo "<option name='date' id='date' value='{$time}'>" . $time . "</option>";

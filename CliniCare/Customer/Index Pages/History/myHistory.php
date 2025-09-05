@@ -6,8 +6,11 @@ if (empty($_SESSION["csrf_token"])) {
 }
 
 $email = $_SESSION['email'];
-$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-$row = mysqli_fetch_array($query);
+$stmt0 = $con->prepare("SELECT * FROM customer WHERE email = ?");
+$stmt0->bind_param('s', $email);
+$stmt0->execute();
+$qres0 = $stmt0->get_result();
+$row = mysqli_fetch_array($qres0);
 if (!isset($_SESSION['email'])) {
   header("Location: ../../../index.php");
   exit;
@@ -347,8 +350,10 @@ if (!isset($_SESSION['email'])) {
                         <?php
                         include "../../db_conn.php";
                         $email = $_SESSION['email'];
-                        $sql = "SELECT * FROM appointment WHERE email='$email' ORDER BY date";
-                        $result = mysqli_query($con, $sql);
+                        $stmt1 = $con->prepare("SELECT * FROM appointment WHERE email = ? ORDER BY date");
+                        $stmt1->bind_param('s', $email);
+                        $stmt1->execute();
+                        $result = $stmt1->get_result();
                         $dateToday = date("Y-m-d");
                         $x = 1;
                         while ($row = mysqli_fetch_array($result)) {
@@ -363,10 +368,9 @@ if (!isset($_SESSION['email'])) {
                           //if date is passed and status not = 0
 
                           if ($dateToday > $date && $status != 0) {
-                            $sql = "UPDATE appointment SET status = 3 
-                              WHERE email='$email' AND date < '$dateToday'";
-                            //run sql statement
-                            mysqli_query($con, $sql);
+                            $stmtUp = $con->prepare("UPDATE appointment SET status = 3 WHERE email = ? AND date < ?");
+                            $stmtUp->bind_param('ss', $email, $dateToday);
+                            $stmtUp->execute();
                             echo "<td style='color:red'>Date Passed</td>";
                           } else {
                             if ($status == 0) {
@@ -406,17 +410,26 @@ if (!isset($_SESSION['email'])) {
                         <?php
                         include "../../db_conn.php";
                         $email = $_SESSION['email'];
-                        $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
-                        $row = mysqli_fetch_array($query);
+                        $stmt2 = $con->prepare("SELECT userID FROM customer WHERE email = ?");
+                        $stmt2->bind_param('s', $email);
+                        $stmt2->execute();
+                        $res2 = $stmt2->get_result();
+                        $row = mysqli_fetch_array($res2);
                         $userID = $row['userID'];
 
-                        $query = mysqli_query($con, "SELECT * FROM usercart WHERE userID='$userID' AND status = 0 ORDER BY date");
+                        $stmt3 = $con->prepare("SELECT * FROM usercart WHERE userID = ? AND status = 0 ORDER BY date");
+                        $stmt3->bind_param('i', $userID);
+                        $stmt3->execute();
+                        $query = $stmt3->get_result();
                         $x = 1;
 
                         while ($row = mysqli_fetch_array($query)) {
 
-                          $query2 = mysqli_query($con, "SELECT * FROM product WHERE productID='$row[productID]'");
-                          $row2 = mysqli_fetch_array($query2);
+                          $stmt4 = $con->prepare("SELECT * FROM product WHERE productID = ?");
+                          $stmt4->bind_param('i', $row['productID']);
+                          $stmt4->execute();
+                          $res4 = $stmt4->get_result();
+                          $row2 = mysqli_fetch_array($res4);
                           $price = $row2['price'];
                           $product = $row2['name'];
 

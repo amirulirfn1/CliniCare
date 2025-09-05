@@ -6,8 +6,11 @@ if (empty($_SESSION["csrf_token"])) {
 }
 
 $email = $_SESSION['email'];
-$query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
-$row = mysqli_fetch_array($query);
+$stmt = $con->prepare("SELECT * FROM customer WHERE email = ?");
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$res = $stmt->get_result();
+$row = mysqli_fetch_array($res);
 if (!isset($_SESSION['email'])) {
   header("Location: ../../../index.php");
   exit;
@@ -311,8 +314,11 @@ if (!isset($_SESSION['email'])) {
               //connect to database
               include "../../db_conn.php";
               $email = $_SESSION['email'];
-              $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email'");
-              $row = mysqli_fetch_array($query);
+              $stmt = $con->prepare("SELECT * FROM customer WHERE email = ?");
+              $stmt->bind_param('s', $email);
+              $stmt->execute();
+              $res = $stmt->get_result();
+              $row = mysqli_fetch_array($res);
 
               $userID = $row['userID'];
               $custname = $row['name'];
@@ -320,7 +326,10 @@ if (!isset($_SESSION['email'])) {
               $custaddress = $row['address'];
 
               //show all from usercart database according to userid
-              $query2 = mysqli_query($con, "SELECT * FROM usercart WHERE userid = $userID AND status = 1");
+              $stmt2 = $con->prepare("SELECT * FROM usercart WHERE userid = ? AND status = 1");
+              $stmt2->bind_param('i', $userID);
+              $stmt2->execute();
+              $query2 = $stmt2->get_result();
 
               //if there is no item in query2
               if (mysqli_num_rows($query2) == 0) {
@@ -333,8 +342,11 @@ if (!isset($_SESSION['email'])) {
 
                   $productID = $row2['productID'];
 
-                  $query3 = mysqli_query($con, "SELECT * FROM product WHERE productID = $row2[productID]");
-                  $row3 = mysqli_fetch_array($query3);
+                  $stmt3 = $con->prepare("SELECT * FROM product WHERE productID = ?");
+                  $stmt3->bind_param('i', $row2['productID']);
+                  $stmt3->execute();
+                  $res3 = $stmt3->get_result();
+                  $row3 = mysqli_fetch_array($res3);
 
                   $quantity = $row2['quantity'];
                   $name = $row3['name'];

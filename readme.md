@@ -31,19 +31,7 @@ Set the following environment variables to configure the database connection:
 - `DB_PASS` – database password
 - `DB_NAME` – database name
 
-## Project Usernames/Passwords
+## Demo Access
 
-```bash
-#Account for admin/staff
-- email address : admin@gmail.com
-- password : admin123
-
-#Account for customer
-- email address : customer@gmail.com
-- password : customer123
-
-#Username and Password used for database phpMyAdmin
-- username : clinicarecustomer
-- password : customer
-```
+Demo credentials are no longer published in this repository. If you need demo access for evaluation, please create users locally via the signup flow or contact the maintainers to obtain temporary credentials.
 
