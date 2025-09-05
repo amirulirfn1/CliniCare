@@ -1,2 +1,8 @@
+# Ignore installer executables and environment files
+Installer/
+*.exe
+vendor/
+.env
+
 node_modules/
 public/assets/
