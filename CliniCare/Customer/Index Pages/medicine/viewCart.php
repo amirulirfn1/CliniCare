@@ -1,6 +1,10 @@
 <?php
 include "../../db_conn.php";
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -373,6 +377,7 @@ if (!isset($_SESSION['email'])) {
                   
                   <div class='col'> 
                   <form action='CartEntry.php' method='POST'>
+                  <input type='hidden' name='csrf_token' value='" . $_SESSION['csrf_token'] . "'>
                   <button type='submit' href='#' style='padding: 0 2vh' id='-' name='-' style='background-color: Transparent;' >-</button>
                   <input type='hidden' name='productIDToMinus' value='$productID'>             
                   <a href='#' class='border' style='padding: 0 2vh;'>" . $quantity . "</a> 
@@ -405,6 +410,7 @@ if (!isset($_SESSION['email'])) {
                         </div>
         
                           <form action='GenerateGatewayPaymentCall.php' method='POST'>
+                            <input type='hidden' name='csrf_token' value='" . $_SESSION['csrf_token'] . "'>
 
                             <h5><b>Details</b></h5>
                             <hr>
