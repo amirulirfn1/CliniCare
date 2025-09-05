@@ -1,6 +1,10 @@
 <?php
 include "../../db_conn.php";
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -140,6 +144,7 @@ if (isset($_POST['submit'])) {
               <li><a href="../History/myHistory.php">View History</a></li>
               <li><a href="../Appointment/AppointmentSlot.php">Make an Appointment</a></li>
               <form action="../../CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <li>
                   <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
                       Sign Out</button></a>
@@ -185,6 +190,7 @@ if (isset($_POST['submit'])) {
                   <label class="labels" style="font-size: 12px">Edit Profile Picture</label>
                   <div class="upload-btn-wrapper">
                     <form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                       <input id="upload" type="file" name="file" onchange="submitImage()"><br>
                       <input id="submit" type="submit" name="submit" hidden="true">
                     </form>
@@ -203,6 +209,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <form class="forms-sample" action="../../CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
 
                   <div class="row mt-3">
                     <div class="col-md-12">
@@ -266,6 +273,7 @@ if (isset($_POST['submit'])) {
                 <p class="card-description"></p>
 
                 <form class="form-sample" action="change-p.php" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                   <div class="col-md-12">
                     <label class="label" style="font-size: 12px">Current Password</label>
                     <input type="password" class="form-control" placeholder="Password" name="op" aria-label="Username">
