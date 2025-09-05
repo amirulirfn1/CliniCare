@@ -1,5 +1,5 @@
 <?php
-include "../db_conn.php";
+include "../db_conn";
 session_start();
 if (empty($_SESSION["csrf_token"])) {
     $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
@@ -13,7 +13,7 @@ $res = $stmt->get_result();
 $row = mysqli_fetch_array($res);
 //if session is not set, then go to login page
 if (!isset($_SESSION['email'])) {
-  header("Location: ../../index.php");
+  header("Location: ../../index");
   exit;
 }
 ?>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['email'])) {
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.php" class="logo me-auto"><img src="assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="index" class="logo me-auto"><img src="assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -81,12 +81,12 @@ if (!isset($_SESSION['email'])) {
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li class="dropdown"><a class="nav-link scrollto"><span class="d-none d-md-inline"></span> Services<i class="bi bi-chevron-right"></i> </a>
             <ul>
-              <li><a href="../Index Pages/services/primaryCare.php">Primary Care</a></li>
-              <li><a href="../Index Pages/services/checkup.php">Medical Check-Up</a></li>
-              <li><a href="../Index Pages/services/smoking.php">Smoking Cessation</a></li>
-              <li><a href="../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-              <li><a href="../Index Pages/services/pharmacy.php">Pharmacy</a></li>
-              <li><a href="../Index Pages/services/covid.php">Covid-19 Centre</a></li>
+              <li><a href="../Index Pages/services/primaryCare">Primary Care</a></li>
+              <li><a href="../Index Pages/services/checkup">Medical Check-Up</a></li>
+              <li><a href="../Index Pages/services/smoking">Smoking Cessation</a></li>
+              <li><a href="../Index Pages/services/momBaby">Mom & Baby Care</a></li>
+              <li><a href="../Index Pages/services/pharmacy">Pharmacy</a></li>
+              <li><a href="../Index Pages/services/covid">Covid-19 Centre</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
@@ -94,17 +94,17 @@ if (!isset($_SESSION['email'])) {
           <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
           <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span>Medicine <i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../Index Pages/medicine/MedicineCatalogueUser.php">Catalogue</a></li>
-              <li><a href="../Index Pages/medicine/viewCart.php">View My Cart</a></li>
+              <li><a href="../Index Pages/medicine/MedicineCatalogueUser">Catalogue</a></li>
+              <li><a href="../Index Pages/medicine/viewCart">View My Cart</a></li>
             </ul>
           </li>
 
           <li class="dropdown"><a class="play-btn"><span class="d-none d-md-inline"></span><?php echo "Hello " . $row['name']; ?><i class="bi bi-chevron-right"></i></a>
             <ul>
-              <li><a href="../Index Pages/Profile/myProfile.php">View Profile</a></li>
-              <li><a href="../Index Pages/History/myHistory.php">View History</a></li>
-              <li><a href="../Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
-              <form action="../CustomerEntry.php" method="POST">
+              <li><a href="../Index Pages/Profile/myProfile">View Profile</a></li>
+              <li><a href="../Index Pages/History/myHistory">View History</a></li>
+              <li><a href="../Index Pages/Appointment/AppointmentSlot">Make an Appointment</a></li>
+              <form action="../CustomerEntry" method="POST">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <li>
                   <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
@@ -246,7 +246,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="../Index Pages/services/primaryCare.php">Primary Care</a></h4>
+              <h4><a href="../Index Pages/services/primaryCare">Primary Care</a></h4>
               <p>Screening and treatment, as well as therapy for mild symptoms, common diseases, and injuries.</p>
             </div>
           </div>
@@ -254,7 +254,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-stethoscope"></i></div>
-              <h4><a href="../Index Pages/services/checkup.php">Medical Check-Up</a></h4>
+              <h4><a href="../Index Pages/services/checkup">Medical Check-Up</a></h4>
               <p>Monthly check up for Klinik Damai's patient. Physical examinations, blood and urine tests, and X-ray
                 examinations are all possible</p>
             </div>
@@ -263,7 +263,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-smoking"></i></div>
-              <h4><a href="../Index Pages/services/smoking.php">Smoking Cessation Campaign</a></h4>
+              <h4><a href="../Index Pages/services/smoking">Smoking Cessation Campaign</a></h4>
               <p>Smoking cessation programmes are meant to assist people who want to quit smoking cigarettes and other
                 tobacco-based products.</p>
             </div>
@@ -280,7 +280,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="../Index Pages/services/pharmacy.php">Pharmacy</a></h4>
+              <h4><a href="../Index Pages/services/pharmacy">Pharmacy</a></h4>
               <p>Our Pharmacists are here to help and guide about any basis medicine that you need</p>
             </div>
           </div>
@@ -288,7 +288,7 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-viruses"></i></div>
-              <h4><a href="../Index Pages/services/covid.php">Covid-19 Centre</a></h4>
+              <h4><a href="../Index Pages/services/covid">Covid-19 Centre</a></h4>
               <p>Swab Test and Vaccination for COVID-19. Get covid 19 swab test and get result in 24 hours</p>
             </div>
           </div>
@@ -717,7 +717,7 @@ if (!isset($_SESSION['email'])) {
             ?>
 
             <div class="card-body">
-              <form action="giveFeedback.php" method="post">
+              <form action="giveFeedback" method="post">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
                 <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
@@ -763,12 +763,12 @@ if (!isset($_SESSION['email'])) {
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/primaryCare.php">Primary Care</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/checkup.php">Medical Check-Up</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/smoking.php">Smoking Cessation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/momBaby.php">Mom & Baby Care</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/pharmacy.php">Pharmacy</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/covid.php">Covid-19 Centre</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/primaryCare">Primary Care</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/checkup">Medical Check-Up</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/smoking">Smoking Cessation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/momBaby">Mom & Baby Care</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/pharmacy">Pharmacy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../Index Pages/services/covid">Covid-19 Centre</a></li>
             </ul>
           </div>
 

@@ -60,22 +60,22 @@ if (!isset($basePath)) {
     <div class="container d-flex align-items-center">
 
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="<?= $basePath ?>index.php" class="logo me-auto"><img src="<?= $basePath ?>assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
+      <a href="<?= $basePath ?>" class="logo me-auto"><img src="<?= $basePath ?>assets/img/gambar/logobanner.png" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>index.php#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>index.php#about">About</a></li>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>index.php#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>index.php#doctors">Doctors</a></li>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>index.php#faq">FAQ</a></li>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>index.php#contact">Contact Us</a></li>
-          <li><a class="nav-link scrollto" href="<?= $basePath ?>Guest/medicine/MedicineCatalogueGuest.php">Medicine</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>#about">About</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>#doctors">Doctors</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>#contact">Contact Us</a></li>
+          <li><a class="nav-link scrollto" href="<?= $basePath ?>Guest/medicine/MedicineCatalogueGuest">Medicine</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="<?= $basePath ?>Customer/Sign In Page/Sign In/signin.php"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
+      <a href="<?= $basePath ?>Customer/Sign In Page/Sign In/signin"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
 
     </div>
   </header><!-- End Header -->

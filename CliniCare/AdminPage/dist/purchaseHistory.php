@@ -63,7 +63,7 @@ if (!isset($_SESSION['email'])) {
               <div class="d-sm-none d-lg-inline-block">Hello, <?php echo $row['name']; ?></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="profile.php" class="dropdown-item has-icon">
+              <a href="profile" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <a href="#" class="dropdown-item has-icon">
@@ -81,26 +81,26 @@ if (!isset($_SESSION['email'])) {
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.php">C L I N I C A R E</a>
+            <a href="./">C L I N I C A R E</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.php">CC</a>
+            <a href="./">CC</a>
           </div>
           <ul class="sidebar-menu">
-            <li><a class="nav-link" href="index.php"><i class="ion-home"></i> <span>Dashboard</span></a></li>
-            <li><a class="nav-link" href="customerList.php"><i class="ion-person"> </i><span>Customer</span></a></li>
+            <li><a class="nav-link" href="./"><i class="ion-home"></i> <span>Dashboard</span></a></li>
+            <li><a class="nav-link" href="customerList"><i class="ion-person"> </i><span>Customer</span></a></li>
             <li class="dropdown">
               <a class="nav-link has-dropdown"><i class="ion-medkit"></i> <span>Medicine</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="paymentHistory.php">Payments</a></li>
-                <li><a class="nav-link" href="purchaseHistory.php">Purchases</a></li>
+                <li><a class="nav-link" href="paymentHistory">Payments</a></li>
+                <li><a class="nav-link" href="purchaseHistory">Purchases</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a class="nav-link has-dropdown"><i class="ion-clipboard"></i><span>Appointments</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="appointmentList.php">Appointments List</a></li>
-                <li><a class="nav-link" href="appointmentSlot.php">Appointments Slot</a></li>
+                <li><a class="nav-link" href="appointmentList">Appointments List</a></li>
+                <li><a class="nav-link" href="appointmentSlot">Appointments Slot</a></li>
               </ul>
             </li>
         </aside>

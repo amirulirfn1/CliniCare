@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /
+
+# Serve existing files and directories directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirect requests to .php to extensionless URLs (e.g., /page.php -> /page)
+RewriteCond %{THE_REQUEST} \s/+(.*)\.php[\s\?] [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# If an extensionless PHP file exists, rewrite to it
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_URI}.php [L]
+
+# If a directory contains index.php, rewrite to it
+RewriteCond %{REQUEST_FILENAME}/index.php -f
+RewriteRule ^ %{REQUEST_URI}/index.php [L]
+
