@@ -5,19 +5,27 @@ if (isset($_GET['vkey'])) {
 
     include "db_conn.php";
 
-    $resultSet = $con->query("SELECT verified, vkey FROM customer WHERE verified = 0 AND vkey = '$vkey' LIMIT 1");
+    $stmt = $con->prepare("SELECT verified, vkey FROM customer WHERE verified = 0 AND vkey = ? LIMIT 1");
+    $stmt->bind_param('s', $vkey);
+    $stmt->execute();
+    $resultSet = $stmt->get_result();
 
-    if ($resultSet->num_rows == 1) {
+    if ($resultSet && $resultSet->num_rows == 1) {
         //validate the email address
-        $update = $con->query("UPDATE customer SET verified = 1 WHERE vkey = '$vkey' LIMIT 1");
+        $stmt2 = $con->prepare("UPDATE customer SET verified = 1 WHERE vkey = ? LIMIT 1");
+        $stmt2->bind_param('s', $vkey);
+        $ok = $stmt2->execute();
 
-        if ($update) {
+        if ($ok) {
             header("Location: ../Alerts/successVER.php");
+            exit();
         } else {
-            echo $mysqli->error;
+            header("Location: ../Alerts/unsuccessVER.php");
+            exit();
         }
     } else {
         header("Location: ../Alerts/unsuccessVER.php");
+        exit();
     }
 } else {
     die();

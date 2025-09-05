@@ -15,7 +15,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+// Load composer autoload if present
+$autoload = __DIR__ . '/../../vendor/autoload.php';
+if (file_exists($autoload)) {
+  require_once $autoload;
+}
+require_once __DIR__ . '/../config/mail.php';
 
 if (isset($_POST['signup'])) {
   signup($_POST['signup']);
@@ -45,7 +50,6 @@ function signup()
 {
   include "db_conn.php";
 
-
   if (!$con) {
     echo "error";
   } else {
@@ -60,12 +64,14 @@ function signup()
     $password = password_hash($password, PASSWORD_DEFAULT);
     //Generate Vkey
     $vkey = md5(time() . $name);
-
-    $sql = "INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey)  
-                    VALUES('$name', '$email', '$password', '$phoneNumber', '$icNumber', '$birthDate', '','', '$vkey' )";
+    $stmt = $con->prepare("INSERT INTO customer (name, email, password, phoneNumber, icNumber, birthDate, address, image, vkey) VALUES (?, ?, ?, ?, ?, ?, '', '', ?)");
+    if (!$stmt) {
+      header("Location: ../Alerts/unsuccess.php");
+      exit();
+    }
+    $stmt->bind_param('sssssss', $name, $email, $password, $phoneNumber, $icNumber, $birthDate, $vkey);
   }
-
-  if ($con->query($sql) === TRUE) {
+  if ($stmt->execute()) {
     $mail = new PHPMailer(true);
     $subject = "Verify Your Email Address";
       $template = file_get_contents(__DIR__ . '/../../resources/views/email/verify_email.html');
@@ -74,17 +80,20 @@ function signup()
 
     try {
       //Server settings
-      $mail->SMTPDebug = false;                      //Enable verbose debug output
-      $mail->isSMTP();                                            //Send using SMTP
-      $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
-      $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
-      $mail->Password   = 'clinicare123';                               //SMTP password
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+      $mail->SMTPDebug = false;
+      $mail->isSMTP();
+      $mail->Host       = $mailConfig['host'];
+      $mail->SMTPAuth   = true;
+      $mail->Username   = $mailConfig['user'];
+      $mail->Password   = $mailConfig['pass'];
+      $secure = strtolower($mailConfig['secure'] ?? 'ssl');
+      $mail->SMTPSecure = ($secure === 'tls') ? PHPMailer::ENCRYPTION_STARTTLS : PHPMailer::ENCRYPTION_SMTPS;
+      $mail->Port       = (int)($mailConfig['port'] ?? 465);
 
       //Recipients
-      $mail->setFrom('info@clinicaremy.com', 'CliniCare');
+      $from = $mailConfig['from'] ?: $mailConfig['user'];
+      $fromName = $mailConfig['from_name'] ?? 'CliniCare';
+      $mail->setFrom($from, $fromName);
       //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
       $mail->addAddress($email);               //Name is optional
       //$mail->addReplyTo('info@example.com', 'Information');
@@ -104,9 +113,9 @@ function signup()
       $mail->send();
 
 
-      $sql2 = "INSERT INTO user (email, usertype)
-                            VALUES('$email', 'customer')";
-      if ($con->query($sql2) === TRUE) {
+      $stmt2 = $con->prepare("INSERT INTO user (email, usertype) VALUES (?, 'customer')");
+      $stmt2->bind_param('s', $email);
+      if ($stmt2->execute()) {
         //kalau dah successful buat sign up, keluar page ni
         header("Location: ../Alerts/success.php");
       } else {
@@ -125,59 +134,79 @@ function signin()
 
   $email = $_POST['email'];
   $password = $_POST['password'];
-
-  $query = "SELECT * FROM customer  WHERE email = '$email' LIMIT 1 ";
-  $result = mysqli_query($con, $query);
-
-  if ($result->num_rows != 0) {
+  $stmt = $con->prepare("SELECT * FROM customer WHERE email = ? LIMIT 1");
+  $stmt->bind_param('s', $email);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result && $result->num_rows != 0) {
     //Process login
     $row = $result->fetch_assoc();
     $storedPwd = $row['password'];
 
+    $passwordOk = false;
     if (password_verify($password, $storedPwd)) {
       // password verified
+      $passwordOk = true;
     } else if (password_verify(md5($password), $storedPwd)) {
       // migrated hash based on md5, upgrade to direct hash
+      $passwordOk = true;
       $newHash = password_hash($password, PASSWORD_DEFAULT);
-      mysqli_query($con, "UPDATE customer SET password = '$newHash' WHERE email = '$email'");
+      $stmtUp1 = $con->prepare("UPDATE customer SET password = ? WHERE email = ?");
+      $stmtUp1->bind_param('ss', $newHash, $email);
+      $stmtUp1->execute();
     } else if ($storedPwd === md5($password)) {
       // legacy md5 hash, upgrade to modern hash
+      $passwordOk = true;
       $newHash = password_hash($password, PASSWORD_DEFAULT);
-      mysqli_query($con, "UPDATE customer SET password = '$newHash' WHERE email = '$email'");
+      $stmtUp2 = $con->prepare("UPDATE customer SET password = ? WHERE email = ?");
+      $stmtUp2->bind_param('ss', $newHash, $email);
+      $stmtUp2->execute();
     } else {
       //Invalid login
       header("Location: ../Alerts/unsuccessWRONG.php");
       return;
     }
 
+    if (!$passwordOk && !password_verify($password, $storedPwd)) {
+      header("Location: ../Alerts/unsuccessWRONG.php");
+      return;
+    }
+
     $verified = $row['verified'];
     $email = $row['email'];
+    session_regenerate_id(true);
     $_SESSION['email'] = $email;
 
     if ($verified == 1) {
-
-      $sql3 = "SELECT * FROM user WHERE email = '$email'";
-      $result3 = mysqli_query($con, $sql3);
+      $stmt3 = $con->prepare("SELECT usertype FROM user WHERE email = ?");
+      $stmt3->bind_param('s', $email);
+      $stmt3->execute();
+      $result3 = $stmt3->get_result();
 
       if ($result3->num_rows != 0) {
 
-        $row = $result3->fetch_assoc();
-        $usertype = $row['usertype'];
+        $row3 = $result3->fetch_assoc();
+        $usertype = $row3['usertype'];
+        $_SESSION['usertype'] = $usertype;
 
         if ($usertype == "customer") {
           header("Location: ../Customer/CustomerHomePage/index.php");
+          exit();
         } else {
           header("Location: ../AdminPage/dist/index.php");
+          exit();
         }
       }
       //Continue
 
     } else {
       header("Location: ../Alerts/unsuccessNVER.php");
+      exit();
     }
   } else {
     //Invalid login
     header("Location: ../Alerts/unsuccessWRONG.php");
+    exit();
   }
 }
 
@@ -196,10 +225,11 @@ function getVkey()
   } else {
     //Construct SQL statement
     $email = $_POST['email'];
-
-    $sql = "SELECT vkey FROM customer WHERE email='$email'";
-    $qry = mysqli_query($con, $sql);
-    $count = mysqli_num_rows($qry);
+    $stmt = $con->prepare("SELECT vkey FROM customer WHERE email = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $qry = $stmt->get_result();
+    $count = $qry ? mysqli_num_rows($qry) : 0;
     if ($count == 1) {
       $userRecord = mysqli_fetch_assoc($qry);
       $_SESSION['resetPassword'] = $email;
@@ -217,7 +247,10 @@ function mailReset()
 
 
   $email = $_SESSION['resetPassword'];
-  $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
+  $stmt = $con->prepare("SELECT * FROM customer WHERE email = ?");
+  $stmt->bind_param('s', $email);
+  $stmt->execute();
+  $query = $stmt->get_result();
   $row = mysqli_fetch_array($query);
 
   $vkey = getVkey($_POST);
@@ -492,32 +525,28 @@ function mailReset()
         </html>';
 
   try {
-    //Server settings
-    $mail->SMTPDebug = false;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
-    $mail->Password   = 'clinicare123';                               //SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-    //Recipients
-    $mail->setFrom('info@clinicaremy.com', 'CliniCare');
-    //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
-    $mail->addAddress($email);               //Name is optional
-    //$mail->addReplyTo('info@example.com', 'Information');
-    //$mail->addCC('cc@example.com');
-    //$mail->addBCC('bcc@example.com');
+    //Server settings and recipients configured below
 
     //Attachments
     //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = $subject;
-    $mail->Body    = $msg;
+  $mail->isSMTP();
+  $mail->Host       = $mailConfig['host'];
+  $mail->SMTPAuth   = true;
+  $mail->Username   = $mailConfig['user'];
+  $mail->Password   = $mailConfig['pass'];
+  $secure = strtolower($mailConfig['secure'] ?? 'ssl');
+  $mail->SMTPSecure = ($secure === 'tls') ? PHPMailer::ENCRYPTION_STARTTLS : PHPMailer::ENCRYPTION_SMTPS;
+  $mail->Port       = (int)($mailConfig['port'] ?? 465);
+  $from = $mailConfig['from'] ?: $mailConfig['user'];
+  $fromName = $mailConfig['from_name'] ?? 'CliniCare';
+  $mail->setFrom($from, $fromName);
+  $mail->addAddress($email);
+  $mail->isHTML(true);
+  $mail->Subject = $subject;
+  $mail->Body    = $msg;
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
@@ -613,18 +642,19 @@ function bookApp()
       window.location.href='../Customer/Index Pages/Appointment/AppointmentSlot.php';</script>";
 
       //update table appointmentslot set status = 1
-      $sql = "UPDATE appointmentslot SET status = 1 WHERE date = '$date' ";
-      //run sql statement
-      $con->query($sql);
+      $stmt = $con->prepare("UPDATE appointmentslot SET status = 1 WHERE date = ?");
+      $stmt->bind_param('s', $date);
+      $stmt->execute();
       exit();
     } else {
-      $sql = "INSERT INTO appointment (email, name, phoneNumber, date, time) VALUES ('$email', '$name', '$phoneNumber', '$date', '$time')";
+      $stmtIns = $con->prepare("INSERT INTO appointment (email, name, phoneNumber, date, time) VALUES (?, ?, ?, ?, ?)");
+      $stmtIns->bind_param('sssss', $email, $name, $phoneNumber, $date, $time);
 
-      if ($con->query($sql) === TRUE) {
+      if ($stmtIns->execute()) {
         //update table appointmentslot set status minus 1
-        $sql2 = "UPDATE appointmentslot SET count = count - 1 WHERE date = '$date' AND time = '$time'";
-        //run sql2 statement
-        $con->query($sql2);
+        $stmt2 = $con->prepare("UPDATE appointmentslot SET count = count - 1 WHERE date = ? AND time = ?");
+        $stmt2->bind_param('ss', $date, $time);
+        $stmt2->execute();
         header("Location: ../Customer/Index Pages/History/myHistory.php");
       } else {
         echo "error";

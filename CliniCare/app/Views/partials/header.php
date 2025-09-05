@@ -14,7 +14,6 @@ if (!isset($basePath)) {
   <meta content="" name="description">
   <meta content="" name="keywords">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="<?= $basePath ?>bootstrap.css">
 
   <!-- Favicons -->
   <link href="<?= $basePath ?>assets/img/gambar/icon.jpeg" rel="icon">

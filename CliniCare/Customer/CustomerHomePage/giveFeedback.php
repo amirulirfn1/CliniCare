@@ -6,13 +6,15 @@ use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['btn-send'])) {
 
-  require "../PHPMailer/src/Exception.php";
-  require "../PHPMailer/src/PHPMailer.php";
-  require "../PHPMailer/src/SMTP.php";
+  $autoload = __DIR__ . '/../../../vendor/autoload.php';
+  if (file_exists($autoload)) {
+    require_once $autoload;
+  }
+  require_once __DIR__ . '/../../config/mail.php';
 
   $UserName = $_POST['UName'];
   $email2 = $_POST['Email'];
-  $email = 'info@clinicaremy.com';
+  $email = $mailConfig['user'] ?: 'info@example.com';
   $Subject = $_POST['Subject'];
   $Msg = $_POST['message'];
 
@@ -274,15 +276,18 @@ if (isset($_POST['btn-send'])) {
       //Server settings
       $mail->SMTPDebug = false;                      //Enable verbose debug output
       $mail->isSMTP();                                            //Send using SMTP
-      $mail->Host       = 'mail.clinicaremy.com';                     //Set the SMTP server to send through
+      $mail->Host       = $mailConfig['host'];
       $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-      $mail->Username   = 'info@clinicaremy.com';                     //SMTP username
-      $mail->Password   = 'clinicare123';                               //SMTP password
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-      $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+      $mail->Username   = $mailConfig['user'];
+      $mail->Password   = $mailConfig['pass'];
+      $secure = strtolower($mailConfig['secure'] ?? 'ssl');
+      $mail->SMTPSecure = ($secure === 'tls') ? PHPMailer::ENCRYPTION_STARTTLS : PHPMailer::ENCRYPTION_SMTPS;            //Enable encryption
+      $mail->Port       = (int)($mailConfig['port'] ?? 465);
 
       //Recipients
-      $mail->setFrom('info@clinicaremy.com', 'CliniCare');
+      $from = $mailConfig['from'] ?: $mailConfig['user'];
+      $fromName = $mailConfig['from_name'] ?? 'CliniCare';
+      $mail->setFrom($from, $fromName);
       //$mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
       $mail->addAddress($email);               //Name is optional
       //$mail->addReplyTo('info@example.com', 'Information');

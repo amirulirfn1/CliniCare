@@ -50,11 +50,10 @@ function updateProfileAdmin()
         $icNumber = $_POST['icNumber'];
         $birthDate = $_POST['birthDate'];
         $address = $_POST['address'];
+        $stmt = $con->prepare("UPDATE customer SET name = ?, address = ?, phoneNumber = ?, icNumber = ?, birthDate = ? WHERE email = ?");
+        $stmt->bind_param('ssssss', $name, $address, $phoneNumber, $icNumber, $birthDate, $email);
 
-        $sql = "UPDATE customer SET name = '$name', address = '$address', phoneNumber = '$phoneNumber',
-             icNumber = '$icNumber', birthDate = '$birthDate' WHERE email = '$email'";
-
-        if ($con->query($sql) === TRUE) {
+        if ($stmt->execute()) {
             header("Location: ../AdminPage/dist/profile.php");
         } else {
             echo "error";
@@ -69,9 +68,10 @@ function getCustomerInfo($email)
     if (!$con) {
         echo "error";
     } else {
-        $sql = 'select * from customer where email = "' . $email . '"';
-        $qry = mysqli_query($con, $sql);
-        return $qry;
+        $stmt = $con->prepare('SELECT * FROM customer WHERE email = ?');
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        return $stmt->get_result();
     }
 }
 
@@ -83,10 +83,12 @@ function deleteCustomer()
         echo "Error";
     } else {
         $email = $_POST['emailToDelete'];
-        $sql = "DELETE FROM customer WHERE email = '$email' ";
-        if ($con->query($sql) === TRUE) {
-            $sql2 = "DELETE FROM user WHERE email = '$email'";
-            if ($con->query($sql2) === TRUE) {
+        $stmt = $con->prepare("DELETE FROM customer WHERE email = ?");
+        $stmt->bind_param('s', $email);
+        if ($stmt->execute()) {
+            $stmt2 = $con->prepare("DELETE FROM user WHERE email = ?");
+            $stmt2->bind_param('s', $email);
+            if ($stmt2->execute()) {
                 header("Location: ../AdminPage/dist/customerList.php");
             } else {
                 echo "error sql2";
@@ -110,10 +112,10 @@ function updateCustomer()
         $ICnumber = $_POST['ICnumber'];
         $birthDate = $_POST['birthDate'];
 
-        $sql = "UPDATE customer SET name = '$name', phoneNumber = '$phoneNumber',
-             ICnumber = '$ICnumber', birthDate = '$birthDate 'WHERE email = '$email'";
+        $stmt = $con->prepare("UPDATE customer SET name = ?, phoneNumber = ?, ICnumber = ?, birthDate = ? WHERE email = ?");
+        $stmt->bind_param('sssss', $name, $phoneNumber, $ICnumber, $birthDate, $email);
 
-        if ($con->query($sql) === TRUE) {
+        if ($stmt->execute()) {
             //echo $email;
             header("Location: ../AdminPage/dist/customerList.php");
         } else {
@@ -130,9 +132,10 @@ function closeAppointment()
         echo "Error";
     } else {
         $appSId = $_POST['appToClose'];
-        $sql = "UPDATE appointmentslot SET status = 1 WHERE appSId = '$appSId' ";
+        $stmt = $con->prepare("UPDATE appointmentslot SET status = 1 WHERE appSId = ?");
+        $stmt->bind_param('s', $appSId);
 
-        if ($con->query($sql) === TRUE) {
+        if ($stmt->execute()) {
             header("Location: ../AdminPage/dist/appointmentSlot.php");
         } else {
             echo "error";
@@ -148,10 +151,9 @@ function openAppointment()
         echo "Error";
     } else {
         $appSId = $_POST['appToOpen'];
-
-        $sql = "UPDATE appointmentslot SET status = 0 WHERE appSId = '$appSId' ";
-
-        if ($con->query($sql) === TRUE) {
+        $stmt = $con->prepare("UPDATE appointmentslot SET status = 0 WHERE appSId = ?");
+        $stmt->bind_param('s', $appSId);
+        if ($stmt->execute()) {
             header("Location: ../AdminPage/dist/appointmentSlot.php");
         } else {
             echo "error";
@@ -167,9 +169,9 @@ function deleteSlot()
         echo "Error";
     } else {
         $appSId = $_POST['SlotToDelete'];
-        $sql = "DELETE FROM appointmentslot WHERE appSId='" . $appSId . "'";
-
-        if ($con->query($sql) === TRUE) {
+        $stmt = $con->prepare("DELETE FROM appointmentslot WHERE appSId = ?");
+        $stmt->bind_param('s', $appSId);
+        if ($stmt->execute()) {
             header("Location: ../AdminPage/dist/appointmentSlot.php");
         } else {
             echo "error";
@@ -190,7 +192,10 @@ function addSlot()
         $date = $_POST['date'];
         $dateToday = date("Y-m-d");
 
-        $query = mysqli_query($con, "SELECT * FROM appointmentslot WHERE date = '$date'");
+        $stmt = $con->prepare("SELECT 1 FROM appointmentslot WHERE date = ? LIMIT 1");
+        $stmt->bind_param('s', $date);
+        $stmt->execute();
+        $query = $stmt->get_result();
         $row = mysqli_fetch_array($query);
         //if row has result then
         if ($row) {
@@ -203,11 +208,15 @@ function addSlot()
                 echo "<script>alert('Date must be today or later');</script>";
                 echo "<script>window.location.href='../AdminPage/dist/addSlot.php';</script>";
             } else {
-                $sql = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time1')";
-                $sql2 = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time2')";
-                $sql3 = "INSERT INTO appointmentslot (date, time) VALUES ('$date', '$time3')";
+                $sql = $con->prepare("INSERT INTO appointmentslot (date, time) VALUES (?, ?)");
+                $sql->bind_param('ss', $date, $time1);
+                $ok1 = $sql->execute();
+                $sql->bind_param('ss', $date, $time2);
+                $ok2 = $sql->execute();
+                $sql->bind_param('ss', $date, $time3);
+                $ok3 = $sql->execute();
 
-                if ($con->query($sql) === TRUE && $con->query($sql2) === TRUE && $con->query($sql3) === TRUE) {
+                if ($ok1 && $ok2 && $ok3) {
                     header("Location: ../AdminPage/dist/appointmentSlot.php");
                 } else {
                     echo "error";
@@ -226,8 +235,9 @@ function doneApp()
     } else {
         $appID = $_POST['appID'];
         //update table appointment status = 0 
-        $sql = "UPDATE appointment SET status = 0 WHERE appId = '$appID'";
-        if ($con->query($sql) === TRUE) {
+        $stmt = $con->prepare("UPDATE appointment SET status = 0 WHERE appId = ?");
+        $stmt->bind_param('s', $appID);
+        if ($stmt->execute()) {
             header("Location: ../AdminPage/dist/appointmentList.php");
         } else {
             echo "error";
@@ -244,8 +254,9 @@ function cancelApp()
     } else {
         $appID = $_POST['appID'];
         //update table appointment status = 2 
-        $sql = "UPDATE appointment SET status = 2 WHERE appId = '$appID'";
-        if ($con->query($sql) === TRUE) {
+        $stmt = $con->prepare("UPDATE appointment SET status = 2 WHERE appId = ?");
+        $stmt->bind_param('s', $appID);
+        if ($stmt->execute()) {
             header("Location: ../AdminPage/dist/appointmentList.php");
         } else {
             echo "error";

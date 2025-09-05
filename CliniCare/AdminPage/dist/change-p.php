@@ -5,6 +5,14 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 
 	include "../db_conn.php";
 
+	// Optional CSRF check if token provided
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['csrf_token'])) {
+		if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+			header("Location: profile.php?error=Invalid CSRF token");
+			exit();
+		}
+	}
+
 	if (
 		isset($_POST['op']) && isset($_POST['np'])
 		&& isset($_POST['c_np'])
@@ -32,36 +40,32 @@ if (isset($_SESSION['email']) && isset($_SESSION['email'])) {
 			header("Location: profile.php?error=The confirmation password  does not match");
 			exit();
 		} else {
-			// hashing the password
-			$op = md5($op);
-			$np = md5($np);
 			$email = $_SESSION['email'];
-
-			$sql = "SELECT password
-                FROM customer WHERE 
-                email='$email' AND password='$op'";
-
-			$result = mysqli_query($con, $sql);
-			if (mysqli_num_rows($result) === 1) {
-
-				$sql_2 = "UPDATE customer
-        	          SET password='$np'
-        	          WHERE email='$email'";
-
-
-				mysqli_query($cnn, $sql_2);
+			// Fetch current hash
+			$stmt = $con->prepare("SELECT password FROM customer WHERE email = ? LIMIT 1");
+			$stmt->bind_param('s', $email);
+			$stmt->execute();
+			$res = $stmt->get_result();
+			if ($res && $row = $res->fetch_assoc()) {
+				$currentHash = $row['password'];
+				$valid = false;
+				if (password_verify($op, $currentHash)) {
+					$valid = true;
+				} elseif ($currentHash === md5($op) || password_verify(md5($op), $currentHash)) {
+					$valid = true;
+				}
+				if ($valid) {
+					$newHash = password_hash($np, PASSWORD_DEFAULT);
+					$up = $con->prepare("UPDATE customer SET password = ? WHERE email = ?");
+					$up->bind_param('ss', $newHash, $email);
+					if ($up->execute()) {
+						header("Location: profile.php?success=Your password has been changed successfully");
+						exit();
+					}
+				}
 			}
-			if ($con->query($sql_2) === TRUE) {
-				$sql_3 = "UPDATE user
-        	          SET password='$np'
-        	          WHERE email='$email'";
-				mysqli_query($con, $sql_3);
-				header("Location: profile.php?success=Your password has been changed successfully");
-				exit();
-			} else if ($con->query($sql_2) === FALSE) {
-				header("Location: profile.php?error= Current Password is incorrect");
-				exit();
-			}
+			header("Location: profile.php?error= Current Password is incorrect");
+			exit();
 		}
 	} else {
 		header("Location: profile.php");
