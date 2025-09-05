@@ -22,6 +22,15 @@ Installation Manual for UniServer
 8. Display database page by clicking button phpMyAdmin or type http://localhost/us_opt1 into your browser.
 ```
 
+## Environment Variables
+
+Set the following environment variables to configure the database connection:
+
+- `DB_HOST` – database host
+- `DB_USER` – database username
+- `DB_PASS` – database password
+- `DB_NAME` – database name
+
 ## Project Usernames/Passwords
 
 ```bash

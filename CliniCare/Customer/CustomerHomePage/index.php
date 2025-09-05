@@ -1,6 +1,10 @@
 <?php
 include "../db_conn.php";
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -98,6 +102,7 @@ if (!isset($_SESSION['email'])) {
               <li><a href="../Index Pages/History/myHistory.php">View History</a></li>
               <li><a href="../Index Pages/Appointment/AppointmentSlot.php">Make an Appointment</a></li>
               <form action="../CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <li>
                   <a><button type="submit" href="#" style="background: transparent; border: none; padding: 0; margin:0; position:relative; color:red" name="signout">
                       Sign Out</button></a>
@@ -710,6 +715,7 @@ if (!isset($_SESSION['email'])) {
 
             <div class="card-body">
               <form action="giveFeedback.php" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
                 <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
                 <input type="text" name="Subject" placeholder="Subject" class="form-control mb-2" required>
