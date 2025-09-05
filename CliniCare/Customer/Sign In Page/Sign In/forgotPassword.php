@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +38,7 @@
                     <div class="signin-form">
                         <h2 class="form-title">Forgot Password</h2>
                         <form method="POST" class="signin" id="login-form" action="../../CustomerEntry.php">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="email" id="email" placeholder="Email Address" />
