@@ -3,6 +3,9 @@ include "../db_conn.php";
 session_start();
 require_once __DIR__ . '/../../app/Middleware/Auth.php';
 Auth::requireRole('admin');
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -73,6 +76,7 @@ if (isset($_POST['submit'])) {
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
@@ -90,6 +94,7 @@ if (isset($_POST['submit'])) {
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="../../Customer/CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                   <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
@@ -157,6 +162,7 @@ if (isset($_POST['submit'])) {
                     <br><br><br><br>
                     <label class="labels" style="font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit Profile Picture</label>
                     <form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                       &nbsp;&nbsp;&nbsp;<input type="file" name="file">
                       <br>
                       &nbsp;&nbsp;&nbsp;<input type="submit" name="submit">
@@ -174,6 +180,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="card profile-widget">
                   <form class="form-sample" action="change-p.php" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                     <div class="card-header">
                       <h4>Change Password</h4>
                     </div>
@@ -218,6 +225,7 @@ if (isset($_POST['submit'])) {
               <div class="col-12 col-md-12 col-lg-7">
                 <div class="card">
                   <form method="post" class="needs-validation" action="../AdminEntry.php" novalidate="">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
 
                     <div class="card-header">
                       <h4>Edit Profile</h4>

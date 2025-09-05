@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 if (isset($_SESSION['email'])) {
   header("Location: Customer/CustomerHomePage/index.php");
 }
@@ -679,6 +683,7 @@ if (isset($_SESSION['email'])) {
 
             <div class="card-body">
               <form action="giveFeedback.php" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <input type="text" name="UName" placeholder="User Name" class="form-control mb-2" required>
                 <input type="email" name="Email" placeholder="Email" class="form-control mb-2" required>
                 <input type="text" name="Subject" placeholder="Subject" class="form-control mb-2" required>
