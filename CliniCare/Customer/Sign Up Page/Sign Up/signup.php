@@ -12,6 +12,7 @@ if (empty($_SESSION["csrf_token"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign Up | CliniCare </title>
+    <base href="/Customer/Sign Up Page/Sign Up/">
 
     <!-- Favicons -->
     <link href="images/gambar/icon.jpeg" rel="icon">
@@ -33,7 +34,7 @@ if (empty($_SESSION["csrf_token"])) {
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="signup" id="register-form" action="../../CustomerEntry.php">
+                        <form method="POST" class="signup" id="register-form" action="/Customer/CustomerEntry">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -67,7 +68,7 @@ if (empty($_SESSION["csrf_token"])) {
                     </div>
                     <div class="signup-image">
                         <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="../../Sign In Page/Sign In/signin.php" class="signup-image-link">
+                        <a href="/signin" class="signup-image-link">
                             I am already member</a>
                     </div>
                 </div>

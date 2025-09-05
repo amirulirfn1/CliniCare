@@ -17,6 +17,7 @@ if (isset($_GET['vkey'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reset Password | CliniCare</title>
+    <base href="/Customer/Sign In Page/Sign In/">
 
     <!-- Favicons -->
     <link href="images/gambar/icon.jpeg" rel="icon">
@@ -42,7 +43,7 @@ if (isset($_GET['vkey'])) {
 
                     <div class="signin-form">
                         <h2 class="form-title">Reset Password</h2>
-                        <form method="POST" class="signin" id="login-form" action="../../CustomerEntry.php">
+                        <form method="POST" class="signin" id="login-form" action="/Customer/CustomerEntry">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>

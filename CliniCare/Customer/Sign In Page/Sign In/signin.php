@@ -18,6 +18,7 @@ if (isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sign In | CliniCare</title>
+    <base href="/Customer/Sign In Page/Sign In/">
 
     <!-- Favicons -->
     <link href="images/gambar/icon.jpeg" rel="icon">
@@ -39,13 +40,13 @@ if (isset($_SESSION['email'])) {
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sign up image"></figure>
-                        <a href="../../Sign Up Page/Sign Up/signup.php" class="signup-image-link">Create an account</a>
-                        <a href="../../Sign In Page/Sign In/forgotPassword.php" class="signup-image-link">Forgot Password?</a>
+                        <a href="/signup" class="signup-image-link">Create an account</a>
+                        <a href="/forgot-password" class="signup-image-link">Forgot Password?</a>
                     </div>
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign In</h2>
-                        <form method="POST" class="signin" id="login-form" action="../../CustomerEntry.php">
+                        <form method="POST" class="signin" id="login-form" action="/Customer/CustomerEntry">
     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>

@@ -75,7 +75,7 @@ if (!isset($basePath)) {
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="<?= $basePath ?>Customer/Sign In Page/Sign In/signin"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
+      <a href="<?= $basePath ?>signin"><button class="appointment-btn scrollto">Sign In / Sign Up</button></a>
 
     </div>
   </header><!-- End Header -->
