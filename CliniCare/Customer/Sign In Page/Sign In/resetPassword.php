@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 if (isset($_GET['vkey'])) {
     $_SESSION['resetVkey'] = $_GET['vkey'];
 }
@@ -39,6 +43,7 @@ if (isset($_GET['vkey'])) {
                     <div class="signin-form">
                         <h2 class="form-title">Reset Password</h2>
                         <form method="POST" class="signin" id="login-form" action="../../CustomerEntry.php">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pwd" placeholder="New Password" />
