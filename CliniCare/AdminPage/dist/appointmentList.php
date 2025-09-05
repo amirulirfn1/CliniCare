@@ -1,6 +1,10 @@
 <?php
 include "../db_conn.php";
 session_start();
+if (empty($_SESSION["csrf_token"])) {
+    $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+}
+
 $email = $_SESSION['email'];
 $query = mysqli_query($con, "SELECT * FROM customer WHERE email='$email' ");
 $row = mysqli_fetch_array($query);
@@ -42,6 +46,7 @@ if (!isset($_SESSION['email'])) {
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
           <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
@@ -57,6 +62,7 @@ if (!isset($_SESSION['email'])) {
               </a>
               <a href="#" class="dropdown-item has-icon">
                 <form action="../../Customer/CustomerEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                   <button type="submit" class="dropdown-item has-icon" name="signout" id="signout" style="color:red; text-align:center">Sign Out </button>
                 </form>
               </a>
@@ -151,6 +157,7 @@ if (!isset($_SESSION['email'])) {
                         }else{
                           if ($row['status'] == 1) {
                             echo '<td><form action="../AdminEntry.php" method="POST">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                           <input type="hidden" name="appID" id="appID" value="' . $appID . '" > 
                           <button type="submit" name="doneApp" id="doneApp" title="Update Completed" class="btn btn-icon btn-primary">
                           <h7>&#10003;<h7></button> 
