@@ -13,12 +13,7 @@ if (strpos($uri, '..') !== false) {
 
 $path = $docroot . $uri;
 
-// If the request exactly matches an existing file (asset or PHP), let the server handle it
-if ($uri !== '/' && is_file($path)) {
-    return false;
-}
-
-// Redirect .php to extensionless
+// Redirect .php to extensionless (perform before static file short-circuit)
 if (preg_match('#^(.+)\.php$#i', $uri, $m)) {
     $target = $m[1];
     if (is_file($docroot . $uri)) {
@@ -26,6 +21,11 @@ if (preg_match('#^(.+)\.php$#i', $uri, $m)) {
         header('Location: ' . $target . $qs, true, 301);
         exit;
     }
+}
+
+// If the request exactly matches an existing file (asset or PHP), let the server handle it
+if ($uri !== '/' && is_file($path)) {
+    return false;
 }
 
 // Directory requests: map to index.php
@@ -45,4 +45,3 @@ if (is_file($path . '.php')) {
 
 // Fallback to root index.php
 require $docroot . '/index.php';
-
