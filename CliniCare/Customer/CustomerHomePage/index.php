@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/app/Core/Database.php';
+require_once __DIR__ . '/../../app/Core/Database.php';
 $con = Database::getConnection();
 session_start();
 $email = $_SESSION['email'];
